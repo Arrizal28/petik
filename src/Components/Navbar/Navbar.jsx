@@ -21,12 +21,12 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="1024px">
         <Toolbar disableGutters>
           <LocalAirportIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="/"
@@ -35,7 +35,7 @@ function NavBar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -55,7 +55,7 @@ function NavBar() {
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".2rem",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -63,9 +63,9 @@ function NavBar() {
             PETIK.COM
           </Typography>
           <Box sx={{ justifyContent: "right", marginLeft: "auto", flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>Notifikasi</Button>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>Masuk</Button>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>Daftar</Button>
+            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Notifikasi</Button>
+            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Masuk</Button>
+            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Daftar</Button>
           </Box>
 
           <Box sx={{ textAlign: "right", flexGrow: 0, display: { xs: "flex", md: "none" } }}>
