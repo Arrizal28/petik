@@ -1,23 +1,18 @@
 import React, { useState } from "react";
-import { AppBar, Box, Menu } from "@mui/material";
+import { AppBar, Box } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
 import LocalAirportIcon from "@mui/icons-material/LocalAirport";
+import MenuNav from "./MenuNav";
 
 function NavBar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   return (
@@ -63,43 +58,15 @@ function NavBar() {
             PETIK.COM
           </Typography>
           <Box sx={{ justifyContent: "right", marginLeft: "auto", flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Notifikasi</Button>
-            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Masuk</Button>
-            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Daftar</Button>
+            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Notification</Button>
+            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Sign In</Button>
+            <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Sign Up</Button>
           </Box>
 
           <Box sx={{ textAlign: "right", flexGrow: 0, display: { xs: "flex", md: "none" } }}>
             <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
-              <MenuIcon />
+              <MenuNav />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <MenuItem>
-                <Typography textAlign="center">Notifikasi</Typography>
-              </MenuItem>
-              <MenuItem>
-                <Typography textAlign="center">Masuk</Typography>
-              </MenuItem>
-              <MenuItem>
-                <Typography textAlign="center">Daftar</Typography>
-              </MenuItem>
-            </Menu>
           </Box>
         </Toolbar>
       </Container>
