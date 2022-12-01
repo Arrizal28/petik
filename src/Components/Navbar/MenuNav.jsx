@@ -20,7 +20,7 @@ export default function MenuNav() {
   return (
     <div>
       {["bottom"].map((anchor) => (
-        <React.Fragment key={anchor}>
+        <div key={anchor}>
           <MenuIcon onClick={toggleDrawer(anchor, true)} />
           <SwipeableDrawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)} onOpen={toggleDrawer(anchor, true)}>
             <Stack spacing={3} direction="row" style={{ marginTop: 10, margin: "auto" }}>
@@ -36,7 +36,7 @@ export default function MenuNav() {
               </Link>
             </Stack>
           </SwipeableDrawer>
-        </React.Fragment>
+        </div>
       ))}
     </div>
   );

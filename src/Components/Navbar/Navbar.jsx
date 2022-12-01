@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { AppBar, Box } from "@mui/material";
+import { AppBar, Box, Fab, Tooltip } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import MenuNav from "./MenuNav";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/air.png";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 
 function NavBar() {
   const [setAnchorElNav] = useState(null);
@@ -17,7 +18,7 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" color="secondary">
       <Container maxWidth="1024px">
         <Toolbar disableGutters>
           <Typography
@@ -31,7 +32,7 @@ function NavBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".1rem",
-              color: "inherit",
+              color: "primary",
               textDecoration: "none",
             }}
           >
@@ -46,13 +47,13 @@ function NavBar() {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              m: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".2rem",
-              color: "inherit",
+              color: "primary",
               textDecoration: "none",
             }}
           >
@@ -61,19 +62,43 @@ function NavBar() {
             COM
           </Typography>
           <Box sx={{ justifyContent: "right", marginLeft: "auto", flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <Link to="/notification" style={{ textDecoration: "none" }}>
-              <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Notification</Button>
-            </Link>
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Sign In</Button>
-            </Link>
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              <Button sx={{ my: 2, color: "white", display: "block", fontSize: 15, fontWeigh: "20px" }}>Sign Up</Button>
-            </Link>
+            <Box sx={{ m: 1, marginLeft: "auto" }}>
+              <Link to="/orders" style={{ textDecoration: "none" }}>
+                <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
+                  <Tooltip title="My Orders">
+                    <AirplaneTicketIcon />
+                  </Tooltip>
+                </Fab>
+              </Link>
+
+              <Link to="/notification" style={{ textDecoration: "none" }}>
+                <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
+                  <Tooltip title="Notification">
+                    <NotificationsActiveIcon />
+                  </Tooltip>
+                </Fab>
+              </Link>
+
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <Tooltip title="Sign In">
+                  <Fab color="primary" variant="extended" size="medium" sx={{ mr: 1 }}>
+                    Log in
+                  </Fab>
+                </Tooltip>
+              </Link>
+
+              <Link to="/register" style={{ textDecoration: "none" }}>
+                <Tooltip title="Sign Up">
+                  <Fab color="primary" variant="extended" size="medium" sx={{ mr: 1 }}>
+                    Register
+                  </Fab>
+                </Tooltip>
+              </Link>
+            </Box>
           </Box>
 
           <Box sx={{ textAlign: "right", flexGrow: 0, display: { xs: "flex", md: "none" } }}>
-            <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
+            <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="primary">
               <MenuNav />
             </IconButton>
           </Box>
