@@ -17,6 +17,27 @@
   border-radius: soloid 1px gray;
 }
 
+.verify {
+  align-items: center;
+  margin: 4px auto;
+  color: black;
+  background: white;
+  padding: 50px;
+  border-radius: 5px;
+  max-width: 1024px;
+  margin-top: 200px;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  height: 500px;
+}
+
+@media only screen and (max-width: 425px) {
+  .verify {
+    width: 1024px;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -7,13 +7,13 @@ import NavBottom from "../../Components/Navbar/NavBottom";
 
 function Home() {
   return (
-    <div className="App">
+    <>
       <Navbar />
       <NavBottom />
       <Header />
       <Panel />
       <Footer />
-    </div>
+    </>
   );
 }
 
