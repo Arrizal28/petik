@@ -1,11 +1,11 @@
 .header {
-  background-image: url(../../assets//images/pexels-pixabay-315403.jpg);
+  background-image: url("../../assets/images/pexels-pixabay-315403.jpg");
   background-size: cover;
   color: white;
   display: flex;
   justify-content: center;
   position: relative;
-  width: 70%;
+  width: 80%;
   height: 400px;
   margin: auto;
   border-bottom-left-radius: 50px;

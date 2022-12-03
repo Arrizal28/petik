@@ -8,11 +8,16 @@ import Succes from "./Pages/Verify/Succes";
 import Failed from "./Pages/Verify/Failed";
 import Notifications from "./Pages/Account/Profile/Notifications";
 import MyOrders from "./Pages/Account/Profile/MyOrders";
+import store from './Redux/store'
 import Buyers from "./Pages/Account/Profile/Buyers";
 import AccountMobile from "./Mobile/AccountMobile";
+import { Provider } from "react-redux";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   return (
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,6 +32,8 @@ function App() {
         <Route path="/account/buyer" element={<Buyers />} />
       </Routes>
     </BrowserRouter>
+    </Provider>
+    </GoogleOAuthProvider>
   );
 }
 
