@@ -1,13 +1,17 @@
-.App {
+body {
+  background-image: url(../../Petik/src/assets/images/body.png);
+}
+
+.Navbar {
   text-align: center;
-  /* max-width: 1024px; */
+  max-width: 1024px;
 }
 
 .App-logo {
-  height: 3vmin;
+  height: 5vmin;
   pointer-events: none;
   margin: 3px;
-  border-radius: soloid 1px gray;
+  border-radius: solid 1px gray;
 }
 
 .Applogo {
@@ -38,7 +42,7 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -48,7 +52,7 @@
   .Applogo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 @keyframes App-logo-spin {
   from {

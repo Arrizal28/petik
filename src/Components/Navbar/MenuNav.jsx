@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function MenuNav() {
   const [state, setState] = useState({
-    bottom: false,
+    Right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -19,7 +19,7 @@ export default function MenuNav() {
 
   return (
     <div>
-      {["bottom"].map((anchor) => (
+      {["Right"].map((anchor) => (
         <div key={anchor}>
           <MenuIcon onClick={toggleDrawer(anchor, true)} />
           <SwipeableDrawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)} onOpen={toggleDrawer(anchor, true)}>
