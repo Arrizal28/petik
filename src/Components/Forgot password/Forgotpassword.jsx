@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { forgotPassword } from "../../Redux/Actions/authaction";
 import Navigation from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../Redux/Actions/authaction";
-import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
-//style
 import { Nav, Navbar, Row, Col, Form, Button, Card } from "react-bootstrap";
-import "../Login/login.css";
+import "./forgotpassword.css";
 
-const Login = () => {
+function Forgotpassword() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const { token } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,16 +17,11 @@ const Login = () => {
       alert("Email is required");
       return;
     }
-    if (password === "") {
-      alert("Password is required");
-      return;
-    }
-    if (email !== "" && password !== "") {
+    if (email !== "") {
       const data = {
         email,
-        password,
       };
-      dispatch(login(data));
+      dispatch(forgotPassword(data));
     }
   };
 
@@ -67,26 +49,13 @@ const Login = () => {
                       />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </Form.Group>
-
                     <Button
                       variant="primary"
                       type="submit"
                       onClick={handleSubmit}
                     >
-                      Login
+                      send email
                     </Button>
-
-                    <div>
-                      <GoogleLogin label="Sign In With Google" />
-                    </div>
                   </Form>
                 </Col>
               </Row>
@@ -98,6 +67,6 @@ const Login = () => {
       <Footer />
     </>
   );
-};
+}
 
-export default Login;
+export default Forgotpassword;

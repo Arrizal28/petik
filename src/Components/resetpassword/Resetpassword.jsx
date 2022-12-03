@@ -1,51 +1,37 @@
 import React, { useState, useEffect } from "react";
-import Navigation from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../Redux/Actions/authaction";
-import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
-//style
+import { resetpassword } from "../../Redux/Actions/authaction";
 import { Nav, Navbar, Row, Col, Form, Button, Card } from "react-bootstrap";
-import "../Login/login.css";
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function Resetpassword() {
+  const [newPass, setNewPass] = useState("");
+  const [confirmNewPass, setconfirmNewPass] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { token } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "") {
+    if (newPass === "") {
       alert("Email is required");
       return;
     }
-    if (password === "") {
+    if (confirmNewPass === "") {
       alert("Password is required");
       return;
     }
-    if (email !== "" && password !== "") {
+    if (newPass !== "" && confirmNewPass !== "") {
       const data = {
-        email,
-        password,
+        newPass,
+        confirmNewPass,
       };
-      dispatch(login(data));
+      dispatch(resetpassword(data));
     }
   };
 
   return (
     <>
-      <Navigation />
       <div className="login">
         <div className="content-center-test d-flex justify-content-center align-items-center container">
           <Card className="d-flex justify-content-center col-md-8 col-sm-11">
@@ -60,19 +46,19 @@ const Login = () => {
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="password"
+                        placeholder="Password"
+                        value={newPass}
+                        onChange={(e) => setNewPass(e.target.value)}
                       />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Control
                         type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Confirm New Password"
+                        value={confirmNewPass}
+                        onChange={(e) => setconfirmNewPass(e.target.value)}
                       />
                     </Form.Group>
 
@@ -81,12 +67,8 @@ const Login = () => {
                       type="submit"
                       onClick={handleSubmit}
                     >
-                      Login
+                      send email
                     </Button>
-
-                    <div>
-                      <GoogleLogin label="Sign In With Google" />
-                    </div>
                   </Form>
                 </Col>
               </Row>
@@ -94,10 +76,8 @@ const Login = () => {
           </Card>
         </div>
       </div>
-
-      <Footer />
     </>
   );
-};
+}
 
-export default Login;
+export default Resetpassword;

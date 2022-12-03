@@ -1,5 +1,5 @@
 .header {
-  background-image: url(../../assets//images/pexels-pixabay-315403.jpg);
+  background-image: url("../../assets//images/pexels-pixabay-315403.jpg");
   background-size: cover;
   color: white;
   display: flex;

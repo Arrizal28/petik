@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./panel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { logout } from "../../Redux/Actions/authaction";
+import { useDispatch } from "react-redux";
 import {
   faPlane,
   faPlaneArrival,
@@ -19,6 +21,14 @@ function Panel() {
     children: 0,
     infant: 0,
   });
+
+  const dispatch = useDispatch();
+
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+
+  //   dispatch(logout());
+  // };
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -182,7 +192,12 @@ function Panel() {
                 />
               </div>
               <div className="col-lg col-12">
-                <Button type="primary" size="large" className="lebarmsearchbtn">
+                <Button
+                  type="primary"
+                  size="large"
+                  className="lebarmsearchbtn"
+                  // onClick={handleLogout}
+                >
                   Search
                 </Button>
               </div>
