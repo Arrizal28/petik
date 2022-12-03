@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { AppBar, Box, Fab, Tooltip } from "@mui/material";
+import { AppBar, Box } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import MenuNav from "./MenuNav";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/air.png";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
+import logo from "../../assets/images/petik.png";
+import Account from "../Account/Account";
+import Create from "../Account/Create";
 
 function NavBar() {
   const [setAnchorElNav] = useState(null);
@@ -36,9 +35,7 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            PETIK
             <img src={logo} className="App-logo" alt="logo" />
-            COM
           </Typography>
 
           <Typography
@@ -57,44 +54,11 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            PETIK
             <img src={logo} className="Applogo" alt="logo" />
-            COM
           </Typography>
           <Box sx={{ justifyContent: "right", marginLeft: "auto", flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <Box sx={{ m: 1, marginLeft: "auto" }}>
-              <Link to="/orders" style={{ textDecoration: "none" }}>
-                <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-                  <Tooltip title="My Orders">
-                    <AirplaneTicketIcon />
-                  </Tooltip>
-                </Fab>
-              </Link>
-
-              <Link to="/notification" style={{ textDecoration: "none" }}>
-                <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-                  <Tooltip title="Notification">
-                    <NotificationsActiveIcon />
-                  </Tooltip>
-                </Fab>
-              </Link>
-
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                <Tooltip title="Sign In">
-                  <Fab color="primary" variant="extended" size="medium" sx={{ mr: 1 }}>
-                    Log in
-                  </Fab>
-                </Tooltip>
-              </Link>
-
-              <Link to="/register" style={{ textDecoration: "none" }}>
-                <Tooltip title="Sign Up">
-                  <Fab color="primary" variant="extended" size="medium" sx={{ mr: 1 }}>
-                    Register
-                  </Fab>
-                </Tooltip>
-              </Link>
-            </Box>
+            <Create />
+            <Account />
           </Box>
 
           <Box sx={{ textAlign: "right", flexGrow: 0, display: { xs: "flex", md: "none" } }}>
