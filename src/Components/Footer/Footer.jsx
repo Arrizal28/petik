@@ -1,26 +1,66 @@
-import { Col, Row } from "antd";
 import React from "react";
-import logo from "../../assets/images/petik.png";
+import { Box, Container, Row, Column, FooterLink, Heading } from "./FooterStyles";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
-function Footer() {
+const Footer = () => {
   return (
-    <div style={{ marginTop: 300, color: "gray", height: 100, borderTop: "solid 1px gray", justifyContent: "center" }}>
-      <div style={{ margin: 50, color: "gray" }}>
+    <Box>
+      <Container>
         <Row>
-          <Col>
-            <img src={logo} className="App-logo" alt="logo" />
-            <p> Whats</p>
-          </Col>
+          <Column>
+            <Heading>Service</Heading>
+            <FooterLink href="#">About Us</FooterLink>
+            <FooterLink href="#">Destination</FooterLink>
+            <FooterLink href="#">Testimonials</FooterLink>
+            <FooterLink href="#">Ticket</FooterLink>
+          </Column>
+          <Column>
+            <Heading>Airlines</Heading>
+            <FooterLink href="#">Garuda Indonesia</FooterLink>
+            <FooterLink href="#">Citilink</FooterLink>
+            <FooterLink href="#">Batik Air</FooterLink>
+            <FooterLink href="#">Air Asia</FooterLink>
+          </Column>
+          <Column>
+            <Heading>Office Service </Heading>
+            <FooterLink href="#">Jakarta</FooterLink>
+            <FooterLink href="#">Batam</FooterLink>
+            <FooterLink href="#">Denpasar</FooterLink>
+            <FooterLink href="#">Karawang</FooterLink>
+          </Column>
+          <Column>
+            <Heading>Social Media</Heading>
+            <FooterLink href="#">
+              <FacebookIcon />
+              <i>
+                <span style={{ marginLeft: "10px" }}>Facebook</span>
+              </i>
+            </FooterLink>
+            <FooterLink href="#">
+              <InstagramIcon />
+              <i>
+                <span style={{ marginLeft: "10px" }}>Instagram</span>
+              </i>
+            </FooterLink>
+            <FooterLink href="#">
+              <TwitterIcon />
+              <i>
+                <span style={{ marginLeft: "10px" }}>Twitter</span>
+              </i>
+            </FooterLink>
+            <FooterLink href="#">
+              <YouTubeIcon />
+              <i>
+                <span style={{ marginLeft: "10px" }}>Youtube</span>
+              </i>
+            </FooterLink>
+          </Column>
         </Row>
-      </div>
-      <div>
-        <Row style={{ marginTop: 10, textAlign: "center", justifyContent: "center" }}>
-          <img src={logo} className="App-logo" alt="logo" />
-          <h6 style={{ marginTop: 20, textAlign: "center", marginBottom: 100 }}>Tempat Pesan Tiket Pesawat Mudah dan Murah</h6>
-        </Row>
-      </div>
-    </div>
+      </Container>
+    </Box>
   );
-}
-
+};
 export default Footer;
