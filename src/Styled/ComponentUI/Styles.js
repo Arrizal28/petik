@@ -19,3 +19,16 @@ export const Title = styled.p`
     transition: 200ms ease-in;
   }
 `;
+
+export const Text = styled.p`
+  margin: 5px;
+  font-size: 12px;
+  color: #000;
+  margin-left: 15px;
+  font-weight: bold;
+  color: gray;
+  &:hover {
+    color: #3596e7;
+    transition: 200ms ease-in;
+  }
+`;

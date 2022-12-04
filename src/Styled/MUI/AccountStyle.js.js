@@ -1,63 +1,10 @@
 import { styled } from "@mui/material/styles";
-import { Button, Card, TextField, Divider, ListItem, AppBar, Paper, Container } from "@mui/material";
+import { Button, Card, TextField, Divider, ListItem } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Box, List } from "@mui/material";
-import imgHeader from "../assets/images/imgheader.jpg";
-
-export const TopPanel = styled(Card)({
-  height: 110,
-  justifyContent: "center",
-  width: "100%",
-});
-
-export const AppBars = styled(AppBar)({
-  justifyContent: "center",
-});
-
-export const AppBox = styled(Box)({
-  justifyContent: "center",
-  margin: "1%",
-  Width: 1024,
-});
-
-export const AppPaper = styled(Paper)({
-  justifyContent: "center",
-  margin: "auto",
-  maxWidth: 1300,
-});
 
 export const BoxHome = styled(Box)({
-  marginTop: 100,
-});
-
-export const BoxPanel = styled(Box)({
-  justifyContent: "center",
-  maxWidth: 1300,
-  margin: "auto",
-  display: "flex",
-});
-
-export const BoxHeader = styled(Box)({
-  backgroundImage: `url(${imgHeader})`,
-  backgroundSize: "cover",
-  color: "white",
-  display: "flex",
-  justifyContent: "center",
-  position: "relative",
-  width: "100%",
-  height: "400px",
-  margin: "auto",
-  borderBottomLeftRadius: "50px",
-  borderBottomRightRadius: "50px",
-});
-
-export const BoxContainer = styled(Container)({
-  width: "100%",
-  margin: "20px 0px 100px 0px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  boxSizing: "border-box",
+  marginTop: 10,
 });
 
 export const BoxPage = styled(Box)({
@@ -68,7 +15,7 @@ export const BoxPage = styled(Box)({
 
 export const BoxMenu = styled(Box)({
   margin: 20,
-  marginLeft: 50,
+  marginLeft: 30,
 });
 
 export const BoxTitle = styled(Box)({
@@ -118,7 +65,8 @@ export const TextFields = styled(TextField)({
   marginTop: 15,
   borderRadius: 20,
   display: "flex",
-  marginLeft: 35,
+  marginLeft: 15,
+  textAlign: "left",
 });
 
 export const Buttons = styled(Button)({
@@ -127,7 +75,7 @@ export const Buttons = styled(Button)({
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
-  marginLeft: 35,
+  marginLeft: 15,
 });
 
 export const Buttonx = styled(Button)({

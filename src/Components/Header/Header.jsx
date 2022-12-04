@@ -1,5 +1,5 @@
 import React from "react";
-import { BoxHeader, BoxContainer, BoxPanel } from "../../Styled/Material";
+import { BoxHeader, BoxContainer, BoxPanel } from "../../Styled/MUI/HeaderStyle";
 
 function Header() {
   return (

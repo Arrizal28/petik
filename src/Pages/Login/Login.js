@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-import { Cards, Cardss, TextFields, Buttons, Buttonz, Links } from "../Register/AuthStyles";
+import { Cards, Cardss, TextFields, Buttons, Buttonz, Links } from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
@@ -9,6 +9,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import { login } from "../../Redux/Actions/authAction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { useNavigate } from "react-router-dom";
+import { Heading, Text } from "../../Styled/ComponentUI/Styles";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -68,7 +69,7 @@ function Login() {
             <Links to="/">
               <img className="App-logo" src={logo} alt="logo" />
             </Links>
-            <h3 style={{ margin: 15, borderRadius: 20 }}> Log In Your Account</h3>
+            <Heading> Log In Your Account</Heading>
             <TextFields
               type="email"
               id="outlined-basic"
@@ -112,7 +113,7 @@ function Login() {
               </Buttons>
             </Links>
             <GoogleLogin label=" Google" />
-            <h6 style={{ margin: 15, borderRadius: 20 }}> No Have Account?</h6>
+            <Text> No Have Account?</Text>
             <Links to="/register">
               <Buttonz variant="outlined" size="small">
                 Register
