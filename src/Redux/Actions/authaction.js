@@ -3,10 +3,7 @@ import { setToken, setRegister, setLogin, setGoogle, setForgot } from "../Reduce
 
 export const register = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/register`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/register`, data);
     if (result.data.status) {
       dispatch(setRegister(result.data));
       alert(result.data.message);
@@ -18,10 +15,7 @@ export const register = (data) => async (dispatch) => {
 
 export const login = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/login`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/login`, data);
     if (result.data.status) {
       localStorage.setItem("token", result.data.data.token);
       dispatch(setToken(result.data.data.token));
@@ -39,7 +33,7 @@ export const loginWithGoogle = (accessToken, access_token) => async (dispatch) =
   // };
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/login-google?access_token=${access_token}`,
+      `${process.env.REACT_APP_AUTH_API}/auth/login-google?access_token=${access_token}`
       // data
     );
     if (result.data.token) {
@@ -54,9 +48,7 @@ export const loginWithGoogle = (accessToken, access_token) => async (dispatch) =
 
 export const forgotPassword = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/forgot-password`, data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/forgot-password`, data);
     if (result.data.status) {
       dispatch(setForgot(result.data));
       alert(result.data.message);
