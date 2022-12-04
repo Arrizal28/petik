@@ -11,6 +11,30 @@ import MyOrders from "./Pages/Account/Profile/MyOrders";
 import store from './Redux/store'
 import Buyers from "./Pages/Account/Profile/Buyers";
 import AccountMobile from "./Mobile/AccountMobile";
+<<<<<<< HEAD
+import NavbarBottom from "./Mobile/NavbarMobile";
+import Settings from "./Pages/Account/Settings/Settings";
+
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/auth/verify/succes" element={<Succes />} />
+          <Route path="/auth/verify/failed" element={<Failed />} />
+          <Route path="/profile" element={<Buyers />} />
+          <Route path="/orders" element={<MyOrders />} />
+          <Route path="/notification" element={<Notifications />} />
+          <Route path="/account" element={<AccountMobile />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+        <NavbarBottom />
+      </BrowserRouter>
+    </>
+=======
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -34,6 +58,7 @@ function App() {
     </BrowserRouter>
     </Provider>
     </GoogleOAuthProvider>
+>>>>>>> 7727df255c567937714c118064f42491f0bd8495
   );
 }
 

@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Grid } from "@mui/material";
 import NavBar from "../../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
-import PanelOrders from "./PanelOrders";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
@@ -16,6 +15,7 @@ import Divider from "@mui/material/Divider";
 import Logout from "../../../Components/Account/logout";
 import { Link } from "react-router-dom";
 import Footer from "../../../Components/Footer/Footer";
+import PanelSettings from "./PanelSettings";
 
 const style = {
   width: "100%",
@@ -23,14 +23,6 @@ const style = {
   bgcolor: "background.paper",
   marginTop: 5,
   fontFamily: "sans-serif",
-};
-
-const stlCard = {
-  height: 100,
-  justifyContent: "center",
-  textAlign: "center",
-  alignItems: "center",
-  marginTop: 25,
 };
 
 const sCard = {
@@ -49,7 +41,7 @@ const stCard = {
   alignItems: "center",
 };
 
-function MyOrders() {
+function Settings() {
   return (
     <>
       <NavBar />
@@ -73,7 +65,7 @@ function MyOrders() {
                   <Link to="/orders" style={{ textDecoration: "none", color: "gray" }}>
                     <ListItem button style={{ margin: 5 }}>
                       <ReceiptIcon style={{ margin: 5, color: "gray" }} />
-                      <p style={{ fontSize: 20, margin: 5, color: "#3596e7" }}> My Orders </p>
+                      <p style={{ fontSize: 20, margin: 5 }}> My Orders </p>
                     </ListItem>
                   </Link>
                   <Divider />
@@ -105,7 +97,7 @@ function MyOrders() {
                   <Link to="/settings" style={{ textDecoration: "none", color: "gray" }}>
                     <ListItem button style={{ margin: 5 }}>
                       <SettingsApplicationsIcon style={{ margin: 5, color: "gray" }} />
-                      <p style={{ fontSize: 20, margin: 5 }}>Settings</p>
+                      <p style={{ fontSize: 20, margin: 5, color: "#3596e7" }}>Settings</p>
                     </ListItem>
                   </Link>
                   <Divider />
@@ -116,12 +108,8 @@ function MyOrders() {
             <Grid item xs={9}>
               <Grid>
                 <div variant="outlined" style={stCard}>
-                  <PanelOrders />
+                  <PanelSettings />
                 </div>
-              </Grid>
-
-              <Grid>
-                <Card variant="outlined" style={stlCard}></Card>
               </Grid>
             </Grid>
           </Grid>
@@ -132,4 +120,4 @@ function MyOrders() {
   );
 }
 
-export default MyOrders;
+export default Settings;

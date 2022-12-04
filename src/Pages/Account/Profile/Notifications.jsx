@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Grid } from "@mui/material";
 import NavBar from "../../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
-import PanelItem from "./TabPanel";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
@@ -14,6 +13,9 @@ import ListItem from "@mui/material/ListItem";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import Divider from "@mui/material/Divider";
 import Logout from "../../../Components/Account/logout";
+import { Link } from "react-router-dom";
+import Footer from "../../../Components/Footer/Footer";
+import PanelNotif from "./PanelNotif";
 
 const style = {
   width: "100%",
@@ -51,7 +53,7 @@ function Notifications() {
   return (
     <>
       <NavBar />
-      <div style={{ marginTop: 80 }}>
+      <div style={{ marginTop: 100 }}>
         <Box sx={{ flexGrow: 1, margin: 10 }}>
           <Grid container spacing={2}>
             <Grid xs={3}>
@@ -62,36 +64,50 @@ function Notifications() {
                 </div>
                 <List sx={style} component="nav" aria-label="mailbox folders">
                   <Divider />
-                  <ListItem button style={{ margin: 5 }}>
-                    <PersonOutlineIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}> Profile </p>
-                  </ListItem>
+                  <Link to="/profile" style={{ textDecoration: "none", color: "gray" }}>
+                    <ListItem button style={{ margin: 5 }}>
+                      <PersonOutlineIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}> Profile </p>
+                    </ListItem>
+                  </Link>
                   <Divider />
-                  <ListItem button style={{ margin: 5 }}>
-                    <ReceiptIcon style={{ margin: 5, color: "gray" }} />
-                    <p style={{ fontSize: 20, margin: 5 }}> My Orders </p>
-                  </ListItem>
+                  <Link to="/orders" style={{ textDecoration: "none", color: "gray" }}>
+                    <ListItem button style={{ margin: 5 }}>
+                      <ReceiptIcon style={{ margin: 5, color: "gray" }} />
+                      <p style={{ fontSize: 20, margin: 5 }}> My Orders </p>
+                    </ListItem>
+                  </Link>
                   <Divider />
-                  <ListItem button style={{ margin: 5 }}>
-                    <CurrencyExchangeIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}>Refunds</p>
-                  </ListItem>
+                  <Link to="/refunds" style={{ textDecoration: "none", color: "gray" }}>
+                    <ListItem button style={{ margin: 5 }}>
+                      <CurrencyExchangeIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}>Refunds</p>
+                    </ListItem>
+                  </Link>
                   <Divider />
-                  <ListItem button style={{ margin: 5 }}>
-                    <ForwardToInboxIcon style={{ margin: 5, color: "gray" }} />
-                    <p style={{ fontSize: 20, margin: 5, color: "#3596e7" }}> Inbox </p>
-                  </ListItem>
+                  <Link to="/notification" style={{ textDecoration: "none", color: "gray" }}>
+                    <ListItem button style={{ margin: 5 }}>
+                      <ForwardToInboxIcon style={{ margin: 5, color: "gray" }} />
+                      <p style={{ fontSize: 20, margin: 5, color: "#3596e7" }}> Inbox </p>
+                    </ListItem>
+                  </Link>
                   <Divider />
-                  <ListItem button style={{ margin: 5 }}>
-                    <StarsIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}>Rewards</p>
-                  </ListItem>
+                  <Link to="/rewards" style={{ textDecoration: "none", color: "gray" }}>
+                    <ListItem button style={{ margin: 5 }}>
+                      <StarsIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}>Rewards</p>
+                    </ListItem>
+                  </Link>
                   <Divider />
-                  <ListItem button style={{ margin: 5 }}>
-                    <QuizIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}>Help Center</p>
-                  </ListItem>
+                  <Link to="/helpcenter" style={{ textDecoration: "none", color: "gray" }}>
+                    <ListItem button style={{ margin: 5 }}>
+                      <QuizIcon style={{ margin: 5, color: "gray" }} /> <p style={{ fontSize: 20, margin: 5 }}>Help Center</p>
+                    </ListItem>
+                  </Link>
                   <Divider />
-                  <ListItem button style={{ margin: 5 }}>
-                    <SettingsApplicationsIcon style={{ margin: 5, color: "gray" }} />
-                    <p style={{ fontSize: 20, margin: 5 }}>Settings</p>
-                  </ListItem>
+                  <Link to="/settings" style={{ textDecoration: "none", color: "gray" }}>
+                    <ListItem button style={{ margin: 5 }}>
+                      <SettingsApplicationsIcon style={{ margin: 5, color: "gray" }} />
+                      <p style={{ fontSize: 20, margin: 5 }}>Settings</p>
+                    </ListItem>
+                  </Link>
                   <Divider />
                   <Logout />
                 </List>
@@ -100,7 +116,7 @@ function Notifications() {
             <Grid item xs={9}>
               <Grid>
                 <div variant="outlined" style={stCard}>
-                  <PanelItem />
+                  <PanelNotif />
                 </div>
               </Grid>
 
@@ -111,6 +127,7 @@ function Notifications() {
           </Grid>
         </Box>
       </div>
+      <Footer />
     </>
   );
 }

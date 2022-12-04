@@ -15,7 +15,7 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import Divider from "@mui/material/Divider";
 import Logout from "../../../Components/Account/logout";
 import { Link } from "react-router-dom";
-import { Col, Row } from "antd";
+import Footer from "../../../Components/Footer/Footer";
 
 const style = {
   width: "100%",
@@ -78,7 +78,7 @@ function Buyers() {
   return (
     <>
       <NavBar />
-      <div style={{ marginTop: 80 }}>
+      <div style={{ marginTop: 100 }}>
         <Box sx={{ flexGrow: 1, margin: 10 }}>
           <Grid container spacing={2}>
             <Grid xs={3}>
@@ -150,27 +150,19 @@ function Buyers() {
                 </Grid>
                 <Card variant="outlined" style={stCard}>
                   <CardContent>
-                    <Row>
-                      <Col>
-                        <TextField style={sTextfield} id="outlined-basic" variant="outlined" size="small" select label="Select" value={gender} onChange={handleChange} helperText="Please select your gender">
-                          {titles.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                              {option.label}
-                            </MenuItem>
-                          ))}
-                        </TextField>
-                        <TextField style={sTextfield} id="outlined-basic" label="First Name" variant="outlined" size="small" helperText="Please enter your first name" />
-                        <TextField style={sTextfield} id="outlined-basic" label="Last Name" variant="outlined" size="small" helperText="Please enter your last name" />
-                      </Col>
-                      <Col>
-                        <TextField style={sTextfield} id="outlined-basic" label="Email" variant="outlined" size="small" helperText="Please enter your last new email" />
-                        <TextField style={sTextfield} id="outlined-basic" label="Phone Number" variant="outlined" size="small" helperText="Please enter your new number phone" />
-                        <TextField style={sTextfield} id="outlined-basic" label="ID Number" variant="outlined" size="small" helperText="Please enter your ID card number" />
-                        <Button style={sTextfield} id="outlined-basic" label="Phone Number" variant="contained" size="small">
-                          Save
-                        </Button>
-                      </Col>
-                    </Row>
+                    <TextField style={sTextfield} id="outlined-basic" variant="outlined" size="small" select label="Select" value={gender} onChange={handleChange} helperText="Please select your gender">
+                      {titles.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <TextField style={sTextfield} id="outlined-basic" label="First Name" variant="outlined" size="medium" helperText="Please enter your first name" />
+                    <TextField style={sTextfield} id="outlined-basic" label="Last Name" variant="outlined" size="medium" helperText="Please enter your last name" />
+                    <TextField style={sTextfield} id="outlined-basic" label="ID Number" variant="outlined" size="medium" helperText="Please enter your ID card number" />
+                    <Button style={sTextfield} id="outlined-basic" label="button" variant="contained" size="medium">
+                      Save
+                    </Button>
                   </CardContent>
                 </Card>
               </Grid>
@@ -178,6 +170,7 @@ function Buyers() {
           </Grid>
         </Box>
       </div>
+      <Footer />
     </>
   );
 }
