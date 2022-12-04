@@ -1,13 +1,12 @@
 import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { loginWithGoogle } from "../../Redux/Actions/authaction";
+// import { useDispatch } from "react-redux";
+import googleLogo from "../../assets/images/googleLogo.svg";
+import { Buttonx, Dividers } from "../../Styled/MUI/AuthStyles";
+// import { loginWithGoogle } from "../../Redux/Actions/authAction";
 
 function GoogleLogin({ label }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const googleLogin = useGoogleLogin({
     onSuccess: async (res) => {
@@ -19,13 +18,13 @@ function GoogleLogin({ label }) {
   });
 
   return (
-    <div className="d-grid">
-      <div className="m-auto">
-        <Button variant="primary" onClick={googleLogin}>
-          <FontAwesomeIcon icon={faGoogle} /> {label}
-        </Button>
-      </div>
-    </div>
+    <>
+      <Dividers>Or Join With</Dividers>
+      <Buttonx variant="outlined" size="small" onClick={googleLogin}>
+        <img src={googleLogo} alt="google log " width="25px" />
+        {label}
+      </Buttonx>
+    </>
   );
 }
 

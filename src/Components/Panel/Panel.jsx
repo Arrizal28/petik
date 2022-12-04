@@ -8,7 +8,7 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { logout } from "../../Redux/Actions/authaction";
+import { logout } from "../../Redux/Actions/authAction";
 import { Input, Select } from "antd";
 import { DatePicker, Button, Checkbox } from "antd";
 const { RangePicker } = DatePicker;
@@ -112,6 +112,21 @@ function Panel() {
                       onChange={onSelectTillDate}
                     />
                   </>
+                )}
+                <Input
+                  placeholder="Ke"
+                  size="large"
+                  className="lebarm"
+                  suffix={
+                    <FontAwesomeIcon icon={faPlaneArrival} className="faicon" />
+                  }
+                />
+              </div>
+              <div className="col-lg-4 col-sm-12">
+                {oneWay ? (
+                  <DatePicker className="lebarm" size="large" />
+                ) : (
+                  <RangePicker size="large" className="lebarm" />
                 )}
                 {/* <RangePicker size="large" className="lebarm" /> */}
               </div>

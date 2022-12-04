@@ -1,14 +1,16 @@
 import React from "react";
-import "./header.css";
+import { BoxHeader, BoxContainer, BoxPanel } from "../../Styled/MUI/HeaderStyle";
 
 function Header() {
   return (
-    <div className="header">
-      <div className="headerContainer">
-        <h1 className="headertitle"> Testing </h1>
-        <p> coba coba </p>
-      </div>
-    </div>
+    <BoxPanel>
+      <BoxHeader className="heade">
+        <BoxContainer className="headerContaine">
+          <h1 className="headertitle"> Testing </h1>
+          <p> coba coba </p>
+        </BoxContainer>
+      </BoxHeader>
+    </BoxPanel>
   );
 }
 

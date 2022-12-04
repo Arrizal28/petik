@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Navigation from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../Redux/Actions/authaction";
+import React, { useState } from "react";
+import logo from "../../assets/images/petik.png";
+import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, Dividers } from "../../Styled/MUI/AuthStyles";
+import { CardContent, IconButton, InputAdornment } from "@mui/material";
+import { useDispatch } from "react-redux";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import EmailIcon from "@mui/icons-material/Email";
+import { register } from "../../Redux/Actions/authAction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
+import { Heading, Text } from "../../Styled/ComponentUI/Styles";
 
-import { Nav, Navbar, Row, Col, Form, Button, Card } from "react-bootstrap";
-import "./register.css";
-
-const Register = () => {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirm_Password] = useState("");
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -41,69 +41,105 @@ const Register = () => {
     }
   };
 
+  const [values, setValues] = useState({
+    password: "",
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <>
-      <Navigation />
-      <div className="register">
-        <div className="content-center d-flex justify-content-center align-items-center container">
-          <Card className="d-flex justify-content-center col-md-8 col-sm-11">
-            <Card.Body>
-              <Row>
-                <Col>
-                  <Nav className="">
-                    <Navbar.Brand className="mb-3">
-                      <h4>Log in to your Account</h4>
-                    </Navbar.Brand>
-                  </Nav>
-                  <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="">
-                      <Form.Control
-                        type="password"
-                        placeholder="Confirm Password"
-                        value={confirm_password}
-                        onChange={(e) => setConfirm_Password(e.target.value)}
-                      />
-                    </Form.Group>
-
-                    <Button
-                      variant="primary"
-                      type="submit"
-                      onClick={handleSubmit}
-                    >
-                      Register
-                    </Button>
-                    <div>
-                      <GoogleLogin label="Sign In With Google" />
-                    </div>
-                  </Form>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </div>
-      </div>
-
-      <Footer />
-    </>
+    <div style={{ marginTop: 150 }}>
+      <Cards>
+        <Cardss>
+          <CardContent>
+            <Links to="/">
+              <img className="App-logo" src={logo} alt="logo" />
+            </Links>
+            <Heading> Create Your Account</Heading>
+            <TextFields
+              type="email"
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              size="small"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <EmailIcon style={{ marginRight: 8 }} />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextFields
+              type="password"
+              id="outlined"
+              label="Password"
+              variant="outlined"
+              size="small"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextFields
+              type="password"
+              id="outlined"
+              label="Confirm Password"
+              variant="outlined"
+              size="small"
+              value={confirm_password}
+              onChange={(e) => setConfirm_Password(e.target.value)}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Links to="/register">
+              <Buttons variant="contained" size="large" disabled={!email || !password} onClick={handleSubmit}>
+                Register
+              </Buttons>
+            </Links>
+            <GoogleLogin label=" Google" />
+            <Dividers>
+              <Text> Allready Have Account?</Text>
+            </Dividers>
+            <Links to="/login">
+              <Buttonz variant="outlined" size="small">
+                Log in
+              </Buttonz>
+            </Links>
+          </CardContent>
+        </Cardss>
+      </Cards>
+    </div>
   );
-};
+}
 
 export default Register;

@@ -1,5 +1,6 @@
 body {
   background-image: url(./assets/images/bg.png);
+  color: #dcdcdc;
 }
 
 .App-logo {
@@ -35,19 +36,11 @@ body {
   .verify {
     width: 1024px;
   }
-}
 
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .header {
+    width: 1024px;
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .Applogo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
 
 @keyframes App-logo-spin {
   from {
