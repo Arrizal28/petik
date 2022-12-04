@@ -13,11 +13,19 @@ import Buyers from "./Pages/Account/Profile/Buyers";
 import AccountMobile from "./Mobile/AccountMobile";
 import NavbarBottom from "./Mobile/NavbarMobile";
 import Settings from "./Pages/Account/Settings/Settings";
+import { Provider } from "react-redux";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+
+
+
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+    <Provider store={store}>
+    <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -32,7 +40,10 @@ function App() {
         </Routes>
         <NavbarBottom />
       </BrowserRouter>
-    </>
+    </Provider>
+    </GoogleOAuthProvider>
+    <>
+
   );
 }
 
