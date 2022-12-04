@@ -116,12 +116,21 @@
   width: 100%;
 }
 
+.lebarmb {
+  /* width: 320px; */
+  width: 100%;
+}
+
 .lebarmclass {
   width: 100%;
 }
 
 .lebarmsearchbtn {
   width: 100%;
+}
+
+.lebardate {
+  width: 50%;
 }
 
 @media only screen and (max-width: 425px) {
@@ -133,10 +142,20 @@
     width: 350px;
   }
 
+  .lebardate {
+    width: 100%;
+    margin-top: 35px;
+  }
+
+  .lebarmb {
+    width: 100%;
+    margin-bottom: -30px;
+  }
+
   .panel2 {
     display: flex;
     align-items: center;
-    height: 250px;
+    height: 320px;
   }
 
   .panel3 {
