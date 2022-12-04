@@ -65,5 +65,5 @@ export const Links = styled(Link)({
 });
 
 export const Dividers = styled(Divider)({
-  margin: 20,
+  margin: 10,
 });

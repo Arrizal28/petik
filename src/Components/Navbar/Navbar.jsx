@@ -7,7 +7,7 @@ import MenuNav from "./MenuNav";
 import logo from "../../assets/images/petik.png";
 import Account from "../Account/Account";
 import Create from "../Account/Create";
-import { AppBars, AppBox, AppPaper } from "../../Styled/Material";
+import { AppBars, AppBox, AppPaper } from "../../Styled/MUI/NavbarStyle";
 
 function NavBar() {
   const [setAnchorElNav] = useState(null);
