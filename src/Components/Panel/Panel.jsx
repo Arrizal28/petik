@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import "./panel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+<<<<<<< HEAD
 import { faPlane, faPlaneArrival, faPlaneDeparture, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { logout } from "../../Redux/Actions/authaction";
+=======
+import {
+  faPlane,
+  faPlaneArrival,
+  faPlaneDeparture,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
+>>>>>>> 8fd5fa6b76a70ce986a39fc2324855c280a98bf6
 import { Input, Select } from "antd";
 import { DatePicker, Button, Checkbox } from "antd";
 const { RangePicker } = DatePicker;
@@ -11,29 +20,23 @@ const { RangePicker } = DatePicker;
 function Panel() {
   const [openOptions, setOpenOptions] = useState(false);
   const [oneWay, setOneWay] = useState(false);
-  const [date, setDate] = useState(false);
-  const [tillDate, setTillDate] = useState(false);
+  // const [date, setDate] = useState(false);
+  // const [tillDate, setTillDate] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     infant: 0,
   });
 
-  const onSelectDate = (dateString) => {
-    setDate(dateString);
-  };
+  // const onSelectDate = (dateString) => {
+  //   setDate(dateString);
+  // };
 
-  const onSelectTillDate = (dateString) => {
-    setTillDate(dateString);
-  };
+  // const onSelectTillDate = (dateString) => {
+  //   setTillDate(dateString);
+  // };
 
-  const dispatch = useDispatch();
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-
-    dispatch(logout());
-  };
+  // const dispatch = useDispatch();
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -67,7 +70,15 @@ function Panel() {
               </div>
               <div className="col-lg-4 col-sm-12">
                 {oneWay ? (
+<<<<<<< HEAD
                   <DatePicker className="lebarm" size="large" onChange={onSelectDate} />
+=======
+                  <DatePicker
+                    className="lebarm"
+                    size="large"
+                    // onChange={onSelectDate}
+                  />
+>>>>>>> 8fd5fa6b76a70ce986a39fc2324855c280a98bf6
                 ) : (
                   // <RangePicker
                   //   size="large"
@@ -75,8 +86,21 @@ function Panel() {
                   //   onChange={onSelectDate}
                   // />
                   <>
+<<<<<<< HEAD
                     <DatePicker className="lebardate" size="large" onChange={onSelectDate} />
                     <DatePicker className="lebardate" size="large" onChange={onSelectTillDate} />
+=======
+                    <DatePicker
+                      className="lebardate"
+                      size="large"
+                      // onChange={onSelectDate}
+                    />
+                    <DatePicker
+                      className="lebardate"
+                      size="large"
+                      // onChange={onSelectTillDate}
+                    />
+>>>>>>> 8fd5fa6b76a70ce986a39fc2324855c280a98bf6
                   </>
                 )}
                 <Input placeholder="Ke" size="large" className="lebarm" suffix={<FontAwesomeIcon icon={faPlaneArrival} className="faicon" />} />
@@ -165,7 +189,11 @@ function Panel() {
                 />
               </div>
               <div className="col-lg col-12">
+<<<<<<< HEAD
                 <Button type="primary" size="large" className="lebarmsearchbtn" onClick={handleLogout}>
+=======
+                <Button type="primary" size="large" className="lebarmsearchbtn">
+>>>>>>> 8fd5fa6b76a70ce986a39fc2324855c280a98bf6
                   Search
                 </Button>
               </div>

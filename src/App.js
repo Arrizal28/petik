@@ -16,7 +16,6 @@ import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import NavbarBottom from "./Mobile/Layout/NavbarMobile";
 import NotificationMobile from "./Mobile/Notification/NotificationMobile";
-// import Protected from "./Components/Protected/Protected"
 
 function App() {
   return (

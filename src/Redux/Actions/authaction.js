@@ -27,14 +27,14 @@ export const login = (data) => async (dispatch) => {
   }
 };
 
-export const loginWithGoogle = (accessToken, access_token) => async (dispatch) => {
-  // const data = {
-  //   access_token: accessToken,
-  // };
+export const loginWithGoogle = (accessToken) => async (dispatch) => {
+  const data = {
+    access_token: accessToken,
+  };
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/login-google?access_token=${access_token}`
-      // data
+      `${process.env.REACT_APP_AUTH_API}/auth/login-google`,
+      data
     );
     if (result.data.token) {
       localStorage.setItem("token", result.data.token);
