@@ -17,7 +17,8 @@ import { CardMenu, CardBox, CardPage } from "../../../Styled/MUI/AccountStyle.js
 import { Links, ListItems, ListPage } from "../../../Styled/MUI/AccountStyle.js";
 import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 import TopPanels from "../../../Components/Header/TopPanel";
-
+import { useDispatch } from "react-redux";
+import { createUserBio } from "../../../Redux/Actions/userAction";
 function Buyers() {
   const [gender, setGender] = useState("Gender");
   const titles = [
