@@ -15,7 +15,6 @@ import NavbarBottom from "./Mobile/NavbarMobile";
 import Settings from "./Pages/Account/Settings/Settings";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Protected from "./Components/Protected/Protected"
 
 function App() {
   return (
