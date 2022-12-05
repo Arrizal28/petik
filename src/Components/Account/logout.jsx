@@ -20,8 +20,7 @@ export default function Logout() {
       <List component="nav" aria-label="mailbox folders">
         <Divider />
         <ListItems button>
-          <LogoutIcon fontSize="medium" onClick={handleLogout} />{" "}
-          <Title>Log Out</Title>
+          <LogoutIcon fontSize="medium" onClick={handleLogout} /> <Title>Log Out</Title>
         </ListItems>
         <Divider />
       </List>

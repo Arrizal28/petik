@@ -12,24 +12,9 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import Divider from "@mui/material/Divider";
 import Logout from "../../../Components/Account/logout";
 import Footer from "../../../Components/Footer/Footer";
-import {
-  BoxHome,
-  BoxMenu,
-  BoxPage,
-  BoxTitle,
-  Buttons,
-  TextFields,
-} from "../../../Styled/MUI/AccountStyle.js";
-import {
-  CardMenu,
-  CardBox,
-  CardPage,
-} from "../../../Styled/MUI/AccountStyle.js";
-import {
-  Links,
-  ListItems,
-  ListPage,
-} from "../../../Styled/MUI/AccountStyle.js";
+import { BoxHome, BoxMenu, BoxPage, BoxTitle, Buttons, TextFields } from "../../../Styled/MUI/AccountStyle.js";
+import { CardMenu, CardBox, CardPage } from "../../../Styled/MUI/AccountStyle.js";
+import { Links, ListItems, ListPage } from "../../../Styled/MUI/AccountStyle.js";
 import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 import TopPanels from "../../../Components/Header/TopPanel";
 
@@ -46,62 +31,55 @@ function Buyers() {
     },
   ];
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [adress, setAdress] = useState("");
-  const [nationality, setNationality] = useState("");
-  const dispatch = useDispatch();
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  // const [adress, setAdress] = useState("");
+  // const [nationality, setNationality] = useState("");
+  // const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setGender(event.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (gender === "") {
-      alert("Gender is required");
-      return;
-    }
-    if (firstName === "") {
-      alert("First Name is required");
-      return;
-    }
-    if (lastName === "") {
-      alert("Last Name is required");
-      return;
-    }
-    if (phoneNumber === "") {
-      alert("Phone Number is required");
-      return;
-    }
-    if (adress === "") {
-      alert("Adress is required");
-      return;
-    }
-    if (nationality === "") {
-      alert("Nationality is required");
-      return;
-    }
-    if (
-      gender !== "" &&
-      firstName !== "" &&
-      lastName !== "" &&
-      phoneNumber !== "" &&
-      adress !== "" &&
-      nationality !== ""
-    ) {
-      const data = {
-        firstName,
-        lastName,
-        gender,
-        phoneNumber,
-        adress,
-        nationality,
-      };
-      dispatch(createUserBio(data));
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (gender === "") {
+  //     alert("Gender is required");
+  //     return;
+  //   }
+  //   if (firstName === "") {
+  //     alert("First Name is required");
+  //     return;
+  //   }
+  //   if (lastName === "") {
+  //     alert("Last Name is required");
+  //     return;
+  //   }
+  //   if (phoneNumber === "") {
+  //     alert("Phone Number is required");
+  //     return;
+  //   }
+  //   if (adress === "") {
+  //     alert("Adress is required");
+  //     return;
+  //   }
+  //   if (nationality === "") {
+  //     alert("Nationality is required");
+  //     return;
+  //   }
+  //   if (gender !== "" && firstName !== "" && lastName !== "" && phoneNumber !== "" && adress !== "" && nationality !== "") {
+  //     const data = {
+  //       firstName,
+  //       lastName,
+  //       gender,
+  //       phoneNumber,
+  //       adress,
+  //       nationality,
+  //     };
+  //     dispatch(createUserBio(data));
+  //   }
+  // };
 
   return (
     <>
@@ -120,8 +98,7 @@ function Buyers() {
                   <Divider />
                   <Links to="/profile">
                     <ListItems button>
-                      <PersonOutlineIcon fontSize="large" color="primary" si />{" "}
-                      <Heading> Profile </Heading>
+                      <PersonOutlineIcon fontSize="large" color="primary" si /> <Heading> Profile </Heading>
                     </ListItems>
                   </Links>
                   <Divider />
@@ -183,63 +160,19 @@ function Buyers() {
                 </Grid>
                 <CardBox variant="outlined">
                   <CardContent>
-                    <TextFields
-                      id="outlined-basic"
-                      label="First Name"
-                      variant="outlined"
-                      size="small"
-                      helperText="Please enter your first name"
-                    />
-                    <TextFields
-                      id="outlined-basic"
-                      label="Last Name"
-                      variant="outlined"
-                      size="small"
-                      helperText="Please enter your last name"
-                    />
-                    <TextFields
-                      id="outlined-basic"
-                      variant="outlined"
-                      size="small"
-                      select
-                      label="Select"
-                      value={gender}
-                      onChange={handleChange}
-                      helperText="Please select your gender"
-                    >
+                    <TextFields id="outlined-basic" label="First Name" variant="outlined" size="small" helperText="Please enter your first name" />
+                    <TextFields id="outlined-basic" label="Last Name" variant="outlined" size="small" helperText="Please enter your last name" />
+                    <TextFields id="outlined-basic" variant="outlined" size="small" select label="Select" value={gender} onChange={handleChange} helperText="Please select your gender">
                       {titles.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                           {option.label}
                         </MenuItem>
                       ))}
                     </TextFields>
-                    <TextFields
-                      id="outlined-basic"
-                      label="Phone Number"
-                      variant="outlined"
-                      size="small"
-                      helperText="Please enter your Phone number"
-                    />
-                    <TextFields
-                      id="outlined-basic"
-                      label="Address"
-                      variant="outlined"
-                      size="small"
-                      helperText="Please enter your address"
-                    />
-                    <TextFields
-                      id="outlined-basic"
-                      label="Nationality"
-                      variant="outlined"
-                      size="small"
-                      helperText="Please enter your Nationality"
-                    />
-                    <Buttons
-                      id="outlined-basic"
-                      label="button"
-                      variant="contained"
-                      size="small"
-                    >
+                    <TextFields id="outlined-basic" label="Phone Number" variant="outlined" size="small" helperText="Please enter your Phone number" />
+                    <TextFields id="outlined-basic" label="Address" variant="outlined" size="small" helperText="Please enter your address" />
+                    <TextFields id="outlined-basic" label="Nationality" variant="outlined" size="small" helperText="Please enter your Nationality" />
+                    <Buttons id="outlined-basic" label="button" variant="contained" size="small">
                       Save
                     </Buttons>
                   </CardContent>

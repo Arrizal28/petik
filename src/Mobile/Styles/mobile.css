@@ -1,4 +1,4 @@
-.accountmobile {
+.Mobile {
   max-width: 425px;
   justify-content: center;
   text-align: center;
@@ -9,11 +9,4 @@
   color: #3596e7;
   font-size: 30px;
   font-family: monospace;
-}
-
-.cardaccounts {
-  background-color: #3596e7;
-  justify-content: center;
-  text-align: center;
-  height: 50px;
 }

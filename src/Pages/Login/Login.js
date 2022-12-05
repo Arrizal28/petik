@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-import { Cards, Cardss, TextFields, Buttons, Buttonz, Links } from "../../Styled/MUI/AuthStyles";
+import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, BoxAuth } from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import EmailIcon from "@mui/icons-material/Email";
-import { login } from "../../Redux/Actions/authAction";
+import { login } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { useNavigate } from "react-router-dom";
 import { Heading, Text } from "../../Styled/ComponentUI/Styles";
@@ -62,7 +62,7 @@ function Login() {
   };
 
   return (
-    <div style={{ marginTop: 150 }}>
+    <BoxAuth>
       <Cards>
         <Cardss>
           <CardContent>
@@ -122,7 +122,7 @@ function Login() {
           </CardContent>
         </Cardss>
       </Cards>
-    </div>
+    </BoxAuth>
   );
 }
 

@@ -1,9 +1,16 @@
 import { styled } from "@mui/material/styles";
-import { Button, Card, TextField, Divider } from "@mui/material";
+import { Button, Card, TextField, Divider, Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import imgbg from "../../assets/images/bg.png";
+
+export const BoxAuth = styled(Box)({
+  justifyContent: "center",
+  margin: "auto",
+  maxWidth: 1024,
+});
 
 export const Cardss = styled(Card)({
-  width: 390,
+  maxwidth: 425,
   height: 540,
   justifyContent: "center",
   margin: "auto",
@@ -14,8 +21,8 @@ export const Cardss = styled(Card)({
 });
 
 export const Cards = styled(Card)({
-  width: 400,
-  height: 550,
+  maxwidth: 400,
+  height: 560,
   justifyContent: "center",
   margin: "auto",
   textAlign: "center",
@@ -23,10 +30,12 @@ export const Cards = styled(Card)({
   alignItems: "center",
   backgroundColor: "#3596e7",
   borderRadius: 20,
+  marginTop: 50,
+  backgroundImage: `url(${imgbg})`,
 });
 
 export const TextFields = styled(TextField)({
-  width: 360,
+  maxwidth: 425,
   marginTop: 20,
   borderRadius: 20,
   marginBottom: 20,

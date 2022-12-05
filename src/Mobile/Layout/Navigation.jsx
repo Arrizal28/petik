@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import PersonIcon from "@mui/icons-material/Person";
-import { Link } from "react-router-dom";
+import { BottomNavigations, Links } from "../Styles/MobileStyled";
 
 export default function Navigation() {
   const [value, setValue] = useState("recents");
@@ -15,14 +14,14 @@ export default function Navigation() {
   };
 
   return (
-    <BottomNavigation sx={{ width: 900, display: "flex" }} value={value} onChange={handleChange}>
+    <BottomNavigations value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="Home"
         value="recents"
         icon={
-          <Link to="/" tstyle={{ textDecoration: "none" }}>
-            <HomeIcon />{" "}
-          </Link>
+          <Links to="/">
+            <HomeIcon />
+          </Links>
         }
       />
 
@@ -30,9 +29,9 @@ export default function Navigation() {
         label="Orders"
         value="favorites"
         icon={
-          <Link to="/orders" tstyle={{ textDecoration: "none" }}>
-            <AirplaneTicketIcon />{" "}
-          </Link>
+          <Links to="/m/orders">
+            <AirplaneTicketIcon />
+          </Links>
         }
       />
 
@@ -40,9 +39,9 @@ export default function Navigation() {
         label="Notifications"
         value="nearby"
         icon={
-          <Link to="/notification" tstyle={{ textDecoration: "none" }}>
-            <NotificationsActiveIcon />{" "}
-          </Link>
+          <Links to="/m/notification">
+            <NotificationsActiveIcon />
+          </Links>
         }
       />
 
@@ -50,11 +49,11 @@ export default function Navigation() {
         label="Account"
         value="folder"
         icon={
-          <Link to="/account" tstyle={{ textDecoration: "none" }}>
-            <PersonIcon />{" "}
-          </Link>
+          <Links to="/m/account">
+            <PersonIcon />
+          </Links>
         }
       />
-    </BottomNavigation>
+    </BottomNavigations>
   );
 }

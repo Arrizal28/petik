@@ -10,12 +10,13 @@ import Notifications from "./Pages/Account/Profile/Notifications";
 import MyOrders from "./Pages/Account/Profile/MyOrders";
 import store from "./Redux/store";
 import Buyers from "./Pages/Account/Profile/Buyers";
-import AccountMobile from "./Mobile/AccountMobile";
-import NavbarBottom from "./Mobile/NavbarMobile";
+import AccountMobile from "./Mobile/Account/AccountMobile";
 import Settings from "./Pages/Account/Settings/Settings";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Protected from "./Components/Protected/Protected"
+import NavbarBottom from "./Mobile/Layout/NavbarMobile";
+import NotificationMobile from "./Mobile/Notification/NotificationMobile";
+// import Protected from "./Components/Protected/Protected"
 
 function App() {
   return (
@@ -32,8 +33,12 @@ function App() {
               <Route path="/profile" element={<Buyers />} />
               <Route path="/orders" element={<MyOrders />} />
               <Route path="/notification" element={<Notifications />} />
-              <Route path="/account" element={<AccountMobile />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/m/account" element={<AccountMobile />} />
+              <Route path="/m/notification" element={<NotificationMobile />} />
+              <Route path="/m/orders" element={<NotificationMobile />} />
+              <Route path="/m/settings" element={<NotificationMobile />} />
+              <Route path="profile" element={<NotificationMobile />} />
             </Routes>
             <NavbarBottom />
           </BrowserRouter>

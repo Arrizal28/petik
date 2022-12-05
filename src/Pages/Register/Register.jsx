@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/petik.png";
-import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, Dividers } from "../../Styled/MUI/AuthStyles";
+import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, Dividers, BoxAuth } from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import EmailIcon from "@mui/icons-material/Email";
-import { register } from "../../Redux/Actions/authAction";
+import { register } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { Heading, Text } from "../../Styled/ComponentUI/Styles";
 
@@ -58,7 +58,7 @@ function Register() {
   };
 
   return (
-    <div style={{ marginTop: 150 }}>
+    <BoxAuth>
       <Cards>
         <Cardss>
           <CardContent>
@@ -138,7 +138,7 @@ function Register() {
           </CardContent>
         </Cardss>
       </Cards>
-    </div>
+    </BoxAuth>
   );
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setToken, setRegister, setLogin, setGoogle, setForgot } from "../Reducers/authReducer";
+import { setToken, setRegister, setLogin, setForgot } from "../Reducers/authReducer";
 
 export const register = (data) => async (dispatch) => {
   try {
