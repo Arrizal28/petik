@@ -17,6 +17,8 @@ import { CardMenu, CardBox, CardPage } from "../../../Styled/MUI/AccountStyle.js
 import { Links, ListItems, ListPage } from "../../../Styled/MUI/AccountStyle.js";
 import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 import TopPanels from "../../../Components/Header/TopPanel";
+import { createUserBio } from "../../../Redux/Actions/userAction";
+import { useDispatch } from "react-redux";
 
 function Buyers() {
   const [gender, setGender] = useState("Gender");
@@ -36,6 +38,7 @@ function Buyers() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAdress] = useState("");
   const [nationality, setNationality] = useState("");
+
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
