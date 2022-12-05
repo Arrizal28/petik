@@ -7,8 +7,6 @@ import {
   faPlaneDeparture,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
-import { logout } from "../../Redux/Actions/authAction";
 import { Input, Select } from "antd";
 import { DatePicker, Button, Checkbox } from "antd";
 const { RangePicker } = DatePicker;
@@ -16,29 +14,23 @@ const { RangePicker } = DatePicker;
 function Panel() {
   const [openOptions, setOpenOptions] = useState(false);
   const [oneWay, setOneWay] = useState(false);
-  const [date, setDate] = useState(false);
-  const [tillDate, setTillDate] = useState(false);
+  // const [date, setDate] = useState(false);
+  // const [tillDate, setTillDate] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     infant: 0,
   });
 
-  const onSelectDate = (dateString) => {
-    setDate(dateString);
-  };
+  // const onSelectDate = (dateString) => {
+  //   setDate(dateString);
+  // };
 
-  const onSelectTillDate = (dateString) => {
-    setTillDate(dateString);
-  };
+  // const onSelectTillDate = (dateString) => {
+  //   setTillDate(dateString);
+  // };
 
-  const dispatch = useDispatch();
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-
-    dispatch(logout());
-  };
+  // const dispatch = useDispatch();
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -92,7 +84,7 @@ function Panel() {
                   <DatePicker
                     className="lebarm"
                     size="large"
-                    onChange={onSelectDate}
+                    // onChange={onSelectDate}
                   />
                 ) : (
                   // <RangePicker
@@ -104,12 +96,12 @@ function Panel() {
                     <DatePicker
                       className="lebardate"
                       size="large"
-                      onChange={onSelectDate}
+                      // onChange={onSelectDate}
                     />
                     <DatePicker
                       className="lebardate"
                       size="large"
-                      onChange={onSelectTillDate}
+                      // onChange={onSelectTillDate}
                     />
                   </>
                 )}
@@ -237,12 +229,7 @@ function Panel() {
                 />
               </div>
               <div className="col-lg col-12">
-                <Button
-                  type="primary"
-                  size="large"
-                  className="lebarmsearchbtn"
-                  onClick={handleLogout}
-                >
+                <Button type="primary" size="large" className="lebarmsearchbtn">
                   Search
                 </Button>
               </div>

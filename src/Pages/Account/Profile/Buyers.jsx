@@ -12,6 +12,8 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import Divider from "@mui/material/Divider";
 import Logout from "../../../Components/Account/logout";
 import Footer from "../../../Components/Footer/Footer";
+import { useDispatch } from "react-redux";
+import { createUserBio } from "../../../Redux/Actions/userAction";
 import {
   BoxHome,
   BoxMenu,
@@ -49,7 +51,7 @@ function Buyers() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [adress, setAdress] = useState("");
+  const [address, setAdress] = useState("");
   const [nationality, setNationality] = useState("");
   const dispatch = useDispatch();
 
@@ -75,7 +77,7 @@ function Buyers() {
       alert("Phone Number is required");
       return;
     }
-    if (adress === "") {
+    if (address === "") {
       alert("Adress is required");
       return;
     }
@@ -88,7 +90,7 @@ function Buyers() {
       firstName !== "" &&
       lastName !== "" &&
       phoneNumber !== "" &&
-      adress !== "" &&
+      address !== "" &&
       nationality !== ""
     ) {
       const data = {
@@ -96,7 +98,7 @@ function Buyers() {
         lastName,
         gender,
         phoneNumber,
-        adress,
+        address,
         nationality,
       };
       dispatch(createUserBio(data));
@@ -189,6 +191,8 @@ function Buyers() {
                       variant="outlined"
                       size="small"
                       helperText="Please enter your first name"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                     />
                     <TextFields
                       id="outlined-basic"
@@ -196,6 +200,8 @@ function Buyers() {
                       variant="outlined"
                       size="small"
                       helperText="Please enter your last name"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                     <TextFields
                       id="outlined-basic"
@@ -219,6 +225,8 @@ function Buyers() {
                       variant="outlined"
                       size="small"
                       helperText="Please enter your Phone number"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                     <TextFields
                       id="outlined-basic"
@@ -226,6 +234,8 @@ function Buyers() {
                       variant="outlined"
                       size="small"
                       helperText="Please enter your address"
+                      value={address}
+                      onChange={(e) => setAdress(e.target.value)}
                     />
                     <TextFields
                       id="outlined-basic"
@@ -233,12 +243,15 @@ function Buyers() {
                       variant="outlined"
                       size="small"
                       helperText="Please enter your Nationality"
+                      value={nationality}
+                      onChange={(e) => setNationality(e.target.value)}
                     />
                     <Buttons
                       id="outlined-basic"
                       label="button"
                       variant="contained"
                       size="small"
+                      onClick={handleSubmit}
                     >
                       Save
                     </Buttons>
