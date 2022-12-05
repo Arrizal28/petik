@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/petik.png";
-import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, Dividers } from "../../Styled/MUI/AuthStyles";
+import {
+  Cards,
+  Cardss,
+  TextFields,
+  Buttons,
+  Buttonz,
+  Links,
+  Dividers,
+} from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import EmailIcon from "@mui/icons-material/Email";
-import { register } from "../../Redux/Actions/authAction";
+import { register } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { Heading, Text } from "../../Styled/ComponentUI/Styles";
 
@@ -95,7 +103,11 @@ function Register() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -114,7 +126,11 @@ function Register() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -122,7 +138,12 @@ function Register() {
               }}
             />
             <Links to="/register">
-              <Buttons variant="contained" size="large" disabled={!email || !password} onClick={handleSubmit}>
+              <Buttons
+                variant="contained"
+                size="large"
+                disabled={!email || !password}
+                onClick={handleSubmit}
+              >
                 Register
               </Buttons>
             </Links>
