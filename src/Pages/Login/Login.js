@@ -1,17 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-<<<<<<< HEAD:src/Pages/Login/Login.js
 import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, BoxAuth } from "../../Styled/MUI/AuthStyles";
-=======
-import {
-  Cards,
-  Cardss,
-  TextFields,
-  Buttons,
-  Buttonz,
-  Links,
-} from "../../Styled/MUI/AuthStyles";
->>>>>>> 8fd5fa6b76a70ce986a39fc2324855c280a98bf6:src/Pages/Login/Login.jsx
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
@@ -110,11 +99,7 @@ function Login() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
+                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -123,12 +108,7 @@ function Login() {
             />
 
             <Links to="/login">
-              <Buttons
-                variant="contained"
-                size="large"
-                disabled={!email || !password}
-                onClick={handleSubmit}
-              >
+              <Buttons variant="contained" size="large" disabled={!email || !password} onClick={handleSubmit}>
                 Log In
               </Buttons>
             </Links>

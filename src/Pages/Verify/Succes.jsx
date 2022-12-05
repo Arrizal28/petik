@@ -1,24 +1,25 @@
-import { Card, Fab } from "@mui/material";
 import React from "react";
 
 import verify from "../../assets/images/verify.png";
-import { Link } from "react-router-dom";
-
+import { Boxs, CardBox, Cards } from "../../Styled/MUI/VerifyStyled";
+import { Buttonx, Dividers, Links } from "../../Styled/MUI/AuthStyles";
 function Succes() {
   return (
-    <div>
-      <Card className="verify">
-        <div>
-          <img src={verify} alt="logo" label="Verifikasi Berhasil" />
-          <h5 styles={{ margin: "200px" }}> Verifikasi Berhasil</h5>
-          <Link to="/login" style={{ textDecoration: "none" }}>
-            <Fab color="primary" variant="extended" size="medium" sx={{ mr: 1 }}>
-              Log in
-            </Fab>
-          </Link>
-        </div>
-      </Card>
-    </div>
+    <CardBox>
+      <Cards>
+        <Boxs>
+          <img src={verify} alt="logo" label="Verifikasi Gagal" width="360px" />
+          <Boxs>
+            <Dividers>verification Succes</Dividers>
+            <Links to="/login">
+              <Buttonx color="primary" variant="outlined" size="medium">
+                Log In
+              </Buttonx>
+            </Links>
+          </Boxs>
+        </Boxs>
+      </Cards>
+    </CardBox>
   );
 }
 

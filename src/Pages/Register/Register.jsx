@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/petik.png";
-import {
-  Cards,
-  Cardss,
-  TextFields,
-  Buttons,
-  Buttonz,
-  Links,
-  Dividers,
-} from "../../Styled/MUI/AuthStyles";
+import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, Dividers, BoxAuth } from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
@@ -66,7 +58,7 @@ function Register() {
   };
 
   return (
-    <div style={{ marginTop: 150 }}>
+    <BoxAuth>
       <Cards>
         <Cardss>
           <CardContent>
@@ -103,11 +95,7 @@ function Register() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
+                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -126,11 +114,7 @@ function Register() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
+                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -138,12 +122,7 @@ function Register() {
               }}
             />
             <Links to="/register">
-              <Buttons
-                variant="contained"
-                size="large"
-                disabled={!email || !password}
-                onClick={handleSubmit}
-              >
+              <Buttons variant="contained" size="large" disabled={!email || !password} onClick={handleSubmit}>
                 Register
               </Buttons>
             </Links>
@@ -159,7 +138,7 @@ function Register() {
           </CardContent>
         </Cardss>
       </Cards>
-    </div>
+    </BoxAuth>
   );
 }
 
