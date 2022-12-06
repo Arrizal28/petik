@@ -3,7 +3,7 @@ import { Box, Card, Container } from "@mui/material";
 import imgHeader from "../../assets/images/imgheader.jpg";
 
 export const TopPanel = styled(Card)({
-  height: 90,
+  height: 200,
   justifyContent: "center",
   width: "100%",
 });
@@ -27,7 +27,7 @@ export const BoxHeader = styled(Box)({
   justifyContent: "center",
   position: "relative",
   width: "100%",
-  height: "400px",
+  height: 500,
   margin: "auto",
   borderBottomLeftRadius: 30,
   borderBottomRightRadius: 30,

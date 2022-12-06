@@ -3,11 +3,15 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Logout from "../Account/logout";
 
 export default function MenuNav() {
   const [state, setState] = useState({
     bottom: false,
   });
+
+  const { token } = useSelector((state) => state.auth);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
@@ -24,16 +28,24 @@ export default function MenuNav() {
           <MenuIcon onClick={toggleDrawer(anchor, true)} />
           <SwipeableDrawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)} onOpen={toggleDrawer(anchor, true)}>
             <Stack spacing={3} direction="row" style={{ marginTop: 10, margin: "auto" }}>
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                <Button variant="outlined" style={{ margin: 20 }}>
-                  Sign In
-                </Button>
-              </Link>
-              <Link to="/register" style={{ textDecoration: "none" }}>
-                <Button variant="contained" style={{ margin: 20 }}>
-                  Sign Up
-                </Button>
-              </Link>
+              {!token ? (
+                <>
+                  <Link to="/login" style={{ textDecoration: "none" }}>
+                    <Button variant="outlined" style={{ margin: 20 }}>
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link to="/register" style={{ textDecoration: "none" }}>
+                    <Button variant="contained" style={{ margin: 20 }}>
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Logout />
+                </>
+              )}
             </Stack>
           </SwipeableDrawer>
         </div>

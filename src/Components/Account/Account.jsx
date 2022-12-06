@@ -3,11 +3,19 @@ import { Avatar, Box, Fab, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
+import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 
 function Account() {
   return (
     <div>
       <Box sx={{ m: 1, marginLeft: "auto" }}>
+        <Link to="/searchflight" style={{ textDecoration: "none" }}>
+          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
+            <Tooltip title="Search Flight">
+              <LocationSearchingIcon />
+            </Tooltip>
+          </Fab>
+        </Link>
         <Link to="/orders" style={{ textDecoration: "none" }}>
           <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
             <Tooltip title="My Orders">

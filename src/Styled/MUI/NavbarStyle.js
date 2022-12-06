@@ -15,5 +15,7 @@ export const AppBox = styled(Box)({
 export const AppPaper = styled(Paper)({
   justifyContent: "center",
   margin: "auto",
-  maxWidth: 1300,
+  maxWidth: 1200,
+  border: "1px solid #3596e7",
+  borderRadius: 20,
 });

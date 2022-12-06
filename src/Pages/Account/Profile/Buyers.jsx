@@ -12,11 +12,13 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import Divider from "@mui/material/Divider";
 import Logout from "../../../Components/Account/logout";
 import Footer from "../../../Components/Footer/Footer";
-import { BoxHome, BoxMenu, BoxPage, BoxTitle, Buttons, TextFields } from "../../../Styled/MUI/AccountStyle.js";
-import { CardMenu, CardBox, CardPage } from "../../../Styled/MUI/AccountStyle.js";
-import { Links, ListItems, ListPage } from "../../../Styled/MUI/AccountStyle.js";
+import { BoxHome, BoxMenu, BoxPage, BoxTitle, Buttons, TextFields } from "../../../Styled/MUI/BuyerStyle.js.js";
+import { CardMenu, CardBox, CardPage } from "../../../Styled/MUI/BuyerStyle.js.js";
+import { Links, ListItems, ListPage } from "../../../Styled/MUI/BuyerStyle.js.js";
 import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 import TopPanels from "../../../Components/Header/TopPanel";
+import { useDispatch } from "react-redux";
+import { createUserBio } from "../../../Redux/Actions/userAction";
 
 function Buyers() {
   const [gender, setGender] = useState("Gender");

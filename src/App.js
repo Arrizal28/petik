@@ -10,12 +10,11 @@ import Notifications from "./Pages/Account/Profile/Notifications";
 import MyOrders from "./Pages/Account/Profile/MyOrders";
 import store from "./Redux/store";
 import Buyers from "./Pages/Account/Profile/Buyers";
-import AccountMobile from "./Mobile/Account/AccountMobile";
 import Settings from "./Pages/Account/Settings/Settings";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import NavbarBottom from "./Mobile/Layout/NavbarMobile";
-import NotificationMobile from "./Mobile/Notification/NotificationMobile";
+import Account from "./Pages/Account/Profile/Account";
 
 function App() {
   return (
@@ -33,11 +32,7 @@ function App() {
               <Route path="/orders" element={<MyOrders />} />
               <Route path="/notification" element={<Notifications />} />
               <Route path="/settings" element={<Settings />} />
-              <Route path="/m/account" element={<AccountMobile />} />
-              <Route path="/m/notification" element={<NotificationMobile />} />
-              <Route path="/m/orders" element={<NotificationMobile />} />
-              <Route path="/m/settings" element={<NotificationMobile />} />
-              <Route path="profile" element={<NotificationMobile />} />
+              <Route path="/account" element={<Account />} />
             </Routes>
             <NavbarBottom />
           </BrowserRouter>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setCreateBio, setShowBio, setUpdateBio } from "../Reducers/userReducer";
+import { setCreateBio, setShowBio, setUpdateBio, setAuthMe } from "../Reducers/userReducer";
 
 export const createUserBio = (data) => async (dispatch) => {
   try {
@@ -30,6 +30,18 @@ export const upadateUserBio = (data) => async (dispatch) => {
     const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/show-bio`, data);
     if (result.data.message) {
       dispatch(setUpdateBio(data));
+      alert(result.data.message);
+    }
+  } catch (error) {
+    alert(error.response.data.message);
+  }
+};
+
+export const authme = (data) => async (dispatch) => {
+  try {
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/Auth/whoami`, data);
+    if (result.data.message) {
+      dispatch(setAuthMe(data));
       alert(result.data.message);
     }
   } catch (error) {
