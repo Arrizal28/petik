@@ -107,11 +107,10 @@ function Login() {
               }}
             />
 
-            <Links to="/login">
               <Buttons variant="contained" size="large" disabled={!email || !password} onClick={handleSubmit}>
                 Log In
               </Buttons>
-            </Links>
+              
             <GoogleLogin label=" Google" />
             <Text> No Have Account?</Text>
             <Links to="/register">

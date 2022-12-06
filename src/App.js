@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import NavbarBottom from "./Mobile/Layout/NavbarMobile";
 import NotificationMobile from "./Mobile/Notification/NotificationMobile";
+import Protected from "./Components/Protected/Protected";
 
 function App() {
   return (
@@ -29,15 +30,51 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/auth/verify/succes" element={<Succes />} />
               <Route path="/auth/verify/failed" element={<Failed />} />
-              <Route path="/profile" element={<Buyers />} />
-              <Route path="/orders" element={<MyOrders />} />
-              <Route path="/notification" element={<Notifications />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/m/account" element={<AccountMobile />} />
-              <Route path="/m/notification" element={<NotificationMobile />} />
-              <Route path="/m/orders" element={<NotificationMobile />} />
-              <Route path="/m/settings" element={<NotificationMobile />} />
-              <Route path="profile" element={<NotificationMobile />} />
+              <Route path="/profile" element={
+              <Protected>
+                <Buyers />
+              </Protected>
+              } />
+              <Route path="/orders" element={
+              <Protected>
+                <MyOrders />
+              </Protected>
+              } />
+              <Route path="/notification" element={
+              <Protected>
+                <Notifications />
+              </Protected>
+              } />
+              <Route path="/settings" element={
+              <Protected>
+                <Settings />
+              </Protected>
+              } />
+              <Route path="/m/account" element={
+              <Protected>
+                <AccountMobile />
+              </Protected>
+              } />
+              <Route path="/m/notification" element={
+              <Protected>
+                <NotificationMobile />
+              </Protected>
+              } />
+              <Route path="/m/orders" element={
+              <Protected>
+                <NotificationMobile />
+              </Protected>
+              } />
+              <Route path="/m/settings" element={
+              <Protected>
+                <NotificationMobile />
+              </Protected>
+              } />
+              <Route path="profile" element={
+              <Protected>
+                <NotificationMobile />
+              </Protected>
+              } />
             </Routes>
             <NavbarBottom />
           </BrowserRouter>

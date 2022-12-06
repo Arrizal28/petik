@@ -7,6 +7,7 @@ const initialState = {
   login: [],
   google: [],
   forgot: [],
+  wai: [],
 };
 
 const authSlicer = createSlice({
@@ -28,9 +29,12 @@ const authSlicer = createSlice({
     setForgot: (state, action) => {
       state.login = action.payload;
     },
+    setWhoami: (state, action) => {
+      state.wai = action.payload;
+    },
   },
 });
 
-export const { setToken, setRegister, setLogin, setGoogle, setForgot } = authSlicer.actions;
+export const { setToken, setRegister, setLogin, setGoogle, setForgot, setWhoami } = authSlicer.actions;
 
 export default authSlicer.reducer;

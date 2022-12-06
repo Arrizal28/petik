@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-<<<<<<< HEAD:src/Pages/Login/Login.js
-import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, BoxAuth } from "../../Styled/MUI/AuthStyles";
-=======
 import {
   Cards,
   Cardss,
@@ -10,8 +7,8 @@ import {
   Buttons,
   Buttonz,
   Links,
+  BoxAuth,
 } from "../../Styled/MUI/AuthStyles";
->>>>>>> 8fd5fa6b76a70ce986a39fc2324855c280a98bf6:src/Pages/Login/Login.jsx
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
@@ -122,16 +119,14 @@ function Login() {
               }}
             />
 
-            <Links to="/login">
-              <Buttons
-                variant="contained"
-                size="large"
-                disabled={!email || !password}
-                onClick={handleSubmit}
-              >
-                Log In
-              </Buttons>
-            </Links>
+            <Buttons
+              variant="contained"
+              size="large"
+              disabled={!email || !password}
+              onClick={handleSubmit}
+            >
+              Log In
+            </Buttons>
             <GoogleLogin label=" Google" />
             <Text> No Have Account?</Text>
             <Links to="/register">

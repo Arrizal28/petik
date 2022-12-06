@@ -1,10 +1,13 @@
 import axios from "axios";
-import { setToken, setRegister, setLogin, setForgot } from "../Reducers/authReducer";
+import { setToken, setRegister, setLogin, setForgot, setWhoami } from "../Reducers/authReducer";
 
 export const register = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/register`, data);
-    if (result.data.status) {
+    const result = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/auth/register`,
+      data
+    );
+    if (result.data.data.status) {
       dispatch(setRegister(result.data));
       alert(result.data.message);
     }
@@ -15,7 +18,10 @@ export const register = (data) => async (dispatch) => {
 
 export const login = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/login`, data);
+    const result = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/auth/login`,
+      data
+    );
     if (result.data.status) {
       localStorage.setItem("token", result.data.data.token);
       dispatch(setToken(result.data.data.token));
@@ -36,9 +42,9 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
       `${process.env.REACT_APP_AUTH_API}/auth/login-google`,
       data
     );
-    if (result.data.token) {
-      localStorage.setItem("token", result.data.token);
-      dispatch(setToken(result.data.token));
+    if (result.data.data.token) {
+      localStorage.setItem("token", result.data.data.token);
+      dispatch(setToken(result.data.data.token));
       alert("success!");
     }
   } catch (error) {
@@ -69,6 +75,23 @@ export const resetpassword = (data) => async () => {
     }
   } catch (error) {
     alert(error.message);
+  }
+};
+
+export const whoami = (callback) => async (dispatch) => {
+  try {
+    const result = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/auth/whoami`
+    );
+    if (result.status) {
+      dispatch(setWhoami(result))
+    }
+  } catch (error) {
+    if (error.response.status === 401) {
+      localStorage.removeItem("token");
+      dispatch(setToken(null));
+      callback(error.response.status);
+    }
   }
 };
 
