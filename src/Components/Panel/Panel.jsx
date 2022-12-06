@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./panel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlane, faPlaneArrival, faPlaneDeparture, faUsers } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlane,
+  faPlaneArrival,
+  faPlaneDeparture,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 import { Input, Select } from "antd";
 import { DatePicker, Button, Checkbox } from "antd";
-const { RangePicker } = DatePicker;
 
 function Panel() {
   const [openOptions, setOpenOptions] = useState(false);
@@ -52,10 +56,27 @@ function Panel() {
             </div>
             <div className="row panel2 justify-content-center">
               <div className="col-lg-4 col-sm-12">
-                <Input placeholder="Dari" size="large" className="lebarm" suffix={<FontAwesomeIcon icon={faPlaneDeparture} className="faicon" />} />
+                <Input
+                  placeholder="Dari"
+                  size="large"
+                  className="lebarm"
+                  suffix={
+                    <FontAwesomeIcon
+                      icon={faPlaneDeparture}
+                      className="faicon"
+                    />
+                  }
+                />
               </div>
               <div className="col-lg-4 col-sm-12">
-                <Input placeholder="Ke" size="large" className="lebarmb" suffix={<FontAwesomeIcon icon={faPlaneArrival} className="faicon" />} />
+                <Input
+                  placeholder="Ke"
+                  size="large"
+                  className="lebarmb"
+                  suffix={
+                    <FontAwesomeIcon icon={faPlaneArrival} className="faicon" />
+                  }
+                />
               </div>
               <div className="col-lg-4 col-sm-12">
                 {oneWay ? (
@@ -83,11 +104,6 @@ function Panel() {
                     />
                   </>
                 )}
-                <Input placeholder="Ke" size="large" className="lebarm" suffix={<FontAwesomeIcon icon={faPlaneArrival} className="faicon" />} />
-              </div>
-              <div className="col-lg-4 col-sm-12">
-                {oneWay ? <DatePicker className="lebarm" size="large" /> : <RangePicker size="large" className="lebarm" />}
-                {/* <RangePicker size="large" className="lebarm" /> */}
               </div>
             </div>
             <div className="row panel3 justify-content-center">
@@ -104,11 +120,20 @@ function Panel() {
                     <div className="optionItem">
                       <span className="optionText">Adult</span>
                       <div className="optionCounter">
-                        <button disabled={options.adult <= 1} className="optionCounterButton" onClick={() => handleOption("adult", "d")}>
+                        <button
+                          disabled={options.adult <= 1}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("adult", "d")}
+                        >
                           -
                         </button>
-                        <span className="optionCounterNumber">{options.adult}</span>
-                        <button className="optionCounterButton" onClick={() => handleOption("adult", "i")}>
+                        <span className="optionCounterNumber">
+                          {options.adult}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("adult", "i")}
+                        >
                           +
                         </button>
                       </div>
@@ -116,11 +141,20 @@ function Panel() {
                     <div className="optionItem">
                       <span className="optionText">Children</span>
                       <div className="optionCounter">
-                        <button disabled={options.children <= 0} className="optionCounterButton" onClick={() => handleOption("children", "d")}>
+                        <button
+                          disabled={options.children <= 0}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("children", "d")}
+                        >
                           -
                         </button>
-                        <span className="optionCounterNumber">{options.children}</span>
-                        <button className="optionCounterButton" onClick={() => handleOption("children", "i")}>
+                        <span className="optionCounterNumber">
+                          {options.children}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("children", "i")}
+                        >
                           +
                         </button>
                       </div>
@@ -128,11 +162,20 @@ function Panel() {
                     <div className="optionItem">
                       <span className="optionText">Infant</span>
                       <div className="optionCounter">
-                        <button disabled={options.infant <= 0} className="optionCounterButton" onClick={() => handleOption("infant", "d")}>
+                        <button
+                          disabled={options.infant <= 0}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("infant", "d")}
+                        >
                           -
                         </button>
-                        <span className="optionCounterNumber">{options.infant}</span>
-                        <button className="optionCounterButton" onClick={() => handleOption("infant", "i")}>
+                        <span className="optionCounterNumber">
+                          {options.infant}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("infant", "i")}
+                        >
                           +
                         </button>
                       </div>

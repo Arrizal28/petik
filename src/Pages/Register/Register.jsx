@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/petik.png";
-import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, Dividers, BoxAuth } from "../../Styled/MUI/AuthStyles";
+import {
+  Cards,
+  Cardss,
+  TextFields,
+  Buttons,
+  Buttonz,
+  Links,
+  Dividers,
+  BoxAuth,
+} from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import EmailIcon from "@mui/icons-material/Email";
 import { register } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { Heading, Text } from "../../Styled/ComponentUI/Styles";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -16,6 +26,15 @@ function Register() {
   const [confirm_password, setConfirm_Password] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { token } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +57,7 @@ function Register() {
         confirm_password,
       };
       dispatch(register(data));
+      navigate("/login");
     }
   };
 
@@ -95,7 +115,11 @@ function Register() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -114,7 +138,11 @@ function Register() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -122,7 +150,12 @@ function Register() {
               }}
             />
             <Links to="/register">
-              <Buttons variant="contained" size="large" disabled={!email || !password} onClick={handleSubmit}>
+              <Buttons
+                variant="contained"
+                size="large"
+                disabled={!email || !password}
+                onClick={handleSubmit}
+              >
                 Register
               </Buttons>
             </Links>
