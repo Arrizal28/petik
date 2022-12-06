@@ -5,7 +5,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch } from "react-redux";
 import { logout } from "../../Redux/Actions/authaction";
 import { Title } from "../../Styled/ComponentUI/Styles";
-import { ListItems } from "../../Styled/MUI/AccountStyle.js";
+import { Buttonx } from "../../Styled/MUI/AuthStyles";
 
 export default function Logout() {
   const dispatch = useDispatch();
@@ -19,9 +19,9 @@ export default function Logout() {
     <div>
       <List component="nav" aria-label="mailbox folders">
         <Divider />
-        <ListItems button onClick={handleLogout}>
+        <Buttonx variant="outlined" onClick={handleLogout}>
           <LogoutIcon fontSize="medium" /> <Title>Log Out</Title>
-        </ListItems>
+        </Buttonx>
         <Divider />
       </List>
     </div>

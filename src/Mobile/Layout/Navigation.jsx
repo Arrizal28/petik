@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import PersonIcon from "@mui/icons-material/Person";
+import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import { BottomNavigations, Links } from "../Styles/MobileStyled";
 
 export default function Navigation() {
@@ -17,39 +17,37 @@ export default function Navigation() {
     <BottomNavigations value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="Home"
-        value="recents"
+        value="home"
         icon={
           <Links to="/">
             <HomeIcon />
           </Links>
         }
       />
-
       <BottomNavigationAction
         label="Orders"
-        value="favorites"
+        value="order"
         icon={
-          <Links to="/m/orders">
+          <Links to="/orders">
             <AirplaneTicketIcon />
           </Links>
         }
       />
-
       <BottomNavigationAction
-        label="Notifications"
-        value="nearby"
+        label="Search"
+        value="search"
         icon={
-          <Links to="/m/notification">
-            <NotificationsActiveIcon />
+          <Links to="/searchflight">
+            <LocationSearchingIcon />
           </Links>
         }
       />
 
       <BottomNavigationAction
         label="Account"
-        value="folder"
+        value="account"
         icon={
-          <Links to="/m/account">
+          <Links to="/account">
             <PersonIcon />
           </Links>
         }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Create() {
   return (
     <div>
-      <Box sx={{ mt: 2, marginLeft: "auto" }}>
+      <Box sx={{ marginLeft: "auto" }}>
         <Link to="/login" style={{ textDecoration: "none" }}>
           <Tooltip title="Sign In">
             <Fab color="primary" variant="extended" size="medium" sx={{ mr: 1 }}>

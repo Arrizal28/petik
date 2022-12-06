@@ -9,12 +9,6 @@ function Protected({ children }) {
 
   const { token } = useSelector((state) => state.auth);
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("/login");
-  //   }
-  // }, [token, navigate]);
-
   useEffect(() => {
     (async () => {
       if (token) {

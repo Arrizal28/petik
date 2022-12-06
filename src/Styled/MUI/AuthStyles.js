@@ -18,6 +18,7 @@ export const Cardss = styled(Card)({
   display: "flex",
   alignItems: "center",
   borderRadius: 20,
+  border: "1px solid #3596e7",
 });
 
 export const Cards = styled(Card)({
