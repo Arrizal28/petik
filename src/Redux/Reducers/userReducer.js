@@ -4,7 +4,6 @@ const initialState = {
   cbio: null,
   sbio: null,
   ubio: null,
-  authme: null,
 };
 
 const authSlicer = createSlice({
@@ -19,9 +18,6 @@ const authSlicer = createSlice({
     },
     setUpdateBio: (state, action) => {
       state.ubio = action.payload;
-    },
-    setAuthMe: (state, action) => {
-      state.authme = action.payload;
     },
   },
 });

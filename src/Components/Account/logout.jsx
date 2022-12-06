@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../Redux/Actions/authaction";
 import { Title } from "../../Styled/ComponentUI/Styles";
 import { Buttonx } from "../../Styled/MUI/AuthStyles";
-// import { Butt, ListItems } from "../../Styled/MUI/BuyerStyle.js.js";
 
 export default function Logout() {
   const dispatch = useDispatch();

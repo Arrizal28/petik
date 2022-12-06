@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import NavbarBottom from "./Mobile/Layout/NavbarMobile";
 import Account from "./Pages/Account/Profile/Account";
+import Protected from "./Components/Protected/Protected";
 
 function App() {
   return (
@@ -33,6 +34,46 @@ function App() {
               <Route path="/notification" element={<Notifications />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/account" element={<Account />} />
+              <Route
+                path="/profile"
+                element={
+                  <Protected>
+                    <Buyers />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/orders"
+                element={
+                  <Protected>
+                    <MyOrders />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/notification"
+                element={
+                  <Protected>
+                    <Notifications />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <Protected>
+                    <Settings />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/account"
+                element={
+                  <Protected>
+                    <Account />
+                  </Protected>
+                }
+              />
             </Routes>
             <NavbarBottom />
           </BrowserRouter>

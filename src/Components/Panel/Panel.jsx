@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlane, faPlaneArrival, faPlaneDeparture, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Input, Select } from "antd";
 import { DatePicker, Button, Checkbox } from "antd";
-const { RangePicker } = DatePicker;
 
 function Panel() {
   const [openOptions, setOpenOptions] = useState(false);
@@ -83,11 +82,6 @@ function Panel() {
                     />
                   </>
                 )}
-                <Input placeholder="Ke" size="large" className="lebarm" suffix={<FontAwesomeIcon icon={faPlaneArrival} className="faicon" />} />
-              </div>
-              <div className="col-lg-4 col-sm-12">
-                {oneWay ? <DatePicker className="lebarm" size="large" /> : <RangePicker size="large" className="lebarm" />}
-                {/* <RangePicker size="large" className="lebarm" /> */}
               </div>
             </div>
             <div className="row panel3 justify-content-center">
