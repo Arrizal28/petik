@@ -36,11 +36,12 @@ export const Cards = styled(Card)({
 });
 
 export const TextFields = styled(TextField)({
-  maxwidth: 425,
+  maxwidth: 360,
   marginTop: 20,
   borderRadius: 20,
   marginBottom: 20,
   display: "flex",
+  margin: 10,
 });
 
 export const Buttons = styled(Button)({

@@ -6,7 +6,6 @@ export const BoxMobile = styled(Box)({
   justifyContent: "center",
   margin: "auto",
   maxWidth: 1300,
-  border: "1px solid #3596e7",
 });
 
 export const CardAccountMobile = styled(Card)({

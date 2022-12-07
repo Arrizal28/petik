@@ -5,12 +5,13 @@ export const Heading = styled.p`
   margin: 5px;
   font-weight: bold;
   color: #3596e7;
+  margin-left: 15px;
 `;
 
 export const Title = styled.p`
   font-size: 15px;
   color: #000;
-  margin: 5px;
+  margin-top: 10px;
   margin-left: 15px;
   font-weight: bold;
   color: gray;

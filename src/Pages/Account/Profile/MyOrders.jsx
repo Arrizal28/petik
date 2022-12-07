@@ -16,6 +16,7 @@ import Divider from "@mui/material/Divider";
 import Logout from "../../../Components/Account/logout";
 import { Link } from "react-router-dom";
 import Footer from "../../../Components/Footer/Footer";
+import TopPanels from "../../../Components/Header/TopPanel";
 
 const style = {
   width: "100%",
@@ -53,10 +54,11 @@ function MyOrders() {
   return (
     <>
       <NavBar />
+      <TopPanels />
       <div style={{ marginTop: 100 }}>
         <Box sx={{ flexGrow: 1, margin: 10 }}>
           <Grid container spacing={2}>
-            <Grid xs={3}>
+            {/* <Grid xs={3}>
               <Card variant="outlined" style={sCard}>
                 <div style={{ marginTop: 50 }}>
                   <h2> User Name</h2>
@@ -112,7 +114,7 @@ function MyOrders() {
                   <Logout />
                 </List>
               </Card>
-            </Grid>
+            </Grid> */}
             <Grid item xs={9}>
               <Grid>
                 <div variant="outlined" style={stCard}>
