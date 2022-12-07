@@ -78,18 +78,23 @@ export const resetpassword = (data) => async () => {
   }
 };
 
-export const whoami = (callback) => async (dispatch) => {
+export const whoami = (callback) => async (dispatch, getState) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/whoami`
+    const { token } = getState().auth;
+    const result = await axios.get(
+      `${process.env.REACT_APP_AUTH_API}/auth/whoami`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     if (result.status) {
       dispatch(setWhoami(result))
     }
   } catch (error) {
     if (error.response.status === 401) {
-      localStorage.removeItem("token");
-      dispatch(setToken(null));
+      console.log(error)
       callback(error.response.status);
     }
   }

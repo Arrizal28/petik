@@ -1,8 +1,20 @@
 import * as React from "react";
-import { BoxMobile, CardAccountMobile, CardMenu, Links } from "../../../Styled/MUI/AccountStyle";
+import {
+  BoxMobile,
+  CardAccountMobile,
+  CardMenu,
+  Links,
+} from "../../../Styled/MUI/AccountStyle";
 import { Col, Row } from "antd";
 import { Heading } from "../../../Mobile/Styles/StylesMobile";
-import { IconHelp, IconProfile, IconRefunds, IconRewards, IconSettings, IconWallet } from "../../../Styled/MUI/IconStyled";
+import {
+  IconHelp,
+  IconProfile,
+  IconRefunds,
+  IconRewards,
+  IconSettings,
+  IconWallet,
+} from "../../../Styled/MUI/IconStyled";
 import NavBar from "../../../Components/Navbar/Navbar";
 import TopPanels from "../../../Components/Header/TopPanel";
 
@@ -15,7 +27,9 @@ export default function Account() {
         <CardAccountMobile>
           <h1 style={{ marginTop: 10, color: "whitesmoke" }}>ACCOUNT</h1>
         </CardAccountMobile>
-        <Row style={{ justifyContent: "center", margin: 20, marginBottom: 100 }}>
+        <Row
+          style={{ justifyContent: "center", margin: 20, marginBottom: 100 }}
+        >
           <Col>
             <Links to="profile">
               <CardMenu elevation={2}>
