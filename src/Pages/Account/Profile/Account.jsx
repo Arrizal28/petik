@@ -17,6 +17,7 @@ import {
 } from "../../../Styled/MUI/IconStyled";
 import NavBar from "../../../Components/Navbar/Navbar";
 import TopPanels from "../../../Components/Header/TopPanel";
+import Footer from "../../../Components/Footer/Footer";
 
 export default function Account() {
   return (
@@ -31,7 +32,7 @@ export default function Account() {
           style={{ justifyContent: "center", margin: 20, marginBottom: 100 }}
         >
           <Col>
-            <Links to="profile">
+            <Links to="/account/profile">
               <CardMenu elevation={2}>
                 <IconProfile />
                 <Heading>PROFILE</Heading>
@@ -68,8 +69,8 @@ export default function Account() {
               <Heading>HELP CENTER</Heading>
             </CardMenu>
           </Links>
-          <Col style={{ marginBottom: 100 }}>
-            <Links to="settings">
+          <Col>
+            <Links to="/account/settings">
               <CardMenu elevation={2}>
                 <IconSettings />
                 <Heading>SETTINGS</Heading>
@@ -78,6 +79,7 @@ export default function Account() {
           </Col>
         </Row>
       </BoxMobile>
+      <Footer />
     </>
   );
 }

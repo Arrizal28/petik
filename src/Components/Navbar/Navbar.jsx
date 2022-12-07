@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -9,6 +9,8 @@ import Account from "../Account/Account";
 import Create from "../Account/Create";
 import { AppBars, AppBox, AppPaper } from "../../Styled/MUI/NavbarStyle";
 import { useSelector } from "react-redux";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import { IconNotif } from "../../Styled/MUI/IconStyled";
 
 function NavBar() {
   const [setAnchorElNav] = useState(null);
@@ -39,9 +41,15 @@ function NavBar() {
               </Typography>
               <Box sx={{ justifyContent: "right", marginLeft: "auto", flexGrow: 0, display: { xs: "none", md: "flex" } }}>{!token ? <Create /> : <Account />}</Box>
               <Box sx={{ textAlign: "right", flexGrow: 0, display: { xs: "flex", md: "none" } }}>
-                <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="primary">
-                  <MenuNav />
-                </IconButton>
+                {!token ? (
+                  <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="primary">
+                    <MenuNav />
+                  </IconButton>
+                ) : (
+                  <Tooltip title="Notification">
+                    <IconNotif />
+                  </Tooltip>
+                )}
               </Box>
             </Toolbar>
           </AppPaper>

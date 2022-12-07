@@ -16,6 +16,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import NavbarBottom from "./Mobile/Layout/NavbarMobile";
 import Account from "./Pages/Account/Profile/Account";
 import Protected from "./Components/Protected/Protected";
+import EditProfile from "./Pages/Account/Profile/EditProfile";
 
 function App() {
   return (
@@ -30,10 +31,26 @@ function App() {
               <Route path="/auth/verify/succes" element={<Succes />} />
               <Route path="/auth/verify/failed" element={<Failed />} />
               <Route
-                path="/profile"
+                path="/account"
+                element={
+                  <Protected>
+                    <Account />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/account/profile"
                 element={
                   <Protected>
                     <Buyers />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/account/profile/edit"
+                element={
+                  <Protected>
+                    <EditProfile />
                   </Protected>
                 }
               />
@@ -54,18 +71,10 @@ function App() {
                 }
               />
               <Route
-                path="/settings"
+                path="/account/settings"
                 element={
                   <Protected>
                     <Settings />
-                  </Protected>
-                }
-              />
-              <Route
-                path="/account"
-                element={
-                  <Protected>
-                    <Account />
                   </Protected>
                 }
               />

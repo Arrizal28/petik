@@ -4,39 +4,54 @@ import { Link } from "react-router-dom";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { logout } from "../../Redux/Actions/authaction";
+import { useDispatch } from "react-redux";
 
 function Account() {
+  const dispatch = useDispatch();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    dispatch(logout());
+  };
   return (
     <div>
       <Box sx={{ m: 1, marginLeft: "auto" }}>
         <Link to="/searchflight" style={{ textDecoration: "none" }}>
-          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-            <Tooltip title="Search Flight">
+          <Tooltip title="Search Flight">
+            <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <LocationSearchingIcon />
-            </Tooltip>
-          </Fab>
+            </Fab>
+          </Tooltip>
         </Link>
         <Link to="/orders" style={{ textDecoration: "none" }}>
-          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-            <Tooltip title="My Orders">
+          <Tooltip title="My Orders">
+            <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <AirplaneTicketIcon />
-            </Tooltip>
-          </Fab>
+            </Fab>
+          </Tooltip>
         </Link>
         <Link to="/notification" style={{ textDecoration: "none" }}>
-          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-            <Tooltip title="Notification">
+          <Tooltip title="Notification">
+            <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <NotificationsActiveIcon />
-            </Tooltip>
-          </Fab>
+            </Fab>
+          </Tooltip>
         </Link>
         <Link to="/account" style={{ textDecoration: "none" }}>
-          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-            <Tooltip title="Account">
+          <Tooltip title="Account">
+            <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </Tooltip>
-          </Fab>
+            </Fab>
+          </Tooltip>
         </Link>
+        <Tooltip title="Log Out">
+          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }} onClick={handleLogout}>
+            <LogoutIcon />
+          </Fab>
+        </Tooltip>
       </Box>
     </div>
   );
