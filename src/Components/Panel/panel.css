@@ -2,11 +2,12 @@
 
 .container {
   margin-top: -48px;
-  margin-bottom: 0%;
-  margin-left: 0%;
-  margin-right: 0%;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
   width: 80%;
   justify-content: center;
+  align-items: center;
 }
 
 .panel {
@@ -20,16 +21,14 @@
 }
 
 .panel1 {
-  color: white;
+  color: #3596e7;
   display: flex;
   align-items: center;
   width: 80%;
   height: 48px;
   justify-content: center;
-  background-color: #3596e7;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  border-bottom: 5px solid palevioletred;
   margin-left: 0px !important;
 }
 
@@ -162,6 +161,142 @@
     display: flex;
     align-items: center;
     height: 250px;
+  }
+
+  .ant-picker-date-panel {
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+  }
+
+  .ant-picker-panels {
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+  }
+}
+
+@media only screen and (min-width: 425px) and (max-width: 768px) {
+  .header {
+    width: 100%;
+  }
+
+  .row {
+    width: 425px;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .lebardate {
+    width: 100%;
+    margin-top: 35px;
+  }
+
+  .lebarmb {
+    width: 100%;
+    margin-bottom: -30px;
+  }
+
+  .panel2 {
+    display: flex;
+    align-items: center;
+    height: 320px;
+  }
+
+  .panel3 {
+    display: flex;
+    align-items: center;
+    height: 250px;
+  }
+
+  .ant-picker-date-panel {
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+  }
+
+  .ant-picker-panels {
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .header {
+    width: 100%;
+  }
+
+  .row {
+    width: 350px;
+  }
+
+  .lebardate {
+    width: 100%;
+    margin-top: 35px;
+  }
+
+  .lebarmb {
+    width: 100%;
+    margin-bottom: -30px;
+  }
+
+  .panel2 {
+    display: flex;
+    align-items: center;
+    height: 320px;
+  }
+
+  .panel3 {
+    display: flex;
+    align-items: center;
+    height: 250px;
+  }
+
+  .ant-picker-date-panel {
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+  }
+
+  .ant-picker-panels {
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 993px) {
+  .header {
+    width: 100%;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .lebardate {
+    width: 50%;
+    margin-top: 35px;
+  }
+
+  .lebarmb {
+    width: 100%;
+    margin-bottom: -30px;
+  }
+
+  .panel2 {
+    display: flex;
+    align-items: center;
+    height: 200px;
+  }
+
+  .panel3 {
+    display: flex;
+    align-items: center;
+    height: 200px;
   }
 
   .ant-picker-date-panel {

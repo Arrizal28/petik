@@ -29,11 +29,6 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/auth/verify/succes" element={<Succes />} />
               <Route path="/auth/verify/failed" element={<Failed />} />
-              <Route path="/profile" element={<Buyers />} />
-              <Route path="/orders" element={<MyOrders />} />
-              <Route path="/notification" element={<Notifications />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/account" element={<Account />} />
               <Route
                 path="/profile"
                 element={
