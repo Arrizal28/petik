@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { whoami } from "../../Redux/Actions/authaction";
+import { showUserBio } from "../../Redux/Actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 
 function Protected({ children }) {
@@ -12,6 +13,7 @@ function Protected({ children }) {
   useEffect(() => {
     (async () => {
       if (token) {
+        dispatch(showUserBio());
         dispatch(
           whoami((status) => {
             if (status === 401) {
