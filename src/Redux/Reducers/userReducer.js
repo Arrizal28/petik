@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cbio: null,
-  sbio: null,
-  ubio: null,
+  cbio: [],
+  sbio: [],
+  ubio: [],
 };
 
 const authSlicer = createSlice({
@@ -22,6 +22,7 @@ const authSlicer = createSlice({
   },
 });
 
-export const { setCreateBio, setShowBio, setUpdateBio, setAuthMe } = authSlicer.actions;
+export const { setCreateBio, setShowBio, setUpdateBio, setAuthMe } =
+  authSlicer.actions;
 
 export default authSlicer.reducer;

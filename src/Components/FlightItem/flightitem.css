@@ -1,0 +1,25 @@
+.flightitem {
+  margin-top: 40px;
+}
+
+.fitem {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: white;
+  width: 80%;
+}
+
+.time {
+  color: #1569c7;
+}
+
+.ant-divider {
+  background-color: lightgray;
+}
+
+.tgray {
+  color: #a6a6a6;
+}
+
+.tblue {
+  color: #4659df;
+}

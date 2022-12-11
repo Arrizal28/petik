@@ -17,6 +17,7 @@ import NavbarBottom from "./Mobile/Layout/NavbarMobile";
 import Account from "./Pages/Account/Profile/Account";
 import Protected from "./Components/Protected/Protected";
 import EditProfile from "./Pages/Account/Profile/EditProfile";
+import ListFlight from "./Pages/ListFlight/ListFlight";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/auth/verify/succes" element={<Succes />} />
               <Route path="/auth/verify/failed" element={<Failed />} />
+              <Route path="/listflight" element={<ListFlight />} />
               <Route
                 path="/account"
                 element={
