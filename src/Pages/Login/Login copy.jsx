@@ -127,7 +127,7 @@ function Login() {
                     ),
                   }}
                 />
-                {/* disabled={!email || !password} */}
+                disabled={!email || !password}
                 <Links to="/login">
                   <Buttons variant="contained" size="medium" onClick={handleSubmit}>
                     Log In
@@ -142,7 +142,7 @@ function Login() {
           <Col style={{ justifyContent: "center" }}>
             <CardLogo elevation={2}>
               <CardContent>
-                <Heading>Log In Or Join</Heading>
+                <Heading>Join</Heading>
               </CardContent>
             </CardLogo>
             <CardLogin elevation={2}>

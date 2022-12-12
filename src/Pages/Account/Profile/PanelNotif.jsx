@@ -8,6 +8,7 @@ import { Card } from "@mui/material";
 import gambar1 from "../../../assets/images/tidakada.svg";
 import MailIcon from "@mui/icons-material/Mail";
 import DraftsIcon from "@mui/icons-material/Drafts";
+import Notif from "./Notif";
 
 const stCard = {
   height: 500,
@@ -47,6 +48,7 @@ export default function PanelNotif() {
         <Card variant="outlined" style={stCard}>
           <TabPanel value="1">
             <img src={gambar1} alt="gambar1" width="500px" />
+            <Notif />
             <p>Anda Belum Melakukan Pembelian Tiket</p>
           </TabPanel>
           <TabPanel value="2">
