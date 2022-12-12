@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import NavBar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
-import { BoxHome, BoxMenu, BoxPage, CardAccount, CardProfile, CardUser, CardMenu, Links } from "../../../Styled/MUI/BuyerStyle.js";
+import { BoxHome, BoxMenu, BoxPage, CardAccount, CardProfile, CardUser, CardMenu, Links, ButtonProfile } from "../../../Styled/MUI/BuyerStyle.js";
 import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 import TopPanels from "../../../Components/Header/TopPanel";
 import { Col, Row } from "antd";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Buttonz } from "../../../Styled/MUI/AuthStyles";
 import { ButtonGroup, TableHead, TableRow } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { showUserBio } from "../../../Redux/Actions/userAction";
@@ -43,10 +42,10 @@ function Buyers() {
                   </CardAccount>
                   <CardMenu variant="outlined">
                     <ButtonGroup>
-                      <Buttonz variant="outlined">
+                      <ButtonProfile variant="outlined">
                         <LogoutIcon /> Log Out
-                      </Buttonz>
-                      <Links to="/account/profile/edit">{data.biodata === null ? <Buttonz variant="contained">Create</Buttonz> : <Buttonz variant="contained">Edit</Buttonz>}</Links>
+                      </ButtonProfile>
+                      <Links to="/account/profile/edit">{data.biodata === null ? <ButtonProfile variant="contained">Create</ButtonProfile> : <ButtonProfile variant="contained">Edit</ButtonProfile>}</Links>
                     </ButtonGroup>
                   </CardMenu>
                 </Col>
@@ -60,16 +59,16 @@ function Buyers() {
                     <BoxMenu>
                       <Heading>Name</Heading>
                       <Title>
-                        {data.biodata.firstName} ,{data.biodata.lastName}
+                        {data.biodata.firstName} {data.biodata.lastName}
                       </Title>
                     </BoxMenu>
                   </CardAccount>
                   <CardMenu variant="outlined">
-                    <Buttonz variant="outlined">
+                    <ButtonProfile variant="outlined">
                       <LogoutIcon /> Log Out
-                    </Buttonz>
+                    </ButtonProfile>
                     <Links to="/account/profile/edit">
-                      <Buttonz variant="contained">Edit</Buttonz>{" "}
+                      <ButtonProfile variant="contained">Edit</ButtonProfile>{" "}
                     </Links>
                   </CardMenu>
                 </Col>
