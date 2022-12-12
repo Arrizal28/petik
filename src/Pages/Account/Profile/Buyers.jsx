@@ -8,8 +8,17 @@ import { Col, Row } from "antd";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Buttonz } from "../../../Styled/MUI/AuthStyles";
 import { TableHead, TableRow } from "@mui/material";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../Redux/Actions/authaction";
 
 function Buyers() {
+  const dispatch = useDispatch();
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    dispatch(logout());
+  };
   return (
     <>
       <TopPanels />
@@ -31,12 +40,14 @@ function Buyers() {
                 </BoxMenu>
               </CardAccount>
               <CardMenu variant="outlined">
-                <Buttonz variant="outlined">
-                  <LogoutIcon /> Log Out
-                </Buttonz>
-                <Links to="/account/profile/edit">
-                  <Buttonz variant="contained">Edit</Buttonz>{" "}
-                </Links>
+                <ButtonGroup>
+                  <Buttonz variant="outlined">
+                    <LogoutIcon onClick={handleLogout} /> Log Out
+                  </Buttonz>
+                  <Links to="/account/profile/edit">
+                    <Buttonz variant="contained">Edit</Buttonz>{" "}
+                  </Links>
+                </ButtonGroup>
               </CardMenu>
             </Col>
             <Col>

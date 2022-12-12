@@ -11,8 +11,8 @@ export const Heading = styled.p`
 export const Title = styled.p`
   font-size: 15px;
   color: #000;
-  margin-top: 10px;
-  margin-left: 15px;
+  margin-top: 20px;
+  // margin-left: 15px;
   font-weight: bold;
   color: gray;
   &:hover {

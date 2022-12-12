@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/petik.png";
-import {
-  Cards,
-  Cardss,
-  TextFields,
-  Buttons,
-  Buttonz,
-  Links,
-  Dividers,
-  BoxAuth,
-} from "../../Styled/MUI/AuthStyles";
+import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
@@ -17,8 +8,9 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import EmailIcon from "@mui/icons-material/Email";
 import { register } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
-import { Heading, Text } from "../../Styled/ComponentUI/Styles";
+import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { useNavigate } from "react-router-dom";
+import { Col, Row } from "antd";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -78,100 +70,105 @@ function Register() {
   };
 
   return (
-    <BoxAuth>
-      <Cards>
-        <Cardss>
-          <CardContent>
-            <Links to="/">
-              <img className="App-logo" src={logo} alt="logo" />
-            </Links>
-            <Heading> Create Your Account</Heading>
-            <TextFields
-              type="email"
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              size="small"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <EmailIcon style={{ marginRight: 8 }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <TextFields
-              type="password"
-              id="outlined"
-              label="Password"
-              variant="outlined"
-              size="small"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <TextFields
-              type="password"
-              id="outlined"
-              label="Confirm Password"
-              variant="outlined"
-              size="small"
-              value={confirm_password}
-              onChange={(e) => setConfirm_Password(e.target.value)}
-              required
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <Links to="/register">
-              <Buttons
-                variant="contained"
-                size="large"
-                disabled={!email || !password}
-                onClick={handleSubmit}
-              >
-                Register
-              </Buttons>
-            </Links>
-            <GoogleLogin label=" Google" />
-            <Dividers>
-              <Text> Allready Have Account?</Text>
-            </Dividers>
-            <Links to="/login">
-              <Buttonz variant="outlined" size="small">
-                Log in
-              </Buttonz>
-            </Links>
-          </CardContent>
-        </Cardss>
-      </Cards>
-    </BoxAuth>
+    <>
+      <BoxAuth>
+        <Cards>
+          <Row style={{ marginTop: 100, justifyContent: "center", marginBottom: 100 }}>
+            <Col style={{ justifyContent: "center" }}>
+              <CardLogo elevation={2}>
+                <CardContent>
+                  <Links to="/">
+                    <img className="App-log" src={logo} alt="logo" width="120px" />
+                  </Links>
+                </CardContent>
+              </CardLogo>
+              <CardLogin elevation={2}>
+                <CardContent>
+                  <TextFields
+                    type="email"
+                    id="outlined-basic"
+                    label="Email"
+                    variant="outlined"
+                    size="small"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <EmailIcon style={{ marginRight: 8 }} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <TextFields
+                    type="password"
+                    id="outlined"
+                    label="Password"
+                    variant="outlined"
+                    size="small"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <TextFields
+                    type="password"
+                    id="outlined"
+                    label="Confirm Password"
+                    variant="outlined"
+                    size="small"
+                    value={confirm_password}
+                    onChange={(e) => setConfirm_Password(e.target.value)}
+                    required
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <Links to="/register">
+                    <Buttons variant="contained" size="medium" disabled={!email || !password} onClick={handleSubmit}>
+                      Register
+                    </Buttons>
+                  </Links>
+                </CardContent>
+              </CardLogin>
+            </Col>
+            <Col style={{ justifyContent: "center" }}>
+              <CardLogo elevation={2}>
+                <CardContent>
+                  <Heading>Log In</Heading>
+                </CardContent>
+              </CardLogo>
+              <CardLogin elevation={2}>
+                <CardContent>
+                  <Title> Enter Account?</Title>
+                  <Links to="/login">
+                    <Buttonz variant="outlined" size="medium">
+                      Log In
+                    </Buttonz>
+                  </Links>
+                  <GoogleLogin label=" Google" />
+                </CardContent>
+              </CardLogin>
+            </Col>
+          </Row>
+        </Cards>
+      </BoxAuth>
+    </>
   );
 }
 
