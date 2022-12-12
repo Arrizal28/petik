@@ -1,5 +1,11 @@
 import axios from "axios";
-import { setToken, setRegister, setLogin, setForgot, setWhoami } from "../Reducers/authReducer";
+import {
+  setToken,
+  setRegister,
+  setLogin,
+  setForgot,
+  setWhoami,
+} from "../Reducers/authReducer";
 
 export const register = (data) => async (dispatch) => {
   try {
@@ -54,7 +60,10 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
 
 export const forgotPassword = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/forgot-password`, data);
+    const result = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/auth/forgot-password`,
+      data
+    );
     if (result.data.status) {
       dispatch(setForgot(result.data));
       alert(result.data.message);
@@ -89,12 +98,12 @@ export const whoami = (callback) => async (dispatch, getState) => {
         },
       }
     );
-    if (result.status) {
-      dispatch(setWhoami(result))
+    if (result.data.status) {
+      dispatch(setWhoami(result.data));
     }
   } catch (error) {
     if (error.response.status === 401) {
-      console.log(error)
+      console.log(error);
       callback(error.response.status);
     }
   }
