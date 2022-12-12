@@ -3,8 +3,7 @@ import { Cards, TextFields, Buttons, Links, BoxAuth, CardLogin, CardLogo } from 
 import { CardContent } from "@mui/material";
 import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 import { Col, Row } from "antd";
-
-function ForgotPassword() {
+function ChangePassword() {
   return (
     <>
       <BoxAuth>
@@ -13,16 +12,17 @@ function ForgotPassword() {
             <Col style={{ justifyContent: "center" }}>
               <CardLogo elevation={2}>
                 <CardContent>
-                  <Heading> Find Your Account</Heading>
-                  <Title>Please enter your email For get new password </Title>
+                  <Heading>Change Password</Heading>
+                  <Title>Please Enter Your New Passowrd </Title>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
-                  <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" required />
-                  <Links to="/resetpassword">
+                  <TextFields type="password" id="outlined" label="New Password" variant="outlined" size="small" required />
+                  <TextFields type="password" id="outlined" label="Confirm New Password" variant="outlined" size="small" required />
+                  <Links to="/login">
                     <Buttons variant="contained" size="medium">
-                      Continue
+                      Save
                     </Buttons>
                   </Links>
                 </CardContent>
@@ -35,4 +35,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default ChangePassword;

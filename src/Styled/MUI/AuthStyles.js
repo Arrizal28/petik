@@ -36,6 +36,7 @@ export const CardLogo = styled(Card)({
 
 export const CardLogin = styled(Card)({
   width: 360,
+  maxWidth: "100%",
   height: 250,
   justifyContent: "center",
   margin: "10px",
@@ -61,7 +62,8 @@ export const Cards = styled(Card)({
 });
 
 export const TextFields = styled(TextField)({
-  width: 250,
+  width: 350,
+  maxWidth: "100%",
   marginTop: 20,
   borderRadius: 20,
   marginBottom: 20,
@@ -70,8 +72,8 @@ export const TextFields = styled(TextField)({
 });
 
 export const Buttons = styled(Button)({
-  width: 250,
-  marginTop: 20,
+  width: 350,
+  marginTop: 25,
   marginBottom: 20,
   borderRadius: 10,
   display: "flex",
@@ -80,8 +82,8 @@ export const Buttons = styled(Button)({
 });
 
 export const Buttonx = styled(Button)({
-  width: 250,
-  marginTop: 20,
+  width: 350,
+  marginTop: 25,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
@@ -90,8 +92,8 @@ export const Buttonx = styled(Button)({
 });
 
 export const Buttonz = styled(Button)({
-  width: 250,
-  marginTop: 20,
+  width: 350,
+  marginTop: 25,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",

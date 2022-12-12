@@ -17,11 +17,9 @@ import NavbarBottom from "./Mobile/Layout/NavbarMobile";
 import Account from "./Pages/Account/Profile/Account";
 import Protected from "./Components/Protected/Protected";
 import EditProfile from "./Pages/Account/Profile/EditProfile";
-<<<<<<< HEAD
 import ForgotPassword from "./Pages/Account/Password/ForgotPassword";
-=======
 import ListFlight from "./Pages/ListFlight/ListFlight";
->>>>>>> 75b5991b2d352a7b5950a2e65d66ec298ae871f6
+import ResetPassword from "./Pages/Account/Password/ResetPassword";
 
 function App() {
   return (
@@ -35,11 +33,9 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/auth/verify/succes" element={<Succes />} />
               <Route path="/auth/verify/failed" element={<Failed />} />
-<<<<<<< HEAD
-              <Route path="/ForgotPassword" element={<ForgotPassword />} />
-=======
+              <Route path="/forgotpassword" element={<ForgotPassword />} />
+              <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/listflight" element={<ListFlight />} />
->>>>>>> 75b5991b2d352a7b5950a2e65d66ec298ae871f6
               <Route
                 path="/account"
                 element={
