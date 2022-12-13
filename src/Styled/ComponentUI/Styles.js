@@ -12,7 +12,7 @@ export const Title = styled.p`
   font-size: 15px;
   color: #000;
   margin-top: 20px;
-  // margin-left: 15px;
+  margin-left: 20px;
   font-weight: bold;
   color: gray;
   &:hover {
