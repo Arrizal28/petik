@@ -19,8 +19,10 @@ import { Buttonz } from "../../../Styled/MUI/AuthStyles";
 import { TableHead, TableRow } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { showUserBio } from "../../../Redux/Actions/userAction";
+import { useNavigate } from "react-router-dom";
 
 function Buyers() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.user.sbio);
 
@@ -106,9 +108,23 @@ function Buyers() {
                     </Buttonz>
                     <Links to="/account/profile/edit">
                       {data.biodata === null ? (
-                        <Buttonz variant="contained">Create</Buttonz>
+                        <Buttonz
+                          variant="contained"
+                          onClick={() => {
+                            navigate("/account/profile/edit");
+                          }}
+                        >
+                          Create
+                        </Buttonz>
                       ) : (
-                        <Buttonz variant="contained">Edit</Buttonz>
+                        <Buttonz
+                          variant="contained"
+                          nClick={() => {
+                            navigate("/account/profile/edit");
+                          }}
+                        >
+                          Edit
+                        </Buttonz>
                       )}
                     </Links>
                   </CardMenu>
