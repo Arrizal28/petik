@@ -19,7 +19,11 @@ import Protected from "./Components/Protected/Protected";
 import EditProfile from "./Pages/Account/Profile/EditProfile";
 import ForgotPassword from "./Pages/Account/Password/ForgotPassword";
 import ListFlight from "./Pages/ListFlight/ListFlight";
+<<<<<<< HEAD
+import Adminhome from "./Pages/Admin/Home/Home";
+=======
 import ResetPassword from "./Pages/Account/Password/ResetPassword";
+>>>>>>> 8e1dedd37117af2e33a442a77b3118361cbdde42
 
 function App() {
   return (
@@ -36,6 +40,7 @@ function App() {
               <Route path="/forgotpassword" element={<ForgotPassword />} />
               <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/listflight" element={<ListFlight />} />
+              <Route path="/adminhome" element={<Adminhome />} />
               <Route
                 path="/account"
                 element={
