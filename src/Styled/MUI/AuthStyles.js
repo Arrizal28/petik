@@ -6,37 +6,64 @@ import imgbg from "../../assets/images/bg.png";
 export const BoxAuth = styled(Box)({
   justifyContent: "center",
   margin: "auto",
-  maxWidth: 1024,
+  // maxWidth: 1024,
 });
 
 export const Cardss = styled(Card)({
-  maxwidth: 425,
-  height: 540,
+  maxWidth: 800,
+  maxHeight: 540,
   justifyContent: "center",
-  margin: "auto",
+  margin: "10px",
   textAlign: "center",
   display: "flex",
   alignItems: "center",
-  borderRadius: 20,
-  border: "1px solid #3596e7",
+  borderRadius: "none",
+  // border: "1px solid #3596e7",
+});
+
+export const CardLogo = styled(Card)({
+  width: 360,
+  maxHeight: 540,
+  justifyContent: "center",
+  margin: "10px",
+  textAlign: "center",
+  display: "flex",
+  alignItems: "center",
+  borderRadius: "none",
+  // backgroundColor: "whitesmoke",
+  // border: "1px solid #3596e7",
+});
+
+export const CardLogin = styled(Card)({
+  width: 360,
+  maxWidth: "100%",
+  height: 250,
+  justifyContent: "center",
+  margin: "10px",
+  textAlign: "center",
+  display: "flex",
+  alignItems: "center",
+  borderRadius: "none",
+  // border: "1px solid #3596e7",
 });
 
 export const Cards = styled(Card)({
-  maxwidth: 400,
-  height: 560,
+  maxWidth: 1300,
+  maxHeigth: 560,
   justifyContent: "center",
   margin: "auto",
   textAlign: "center",
   display: "flex",
   alignItems: "center",
-  backgroundColor: "#3596e7",
+  backgroundColor: "whitesmoke",
   borderRadius: 20,
   marginTop: 50,
   backgroundImage: `url(${imgbg})`,
 });
 
 export const TextFields = styled(TextField)({
-  maxwidth: 360,
+  width: 350,
+  maxWidth: "100%",
   marginTop: 20,
   borderRadius: 20,
   marginBottom: 20,
@@ -45,8 +72,9 @@ export const TextFields = styled(TextField)({
 });
 
 export const Buttons = styled(Button)({
-  width: 300,
-  marginTop: 20,
+  width: 350,
+  marginTop: 25,
+  marginBottom: 20,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
@@ -54,21 +82,23 @@ export const Buttons = styled(Button)({
 });
 
 export const Buttonx = styled(Button)({
-  width: 200,
-  marginTop: 20,
+  width: 350,
+  marginTop: 25,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
   margin: "auto",
+  marginBottom: 20,
 });
 
 export const Buttonz = styled(Button)({
-  width: 150,
-  marginTop: 20,
+  width: 350,
+  marginTop: 25,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
   margin: "auto",
+  marginBottom: 20,
 });
 
 export const Links = styled(Link)({
@@ -76,5 +106,6 @@ export const Links = styled(Link)({
 });
 
 export const Dividers = styled(Divider)({
-  margin: 10,
+  marginTop: 20,
+  marginBottom: 17,
 });

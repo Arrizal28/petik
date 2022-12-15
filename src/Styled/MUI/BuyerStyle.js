@@ -54,7 +54,7 @@ export const CardAccount = styled(Card)({
 });
 
 export const CardMenu = styled(Card)({
-  height: 50,
+  height: 100,
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
@@ -152,13 +152,13 @@ export const Buttonx = styled(Button)({
   margin: "auto",
 });
 
-export const Buttonz = styled(Button)({
+export const ButtonProfile = styled(Button)({
   width: 150,
-  marginTop: 20,
+  marginTop: 25,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
-  margin: "auto",
+  marginBottom: 10,
 });
 
 export const Links = styled(Link)({

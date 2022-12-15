@@ -16,6 +16,7 @@ import Logout from "../../../Components/Account/logout";
 import { Link } from "react-router-dom";
 import Footer from "../../../Components/Footer/Footer";
 import PanelNotif from "./PanelNotif";
+import Notif from "./Notif";
 
 const style = {
   width: "100%",
@@ -117,11 +118,14 @@ function Notifications() {
               <Grid>
                 <div variant="outlined" style={stCard}>
                   <PanelNotif />
+                  <Notif />{" "}
                 </div>
               </Grid>
 
               <Grid>
-                <Card variant="outlined" style={stlCard}></Card>
+                <Card variant="outlined" style={stlCard}>
+                  {" "}
+                </Card>
               </Grid>
             </Grid>
           </Grid>
