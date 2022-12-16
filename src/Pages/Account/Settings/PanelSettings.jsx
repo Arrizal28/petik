@@ -1,86 +1,105 @@
 import * as React from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+import { styled } from "@mui/material/styles";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Button, TextField } from "@mui/material";
+import { ButtonSet, FieldSet } from "../../../Styled/MUI/SettingsStyle";
 
-const sAccordian = {
-  heigth: 200,
-  marginTop: 20,
-};
+const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
+  marginBottom: 15,
+  border: `1px solid ${theme.palette.divider}`,
+  "&:not(:last-child)": {
+    borderBottom: "solid 1px dark",
+    marginBottom: 15,
+  },
+  "&:before": {
+    display: "none",
+  },
+}));
 
-const sText = {
-  heigth: 200,
-  margin: 10,
-};
+const AccordionSummary = styled((props) => <MuiAccordionSummary expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "1rem" }} />} {...props} />)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, .05)" : "rgba(0, 0, 0, .03)",
+  flexDirection: "row-reverse",
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(90deg)",
+  },
+  "& .MuiAccordionSummary-content": {
+    marginLeft: theme.spacing(1),
+  },
+}));
 
-const sTextfield = {
-  width: 425,
-  marginTop: 20,
-  borderRadius: 20,
-  display: "flex",
-  marginLeft: 10,
-};
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderTop: "1px solid rgba(0, 0, 0, .125)",
+  marginBottom: 15,
+}));
 
-const sButton = {
-  width: 425,
-  marginTop: 20,
-  borderRadius: 20,
-  display: "flex",
-  marginLeft: 10,
-};
+export default function PanelSettings() {
+  const [expanded, setExpanded] = React.useState("panel1");
 
-export default function PaneSettings() {
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
+
   return (
     <div>
-      <Accordion style={sAccordian}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <h5 style={sText}>Language</h5>
+      <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")}>
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+          <Typography>Language</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</Typography>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+            blandit leo lobortis eget.
+          </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion style={sAccordian}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <h5 style={sText}>Notification Settings</h5>
+      <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")}>
+        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+          <Typography>Notification Settings</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</Typography>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+            blandit leo lobortis eget.
+          </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion style={sAccordian}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <h5 style={sText}>Mobile Number and Email</h5>
+      <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")}>
+        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+          <Typography>Mobile Number and Email</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <TextField style={sTextfield} id="outlined-basic" label="Email" variant="outlined" size="medium" helperText="Please enter your last new email" />
-          <TextField style={sTextfield} id="outlined-basic" label="Phone Number" variant="outlined" size="medium" helperText="Please enter your new mobile number" />
-          <Button style={sButton} id="outlined-basic" label="Button" variant="contained" size="medium">
+          <FieldSet id="outlined-basic" label="Email" variant="outlined" size="small" helperText="Please enter your last new email" />
+          <FieldSet id="outlined-basic" label="Phone Number" variant="outlined" size="small" helperText="Please enter your new mobile number" />
+          <ButtonSet id="outlined-basic" label="Button" variant="contained" size="small">
             Save Change
-          </Button>
+          </ButtonSet>
         </AccordionDetails>
       </Accordion>
-      <Accordion style={sAccordian}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <h5 style={sText}>Change Password</h5>
+      <Accordion expanded={expanded === "panel4"} onChange={handleChange("panel4")}>
+        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+          <Typography>Change Password</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <TextField style={sTextfield} id="outlined-basic" label="Current Password" variant="outlined" size="medium" helperText="Please enter your current password" />
-          <TextField style={sTextfield} id="outlined-basic" label="New Password" variant="outlined" size="medium" helperText="Please enter your new password" />
-          <Button style={sButton} id="outlined-basic" label="Button" variant="contained" size="medium">
+          <FieldSet id="outlined-basic" label="Current Password" variant="outlined" size="small" helperText="Please enter your current password" />
+          <FieldSet id="outlined-basic" label="New Password" variant="outlined" size="small" helperText="Please enter your new password" />
+          <ButtonSet id="outlined-basic" label="Button" variant="contained" size="small">
             Save Change
-          </Button>
+          </ButtonSet>
         </AccordionDetails>
       </Accordion>
-      <Accordion style={sAccordian}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <h5 style={sText}>Security Settings</h5>
+      <Accordion expanded={expanded === "panel5"} onChange={handleChange("panel5")}>
+        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+          <Typography>Security settings</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</Typography>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+            blandit leo lobortis eget.
+          </Typography>
         </AccordionDetails>
       </Accordion>
     </div>

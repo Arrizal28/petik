@@ -4,32 +4,67 @@ import NavBar from "../../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
 import Footer from "../../../Components/Footer/Footer";
 import TopPanels from "../../../Components/Header/TopPanel";
-import { ButtonGroups, CardContainer, CardPanel, Links } from "../../../Styled/MUI/TransactionStyle";
-import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
+import { ButtonData, CardContainer, CardPass, Dividers, FieldData } from "../../../Styled/MUI/TransactionStyle";
+import { FontNotif, Title } from "../../../Styled/ComponentUI/Styles";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 function InputData() {
   return (
     <>
       <NavBar />
       <TopPanels />
-      <Box sx={{ flexGrow: 1, justifyContent: "center" }}>
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
+      <Box sx={{ flexGrow: 1, justifyContent: "center", maxWidth: 1024, margin: "auto" }}>
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
           <Grid item xs={9}>
             <Grid>
               <CardContainer variant="outlined">
-                <Heading> History Orders</Heading>
-                <ButtonGroups variant="outlined" aria-label="outlined primary button group">
-                  <Links to="/orders">
-                    <Title size="small">My Order</Title>
-                  </Links>
-                  <Links to="/history">
-                    <Title size="small">History</Title>
-                  </Links>
-                </ButtonGroups>
+                <FontNotif>Input Data Passenger</FontNotif>
               </CardContainer>
             </Grid>
             <Grid>
-              <CardPanel variant="outlined"></CardPanel>
+              <CardPass variant="outlined">
+                <Grid2 item xs={9}>
+                  <Grid>
+                    <Box
+                      sx={{
+                        width: 800,
+                        maxWidth: "100%",
+                      }}
+                    >
+                      <Title>Passenger Name</Title>
+                      <FieldData id="outlined-basic" label="Full Name" variant="outlined" size="small" />
+                    </Box>
+                  </Grid>
+                  <Dividers />
+                  <Grid>
+                    <Box
+                      sx={{
+                        width: 800,
+                        maxWidth: "100%",
+                      }}
+                    >
+                      <Title>ID Card (KTP)</Title>
+                      <FieldData id="outlined-basic" label="Number" variant="outlined" size="small" />
+                    </Box>
+                    <Dividers />
+                    <Grid>
+                      <Box
+                        sx={{
+                          width: 800,
+                          maxWidth: "100%",
+                        }}
+                      >
+                        <Title>Passport</Title>
+                        <FieldData id="outlined-basic" label="Number" variant="outlined" size="small" />
+                      </Box>
+                    </Grid>
+                    <Dividers />
+                    <ButtonData id="outlined-basic" label="Button" variant="contained" size="small">
+                      Save Data
+                    </ButtonData>
+                  </Grid>
+                </Grid2>
+              </CardPass>
             </Grid>
           </Grid>
         </Grid>
