@@ -7,7 +7,7 @@ import Register from "./Pages/Register/Register";
 import Succes from "./Pages/Verify/Succes";
 import Failed from "./Pages/Verify/Failed";
 import Notifications from "./Pages/Account/Profile/Notifications";
-import MyOrders from "./Pages/Account/Profile/MyOrders";
+import MyOrders from "./Pages/Account/Transaction/MyOrders";
 import store from "./Redux/store";
 import Buyers from "./Pages/Account/Profile/Buyers";
 import Settings from "./Pages/Account/Settings/Settings";
@@ -21,6 +21,8 @@ import ForgotPassword from "./Pages/Account/Password/ForgotPassword";
 import ListFlight from "./Pages/ListFlight/ListFlight";
 import Adminhome from "./Pages/Admin/Home/Home";
 import ResetPassword from "./Pages/Account/Password/ResetPassword";
+import InputData from "./Pages/Account/Transaction/InputData";
+import HistoryOrders from "./Pages/Account/Transaction/HistoryOrders";
 
 function App() {
   return (
@@ -37,6 +39,7 @@ function App() {
               <Route path="/forgotpassword" element={<ForgotPassword />} />
               <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/listflight" element={<ListFlight />} />
+              <Route path="/InputData" element={<InputData />} />
               <Route path="/adminhome" element={<Adminhome />} />
               <Route
                 path="/account"
@@ -67,6 +70,14 @@ function App() {
                 element={
                   <Protected>
                     <MyOrders />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/history"
+                element={
+                  <Protected>
+                    <HistoryOrders />
                   </Protected>
                 }
               />

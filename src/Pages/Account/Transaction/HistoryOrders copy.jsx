@@ -4,29 +4,10 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { Card } from "@mui/material";
 import gambar1 from "../../../assets/images/tidakada.svg";
-import MailIcon from "@mui/icons-material/Mail";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import Notif from "./Notif";
+import { CardPanel, CardTab } from "../../../Styled/MUI/TransactionStyle";
 
-const stCard = {
-  height: 500,
-  justifyContent: "center",
-  textAlign: "center",
-  alignItems: "center",
-  marginTop: 30,
-};
-
-const stlCard = {
-  height: 80,
-  justifyContent: "center",
-  textAlign: "center",
-  alignItems: "center",
-  marginTop: 2,
-};
-
-export default function PanelNotif() {
+export default function PanelItem() {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
@@ -37,25 +18,23 @@ export default function PanelNotif() {
     <Box sx={{ width: "100%", typography: "body1" }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Card variant="outlined" style={stlCard}>
+          <CardTab variant="outlined">
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Read Message" value="1" icon={<DraftsIcon />} />
-              <Tab label="Unread Message" value="2" icon={<MailIcon />} />
+              <Tab label="My Order" value="1" />
+              <Tab label="History Orders" value="2" />
             </TabList>
-          </Card>
+          </CardTab>
         </Box>
-
-        <Card variant="outlined" style={stCard}>
+        <CardPanel variant="outlined" s>
           <TabPanel value="1">
-            <img src={gambar1} alt="gambar1" width="500px" />
-            <Notif />
+            <img src={gambar1} alt="gambar1" maxWidth="500px" />
             <p>Anda Belum Melakukan Pembelian Tiket</p>
           </TabPanel>
           <TabPanel value="2">
-            <img src={gambar1} alt="gambar1" width="500px" />
+            <img src={gambar1} alt="gambar1" maxWidth="500px" />
             <p>Belum ada history pembelian</p>
           </TabPanel>
-        </Card>
+        </CardPanel>
       </TabContext>
     </Box>
   );

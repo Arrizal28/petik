@@ -4,10 +4,10 @@ import NavBar from "../../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
 import Footer from "../../../Components/Footer/Footer";
 import TopPanels from "../../../Components/Header/TopPanel";
-import { CardContainer, CardPanel } from "../../../Styled/MUI/TransactionStyle";
-import { FontNotif } from "../../../Styled/ComponentUI/Styles";
+import { ButtonGroups, CardContainer, CardPanel, Links } from "../../../Styled/MUI/TransactionStyle";
+import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 
-function Notifications() {
+function InputData() {
   return (
     <>
       <NavBar />
@@ -17,7 +17,15 @@ function Notifications() {
           <Grid item xs={9}>
             <Grid>
               <CardContainer variant="outlined">
-                <FontNotif>Notifications</FontNotif>
+                <Heading> History Orders</Heading>
+                <ButtonGroups variant="outlined" aria-label="outlined primary button group">
+                  <Links to="/orders">
+                    <Title size="small">My Order</Title>
+                  </Links>
+                  <Links to="/history">
+                    <Title size="small">History</Title>
+                  </Links>
+                </ButtonGroups>
               </CardContainer>
             </Grid>
             <Grid>
@@ -31,4 +39,4 @@ function Notifications() {
   );
 }
 
-export default Notifications;
+export default InputData;
