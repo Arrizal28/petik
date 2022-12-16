@@ -9,7 +9,6 @@ import Account from "../Account/Account";
 import Create from "../Account/Create";
 import { AppBars, AppBox, AppPaper } from "../../Styled/MUI/NavbarStyle";
 import { useSelector } from "react-redux";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { IconNotif } from "../../Styled/MUI/IconStyled";
 import { Links } from "../../Styled/MUI/AuthStyles";
 
