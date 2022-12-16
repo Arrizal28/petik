@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
+import {
+  Cards,
+  TextFields,
+  Buttons,
+  Buttonz,
+  Links,
+  BoxAuth,
+  CardLogin,
+  CardLogo,
+} from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Visibility from "@mui/icons-material/Visibility";
@@ -80,12 +89,23 @@ function Login() {
   return (
     <BoxAuth>
       <Cards>
-        <Row style={{ marginTop: 100, justifyContent: "center", marginBottom: 100 }}>
+        <Row
+          style={{
+            marginTop: 100,
+            justifyContent: "center",
+            marginBottom: 100,
+          }}
+        >
           <Col style={{ justifyContent: "center" }}>
             <CardLogo elevation={2}>
               <CardContent>
                 <Links to="/">
-                  <img className="App-log" src={logo} alt="logo" width="120px" />
+                  <img
+                    className="App-log"
+                    src={logo}
+                    alt="logo"
+                    width="120px"
+                  />
                 </Links>
               </CardContent>
             </CardLogo>
@@ -120,8 +140,16 @@ function Login() {
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                          {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {values.showPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -129,7 +157,12 @@ function Login() {
                 />
 
                 <Links to="/login">
-                  <Buttons variant="contained" size="medium" onClick={handleSubmit} disabled={!email || !password}>
+                  <Buttons
+                    variant="contained"
+                    size="medium"
+                    onClick={handleSubmit}
+                    disabled={!email || !password}
+                  >
                     Log In
                   </Buttons>
                 </Links>

@@ -11,12 +11,6 @@ function ListFlight() {
       <div className="listflight">
         <h1 className="tgreen">Choose your derparture flight</h1>
         <FlightItem />
-        <FlightItem />
-        <FlightItem />
-        <FlightItem />
-        <FlightItem />
-        <FlightItem />
-        <FlightItem />
       </div>
       <Footer />
     </div>
