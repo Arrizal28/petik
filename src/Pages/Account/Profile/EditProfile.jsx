@@ -21,8 +21,10 @@ import {
 } from "../../../Redux/Actions/userAction";
 import { BoxAuth } from "../../../Styled/MUI/AuthStyles";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
+  const navigate = useNavigate();
   const { data } = useSelector((state) => state.user.sbio);
 
   const [gender, setGender] = useState("Gender");
@@ -91,6 +93,7 @@ function EditProfile() {
         nationality,
       };
       dispatch(createUserBio(data));
+      navigate("/");
     }
   };
 
@@ -137,6 +140,7 @@ function EditProfile() {
         nationality,
       };
       dispatch(upadateUserBio(data));
+      navigate("/");
     }
   };
 

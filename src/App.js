@@ -19,6 +19,7 @@ import Protected from "./Components/Protected/Protected";
 import EditProfile from "./Pages/Account/Profile/EditProfile";
 import ForgotPassword from "./Pages/Account/Password/ForgotPassword";
 import ListFlight from "./Pages/ListFlight/ListFlight";
+import Adminhome from "./Pages/Admin/Home/Home";
 import ResetPassword from "./Pages/Account/Password/ResetPassword";
 import InputData from "./Pages/Account/Transaction/InputData";
 import HistoryOrders from "./Pages/Account/Transaction/HistoryOrders";
@@ -39,6 +40,7 @@ function App() {
               <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/listflight" element={<ListFlight />} />
               <Route path="/InputData" element={<InputData />} />
+              <Route path="/adminhome" element={<Adminhome />} />
               <Route
                 path="/account"
                 element={

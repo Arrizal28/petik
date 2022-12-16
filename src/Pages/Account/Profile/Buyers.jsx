@@ -1,7 +1,17 @@
 import React, { useEffect } from "react";
 import NavBar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
-import { BoxHome, BoxMenu, BoxPage, CardAccount, CardProfile, CardUser, CardMenu, Links, ButtonProfile } from "../../../Styled/MUI/BuyerStyle.js";
+import {
+  BoxHome,
+  BoxMenu,
+  BoxPage,
+  CardAccount,
+  CardProfile,
+  CardUser,
+  CardMenu,
+  Links,
+  ButtonProfile,
+} from "../../../Styled/MUI/BuyerStyle.js";
 import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
 import TopPanels from "../../../Components/Header/TopPanel";
 import { Col, Row } from "antd";
@@ -9,8 +19,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { ButtonGroup, TableHead, TableRow } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { showUserBio } from "../../../Redux/Actions/userAction";
+import { useNavigate } from "react-router-dom";
 
 function Buyers() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.user.sbio);
 
@@ -45,7 +57,17 @@ function Buyers() {
                       <ButtonProfile variant="outlined">
                         <LogoutIcon /> Log Out
                       </ButtonProfile>
-                      <Links to="/account/profile/edit">{data.biodata === null ? <ButtonProfile variant="contained">Create</ButtonProfile> : <ButtonProfile variant="contained">Edit</ButtonProfile>}</Links>
+                      <Links to="/account/profile/edit">
+                        {data.biodata === null ? (
+                          <ButtonProfile variant="contained">
+                            Create
+                          </ButtonProfile>
+                        ) : (
+                          <ButtonProfile variant="contained">
+                            Edit
+                          </ButtonProfile>
+                        )}
+                      </Links>
                     </ButtonGroup>
                   </CardMenu>
                 </Col>
