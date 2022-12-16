@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Avatar, Grid } from "@mui/material";
 import NavBar from "../../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
 import Footer from "../../../Components/Footer/Footer";
@@ -21,7 +21,10 @@ function Notifications() {
               </CardContainer>
             </Grid>
             <Grid>
-              <CardPanel variant="outlined"></CardPanel>
+              <CardPanel variant="outlined">
+                <Avatar />
+                <p>isi text notif</p>
+              </CardPanel>
             </Grid>
           </Grid>
         </Grid>
