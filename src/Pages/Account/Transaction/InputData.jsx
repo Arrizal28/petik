@@ -8,7 +8,7 @@ import { ButtonData, CardContainer, CardPass, Dividers, FieldData } from "../../
 import { FontNotif, Title } from "../../../Styled/ComponentUI/Styles";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
-function InputData() {
+function InputData({ totals, setTotals }) {
   return (
     <>
       <NavBar />
@@ -31,8 +31,20 @@ function InputData() {
                         maxWidth: "100%",
                       }}
                     >
+                      <Title>Total Passenger</Title>
+                      <FieldData variant="outlined" size="small" name="Total Passenger" value={totals} onChange={(event) => setTotals(event.target.value)} type="number" required />
+                    </Box>
+                  </Grid>
+                  <Dividers />
+                  <Grid>
+                    <Box
+                      sx={{
+                        width: 800,
+                        maxWidth: "100%",
+                      }}
+                    >
                       <Title>Passenger Name</Title>
-                      <FieldData id="outlined-basic" label="Full Name" variant="outlined" size="small" />
+                      <FieldData variant="outlined" size="small" />
                     </Box>
                   </Grid>
                   <Dividers />
@@ -44,7 +56,7 @@ function InputData() {
                       }}
                     >
                       <Title>ID Card (KTP)</Title>
-                      <FieldData id="outlined-basic" label="Number" variant="outlined" size="small" />
+                      <FieldData variant="outlined" size="small" />
                     </Box>
                     <Dividers />
                     <Grid>
@@ -55,13 +67,14 @@ function InputData() {
                         }}
                       >
                         <Title>Passport</Title>
-                        <FieldData id="outlined-basic" label="Number" variant="outlined" size="small" />
+                        <FieldData variant="outlined" size="small" />
                       </Box>
                     </Grid>
                     <Dividers />
-                    <ButtonData id="outlined-basic" label="Button" variant="contained" size="small">
+                    <ButtonData variant="contained" size="small">
                       Save Data
                     </ButtonData>
+                    <Dividers />
                   </Grid>
                 </Grid2>
               </CardPass>
