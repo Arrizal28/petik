@@ -12,7 +12,7 @@ function MyOrders() {
     <>
       <NavBar />
       <TopPanels />
-      <Box sx={{ flexGrow: 1, justifyContent: "center" }}>
+      <Box sx={{ flexGrow: 1, justifyContent: "center", maxWidth: 1024, margin: "auto" }}>
         <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
           <Grid item xs={9}>
             <Grid>

@@ -47,7 +47,7 @@ function NavBar() {
                   </IconButton>
                 ) : (
                   <Tooltip title="Notification">
-                    <Links to="notification">
+                    <Links to="/notification">
                       <IconNotif />
                     </Links>
                   </Tooltip>

@@ -39,7 +39,6 @@ function App() {
               <Route path="/forgotpassword" element={<ForgotPassword />} />
               <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/listflight" element={<ListFlight />} />
-              <Route path="/InputData" element={<InputData />} />
               <Route path="/adminhome" element={<Adminhome />} />
               <Route
                 path="/account"
@@ -62,6 +61,14 @@ function App() {
                 element={
                   <Protected>
                     <EditProfile />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/inputdata"
+                element={
+                  <Protected>
+                    <InputData />
                   </Protected>
                 }
               />
