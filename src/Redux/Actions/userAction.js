@@ -53,7 +53,7 @@ export const showUserBio = () => async (dispatch, getState) => {
 
 export const upadateUserBio = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/show-bio`, data);
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/update-bio`, data);
     if (result.data.message) {
       dispatch(setUpdateBio(data));
       swal({
