@@ -27,7 +27,6 @@ function EditProfile() {
   const navigate = useNavigate();
   const { data } = useSelector((state) => state.user.sbio);
 
-  const [gender, setGender] = useState("Gender");
   const titles = [
     {
       value: "Male",
@@ -39,16 +38,27 @@ function EditProfile() {
     },
   ];
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [address, setAdress] = useState("");
-  const [nationality, setNationality] = useState("");
-  const dispatch = useDispatch();
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  // const [address, setAdress] = useState("");
+  // const [nationality, setNationality] = useState("");
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    gender: "",
+    phoneNumber: "",
+    address: "",
+    nationality: "",
+  });
 
-  const handleGenderChange = (event) => {
-    setGender(event.target.value);
+  const { firstName, lastName, gender, phoneNumber, address, nationality } =
+    user;
+
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,62 +94,22 @@ function EditProfile() {
       address !== "" &&
       nationality !== ""
     ) {
-      const data = {
-        firstName,
-        lastName,
-        gender,
-        phoneNumber,
-        address,
-        nationality,
-      };
-      dispatch(createUserBio(data));
+      dispatch(createUserBio(user));
       navigate("/");
     }
   };
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    if (gender === "") {
-      alert("Gender is required");
-      return;
-    }
-    if (firstName === "") {
-      alert("First Name is required");
-      return;
-    }
-    if (lastName === "") {
-      alert("Last Name is required");
-      return;
-    }
-    if (phoneNumber === "") {
-      alert("Phone Number is required");
-      return;
-    }
-    if (address === "") {
-      alert("Adress is required");
-      return;
-    }
-    if (nationality === "") {
-      alert("Nationality is required");
-      return;
-    }
     if (
-      gender !== "" &&
-      firstName !== "" &&
-      lastName !== "" &&
-      phoneNumber !== "" &&
-      address !== "" &&
+      gender !== "" ||
+      firstName !== "" ||
+      lastName !== "" ||
+      phoneNumber !== "" ||
+      address !== "" ||
       nationality !== ""
     ) {
-      const data = {
-        firstName,
-        lastName,
-        gender,
-        phoneNumber,
-        address,
-        nationality,
-      };
-      dispatch(upadateUserBio(data));
+      dispatch(upadateUserBio(user));
       navigate("/");
     }
   };
@@ -165,28 +135,31 @@ function EditProfile() {
                       id="outlined-basic"
                       label="First Name"
                       variant="outlined"
+                      name="firstName"
                       size="small"
                       helperText="Please enter your first name"
                       value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
                       label="Last Name"
                       variant="outlined"
+                      name="lastName"
                       size="small"
                       helperText="Please enter your last name"
                       value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
                       variant="outlined"
                       size="small"
+                      name="gender"
                       select
                       label="Select"
                       value={gender}
-                      onChange={handleGenderChange}
+                      onChange={(e) => onInputChange(e)}
                       helperText="Please select your gender"
                     >
                       {titles.map((option) => (
@@ -201,8 +174,9 @@ function EditProfile() {
                       variant="outlined"
                       size="small"
                       helperText="Please enter your Phone number"
+                      name="phoneNumber"
                       value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
@@ -210,17 +184,19 @@ function EditProfile() {
                       variant="outlined"
                       size="small"
                       helperText="Please enter your address"
+                      name="address"
                       value={address}
-                      onChange={(e) => setAdress(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
                       label="Nationality"
                       variant="outlined"
                       size="small"
+                      name="nationality"
                       helperText="Please enter your Nationality"
                       value={nationality}
-                      onChange={(e) => setNationality(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <Buttons
                       variant="contained"
@@ -240,30 +216,33 @@ function EditProfile() {
                   <CardContent>
                     <TextFields
                       id="outlined-basic"
-                      label={data.biodata.firstName}
+                      label={data?.biodata?.firstName}
                       variant="outlined"
                       size="small"
                       helperText="Please enter your first name"
+                      name="firstName"
                       value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
-                      label={data.biodata.lastName}
+                      label={data?.biodata?.lastName}
                       variant="outlined"
                       size="small"
+                      name="lastName"
                       helperText="Please enter your last name"
                       value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
                       variant="outlined"
                       size="small"
                       select
-                      label={data.biodata.gender}
+                      name="gender"
+                      label={data?.biodata?.gender}
                       value={gender}
-                      onChange={handleGenderChange}
+                      onChange={(e) => onInputChange(e)}
                       helperText="Please select your gender"
                     >
                       {titles.map((option) => (
@@ -274,30 +253,33 @@ function EditProfile() {
                     </TextFields>
                     <TextFields
                       id="outlined-basic"
-                      label={data.biodata.phoneNumber}
+                      label={data?.biodata?.phoneNumber}
                       variant="outlined"
                       size="small"
+                      name="phoneNumber"
                       helperText="Please enter your Phone number"
                       value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
-                      label={data.biodata.address}
+                      label={data?.biodata?.address}
                       variant="outlined"
                       size="small"
+                      name="address"
                       helperText="Please enter your address"
                       value={address}
-                      onChange={(e) => setAdress(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <TextFields
                       id="outlined-basic"
-                      label={data.biodata.nationality}
+                      label={data?.biodata?.nationality}
                       variant="outlined"
+                      name="nationality"
                       size="small"
                       helperText="Please enter your Nationality"
                       value={nationality}
-                      onChange={(e) => setNationality(e.target.value)}
+                      onChange={(e) => onInputChange(e)}
                     />
                     <Buttons
                       variant="contained"

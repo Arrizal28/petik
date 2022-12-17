@@ -47,10 +47,10 @@ export const scheduleFlightSearch = (data) => async (dispatch) => {
   }
 };
 
-export const getscheduleFlight = () => async (dispatch) => {
+export const getscheduleFlight = (page, limit) => async (dispatch) => {
   try {
     const result = await axios.get(
-      `${process.env.REACT_APP_AUTH_API}/flight/schedule`,
+      `${process.env.REACT_APP_AUTH_API}/flight/schedule?page=${page}&limit=${limit}`,
       {
         headers: {
           "Content-Type": "application/json",
