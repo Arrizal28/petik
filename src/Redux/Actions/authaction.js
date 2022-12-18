@@ -16,7 +16,7 @@ export const register = (data) => async (dispatch) => {
   } catch (error) {
     swal({
       title: error.response.data.message,
-      icon: "warning",
+      icon: "error",
       button: "OK",
     });
   }
@@ -38,7 +38,7 @@ export const login = (data) => async (dispatch) => {
   } catch (error) {
     swal({
       title: error.response.data.message,
-      icon: "warning",
+      icon: "error",
       button: "OK",
     });
   }
@@ -100,7 +100,7 @@ export const resetpassword = (data) => async () => {
   } catch (error) {
     swal({
       title: error.response.data.message,
-      icon: "warning",
+      icon: "error",
       button: "OK",
     });
   }

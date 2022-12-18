@@ -37,10 +37,10 @@ export const CardPanel = styled(Card)({
 });
 
 export const CardPass = styled(Card)({
-  height: 500,
+  maxHeight: "100%",
   justifyContent: "left",
   textAlign: "left",
-  // alignItems: "center",
+  alignItems: "center",
   marginTop: 30,
   display: "flex",
   marginBottom: 30,
@@ -74,6 +74,7 @@ export const ButtonData = styled(Button)({
   borderRadius: 10,
   display: "flex",
   marginLeft: 20,
+  marginBottom: 20,
 });
 
 export const Links = styled(Link)({
