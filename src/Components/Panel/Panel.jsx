@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { getairport, clear } from "../../Redux/Actions/airportAction";
 import { scheduleFlightSearch } from "../../Redux/Actions/airportAction";
 import swal from "sweetalert";
+import { DatePicker } from "antd";
 import "./panel.scss";
 
 function Panel() {
@@ -19,6 +20,14 @@ function Panel() {
   const [newvalue, setNewvalue] = useState("");
   const sameairport = origin === destination;
   const emptysearch = origin === "" && destination === "";
+  const [query, setQuery] = useState("");
+  const [apiQuery, setApiQeury] = useState("");
+  const [date, setDate] = React.useState(false);
+
+  function onSelectDate(date, dateString) {
+    console.log(date, dateString);
+    setDate(dateString);
+  }
 
   const navigate = useNavigate();
 
@@ -44,10 +53,11 @@ function Panel() {
       });
       return;
     }
-    if (origin !== "" && destination !== "") {
+    if (origin !== "" && destination !== "" && date !== "") {
       const data = {
-        origin,
-        destination,
+        origin: origin,
+        destination: destination,
+        date: date,
       };
       dispatch(scheduleFlightSearch(data));
       navigate("/listflight");
@@ -77,8 +87,15 @@ function Panel() {
       dispatch(clear());
       return;
     }
-    dispatch(getairport(newvalue));
+    const timeoutId = setTimeout(() => {
+      dispatch(getairport(newvalue));
+    }, 500);
+    return () => clearTimeout(timeoutId);
   }, [newvalue, dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(getairport(newvalue));
+  // }, [newvalue, dispatch]);
 
   // const [options, setOptions] = useState({
   //   adult: 1,
@@ -102,7 +119,7 @@ function Panel() {
           <div className="row">
             <div className="col-lg-12 panel1 col-sm-12">
               <FontAwesomeIcon icon={faPlane} className="panelicon" />
-              {newvalue} {origin} {destination}
+              {newvalue} {origin} {destination} {date}
             </div>
             {/* <div className="row panelc">
               <div className="col-lg-12 col-sm-12">
@@ -110,7 +127,7 @@ function Panel() {
               </div>
             </div> */}
             <div className="row panel2 d-flex justify-content-center align-items-center">
-              <div className="col-lg-4 col-sm-12">
+              <div className="col-lg-6 col-sm-12">
                 <Select
                   showSearch
                   autoClearSearchValue
@@ -149,7 +166,7 @@ function Panel() {
                     })}
                 </Select>
               </div>
-              <div className="col-lg-4 col-sm-12">
+              <div className="col-lg-6 col-sm-12">
                 {/* <Select
                   showSearch
                   size="large"
@@ -210,16 +227,16 @@ function Panel() {
                     })}
                 </Select>
               </div>
-              <div className="col-lg-4 col-sm-12">
-                <Button
+              {/* <div className="col-lg-4 col-sm-12"> */}
+              {/* <Button
                   type="primary"
                   size="large"
                   className="lebarmsearchbtn"
                   onClick={handleSubmit}
                 >
                   Search
-                </Button>
-                {/* {oneWay ? (
+                </Button> */}
+              {/* {oneWay ? (
                   <DatePicker className="lebarm" size="large" />
                 ) : (
                   <>
@@ -227,103 +244,18 @@ function Panel() {
                     <DatePicker className="lebardate" size="large" />
                   </>
                 )} */}
-              </div>
+              {/* </div> */}
             </div>
-            {/* <div className="row panel3 justify-content-center">
-              <div className="col-lg col-12">
-                <Input
-                  placeholder={`${options.adult} adult · ${options.children} children · ${options.infant} Infant`}
+            <div className="row panel3 justify-content-center">
+              <div className="col-lg-6 col-12">
+                <DatePicker
+                  className="lebardate"
                   size="large"
-                  suffix={<FontAwesomeIcon icon={faUsers} className="faicon" />}
-                  onClick={() => setOpenOptions(!openOptions)}
-                  className="headerSearchText lebarm"
-                />
-                {openOptions && (
-                  <div className="options">
-                    <div className="optionItem">
-                      <span className="optionText">Adult</span>
-                      <div className="optionCounter">
-                        <button
-                          disabled={options.adult <= 1}
-                          className="optionCounterButton"
-                          onClick={() => handleOption("adult", "d")}
-                        >
-                          -
-                        </button>
-                        <span className="optionCounterNumber">
-                          {options.adult}
-                        </span>
-                        <button
-                          className="optionCounterButton"
-                          onClick={() => handleOption("adult", "i")}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div className="optionItem">
-                      <span className="optionText">Children</span>
-                      <div className="optionCounter">
-                        <button
-                          disabled={options.children <= 0}
-                          className="optionCounterButton"
-                          onClick={() => handleOption("children", "d")}
-                        >
-                          -
-                        </button>
-                        <span className="optionCounterNumber">
-                          {options.children}
-                        </span>
-                        <button
-                          className="optionCounterButton"
-                          onClick={() => handleOption("children", "i")}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div className="optionItem">
-                      <span className="optionText">Infant</span>
-                      <div className="optionCounter">
-                        <button
-                          disabled={options.infant <= 0}
-                          className="optionCounterButton"
-                          onClick={() => handleOption("infant", "d")}
-                        >
-                          -
-                        </button>
-                        <span className="optionCounterNumber">
-                          {options.infant}
-                        </span>
-                        <button
-                          className="optionCounterButton"
-                          onClick={() => handleOption("infant", "i")}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="col-lg col-12">
-                <Select
-                  placeholder="Economy Class"
-                  className="lebarmclass"
-                  size="large"
-                  options={[
-                    {
-                      value: "economy",
-                      label: "Economy Class",
-                    },
-                    {
-                      value: "business",
-                      label: "Business Class",
-                    },
-                  ]}
+                  format={"YYYY-MM-DD"}
+                  onChange={onSelectDate}
                 />
               </div>
-              <div className="col-lg col-12">
+              <div className="col-lg-6 col-12">
                 <Button
                   type="primary"
                   size="large"
@@ -333,7 +265,7 @@ function Panel() {
                   Search
                 </Button>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

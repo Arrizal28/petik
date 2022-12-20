@@ -19,10 +19,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { ButtonGroup, TableHead, TableRow } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { showUserBio } from "../../../Redux/Actions/userAction";
-import { useNavigate } from "react-router-dom";
 
 function Buyers() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.user.sbio);
 
@@ -42,7 +40,7 @@ function Buyers() {
               <Title>Di sini anda bisa melihat profil akunmu.</Title>
             </BoxMenu>
           </CardProfile>
-          {data.biodata === null ? (
+          {data?.biodata === null ? (
             <>
               <Row style={{ justifyContent: "center" }}>
                 <Col>
@@ -58,7 +56,7 @@ function Buyers() {
                         <LogoutIcon /> Log Out
                       </ButtonProfile>
                       <Links to="/account/profile/edit">
-                        {data.biodata === null ? (
+                        {data?.biodata === null ? (
                           <ButtonProfile variant="contained">
                             Create
                           </ButtonProfile>
@@ -81,7 +79,7 @@ function Buyers() {
                     <BoxMenu>
                       <Heading>Name</Heading>
                       <Title>
-                        {data.biodata.firstName} {data.biodata.lastName}
+                        {data?.biodata?.firstName} {data?.biodata?.lastName}
                       </Title>
                     </BoxMenu>
                   </CardAccount>
