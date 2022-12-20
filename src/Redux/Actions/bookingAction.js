@@ -1,17 +1,18 @@
 import axios from "axios";
 import swal from "sweetalert";
 import {
-  setCreateBio,
-  setShowBio,
-  setUpdateBio,
-  setNotif,
-} from "../Reducers/userReducer";
+  setCbooking,
+  setCancelbooking,
+  setListbooking,
+  setPayment,
+  setFlightid,
+} from "../Reducers/bookingReducer";
 
-export const createUserBio = (data) => async (dispatch, getState) => {
+export const createBooking = (data) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
     const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/user/create-bio`,
+      `${process.env.REACT_APP_AUTH_API}/booking`,
       data,
       {
         headers: {
@@ -21,7 +22,7 @@ export const createUserBio = (data) => async (dispatch, getState) => {
       }
     );
     if (result.data.status) {
-      dispatch(setCreateBio(result.data));
+      dispatch(setCbooking(result.data));
       console.log("success", result.data);
       swal({
         title: result.data.message,
@@ -39,11 +40,11 @@ export const createUserBio = (data) => async (dispatch, getState) => {
   }
 };
 
-export const showUserBio = () => async (dispatch, getState) => {
+export const cancelBooking = (id) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
-    const result = await axios.get(
-      `${process.env.REACT_APP_AUTH_API}/user/show-bio`,
+    const result = await axios.put(
+      `${process.env.REACT_APP_AUTH_API}/booking/${id}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +53,7 @@ export const showUserBio = () => async (dispatch, getState) => {
       }
     );
     if (result.data.status) {
-      dispatch(setShowBio(result.data));
+      dispatch(setCancelbooking(result.data));
     }
   } catch (error) {
     swal({
@@ -63,21 +64,13 @@ export const showUserBio = () => async (dispatch, getState) => {
   }
 };
 
-export const upadateUserBio = (data) => async (dispatch, getState) => {
+export const getListBooking = () => async (dispatch) => {
   try {
-    const { token } = getState().auth;
-    const result = await axios.put(
-      `${process.env.REACT_APP_AUTH_API}/user/update-bio`,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
+    const result = await axios.get(
+      `${process.env.REACT_APP_AUTH_API}/booking/list-booking`
     );
-    if (result.data.status) {
-      dispatch(setUpdateBio(result.data));
+    if (result.data.message) {
+      dispatch(setListbooking(result.data));
       swal({
         title: result.data.message,
         icon: "success",
@@ -93,11 +86,12 @@ export const upadateUserBio = (data) => async (dispatch, getState) => {
   }
 };
 
-export const notifications = () => async (dispatch, getState) => {
+export const payment = (data) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
-    const result = await axios.get(
-      `${process.env.REACT_APP_AUTH_API}/notifications`,
+    const result = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/payment`,
+      data,
       {
         headers: {
           "Content-Type": "application/json",
@@ -106,13 +100,24 @@ export const notifications = () => async (dispatch, getState) => {
       }
     );
     if (result.data.status) {
-      dispatch(setNotif(result.data));
+      dispatch(setPayment(result.data));
+      console.log("success", result.data);
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
     }
   } catch (error) {
+    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
       button: "OK",
     });
   }
+};
+
+export const flightid = (id) => async (dispatch) => {
+  dispatch(setFlightid(id));
 };

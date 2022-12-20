@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getscheduleFlight } from "../../Redux/Actions/airportAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Table, Pagination } from "antd";
+import { Table, Pagination, Space } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import Footer from "../../Components/Footer/Footer";
 import "./listallflight.css";
 
@@ -26,6 +27,17 @@ const UserList = () => {
       title: "Departure Date",
       dataIndex: "departuredate",
       key: "departuredate",
+    },
+    {
+      title: "Action",
+      dataIndex: "",
+      key: "x",
+      render: () => (
+        <Space size="middle">
+          <EditOutlined />
+          <DeleteOutlined />
+        </Space>
+      ),
     },
   ];
   const [page, setPage] = useState(1);

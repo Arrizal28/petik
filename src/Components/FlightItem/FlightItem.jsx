@@ -2,15 +2,17 @@ import React from "react";
 import "./flightitem.css";
 import { Divider, Button } from "antd";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function FlightItem() {
   const { listflight } = useSelector((state) => state.airport);
+  const navigate = useNavigate();
 
   return (
     <>
-      {listflight?.data?.map((item, index) => {
+      {listflight?.data?.map((item) => {
         return (
-          <div className="flightitem " key={index}>
+          <div className="flightitem " key={item.id}>
             <div className="d-flex flex-column align-items-center">
               <div className="d-flex flex-column align-items-start fitem rounded-4">
                 <div className="d-flex flex-column w-100 px-3 py-2">
@@ -37,7 +39,15 @@ function FlightItem() {
                       <h4 className="fw-bold tblue">1 stop</h4>
                     </div>
                     <div className="d-flex flex-row align-items-start">
-                      <Button type="primary">Choose</Button>
+                      <Button
+                        type="primary"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate(`/inputdata/${item.id}`);
+                        }}
+                      >
+                        Choose
+                      </Button>
                     </div>
                   </div>
                 </div>

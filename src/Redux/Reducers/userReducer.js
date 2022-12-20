@@ -4,6 +4,7 @@ const initialState = {
   cbio: [],
   sbio: [],
   ubio: [],
+  notif: [],
 };
 
 const authSlicer = createSlice({
@@ -19,10 +20,13 @@ const authSlicer = createSlice({
     setUpdateBio: (state, action) => {
       state.ubio = action.payload;
     },
+    setNotif: (state, action) => {
+      state.notif = action.payload;
+    },
   },
 });
 
-export const { setCreateBio, setShowBio, setUpdateBio, setAuthMe } =
+export const { setCreateBio, setShowBio, setUpdateBio, setAuthMe, setNotif } =
   authSlicer.actions;
 
 export default authSlicer.reducer;
