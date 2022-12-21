@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Button, ButtonGroup, Card, Divider, TextField } from "@mui/material";
+import { Box, Button, ButtonGroup, Card, Divider, FormControl, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const BoxContainer = styled(Box)({
@@ -10,8 +10,8 @@ export const BoxContainer = styled(Box)({
   margin: "auto",
 });
 
-export const CardContainer = styled(Card)({
-  height: 100,
+export const CardPayment = styled(Card)({
+  height: 150,
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
@@ -80,7 +80,7 @@ export const QRCard = styled(Card)({
   display: "flex",
 });
 
-export const CardPass = styled(Card)({
+export const CardPay = styled(Card)({
   maxHeight: "100%",
   justifyContent: "left",
   textAlign: "left",
@@ -104,22 +104,38 @@ export const ButtonOrder = styled(Button)({
   height: 25,
 });
 
-export const FieldData = styled(TextField)({
-  maxWidth: 600,
+export const FieldPayment = styled(TextField)({
+  maxWidth: 900,
   marginTop: 20,
   borderRadius: 20,
   display: "flex",
   margin: 20,
 });
 
-export const ButtonData = styled(Button)({
-  width: 300,
+export const FormPayment = styled(FormControl)({
+  maxWidth: 100,
+  marginTop: 20,
+  borderRadius: 20,
+  display: "flex",
+  margin: 20,
+  justifyContent: "center",
+});
+
+export const ButtonPayment = styled(Button)({
+  maxWidth: 250,
   marginTop: 20,
   borderRadius: 10,
   display: "flex",
   marginLeft: 20,
   marginBottom: 20,
-  textAlign: "center",
+});
+
+export const CardMet = styled(Card)({
+  height: 100,
+  justifyContent: "center",
+  textAlign: "left",
+  alignItems: "center",
+  marginTop: 25,
 });
 
 export const Links = styled(Link)({

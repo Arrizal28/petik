@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Box, Fab, Tooltip } from "@mui/material";
+import { Avatar, Badge, Box, Fab, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
@@ -19,15 +19,15 @@ function Account() {
   return (
     <div>
       <Box sx={{ m: 1, marginLeft: "auto" }}>
-        <Link to="/searchflight" style={{ textDecoration: "none" }}>
+        <Link to="/listlight" style={{ textDecoration: "none" }}>
           <Tooltip title="Search Flight">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <LocationSearchingIcon />
             </Fab>
           </Tooltip>
         </Link>
-        <Link to="/orders" style={{ textDecoration: "none" }}>
-          <Tooltip title="My Orders">
+        <Link to="/transaction" style={{ textDecoration: "none" }}>
+          <Tooltip title="Transaction">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <AirplaneTicketIcon />
             </Fab>
@@ -35,9 +35,11 @@ function Account() {
         </Link>
         <Link to="/notification" style={{ textDecoration: "none" }}>
           <Tooltip title="Notification">
-            <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-              <NotificationsActiveIcon />
-            </Fab>
+            <Badge badgeContent={4} color="primary">
+              <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
+                <NotificationsActiveIcon />
+              </Fab>
+            </Badge>
           </Tooltip>
         </Link>
         <Link to="/account" style={{ textDecoration: "none" }}>
