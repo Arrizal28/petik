@@ -6,10 +6,9 @@ import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
 import { ButtonData, CardContainer, CardPass, Dividers, FieldData } from "../../Styled/MUI/TransactionStyle";
 import { FontNotif, Title } from "../../Styled/ComponentUI/Styles";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { createBooking } from "../../../Redux/Actions/bookingAction";
+import { createBooking } from "../../Redux/Actions/bookingAction";
 
 function InputData() {
   const [total_passenger, settotal_passenger] = useState("");
@@ -88,30 +87,33 @@ function InputData() {
             </Grid>
             <Grid>
               <CardPass variant="outlined">
-                <Grid2 item xs={9}>
-                  <Grid>
-                    <Box
-                      sx={{
-                        width: 800,
-                        maxWidth: "100%",
-                      }}
-                    >
-                      <Title>Total Passenger</Title>
-                      <FieldData variant="outlined" size="small" name="Total Passenger" value={total_passenger} onChange={(e) => settotal_passenger(e.target.value)} type="number" required />
-                    </Box>
-                  </Grid>
-                  <Dividers />
-                  <ButtonData variant="contained" size="small" onClick={(e) => onSubmit(e)}>
-                    Save Data
-                  </ButtonData>
+                <Grid>
+                  <Box
+                    sx={{
+                      width: 800,
+                      maxWidth: "100%",
+                    }}
+                  >
+                    <Title>Total Passenger</Title>
+                    <FieldData variant="outlined" size="small" name="Total Passenger" value={total_passenger} onChange={(e) => settotal_passenger(e.target.value)} type="number" required />
+                    <ButtonData variant="contained" size="small" onClick={(e) => onSubmit(e)}>
+                      Save Data
+                    </ButtonData>{" "}
+                  </Box>
+                </Grid>
+
+                <Dividers />
+              </CardPass>
+            </Grid>
+            <Grid>
+              <CardPass variant="outlined">
+                <Grid>
                   {totalPassagerForm > 0 &&
                     Array.from(Array(totalPassagerForm).keys()).map((item, i) => {
                       return (
                         <>
-                          <Grid>
-                            <CardContainer variant="outlined">
-                              <FontNotif>Pasengger Data {item + 1}</FontNotif>
-                            </CardContainer>
+                          <Grid style={{ textAlign: "center" }}>
+                            <FontNotif>Pasengger Data {item + 1}</FontNotif>
                           </Grid>
                           <Dividers />
                           <Grid>
@@ -122,6 +124,33 @@ function InputData() {
                               }}
                             >
                               <Title>Passenger Name</Title>
+                              <FieldData
+                                variant="outlined"
+                                size="small"
+                                value={requestData?.body[i]?.passangerName}
+                                onChange={(e) => {
+                                  pessangers = requestData?.body;
+                                  pessangers[i] = {
+                                    ...pessangers[i],
+                                    passangerName: e.target.value,
+                                  };
+                                  setRequestData({
+                                    ...requestData,
+                                    body: pessangers,
+                                  });
+                                }}
+                              />
+                            </Box>
+                          </Grid>
+                          <Dividers />
+                          <Grid>
+                            <Box
+                              sx={{
+                                width: 800,
+                                maxWidth: "100%",
+                              }}
+                            >
+                              <Title>Ticket Class</Title>
                               <FieldData
                                 variant="outlined"
                                 size="small"
@@ -204,7 +233,7 @@ function InputData() {
                       Continue Payment
                     </ButtonData>
                   )}
-                </Grid2>
+                </Grid>
               </CardPass>
             </Grid>
           </Grid>
