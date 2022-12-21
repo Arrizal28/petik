@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import NavBar from "../../../Components/Navbar/Navbar";
+import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
-import Footer from "../../../Components/Footer/Footer";
-import TopPanels from "../../../Components/Header/TopPanel";
-import { ButtonData, CardContainer, CardPass, Dividers, FieldData } from "../../../Styled/MUI/TransactionStyle";
-import { FontNotif, Title } from "../../../Styled/ComponentUI/Styles";
+import Footer from "../../Components/Footer/Footer";
+import TopPanels from "../../Components/Header/TopPanel";
+import { ButtonData, CardContainer, CardPass, Dividers, FieldData } from "../../Styled/MUI/TransactionStyle";
+import { FontNotif, Title } from "../../Styled/ComponentUI/Styles";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 function InputData({ totals, setTotals }) {

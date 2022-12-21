@@ -1,9 +1,10 @@
 import React from "react";
-import { Cards, TextFields, Buttons, Links, BoxAuth, CardLogin, CardLogo } from "../../../Styled/MUI/AuthStyles";
+import { Cards, TextFields, Buttons, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
 import { CardContent } from "@mui/material";
-import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
+import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "antd";
-function ResetPassword() {
+
+function ForgotPassword() {
   return (
     <>
       <BoxAuth>
@@ -12,17 +13,16 @@ function ResetPassword() {
             <Col style={{ justifyContent: "center" }}>
               <CardLogo elevation={2}>
                 <CardContent>
-                  <Heading>Reset Password</Heading>
-                  <Title>Please Enter Your New Passowrd </Title>
+                  <Heading> Find Your Account</Heading>
+                  <Title>Please enter your email For get new password </Title>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
-                  <TextFields type="password" id="outlined" label="New Password" variant="outlined" size="small" required />
-                  <TextFields type="password" id="outlined" label="Confirm New Password" variant="outlined" size="small" required />
-                  <Links to="/login">
+                  <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" required />
+                  <Links to="/resetpassword">
                     <Buttons variant="contained" size="medium">
-                      Save
+                      Continue
                     </Buttons>
                   </Links>
                 </CardContent>
@@ -35,4 +35,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default ForgotPassword;

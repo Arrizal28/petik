@@ -5,7 +5,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import { ButtonSet, FieldSet } from "../../../Styled/MUI/SettingsStyle";
+import { ButtonSet, FieldSet } from "../../Styled/MUI/SettingsStyle";
 
 const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
   marginBottom: 15,
