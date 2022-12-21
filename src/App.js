@@ -23,6 +23,7 @@ import Adminhome from "./Pages/Admin/Home/Home";
 import ResetPassword from "./Pages/Password/ResetPassword";
 import InputData from "./Pages/Transaction/InputData";
 import HistoryOrders from "./Pages/Transaction/HistoryOrders";
+import FlightAdmin from "./Pages/Admin/Flight/FlightAdmin";
 import Listallflight from "./Pages/ListAllFlight/Listallflight";
 import MyTicket from "./Pages/Transaction/MyTickket";
 import Payment from "./Pages/Payment/Payment";
@@ -45,6 +46,7 @@ function App() {
               <Route path="/adminhome" element={<Adminhome />} />
               <Route path="/listallflight" element={<Listallflight />} />
               <Route path="/searchflight" element={<ListFlight />} />
+              <Route path="/admin/flight" element={<FlightAdmin />} />
               <Route
                 path="/account"
                 element={
@@ -69,14 +71,7 @@ function App() {
                   </Protected>
                 }
               />
-              <Route
-                path="/inputdata"
-                element={
-                  <Protected>
-                    <InputData />
-                  </Protected>
-                }
-              />
+              <Route path="/inputdata/:id" element={<InputData />} />
               <Route
                 path="/transaction"
                 element={

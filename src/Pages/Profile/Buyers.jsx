@@ -32,7 +32,7 @@ function Buyers() {
               <Title>Di sini anda bisa melihat profil akunmu.</Title>
             </BoxMenu>
           </CardProfile>
-          {data.biodata === null ? (
+          {data?.biodata === null ? (
             <>
               <Row style={{ justifyContent: "center" }}>
                 <Col>
@@ -47,7 +47,7 @@ function Buyers() {
                       <ButtonProfile variant="outlined">
                         <LogoutIcon /> Log Out
                       </ButtonProfile>
-                      <Links to="/account/profile/edit">{data.biodata === null ? <ButtonProfile variant="contained">Create</ButtonProfile> : <ButtonProfile variant="contained">Edit</ButtonProfile>}</Links>
+                      <Links to="/account/profile/edit">{data?.biodata === null ? <ButtonProfile variant="contained">Create</ButtonProfile> : <ButtonProfile variant="contained">Edit</ButtonProfile>}</Links>
                     </ButtonGroup>
                   </CardMenu>
                 </Col>
@@ -61,7 +61,7 @@ function Buyers() {
                     <BoxMenu>
                       <Heading>Name</Heading>
                       <Title>
-                        {data.biodata.firstName} {data.biodata.lastName}
+                        {data?.biodata?.firstName} {data?.biodata?.lastName}
                       </Title>
                     </BoxMenu>
                   </CardAccount>

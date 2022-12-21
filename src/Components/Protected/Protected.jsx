@@ -16,7 +16,7 @@ function Protected({ children }) {
         dispatch(showUserBio());
         dispatch(
           whoami((status) => {
-            if (status === 401) {
+            if (status === 500) {
               navigate("/login");
             }
           })
