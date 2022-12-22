@@ -10,7 +10,6 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { getscheduleFlight } from "../../../Redux/Actions/airportAction";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 import { Pagination } from "antd";
 
@@ -57,7 +56,6 @@ const FlightTable = () => {
                     </TableCell>
                     <TableCell className="tableCell">
                       <EditIcon />
-                      <DeleteIcon />
                     </TableCell>
                   </TableRow>
                 </>
