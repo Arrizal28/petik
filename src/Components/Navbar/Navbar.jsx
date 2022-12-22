@@ -11,6 +11,7 @@ import { AppBars, AppBox, AppPaper } from "../../Styled/MUI/NavbarStyle";
 import { useSelector } from "react-redux";
 import { IconNotif } from "../../Styled/MUI/IconStyled";
 import { Links } from "../../Styled/MUI/AuthStyles";
+import Badge from "@mui/material/Badge";
 
 function NavBar() {
   const [setAnchorElNav] = useState(null);
@@ -48,7 +49,9 @@ function NavBar() {
                 ) : (
                   <Tooltip title="Notification">
                     <Links to="/notification">
-                      <IconNotif />
+                      <Badge badgeContent={4} color="primary">
+                        <IconNotif color="action" />
+                      </Badge>
                     </Links>
                   </Tooltip>
                 )}

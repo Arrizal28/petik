@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import NavBar from "../../../Components/Navbar/Navbar";
+import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
-import Footer from "../../../Components/Footer/Footer";
-import TopPanels from "../../../Components/Header/TopPanel";
-import { ButtonGroups, CardContainer, CardPanel, Links } from "../../../Styled/MUI/TransactionStyle";
-import { Heading, Title } from "../../../Styled/ComponentUI/Styles";
+import Footer from "../../Components/Footer/Footer";
+import TopPanels from "../../Components/Header/TopPanel";
+import { ButtonGroups, CardContainer, CardPanel, Links } from "../../Styled/MUI/TransactionStyle";
+import { FontBlue, Heading, Title } from "../../Styled/ComponentUI/Styles";
 
 function HistoryOrders() {
   return (
@@ -17,13 +17,16 @@ function HistoryOrders() {
           <Grid item xs={9}>
             <Grid>
               <CardContainer variant="outlined">
-                <Heading> History Orders</Heading>
+                <Heading>Transaction</Heading>
                 <ButtonGroups variant="outlined" aria-label="outlined primary button group">
-                  <Links to="/orders">
-                    <Title size="small">My Order</Title>
+                  <Links to="/ticket">
+                    <Title size="small">MyTicket</Title>
+                  </Links>
+                  <Links to="/transaction">
+                    <Title size="small">MyOrder</Title>
                   </Links>
                   <Links to="/history">
-                    <Title size="small">History</Title>
+                    <FontBlue size="small">MyHistory</FontBlue>
                   </Links>
                 </ButtonGroups>
               </CardContainer>
