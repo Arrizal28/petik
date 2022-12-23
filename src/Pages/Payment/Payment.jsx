@@ -11,6 +11,7 @@ import { CardPay, CardPayment } from "../../Styled/MUI/PaymentStyle";
 import MetPayment from "./MethodePayment";
 import StepperPay from "./Stepper";
 import { useDispatch, useSelector } from "react-redux";
+import Confirmation from "./ConfirmationPayment";
 
 function Payment({ totals, setTotals }) {
   const [totalSeat, setTotalSeat] = useState(3);
@@ -32,9 +33,7 @@ function Payment({ totals, setTotals }) {
 
   let totalSeatNumber = [];
 
-  const { tseat, cbooking, flightclass } = useSelector(
-    (state) => state.booking
-  );
+  const { tseat, cbooking, flightclass } = useSelector((state) => state.booking);
 
   useEffect(() => {
     console.log(requestData);
@@ -52,11 +51,7 @@ function Payment({ totals, setTotals }) {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
           <Grid item xs={9}>
             <Grid>
               <CardPayment variant="outlined">
@@ -79,13 +74,7 @@ function Payment({ totals, setTotals }) {
                               }}
                             >
                               <Title>Select Seat {item + 1}</Title>
-                              <SelectSeat
-                                totalSeatNumber={totalSeatNumber}
-                                requestData={requestData}
-                                setRequestData={setRequestData}
-                                seatNumber={requestData.seatNumber}
-                                i={i}
-                              />
+                              <SelectSeat totalSeatNumber={totalSeatNumber} requestData={requestData} setRequestData={setRequestData} seatNumber={requestData.seatNumber} i={i} />
                             </Box>
                           </Grid>
                         </Grid2>
@@ -97,11 +86,8 @@ function Payment({ totals, setTotals }) {
           </Grid>
         </Grid>
       </Box>
-      <MetPayment
-        paymentMethod={requestData.paymentMethod}
-        requestData={requestData}
-        setRequestData={setRequestData}
-      />
+      <MetPayment paymentMethod={requestData.paymentMethod} requestData={requestData} setRequestData={setRequestData} />
+      <Confirmation />
       <Footer />
     </>
   );
