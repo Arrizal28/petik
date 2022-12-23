@@ -11,9 +11,19 @@ import { CardPay, CardPayment } from "../../Styled/MUI/PaymentStyle";
 import MetPayment from "./MethodePayment";
 import StepperPay from "./Stepper";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  payment,
+  totalseat,
+  flightclass,
+} from "../../Redux/Actions/bookingAction";
+import { useNavigate } from "react-router-dom";
+import { ButtonData } from "../../Styled/MUI/TransactionStyle";
 
 function Payment({ totals, setTotals }) {
+  const { cbooking } = useSelector((state) => state.booking);
   const [totalSeat, setTotalSeat] = useState(3);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const [requestData, setRequestData] = useState({
   //   booking_id: cbooking?.data?.booking?.id,
   //   paymentMethod: "business",
@@ -23,22 +33,54 @@ function Payment({ totals, setTotals }) {
   // });
 
   const [requestData, setRequestData] = useState({
-    booking_id: 2342,
-    paymentMethod: "business",
-    grandTotal: 4000,
+    booking_id: null,
+    paymentMethod: "",
+    grandTotal: null,
     seatNumber: [],
     ticketClass: "business",
   });
 
   let totalSeatNumber = [];
 
-  const { tseat, cbooking, flightclass } = useSelector(
-    (state) => state.booking
-  );
-
   useEffect(() => {
     console.log(requestData);
   }, [requestData]);
+
+  // useEffect(() => {
+  //   setRequestData({
+  //     ...requestData,
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    setRequestData({
+      booking_id: cbooking?.data?.booking?.id,
+      paymentMethod: "",
+      grandTotal: cbooking?.data?.grandTotal,
+      seatNumber: [],
+      ticketClass: "business",
+    });
+  }, [cbooking]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (requestData?.seatNumber === []) {
+      alert("Seat Number is required");
+      return;
+    }
+    if (requestData?.paymentMethod === "") {
+      alert("Payment Method is required");
+      return;
+    }
+    if (requestData?.ticketClass === "") {
+      alert("Ticket Class is required");
+      return;
+    }
+    if (requestData?.paymentMethod !== "" && requestData?.seatNumber !== []) {
+      dispatch(payment(requestData));
+      navigate(`/ticket/${requestData?.booking_id}`);
+    }
+  };
 
   return (
     <>
@@ -102,6 +144,9 @@ function Payment({ totals, setTotals }) {
         requestData={requestData}
         setRequestData={setRequestData}
       />
+      <ButtonData variant="contained" size="small" onClick={handleSubmit}>
+        bayar
+      </ButtonData>{" "}
       <Footer />
     </>
   );

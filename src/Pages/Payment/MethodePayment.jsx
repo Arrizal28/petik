@@ -38,7 +38,7 @@ function MetPayment({
     setVa(true);
     setRequestData({
       ...requestData,
-      paymentMethod: "VirtualAccount",
+      paymentMethod: "Virtual Account",
     });
   };
 

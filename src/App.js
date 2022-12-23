@@ -89,7 +89,7 @@ function App() {
                 }
               />
               <Route
-                path="/ticket/:id"
+                path="/ticket/print-ticket/:id"
                 element={
                   <Protected>
                     <MyTicket />
