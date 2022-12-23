@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
+import { Grid, MenuItem, Select } from "@mui/material";
 import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
-import {
-  ButtonData,
-  CardContainer,
-  CardPass,
-  Dividers,
-  FieldData,
-} from "../../Styled/MUI/TransactionStyle";
+import { ButtonData, CardContainer, CardPass, Dividers, FieldData, FormClass } from "../../Styled/MUI/TransactionStyle";
 import { FontNotif, Title } from "../../Styled/ComponentUI/Styles";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -27,6 +21,12 @@ function InputData() {
     ticketClass: "business",
     flight_id: 0,
   });
+
+  const [classTic, setClassTic] = useState("");
+
+  const handleChange = (event) => {
+    setClassTic(event.target.value);
+  };
 
   const params = useParams();
   const dispatch = useDispatch();
@@ -85,11 +85,7 @@ function InputData() {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
           <Grid item xs={9}>
             <Grid>
               <CardContainer variant="outlined">
@@ -106,25 +102,28 @@ function InputData() {
                     }}
                   >
                     <Title>Total Passenger</Title>
-                    <FieldData
-                      variant="outlined"
-                      size="small"
-                      name="Total Passenger"
-                      value={total_passenger}
-                      onChange={(e) => settotal_passenger(e.target.value)}
-                      type="number"
-                      required
-                    />
-                    <ButtonData
-                      variant="contained"
-                      size="small"
-                      onClick={(e) => onSubmit(e)}
-                    >
+                    <FieldData variant="outlined" size="small" name="Total Passenger" value={total_passenger} onChange={(e) => settotal_passenger(e.target.value)} type="number" required />
+                    <ButtonData variant="contained" size="small" onClick={(e) => onSubmit(e)}>
                       Save Data
                     </ButtonData>{" "}
                   </Box>
+                  <Dividers />
+                  <Box
+                    sx={{
+                      width: 800,
+                      maxWidth: "100%",
+                    }}
+                  >
+                    <Title>Ticket Class</Title>
+                    <FormClass size="small">
+                      <Select value={classTic} onChange={handleChange}>
+                        <MenuItem value={1}>Economy</MenuItem>
+                        <MenuItem value={2}>Business</MenuItem>
+                        <MenuItem value={3}>VIP</MenuItem>
+                      </Select>
+                    </FormClass>
+                  </Box>
                 </Grid>
-
                 <Dividers />
               </CardPass>
             </Grid>
@@ -132,13 +131,67 @@ function InputData() {
               <CardPass variant="outlined">
                 <Grid>
                   {totalPassagerForm > 0 &&
-                    Array.from(Array(totalPassagerForm).keys()).map(
-                      (item, i) => {
-                        return (
-                          <>
-                            <Grid style={{ textAlign: "center" }}>
-                              <FontNotif>Pasengger Data {item + 1}</FontNotif>
-                            </Grid>
+                    Array.from(Array(totalPassagerForm).keys()).map((item, i) => {
+                      return (
+                        <>
+                          <Grid style={{ textAlign: "center" }}>
+                            <FontNotif>Pasengger Data {item + 1}</FontNotif>
+                          </Grid>
+                          <Dividers />
+                          <Grid>
+                            <Box
+                              sx={{
+                                width: 800,
+                                maxWidth: "100%",
+                              }}
+                            >
+                              <Title>Passenger Name</Title>
+                              <FieldData
+                                variant="outlined"
+                                size="small"
+                                value={requestData?.body[i]?.passangerName}
+                                onChange={(e) => {
+                                  pessangers = requestData?.body;
+                                  pessangers[i] = {
+                                    ...pessangers[i],
+                                    passangerName: e.target.value,
+                                  };
+                                  setRequestData({
+                                    ...requestData,
+                                    body: pessangers,
+                                  });
+                                }}
+                              />
+                            </Box>
+                          </Grid>
+                          <Dividers />
+
+                          <Dividers />
+                          <Grid>
+                            <Box
+                              sx={{
+                                width: 800,
+                                maxWidth: "100%",
+                              }}
+                            >
+                              <Title>ID Card KTP</Title>
+                              <FieldData
+                                variant="outlined"
+                                size="small"
+                                value={requestData?.body[i]?.NIK}
+                                onChange={(e) => {
+                                  pessangers = requestData?.body;
+                                  pessangers[i] = {
+                                    ...pessangers[i],
+                                    NIK: e.target.value,
+                                  };
+                                  setRequestData({
+                                    ...requestData,
+                                    body: pessangers,
+                                  });
+                                }}
+                              />
+                            </Box>
                             <Dividers />
                             <Grid>
                               <Box
@@ -147,16 +200,16 @@ function InputData() {
                                   maxWidth: "100%",
                                 }}
                               >
-                                <Title>Passenger Name</Title>
+                                <Title>Passport</Title>
                                 <FieldData
                                   variant="outlined"
                                   size="small"
-                                  value={requestData?.body[i]?.passangerName}
+                                  value={requestData?.body[i]?.passport}
                                   onChange={(e) => {
                                     pessangers = requestData?.body;
                                     pessangers[i] = {
                                       ...pessangers[i],
-                                      passangerName: e.target.value,
+                                      passport: e.target.value,
                                     };
                                     setRequestData({
                                       ...requestData,
@@ -167,98 +220,13 @@ function InputData() {
                               </Box>
                             </Grid>
                             <Dividers />
-                            <Grid>
-                              <Box
-                                sx={{
-                                  width: 800,
-                                  maxWidth: "100%",
-                                }}
-                              >
-                                <Title>Ticket Class</Title>
-                                <FieldData
-                                  variant="outlined"
-                                  size="small"
-                                  value={requestData?.body[i]?.passangerName}
-                                  onChange={(e) => {
-                                    pessangers = requestData?.body;
-                                    pessangers[i] = {
-                                      ...pessangers[i],
-                                      passangerName: e.target.value,
-                                    };
-                                    setRequestData({
-                                      ...requestData,
-                                      body: pessangers,
-                                    });
-                                  }}
-                                />
-                              </Box>
-                            </Grid>
                             <Dividers />
-                            <Grid>
-                              <Box
-                                sx={{
-                                  width: 800,
-                                  maxWidth: "100%",
-                                }}
-                              >
-                                <Title>ID Card KTP</Title>
-                                <FieldData
-                                  variant="outlined"
-                                  size="small"
-                                  value={requestData?.body[i]?.NIK}
-                                  onChange={(e) => {
-                                    pessangers = requestData?.body;
-                                    pessangers[i] = {
-                                      ...pessangers[i],
-                                      NIK: e.target.value,
-                                    };
-                                    setRequestData({
-                                      ...requestData,
-                                      body: pessangers,
-                                    });
-                                  }}
-                                />
-                              </Box>
-                              <Dividers />
-                              <Grid>
-                                <Box
-                                  sx={{
-                                    width: 800,
-                                    maxWidth: "100%",
-                                  }}
-                                >
-                                  <Title>Passport</Title>
-                                  <FieldData
-                                    variant="outlined"
-                                    size="small"
-                                    value={requestData?.body[i]?.passport}
-                                    onChange={(e) => {
-                                      pessangers = requestData?.body;
-                                      pessangers[i] = {
-                                        ...pessangers[i],
-                                        passport: e.target.value,
-                                      };
-                                      setRequestData({
-                                        ...requestData,
-                                        body: pessangers,
-                                      });
-                                    }}
-                                  />
-                                </Box>
-                              </Grid>
-                              <Dividers />
-                              <Dividers />
-                            </Grid>
-                          </>
-                        );
-                      }
-                    )}
+                          </Grid>
+                        </>
+                      );
+                    })}
                   {toggle && (
-                    <ButtonData
-                      variant="contained"
-                      size="small"
-                      onClick={handleSubmit}
-                    >
+                    <ButtonData variant="contained" size="small" onClick={handleSubmit}>
                       Continue Payment
                     </ButtonData>
                   )}
