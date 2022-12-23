@@ -113,7 +113,7 @@ export const FieldPayment = styled(TextField)({
 });
 
 export const FormPayment = styled(FormControl)({
-  maxWidth: 100,
+  maxWidth: 600,
   marginTop: 20,
   borderRadius: 20,
   display: "flex",
@@ -130,12 +130,28 @@ export const ButtonPayment = styled(Button)({
   marginBottom: 20,
 });
 
+export const ButtonPay = styled(Button)({
+  maxWidth: 250,
+  marginTop: 30,
+  borderRadius: 5,
+  marginLeft: 20,
+  textAlign: "rigth",
+});
+
 export const CardMet = styled(Card)({
   height: 100,
   justifyContent: "center",
   textAlign: "left",
   alignItems: "center",
   marginTop: 25,
+});
+
+export const CardConf = styled(Card)({
+  height: 100,
+  justifyContent: "center",
+  textAlign: "left",
+  alignItems: "center",
+  marginBottom: 20,
 });
 
 export const Links = styled(Link)({

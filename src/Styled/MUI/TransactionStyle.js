@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Button, ButtonGroup, Card, Divider, TextField } from "@mui/material";
+import { Box, Button, ButtonGroup, Card, Divider, FormControl, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const BoxContainer = styled(Box)({
@@ -120,6 +120,15 @@ export const ButtonData = styled(Button)({
   marginLeft: 20,
   marginBottom: 20,
   textAlign: "center",
+});
+
+export const FormClass = styled(FormControl)({
+  maxWidth: 900,
+  marginTop: 20,
+  borderRadius: 20,
+  display: "flex",
+  margin: 20,
+  justifyContent: "center",
 });
 
 export const Links = styled(Link)({

@@ -18,6 +18,7 @@ import {
 } from "../../Redux/Actions/bookingAction";
 import { useNavigate } from "react-router-dom";
 import { ButtonData } from "../../Styled/MUI/TransactionStyle";
+import Confirmation from "./ConfirmationPayment";
 
 function Payment({ totals, setTotals }) {
   const { cbooking } = useSelector((state) => state.booking);
@@ -144,9 +145,7 @@ function Payment({ totals, setTotals }) {
         requestData={requestData}
         setRequestData={setRequestData}
       />
-      <ButtonData variant="contained" size="small" onClick={handleSubmit}>
-        bayar
-      </ButtonData>{" "}
+      <Confirmation />
       <Footer />
     </>
   );
