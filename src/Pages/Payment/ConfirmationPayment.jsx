@@ -5,11 +5,22 @@ import { FontP } from "../../Styled/ComponentUI/Styles";
 import { ButtonPay, CardConf } from "../../Styled/MUI/PaymentStyle";
 import { Col, Row } from "react-bootstrap";
 
-function Confirmation() {
+function Confirmation({ handleSubmit }) {
   return (
     <>
-      <Box sx={{ flexGrow: 1, justifyContent: "center", maxWidth: 1024, margin: "auto" }}>
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
+      <Box
+        sx={{
+          flexGrow: 1,
+          justifyContent: "center",
+          maxWidth: 1024,
+          margin: "auto",
+        }}
+      >
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
+        >
           <Grid item xs={9}>
             <CardConf>
               <Box
@@ -22,7 +33,13 @@ function Confirmation() {
                   <Col style={{ marginTop: 30 }}>
                     <FontP>Total Price</FontP>
                   </Col>
-                  <Col style={{ textAlign: "right", marginRight: 15, marginTop: 30 }}>
+                  <Col
+                    style={{
+                      textAlign: "right",
+                      marginRight: 15,
+                      marginTop: 30,
+                    }}
+                  >
                     <FontP>Rp.99.999.999,00</FontP>
                   </Col>
                   <Col
@@ -32,7 +49,9 @@ function Confirmation() {
                       cursor: "pointer",
                     }}
                   >
-                    <ButtonPay variant="contained">Bayar</ButtonPay>
+                    <ButtonPay variant="contained" onClick={handleSubmit}>
+                      Bayar
+                    </ButtonPay>
                   </Col>
                 </Row>
               </Box>

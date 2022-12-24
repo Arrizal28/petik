@@ -21,8 +21,8 @@ import { ButtonData } from "../../Styled/MUI/TransactionStyle";
 import Confirmation from "./ConfirmationPayment";
 
 function Payment({ totals, setTotals }) {
-  const { cbooking } = useSelector((state) => state.booking);
-  const [totalSeat, setTotalSeat] = useState(3);
+  const { cbooking, tseat } = useSelector((state) => state.booking);
+  const [totalSeat, setTotalSeat] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const [requestData, setRequestData] = useState({
@@ -61,6 +61,7 @@ function Payment({ totals, setTotals }) {
       seatNumber: [],
       ticketClass: "business",
     });
+    setTotalSeat(tseat);
   }, [cbooking]);
 
   const handleSubmit = async (e) => {
@@ -79,7 +80,7 @@ function Payment({ totals, setTotals }) {
     }
     if (requestData?.paymentMethod !== "" && requestData?.seatNumber !== []) {
       dispatch(payment(requestData));
-      navigate(`/ticket/${requestData?.booking_id}`);
+      navigate(`/ticket/print-ticket/${requestData?.booking_id}`);
     }
   };
 
@@ -145,7 +146,7 @@ function Payment({ totals, setTotals }) {
         requestData={requestData}
         setRequestData={setRequestData}
       />
-      <Confirmation />
+      <Confirmation handleSubmit={handleSubmit} />
       <Footer />
     </>
   );

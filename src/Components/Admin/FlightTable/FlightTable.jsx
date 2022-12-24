@@ -10,12 +10,15 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { getscheduleFlight } from "../../../Redux/Actions/airportAction";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 import { Pagination } from "antd";
 
 const FlightTable = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { flight } = useSelector((state) => state.airport);
 
@@ -55,7 +58,13 @@ const FlightTable = () => {
                       {item.arrivalDate}
                     </TableCell>
                     <TableCell className="tableCell">
-                      <EditIcon />
+                      <EditIcon
+                        cursor="pointer"
+                        onClick={() => {
+                          navigate(`/admin/form/${item.id}`);
+                        }}
+                      />
+                      <DeleteIcon cursor="pointer" />
                     </TableCell>
                   </TableRow>
                 </>
