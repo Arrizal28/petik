@@ -27,7 +27,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
     setVa(true);
     setRequestData({
       ...requestData,
-      paymentMethod: "VirtualAccount",
+      paymentMethod: "Virtual Account",
     });
   };
 
