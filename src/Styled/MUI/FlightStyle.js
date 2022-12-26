@@ -10,31 +10,14 @@ export const BoxContainer = styled(Box)({
   margin: "auto",
 });
 
-export const CardContainer = styled(Card)({
+export const CardFlight = styled(Card)({
   height: 100,
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
   marginTop: 25,
-});
-
-export const CardNotif = styled(Card)({
-  minHeight: 100,
-  justifyContent: "center",
-  textAlign: "left",
-  alignItems: "center",
-  marginTop: 25,
-  borderRadius: 10,
-  marginBottom: 25,
-});
-
-export const CardOrder = styled(Card)({
-  height: 200,
-  justifyContent: "center",
-  // textAlign: "center",
-  alignItems: "center",
-  marginTop: 25,
-  borderRadius: 10,
+  marginBottom: 30,
+  borderRadius: 20,
 });
 
 export const CardTab = styled(Card)({
@@ -45,8 +28,8 @@ export const CardTab = styled(Card)({
   marginTop: 5,
 });
 
-export const CardPanel = styled(Card)({
-  height: 700,
+export const CardSearch = styled(Card)({
+  height: 100,
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
@@ -99,18 +82,6 @@ export const QRCard = styled(Card)({
   display: "flex",
 });
 
-export const AirlinesCard = styled(Card)({
-  height: 100,
-  maxWidth: 150,
-  justifyContent: "center",
-  textAlign: "center",
-  alignItems: "center",
-  // marginTop: 5,
-  margin: "auto",
-  display: "flex",
-  borderRadius: 10,
-});
-
 export const CardPass = styled(Card)({
   maxHeight: "100%",
   justifyContent: "left",
@@ -154,7 +125,7 @@ export const ButtonData = styled(Button)({
 });
 
 export const FormClass = styled(FormControl)({
-  maxWidth: 600,
+  maxWidth: 900,
   marginTop: 20,
   borderRadius: 20,
   display: "flex",

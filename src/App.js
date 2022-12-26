@@ -7,7 +7,6 @@ import Register from "./Pages/Register/Register";
 import Succes from "./Pages/Verify/Succes";
 import Failed from "./Pages/Verify/Failed";
 import Notifications from "./Pages/Profile/Notifications";
-import MyOrders from "./Pages/Transaction/MyOrders";
 import store from "./Redux/store";
 import Buyers from "./Pages/Profile/Buyers";
 import Settings from "./Pages/Settings/Settings";
@@ -18,15 +17,17 @@ import Account from "./Pages/Account/Account";
 import Protected from "./Components/Protected/Protected";
 import EditProfile from "./Pages/Profile/EditProfile";
 import ForgotPassword from "./Pages/Password/ForgotPassword";
-import ListFlight from "./Pages/ListFlight/ListFlight";
+import ListFlight from "./Pages/Flight/ListFlight";
 import Adminhome from "./Pages/Admin/Home/Home";
 import ResetPassword from "./Pages/Password/ResetPassword";
 import InputData from "./Pages/Transaction/InputData";
-import HistoryOrders from "./Pages/Transaction/HistoryOrders";
+import HistoryOrders from "./Pages/Transaction/Orders";
 import FlightAdmin from "./Pages/Admin/Flight/FlightAdmin";
-import Listallflight from "./Pages/ListAllFlight/Listallflight";
+import Listallflight from "./Pages/Flight/Listallflight";
 import MyTicket from "./Pages/Transaction/MyTickket";
 import Payment from "./Pages/Payment/Payment";
+import Transaction from "./Pages/Transaction/Transaction";
+import SearchFlight from "./Pages/Flight/SearchFlight";
 import Fourzerofour from "./Pages/404/Fourzerofour";
 import Form from "./Pages/Admin/Form/Form";
 
@@ -47,7 +48,7 @@ function App() {
               <Route path="/listflight" element={<ListFlight />} />
               <Route path="/adminhome" element={<Adminhome />} />
               <Route path="/listallflight" element={<Listallflight />} />
-              <Route path="/searchflight" element={<ListFlight />} />
+              <Route path="/searchflight" element={<SearchFlight />} />
               <Route path="/admin/flight" element={<FlightAdmin />} />
               <Route path="/admin/form" element={<Form />} />
               <Route path="/admin/form/:id" element={<Form />} />
@@ -88,7 +89,7 @@ function App() {
                 path="/transaction"
                 element={
                   <Protected>
-                    <MyOrders />
+                    <Transaction />
                   </Protected>
                 }
               />
