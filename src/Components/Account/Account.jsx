@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Badge, Box, Fab, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
@@ -16,10 +16,17 @@ function Account() {
 
     dispatch(logout());
   };
+
+  const [count, setCount] = useState(1);
+
+  const handleChange = (event) => {
+    setCount(event.currentTarget);
+  };
+
   return (
     <div>
       <Box sx={{ m: 1, marginLeft: "auto" }}>
-        <Link to="/listlight" style={{ textDecoration: "none" }}>
+        <Link to="/searchflight" style={{ textDecoration: "none" }}>
           <Tooltip title="Search Flight">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <LocationSearchingIcon />
@@ -35,9 +42,9 @@ function Account() {
         </Link>
         <Link to="/notification" style={{ textDecoration: "none" }}>
           <Tooltip title="Notification">
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={count} color="primary">
               <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-                <NotificationsActiveIcon />
+                <NotificationsActiveIcon onChange={handleChange} />
               </Fab>
             </Badge>
           </Tooltip>
