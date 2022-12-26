@@ -11,10 +11,20 @@ import { CardPay, CardPayment } from "../../Styled/MUI/PaymentStyle";
 import MetPayment from "./MethodePayment";
 import StepperPay from "./Stepper";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  payment,
+  totalseat,
+  flightclass,
+} from "../../Redux/Actions/bookingAction";
+import { useNavigate } from "react-router-dom";
+import { ButtonData } from "../../Styled/MUI/TransactionStyle";
 import Confirmation from "./ConfirmationPayment";
 
 function Payment({ totals, setTotals }) {
-  const [totalSeat, setTotalSeat] = useState(3);
+  const { cbooking, tseat } = useSelector((state) => state.booking);
+  const [totalSeat, setTotalSeat] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const [requestData, setRequestData] = useState({
   //   booking_id: cbooking?.data?.booking?.id,
   //   paymentMethod: "business",
@@ -24,20 +34,55 @@ function Payment({ totals, setTotals }) {
   // });
 
   const [requestData, setRequestData] = useState({
-    booking_id: 2342,
-    paymentMethod: "business",
-    grandTotal: 4000,
+    booking_id: null,
+    paymentMethod: "",
+    grandTotal: null,
     seatNumber: [],
     ticketClass: "business",
   });
 
   let totalSeatNumber = [];
 
-  const { tseat, cbooking, flightclass } = useSelector((state) => state.booking);
-
   useEffect(() => {
     console.log(requestData);
   }, [requestData]);
+
+  // useEffect(() => {
+  //   setRequestData({
+  //     ...requestData,
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    setRequestData({
+      booking_id: cbooking?.data?.booking?.id,
+      paymentMethod: "",
+      grandTotal: cbooking?.data?.grandTotal,
+      seatNumber: [],
+      ticketClass: "business",
+    });
+    setTotalSeat(tseat);
+  }, [cbooking]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (requestData?.seatNumber === []) {
+      alert("Seat Number is required");
+      return;
+    }
+    if (requestData?.paymentMethod === "") {
+      alert("Payment Method is required");
+      return;
+    }
+    if (requestData?.ticketClass === "") {
+      alert("Ticket Class is required");
+      return;
+    }
+    if (requestData?.paymentMethod !== "" && requestData?.seatNumber !== []) {
+      dispatch(payment(requestData));
+      navigate(`/ticket/print-ticket/${requestData?.booking_id}`);
+    }
+  };
 
   return (
     <>
@@ -51,7 +96,11 @@ function Payment({ totals, setTotals }) {
           margin: "auto",
         }}
       >
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
+        >
           <Grid item xs={9}>
             <Grid>
               <CardPayment variant="outlined">
@@ -74,7 +123,13 @@ function Payment({ totals, setTotals }) {
                               }}
                             >
                               <Title>Select Seat {item + 1}</Title>
-                              <SelectSeat totalSeatNumber={totalSeatNumber} requestData={requestData} setRequestData={setRequestData} seatNumber={requestData.seatNumber} i={i} />
+                              <SelectSeat
+                                totalSeatNumber={totalSeatNumber}
+                                requestData={requestData}
+                                setRequestData={setRequestData}
+                                seatNumber={requestData.seatNumber}
+                                i={i}
+                              />
                             </Box>
                           </Grid>
                         </Grid2>
@@ -86,8 +141,12 @@ function Payment({ totals, setTotals }) {
           </Grid>
         </Grid>
       </Box>
-      <MetPayment paymentMethod={requestData.paymentMethod} requestData={requestData} setRequestData={setRequestData} />
-      <Confirmation />
+      <MetPayment
+        paymentMethod={requestData.paymentMethod}
+        requestData={requestData}
+        setRequestData={setRequestData}
+      />
+      <Confirmation handleSubmit={handleSubmit} />
       <Footer />
     </>
   );

@@ -28,6 +28,8 @@ import MyTicket from "./Pages/Transaction/MyTickket";
 import Payment from "./Pages/Payment/Payment";
 import Transaction from "./Pages/Transaction/Transaction";
 import SearchFlight from "./Pages/Flight/SearchFlight";
+import Fourzerofour from "./Pages/404/Fourzerofour";
+import Form from "./Pages/Admin/Form/Form";
 
 function App() {
   return (
@@ -48,6 +50,9 @@ function App() {
               <Route path="/listallflight" element={<Listallflight />} />
               <Route path="/searchflight" element={<SearchFlight />} />
               <Route path="/admin/flight" element={<FlightAdmin />} />
+              <Route path="/admin/form" element={<Form />} />
+              <Route path="/admin/form/:id" element={<Form />} />
+              <Route path="*" element={<Fourzerofour />} />
               <Route
                 path="/account"
                 element={
@@ -72,7 +77,14 @@ function App() {
                   </Protected>
                 }
               />
-              <Route path="/inputdata/:id" element={<InputData />} />
+              <Route
+                path="/inputdata/:id"
+                element={
+                  <Protected>
+                    <InputData />
+                  </Protected>
+                }
+              />
               <Route
                 path="/transaction"
                 element={
@@ -90,7 +102,7 @@ function App() {
                 }
               />
               <Route
-                path="/ticket/:id"
+                path="/ticket/print-ticket/:id"
                 element={
                   <Protected>
                     <MyTicket />

@@ -124,11 +124,10 @@ export const payment = (data) => async (dispatch, getState) => {
 export const getticket = (id) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
-    const result = await axios.post(
+    const result = await axios.get(
       `${process.env.REACT_APP_AUTH_API}/ticket/print-ticket/${id}`,
       {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       }
@@ -136,11 +135,11 @@ export const getticket = (id) => async (dispatch, getState) => {
     if (result.data.status) {
       dispatch(setTicket(result.data));
       console.log("success", result.data);
-      swal({
-        title: result.data.message,
-        icon: "success",
-        button: "OK",
-      });
+      // swal({
+      //   title: result.data.message,
+      //   icon: "success",
+      //   button: "OK",
+      // });
     }
   } catch (error) {
     console.log("error", error);
