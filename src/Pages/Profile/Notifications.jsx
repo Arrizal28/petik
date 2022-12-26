@@ -23,17 +23,17 @@ function Notifications() {
             </Grid>
             <Grid>
               <CardNotif elevation={1}>
-                <Row style={{ justifyContent: "center", textAlign: "left", alignItems: "center", marginTop: 25 }}>
-                  <Col xs={1} style={{ justifyContent: "center", textAlign: "left", marginLeft: 20 }}>
-                    <Avatar fontSize="small" />
-                  </Col>
-                  <Col>
-                    <FontP>Lorem ipsum</FontP>
-                  </Col>
-                  <Col xs={2} style={{ justifyContent: "center", textAlign: "right", marginLeft: 20 }}>
-                    <FontBlue>Mark Read</FontBlue>
-                  </Col>
-                </Row>
+                <Box style={{ justifyContent: "center", textAlign: "left", alignItems: "center", marginTop: 25 }}>
+                  {/* <Col xs={1} style={{ justifyContent: "center", textAlign: "left", marginLeft: 20 }}> */}
+                  <Avatar fontSize="small" />
+                  {/* </Col>
+                  <Col> */}
+                  <FontP>Lorem ipsum</FontP>
+                  {/* </Col> */}
+                  {/* <Col xs={2} style={{ justifyContent: "center", textAlign: "right", marginLeft: 20 }}> */}
+                  <FontBlue>Mark Read</FontBlue>
+                  {/* </Col> */}
+                </Box>
               </CardNotif>
             </Grid>
             <Grid>
@@ -42,7 +42,7 @@ function Notifications() {
                   <Col xs={1} style={{ justifyContent: "center", textAlign: "left", marginLeft: 20 }}>
                     <Avatar fontSize="small" />
                   </Col>
-                  <Col style={{ justifyContent: "center", textAlign: "left" }}>
+                  <Col xs={1} style={{ justifyContent: "center", textAlign: "left", display: "flex" }}>
                     <FontP>Lorem ipsum</FontP>
                   </Col>
                   <Col xs={2} style={{ justifyContent: "center", textAlign: "right", marginLeft: 20, cursor: "pointer" }}>

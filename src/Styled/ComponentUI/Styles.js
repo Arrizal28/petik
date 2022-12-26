@@ -40,7 +40,9 @@ export const FontBlue = styled.p`
   margin-top: 10px;
   margin-left: 20px;
   font-weight: bold;
+  cursor: pointer
   &:hover {
+    
     color: gray;
     transition: 200ms ease-in;
   }

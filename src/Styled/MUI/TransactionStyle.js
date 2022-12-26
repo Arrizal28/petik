@@ -29,9 +29,9 @@ export const CardNotif = styled(Card)({
 });
 
 export const CardOrder = styled(Card)({
-  height: 200,
+  maxHeight: "100%",
   justifyContent: "center",
-  // textAlign: "center",
+  marginBottom: 25,
   alignItems: "center",
   marginTop: 25,
   borderRadius: 10,
