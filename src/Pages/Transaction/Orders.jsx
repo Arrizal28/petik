@@ -5,7 +5,7 @@ import { FontBlue, FontP } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "react-bootstrap";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
-function Orders() {
+function Orders({ item }) {
   return (
     <>
       <CardOrder variant="outlined">
@@ -14,12 +14,12 @@ function Orders() {
             <FontP>ID Order</FontP>
           </Col>
           <Col>
-            <FontP>255416</FontP>
+            <FontP>{item.id}</FontP>
           </Col>
           <Col>
             <FontP>
               <CalendarMonthIcon style={{ margin: 2 }} />
-              16 Desember 2022
+              {item.date}
             </FontP>
           </Col>
           <Divider />
@@ -30,10 +30,13 @@ function Orders() {
             <FontP>Status</FontP>
           </Col>
           <Col>
-            <FontP>Pending</FontP>
+            <FontP>{item.status}</FontP>
           </Col>
-          <Col xs={2} style={{ cursor: "pointer", textAlign: "right", marginRight: 15 }}>
-            <FontBlue>Detail</FontBlue>
+          <Col
+            xs={2}
+            style={{ cursor: "pointer", textAlign: "right", marginRight: 15 }}
+          >
+            {item?.status === "paid" && <FontBlue>Detail</FontBlue>}
           </Col>
         </Row>
       </CardOrder>

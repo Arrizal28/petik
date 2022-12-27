@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cflight: [],
   eflight: [],
+  dflight: [],
 };
 
 const airportSlicer = createSlice({
@@ -15,9 +16,12 @@ const airportSlicer = createSlice({
     setEflight: (state, action) => {
       state.eflight = action.payload;
     },
+    setDflight: (state, action) => {
+      state.dflight = action.payload;
+    },
   },
 });
 
-export const { setEflight, setCflight } = airportSlicer.actions;
+export const { setEflight, setCflight, setDflight } = airportSlicer.actions;
 
 export default airportSlicer.reducer;

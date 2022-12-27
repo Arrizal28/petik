@@ -67,18 +67,20 @@ export const cancelBooking = (id) => async (dispatch, getState) => {
   }
 };
 
-export const getListBooking = () => async (dispatch) => {
+export const getListBooking = () => async (dispatch, getState) => {
   try {
+    const { token } = getState().auth;
     const result = await axios.get(
-      `${process.env.REACT_APP_AUTH_API}/booking/list-booking`
+      `${process.env.REACT_APP_AUTH_API}/booking/list-booking`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
-    if (result.data.message) {
+    if (result.data.status) {
       dispatch(setListbooking(result.data));
-      swal({
-        title: result.data.message,
-        icon: "success",
-        button: "OK",
-      });
     }
   } catch (error) {
     swal({

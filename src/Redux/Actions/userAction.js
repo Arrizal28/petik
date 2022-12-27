@@ -116,3 +116,7 @@ export const notifications = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const notif = (data) => async (dispatch) => {
+  dispatch(setNotif(data));
+};
