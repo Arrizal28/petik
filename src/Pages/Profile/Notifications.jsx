@@ -1,11 +1,12 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Avatar, Grid } from "@mui/material";
 import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
-import { CardContainer, CardPanel } from "../../Styled/MUI/TransactionStyle";
-import { FontNotif } from "../../Styled/ComponentUI/Styles";
+import { CardContainer, CardNotif } from "../../Styled/MUI/TransactionStyle";
+import { FontBlue, FontNotif, FontP } from "../../Styled/ComponentUI/Styles";
+import { Col, Row } from "react-bootstrap";
 
 function Notifications() {
   return (
@@ -21,7 +22,34 @@ function Notifications() {
               </CardContainer>
             </Grid>
             <Grid>
-              <CardPanel variant="outlined"></CardPanel>
+              <CardNotif elevation={1}>
+                <Box style={{ justifyContent: "center", textAlign: "left", alignItems: "center", marginTop: 25 }}>
+                  {/* <Col xs={1} style={{ justifyContent: "center", textAlign: "left", marginLeft: 20 }}> */}
+                  <Avatar fontSize="small" />
+                  {/* </Col>
+                  <Col> */}
+                  <FontP>Lorem ipsum</FontP>
+                  {/* </Col> */}
+                  {/* <Col xs={2} style={{ justifyContent: "center", textAlign: "right", marginLeft: 20 }}> */}
+                  <FontBlue>Mark Read</FontBlue>
+                  {/* </Col> */}
+                </Box>
+              </CardNotif>
+            </Grid>
+            <Grid>
+              <CardNotif elevation={1}>
+                <Row style={{ justifyContent: "center", display: "flex", textAlign: "left", alignItems: "center", marginTop: 25, cursor: "pointer" }}>
+                  <Col xs={1} style={{ justifyContent: "center", textAlign: "left", marginLeft: 20 }}>
+                    <Avatar fontSize="small" />
+                  </Col>
+                  <Col xs={1} style={{ justifyContent: "center", textAlign: "left", display: "flex" }}>
+                    <FontP>Lorem ipsum</FontP>
+                  </Col>
+                  <Col xs={2} style={{ justifyContent: "center", textAlign: "right", marginLeft: 20, cursor: "pointer" }}>
+                    <FontBlue>Mark Read</FontBlue>
+                  </Col>
+                </Row>
+              </CardNotif>
             </Grid>
           </Grid>
         </Grid>

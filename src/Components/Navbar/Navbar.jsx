@@ -15,11 +15,15 @@ import Badge from "@mui/material/Badge";
 
 function NavBar() {
   const [setAnchorElNav] = useState(null);
-
+  const [count, setCount] = useState(1);
   const { token } = useSelector((state) => state.auth);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+  };
+
+  const handleChange = (event) => {
+    setCount(event.currentTarget);
   };
 
   return (
@@ -49,8 +53,8 @@ function NavBar() {
                 ) : (
                   <Tooltip title="Notification">
                     <Links to="/notification">
-                      <Badge badgeContent={4} color="primary">
-                        <IconNotif color="action" />
+                      <Badge badgeContent={count} color="primary">
+                        <IconNotif color="action" onChange={handleChange} />
                       </Badge>
                     </Links>
                   </Tooltip>
