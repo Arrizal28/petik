@@ -19,7 +19,7 @@ export const CardContainer = styled(Card)({
 });
 
 export const CardNotif = styled(Card)({
-  minHeight: 100,
+  minHeight: 80,
   justifyContent: "center",
   textAlign: "left",
   alignItems: "center",

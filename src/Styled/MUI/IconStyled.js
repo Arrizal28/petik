@@ -40,6 +40,6 @@ export const IconSettings = styled(SettingsSuggestIcon)({
 export const IconNotif = styled(NotificationsActiveIcon)({
   fontSize: 25,
   color: " #3596e7",
-  marginRight: 15,
+  // marginRight: 15,
   cursor: "pointer",
 });
