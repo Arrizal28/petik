@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider } from "@mui/material";
+import { Divider, Stack } from "@mui/material";
 import { CardOrder } from "../../Styled/MUI/TransactionStyle";
 import { FontBlue, FontP, TextName } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "react-bootstrap";
@@ -12,42 +12,40 @@ function ItemSearch() {
   return (
     <>
       <CardOrder variant="outlined">
-        <Row>
-          <Col xs={3}>
-            <FontP>ID Order</FontP>
-          </Col>
-          <Col>
-            <FontP>255416</FontP>
-          </Col>
-
-          <Divider />
-        </Row>
-        <Row>
-          <Col xs={3} style={{ justifyContent: "center", textAlign: "center" }}>
+        <Stack direction="row">
+          <FontP>ID Order : </FontP>
+          <FontP>255416</FontP>
+        </Stack>
+        <Divider />
+        <Stack direction="row" justifyContent="space-between" style={{ margin: 5 }}>
+          <Stack>
             <TextName>
-              <img maxWidth="150px" width="100%" alt="" src="https://hangnadim.bpbatam.go.id/wp-content/uploads/2021/05/Lion-Air-1.png" />
+              <img maxWidth="150px" width="100px" alt="" src="https://hangnadim.bpbatam.go.id/wp-content/uploads/2021/05/Lion-Air-1.png" />
             </TextName>
-          </Col>
+          </Stack>
 
-          <Col>
+          <Stack>
             <FontP>
               <FlightTakeoffIcon style={{ margin: 2 }} />
               Jakarta
             </FontP>
             <FontP>
-              <CalendarMonthIcon style={{ margin: 2 }} />
-              16 Desember 2022
-            </FontP>
-          </Col>
-          <Col>
-            <FontP>
               <FlightLandIcon style={{ margin: 2 }} /> Surabaya
             </FontP>
-            <FontP>
-              <ScheduleIcon style={{ margin: 2 }} /> 19.30
-            </FontP>
-          </Col>
-        </Row>
+          </Stack>
+
+          <FontP>
+            <CalendarMonthIcon style={{ margin: 2 }} />
+            16 Desember 2022
+          </FontP>
+          {/* </Col>
+          <Col> */}
+
+          <FontP>
+            <ScheduleIcon style={{ margin: 2 }} /> 19.30
+          </FontP>
+          {/* </Col> */}
+        </Stack>
         <Divider />
         <Row>
           <Col xs={3}>

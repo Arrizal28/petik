@@ -55,7 +55,7 @@ function App() {
                 }
               />
               <Route path="/listallflight" element={<Listallflight />} />
-              <Route path="/searchflight" element={<ListFlight />} />
+              <Route path="/searchflight" element={<SearchFlight />} />
               <Route
                 path="/admin/flight"
                 element={

@@ -15,15 +15,11 @@ import Badge from "@mui/material/Badge";
 
 function NavBar({ socket, wai }) {
   const [setAnchorElNav] = useState(null);
-  const [count, setCount] = useState(1);
+
   const { token } = useSelector((state) => state.auth);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-
-  const handleChange = (event) => {
-    setCount(event.currentTarget);
   };
 
   return (
@@ -85,23 +81,15 @@ function NavBar({ socket, wai }) {
                 }}
               >
                 {!token ? (
-                  <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleOpenNavMenu}
-                    color="primary"
-                  >
+                  <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="primary">
                     <MenuNav />
                   </IconButton>
                 ) : (
                   <Tooltip title="Notification">
                     <Links to="/notification">
-                      <Badge badgeContent={count} color="primary">
+                      <Badge color="red" variant="dot" style={{ marginRight: 20 }}>
                         <IconNotif
                           color="action"
-                          onChange={handleChange}
                           onClick={(e) => {
                             socket.emit(`LOAD_NOTIFICATIONS-${wai?.data?.id}`);
                           }}

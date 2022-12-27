@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Avatar, Badge, Box, Fab, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
@@ -15,12 +15,6 @@ function Account() {
     e.preventDefault();
 
     dispatch(logout());
-  };
-
-  const [count, setCount] = useState(1);
-
-  const handleChange = (event) => {
-    setCount(event.currentTarget);
   };
 
   return (
@@ -42,11 +36,11 @@ function Account() {
         </Link>
         <Link to="/notification" style={{ textDecoration: "none" }}>
           <Tooltip title="Notification">
-            <Badge badgeContent={count} color="primary">
-              <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-                <NotificationsActiveIcon onChange={handleChange} />
-              </Fab>
-            </Badge>
+            <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
+              <Badge color="red" variant="dot">
+                <NotificationsActiveIcon />
+              </Badge>
+            </Fab>
           </Tooltip>
         </Link>
         <Link to="/account" style={{ textDecoration: "none" }}>
