@@ -1,6 +1,6 @@
 import axios from "axios";
 import swal from "sweetalert";
-import { setCflight } from "../Reducers/adminReducer";
+import { setCflight, setDflight } from "../Reducers/adminReducer";
 
 export const createflight = (data) => async (dispatch, getState) => {
   try {
@@ -34,7 +34,7 @@ export const createflight = (data) => async (dispatch, getState) => {
 export const editflight = (data, id) => async (getState) => {
   try {
     const { token } = getState().auth;
-    const result = await axios.put(
+    await axios.put(
       `${process.env.REACT_APP_AUTH_API}/flight/edit/${id}`,
       data,
       {
@@ -64,7 +64,6 @@ export const deleteflight = (id) => async (getState) => {
     const { token } = getState().auth;
     const result = await axios.delete(
       `${process.env.REACT_APP_AUTH_API}/flight/delete/${id}`,
-      data,
       {
         headers: {
           "Content-Type": "application/json",
@@ -72,11 +71,44 @@ export const deleteflight = (id) => async (getState) => {
         },
       }
     );
+    if (result.data.status) {
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
+    }
+  } catch (error) {
+    console.log("error", error);
     swal({
-      title: "Succes deleted flight",
-      icon: "success",
+      title: error.response.data.message,
+      icon: "error",
       button: "OK",
     });
+  }
+};
+
+export const detailflight = (id) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().auth;
+    const result = await axios.get(
+      `${process.env.REACT_APP_AUTH_API}/flight/get-flight/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (result.data.status) {
+      dispatch(setDflight(result.data));
+      console.log("success", result.data);
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
+    }
   } catch (error) {
     console.log("error", error);
     swal({

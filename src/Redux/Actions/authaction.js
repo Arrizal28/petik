@@ -124,7 +124,7 @@ export const resetpassword = (data) => async () => {
   }
 };
 
-export const whoami = (callback) => async (dispatch, getState) => {
+export const getwhoami = (callback) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
     const result = await axios.get(

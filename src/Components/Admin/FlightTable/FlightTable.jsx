@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { getscheduleFlight } from "../../../Redux/Actions/airportAction";
+import { deleteflight } from "../../../Redux/Actions/adminAction";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
@@ -64,7 +65,10 @@ const FlightTable = () => {
                           navigate(`/admin/form/${item.id}`);
                         }}
                       />
-                      <DeleteIcon cursor="pointer" />
+                      <DeleteIcon
+                        cursor="pointer"
+                        onClick={() => dispatch(deleteflight(item.id))}
+                      />
                     </TableCell>
                   </TableRow>
                 </>

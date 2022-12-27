@@ -45,17 +45,45 @@ function App() {
               <Route path="/forgotpassword" element={<ForgotPassword />} />
               <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/listflight" element={<ListFlight />} />
-              <Route path="/adminhome" element={<Adminhome />} />
+              <Route
+                path="/adminhome"
+                element={
+                  <Protected types={["ADMIN"]}>
+                    <Adminhome />
+                  </Protected>
+                }
+              />
               <Route path="/listallflight" element={<Listallflight />} />
               <Route path="/searchflight" element={<ListFlight />} />
-              <Route path="/admin/flight" element={<FlightAdmin />} />
-              <Route path="/admin/form" element={<Form />} />
-              <Route path="/admin/form/:id" element={<Form />} />
+              <Route
+                path="/admin/flight"
+                element={
+                  <Protected types={["ADMIN"]}>
+                    <FlightAdmin />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/admin/form"
+                element={
+                  <Protected types={["ADMIN"]}>
+                    <Form />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/admin/form/:id"
+                element={
+                  <Protected types={["ADMIN"]}>
+                    <Form />
+                  </Protected>
+                }
+              />
               <Route path="*" element={<Fourzerofour />} />
               <Route
                 path="/account"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <Account />
                   </Protected>
                 }
@@ -63,7 +91,7 @@ function App() {
               <Route
                 path="/account/profile"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <Buyers />
                   </Protected>
                 }
@@ -71,7 +99,7 @@ function App() {
               <Route
                 path="/account/profile/edit"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <EditProfile />
                   </Protected>
                 }
@@ -79,7 +107,7 @@ function App() {
               <Route
                 path="/inputdata/:id"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <InputData />
                   </Protected>
                 }
@@ -87,7 +115,7 @@ function App() {
               <Route
                 path="/transaction"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <MyOrders />
                   </Protected>
                 }
@@ -95,7 +123,7 @@ function App() {
               <Route
                 path="/history"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <HistoryOrders />
                   </Protected>
                 }
@@ -103,7 +131,7 @@ function App() {
               <Route
                 path="/ticket/print-ticket/:id"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <MyTicket />
                   </Protected>
                 }
@@ -111,7 +139,7 @@ function App() {
               <Route
                 path="/notification"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <Notifications />
                   </Protected>
                 }
@@ -119,7 +147,7 @@ function App() {
               <Route
                 path="/account/settings"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <Settings />
                   </Protected>
                 }
@@ -127,7 +155,7 @@ function App() {
               <Route
                 path="/payment"
                 element={
-                  <Protected>
+                  <Protected types={["BUYER"]}>
                     <Payment />
                   </Protected>
                 }

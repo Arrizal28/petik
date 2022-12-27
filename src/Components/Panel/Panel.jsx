@@ -29,6 +29,10 @@ function Panel() {
     setDate(dateString);
   }
 
+  useEffect(() => {
+    console.log("tglfix", date);
+  }, [date]);
+
   const navigate = useNavigate();
 
   const { resairport } = useSelector((state) => state.airport);
@@ -136,7 +140,11 @@ function Panel() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toUpperCase()
+                      .includes(input.toUpperCase())
+                  }
                   onSearch={handleSearch}
                   onChange={onChange}
                   options={
@@ -150,7 +158,10 @@ function Panel() {
                   {newvalue.length > 1 &&
                     (resairport?.data?.features || []).map((item) => {
                       return (
-                        <Select.Option key={item.properties.id} value={item.iata}>
+                        <Select.Option
+                          key={item.properties.id}
+                          value={item.iata}
+                        >
                           `${item.properties.municipality},($
                           {item.properties.iata})${item.properties.name},$
                           {item.properties.country.name}`
@@ -190,7 +201,11 @@ function Panel() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toUpperCase()
+                      .includes(input.toUpperCase())
+                  }
                   onSearch={handleSearch}
                   onChange={onChangeke}
                   options={
@@ -204,7 +219,10 @@ function Panel() {
                   {newvalue.length > 1 &&
                     (resairport?.data?.features || []).map((item) => {
                       return (
-                        <Select.Option key={item.properties.id} value={item.iata}>
+                        <Select.Option
+                          key={item.properties.id}
+                          value={item.iata}
+                        >
                           `${item.properties.municipality},($
                           {item.properties.iata})${item.properties.name},$
                           {item.properties.country.name}`
@@ -234,10 +252,20 @@ function Panel() {
             </div>
             <div className="row panel3 justify-content-center">
               <div className="col-lg-6 col-12">
-                <DatePicker className="lebardate" size="large" format={"YYYY-MM-DD"} onChange={onSelectDate} />
+                <DatePicker
+                  className="lebardate"
+                  size="large"
+                  format={"YYYY-MM-DD"}
+                  onChange={onSelectDate}
+                />
               </div>
               <div className="col-lg-6 col-12">
-                <Button type="primary" size="large" className="lebarmsearchbtn" onClick={handleSubmit}>
+                <Button
+                  type="primary"
+                  size="large"
+                  className="lebarmsearchbtn"
+                  onClick={handleSubmit}
+                >
                   Search
                 </Button>
               </div>
