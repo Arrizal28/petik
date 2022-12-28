@@ -7,6 +7,7 @@ const initialState = {
   payment: [],
   flightid: null,
   tseat: null,
+  seatr: [],
   flightclass: "",
   ticket: [],
 };
@@ -39,6 +40,9 @@ const authSlicer = createSlice({
     setTicket: (state, action) => {
       state.ticket = action.payload;
     },
+    setSeatR: (state, action) => {
+      state.seatr = action.payload;
+    },
   },
 });
 
@@ -51,6 +55,7 @@ export const {
   setTseat,
   setClass,
   setTicket,
+  setSeatR,
 } = authSlicer.actions;
 
 export default authSlicer.reducer;

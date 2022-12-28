@@ -3,6 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { FormPayment } from "../../Styled/MUI/PaymentStyle";
 import { Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 export default function SelectSeat({
   totalSeatNumber,
   requestData,
@@ -10,6 +11,7 @@ export default function SelectSeat({
   seatNumber,
 }) {
   const [seat, setSeat] = useState("");
+  const { seatr } = useSelector((state) => state.booking);
 
   // const handleChange = (event) => {
   //   setSeat(event.target.value);
@@ -37,6 +39,15 @@ export default function SelectSeat({
     "A19",
   ];
 
+  const seatB = ["A01", "A02", "A03"];
+
+  function filterArrays(SeatA, seatB) {
+    return SeatA.filter(function (value) {
+      return seatB.indexOf(value) === -1;
+    });
+  }
+  let uniqueValues = filterArrays(SeatA, seatB);
+
   return (
     <div>
       <Row style={{ justifyContent: "center", minWidth: 500 }}>
@@ -62,7 +73,7 @@ export default function SelectSeat({
             <MenuItem disabled value="">
               <em>Seat A</em>
             </MenuItem>
-            {SeatA.map((name) => (
+            {uniqueValues.map((name) => (
               <MenuItem key={name} value={name}>
                 {name}
               </MenuItem>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Cards,
   TextFields,
@@ -18,16 +18,9 @@ import { changePassword } from "../../Redux/Actions/authaction";
 function ChangePassword() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
   const [oldpass, setOldpass] = useState("");
   const [newpass, setNewpass] = useState("");
   const [cnewpass, setCnewpass] = useState("");
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,9 +35,9 @@ function ChangePassword() {
     }
     if (oldpass !== "" && newpass !== "" && cnewpass !== "") {
       const data = {
-        oldpass,
-        newpass,
-        cnewpass,
+        oldPassword: oldpass,
+        newPassword: newpass,
+        confirmNewPassword: cnewpass,
       };
       dispatch(changePassword(data));
       navigate("/");

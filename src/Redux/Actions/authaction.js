@@ -104,10 +104,10 @@ export const forgotPassword = (data) => async (dispatch) => {
   }
 };
 
-export const resetpassword = (data) => async (dispatch) => {
+export const resetpassword = (data, token) => async (dispatch) => {
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhcnJpemFsNHJyemVuQGdtYWlsLmNvbSIsImlhdCI6MTY3MDAzMTM5MSwiZXhwIjoxNjcwMDMyMjkxfQ.XMo_108aATQl0dwQRAYwEeG_lOV3oWezcqbQ7j_AgxY`,
+      `${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=${token}`,
       data
     );
     if (result.data.status) {

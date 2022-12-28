@@ -15,16 +15,19 @@ import {
   payment,
   totalseat,
   flightclass,
+  getseatreserved,
 } from "../../Redux/Actions/bookingAction";
 import { useNavigate } from "react-router-dom";
 import { ButtonData } from "../../Styled/MUI/TransactionStyle";
 import Confirmation from "./ConfirmationPayment";
+import { useParams } from "react-router-dom";
 
 function Payment({ totals, setTotals }) {
-  const { cbooking, tseat } = useSelector((state) => state.booking);
+  const { cbooking, tseat, flightid } = useSelector((state) => state.booking);
   const [totalSeat, setTotalSeat] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   // const [requestData, setRequestData] = useState({
   //   booking_id: cbooking?.data?.booking?.id,
   //   paymentMethod: "business",
@@ -32,6 +35,13 @@ function Payment({ totals, setTotals }) {
   //   seatNumber: [],
   //   ticketClass: flightclass,
   // });
+  const params = useParams();
+
+  useEffect(() => {
+    if (flightid) {
+      dispatch(getseatreserved(flightid));
+    }
+  }, [flightid, dispatch]);
 
   const [requestData, setRequestData] = useState({
     booking_id: null,

@@ -218,11 +218,11 @@ function Formcomp() {
   const handleEdit = async (e) => {
     e.preventDefault();
     if (
-      origin !== "" &&
-      destination !== "" &&
-      airline !== "" &&
-      arrival !== "" &&
-      departure !== ""
+      eorigin !== "" &&
+      edestination !== "" &&
+      eairline !== "" &&
+      earrival !== "" &&
+      edeparture !== ""
     ) {
       const editdata = {
         airline: eairline,
@@ -236,26 +236,26 @@ function Formcomp() {
     }
   };
 
-  const handleEditFlight = async (e) => {
-    e.preventDefault();
-    if (
-      eairline !== "" &&
-      eorigin !== "" &&
-      edestination !== "" &&
-      edeparture !== "" &&
-      earrival !== ""
-    ) {
-      const data = {
-        airline: eairline,
-        origin: eorigin,
-        destination: edestination,
-        departure: edeparture,
-        arrival: earrival,
-      };
-      dispatch(editflight(data));
-      navigate("/");
-    }
-  };
+  // const handleEditFlight = async (e) => {
+  //   e.preventDefault();
+  //   if (
+  //     eairline !== "" &&
+  //     eorigin !== "" &&
+  //     edestination !== "" &&
+  //     edeparture !== "" &&
+  //     earrival !== ""
+  //   ) {
+  //     const data = {
+  //       airline: eairline,
+  //       origin: eorigin,
+  //       destination: edestination,
+  //       departure: edeparture,
+  //       arrival: earrival,
+  //     };
+  //     dispatch(editflight(data));
+  //     navigate("/");
+  //   }
+  // };
 
   return (
     <>
@@ -355,7 +355,7 @@ function Formcomp() {
           <br />
           <br />
           <br />
-          <Button type="primary" onClick={handleEditFlight}>
+          <Button type="primary" onClick={handleEdit}>
             Save Changes
           </Button>
         </>

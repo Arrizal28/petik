@@ -9,6 +9,7 @@ import {
   setTseat,
   setClass,
   setTicket,
+  setSeatR,
 } from "../Reducers/bookingReducer";
 
 export const createBooking = (data) => async (dispatch, getState) => {
@@ -137,6 +138,36 @@ export const getticket = (id) => async (dispatch, getState) => {
     if (result.data.status) {
       dispatch(setTicket(result.data));
       console.log("success", result.data);
+      // swal({
+      //   title: result.data.message,
+      //   icon: "success",
+      //   button: "OK",
+      // });
+    }
+  } catch (error) {
+    console.log("error", error);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
+  }
+};
+
+export const getseatreserved = (id) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().auth;
+    const result = await axios.get(
+      `${process.env.REACT_APP_AUTH_API}/booking/list-seat/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (result.data.status) {
+      dispatch(setSeatR(result.data.data));
+      console.log("seat reserved: ", result.data);
       // swal({
       //   title: result.data.message,
       //   icon: "success",
