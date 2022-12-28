@@ -6,6 +6,8 @@ import {
   setLogin,
   setForgot,
   setWhoami,
+  setChange,
+  setReset,
 } from "../Reducers/authReducer";
 
 export const register = (data) => async (dispatch) => {
@@ -102,13 +104,14 @@ export const forgotPassword = (data) => async (dispatch) => {
   }
 };
 
-export const resetpassword = (data) => async () => {
+export const resetpassword = (data) => async (dispatch) => {
   try {
     const result = await axios.post(
       `${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhcnJpemFsNHJyemVuQGdtYWlsLmNvbSIsImlhdCI6MTY3MDAzMTM5MSwiZXhwIjoxNjcwMDMyMjkxfQ.XMo_108aATQl0dwQRAYwEeG_lOV3oWezcqbQ7j_AgxY`,
       data
     );
     if (result.data.status) {
+      dispatch(setReset(data));
       swal({
         title: result.data.message,
         icon: "success",
@@ -121,6 +124,25 @@ export const resetpassword = (data) => async () => {
       icon: "error",
       button: "OK",
     });
+  }
+};
+
+export const changePassword = (data) => async (dispatch) => {
+  try {
+    const result = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/auth/forgot-password`,
+      data
+    );
+    if (result.data.status) {
+      dispatch(setChange(result.data));
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
+    }
+  } catch (error) {
+    alert(error.message);
   }
 };
 

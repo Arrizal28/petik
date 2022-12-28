@@ -4,6 +4,7 @@ const initialState = {
   cflight: [],
   eflight: [],
   dflight: [],
+  delflight: [],
 };
 
 const airportSlicer = createSlice({
@@ -19,9 +20,13 @@ const airportSlicer = createSlice({
     setDflight: (state, action) => {
       state.dflight = action.payload;
     },
+    setDelflight: (state, action) => {
+      state.delflight = action.payload;
+    },
   },
 });
 
-export const { setEflight, setCflight, setDflight } = airportSlicer.actions;
+export const { setEflight, setCflight, setDflight, setDelflight } =
+  airportSlicer.actions;
 
 export default airportSlicer.reducer;

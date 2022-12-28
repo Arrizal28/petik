@@ -13,14 +13,15 @@ import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { forgotPassword } from "../../Redux/Actions/authaction";
-import swal from "sweetalert";
+import { changePassword } from "../../Redux/Actions/authaction";
 
-function ForgotPassword() {
+function ChangePassword() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState();
   const { token } = useSelector((state) => state.auth);
+  const [oldpass, setOldpass] = useState("");
+  const [newpass, setNewpass] = useState("");
+  const [cnewpass, setCnewpass] = useState("");
 
   useEffect(() => {
     if (token) {
@@ -30,19 +31,22 @@ function ForgotPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "") {
+    if (oldpass === "") {
       return;
     }
-    if (email !== "") {
+    if (newpass === "") {
+      return;
+    }
+    if (cnewpass === "") {
+      return;
+    }
+    if (oldpass !== "" && newpass !== "" && cnewpass !== "") {
       const data = {
-        email,
+        oldpass,
+        newpass,
+        cnewpass,
       };
-      dispatch(forgotPassword(data));
-      swal({
-        title: "check your email to continue",
-        icon: "success",
-        button: "OK",
-      });
+      dispatch(changePassword(data));
       navigate("/");
     }
   };
@@ -61,32 +65,49 @@ function ForgotPassword() {
             <Col style={{ justifyContent: "center" }}>
               <CardLogo elevation={2}>
                 <CardContent>
-                  <Heading> Find Your Account</Heading>
-                  <Title
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  >
-                    Please enter your email For get new password{" "}
-                  </Title>
+                  <Heading>Change Password</Heading>
+                  <Title>Please Enter Your New Passowrd </Title>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
                   <TextFields
-                    type="email"
-                    id="outlined-basic"
-                    label="Email"
+                    type="password"
+                    id="outlined"
+                    label="Old Password"
                     variant="outlined"
                     size="small"
                     required
+                    value={oldpass}
+                    onChange={(e) => setOldpass(e.target.value)}
                   />
-                  <Links to="/resetpassword">
+                  <TextFields
+                    type="password"
+                    id="outlined"
+                    label="New Password"
+                    variant="outlined"
+                    size="small"
+                    required
+                    value={newpass}
+                    onChange={(e) => setNewpass(e.target.value)}
+                  />
+                  <TextFields
+                    type="password"
+                    id="outlined"
+                    label="Confirm New Password"
+                    variant="outlined"
+                    size="small"
+                    required
+                    value={cnewpass}
+                    onChange={(e) => setCnewpass(e.target.value)}
+                  />
+                  <Links to="/login">
                     <Buttons
                       variant="contained"
                       size="medium"
                       onClick={handleSubmit}
                     >
-                      Continue
+                      Save
                     </Buttons>
                   </Links>
                 </CardContent>
@@ -99,4 +120,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default ChangePassword;

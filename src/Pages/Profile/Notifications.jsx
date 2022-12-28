@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, Grid } from "@mui/material";
 import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
@@ -14,12 +14,21 @@ const socket = io(process.env.REACT_APP_SOCKET_API);
 
 function Notifications() {
   const dispatch = useDispatch();
+  const [userid, setUserid] = useState();
   const { wai } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    setUserid(wai?.data?.id);
+    console.log(userid);
+  }, [userid]);
+
   useEffect(() => {
     socket.on("connect", () => {});
-    socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
+    socket.emit("LOAD_NOTIFICATIONS", 3);
+    socket.on(`NOTIFICATIONS-3`, (data) => {
       dispatch(notif(data));
       console.log(data);
+      console.log("success");
     });
   }, [dispatch]);
 

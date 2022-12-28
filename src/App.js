@@ -20,6 +20,7 @@ import ForgotPassword from "./Pages/Password/ForgotPassword";
 import ListFlight from "./Pages/Flight/ListFlight";
 import Adminhome from "./Pages/Admin/Home/Home";
 import ResetPassword from "./Pages/Password/ResetPassword";
+import ChangePassword from "./Pages/Password/ChangePassword";
 import InputData from "./Pages/Transaction/InputData";
 import HistoryOrders from "./Pages/Transaction/Orders";
 import FlightAdmin from "./Pages/Admin/Flight/FlightAdmin";
@@ -45,6 +46,7 @@ function App() {
               <Route path="/auth/verify/failed" element={<Failed />} />
               <Route path="/forgotpassword" element={<ForgotPassword />} />
               <Route path="/resetpassword" element={<ResetPassword />} />
+              <Route path="/changepassword" element={<ChangePassword />} />
               <Route path="/listflight" element={<ListFlight />} />
               <Route
                 path="/adminhome"

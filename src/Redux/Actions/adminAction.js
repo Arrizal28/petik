@@ -1,6 +1,11 @@
 import axios from "axios";
 import swal from "sweetalert";
-import { setCflight, setDflight } from "../Reducers/adminReducer";
+import {
+  setCflight,
+  setDflight,
+  setEflight,
+  setDelflight,
+} from "../Reducers/adminReducer";
 
 export const createflight = (data) => async (dispatch, getState) => {
   try {
@@ -31,10 +36,10 @@ export const createflight = (data) => async (dispatch, getState) => {
   }
 };
 
-export const editflight = (data, id) => async (getState) => {
+export const editflight = (data, id) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
-    await axios.put(
+    const result = await axios.put(
       `${process.env.REACT_APP_AUTH_API}/flight/edit/${id}`,
       data,
       {
@@ -44,11 +49,14 @@ export const editflight = (data, id) => async (getState) => {
         },
       }
     );
-    swal({
-      title: "Succes updated flight",
-      icon: "success",
-      button: "OK",
-    });
+    if (result.data.status) {
+      dispatch(setEflight(result.data));
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
+    }
   } catch (error) {
     console.log("error", error);
     swal({
@@ -59,7 +67,7 @@ export const editflight = (data, id) => async (getState) => {
   }
 };
 
-export const deleteflight = (id) => async (getState) => {
+export const deleteflight = (id) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
     const result = await axios.delete(
@@ -72,6 +80,7 @@ export const deleteflight = (id) => async (getState) => {
       }
     );
     if (result.data.status) {
+      dispatch(setDelflight(result.data));
       swal({
         title: result.data.message,
         icon: "success",
