@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
 import { CardNotif } from "../../Styled/MUI/TransactionStyle";
-import { FontBlue } from "../../Styled/ComponentUI/Styles";
+import { FontBlue, FontP } from "../../Styled/ComponentUI/Styles";
 import { io } from "socket.io-client";
 import { useSelector, useDispatch } from "react-redux";
 import CampaignIcon from "@mui/icons-material/Campaign";
@@ -115,6 +115,7 @@ function Notifications() {
                     Ali Connors I'll be in your neighborhood doing errands this…
                   </Typography>
                 </ListItemText>
+                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
               </ListItem>
               <Divider variant="inset" component="li" />
               <ListItem alignItems="flex-start">
@@ -133,6 +134,7 @@ function Notifications() {
                     Ali Connors I'll be in your neighborhood doing errands this…
                   </Typography>
                 </ListItemText>
+                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
               </ListItem>
               <Divider variant="inset" component="li" />
               <ListItem alignItems="flex-start">
@@ -151,6 +153,7 @@ function Notifications() {
                     Ali Connors I'll be in your neighborhood doing errands this…
                   </Typography>
                 </ListItemText>
+                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
               </ListItem>
               <Divider variant="inset" component="li" /> */}
             </List>

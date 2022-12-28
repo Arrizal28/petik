@@ -110,3 +110,11 @@ export const FontP = styled.p`
   font-weight: bold;
   color: gray;
 `;
+
+export const FontItem = styled.p`
+  font-size: 13px;
+  color: #000;
+  margin-left: 20px;
+  font-weight: bold;
+  color: gray;
+`;
