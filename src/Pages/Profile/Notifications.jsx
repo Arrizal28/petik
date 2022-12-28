@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Grid } from "@mui/material";
+import { Badge, Grid, Stack } from "@mui/material";
 import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
-import { CardContainer, CardNotif } from "../../Styled/MUI/TransactionStyle";
-import { FontBlue, FontNotif, FontP } from "../../Styled/ComponentUI/Styles";
-import { Col, Row } from "react-bootstrap";
+import { CardNotif } from "../../Styled/MUI/TransactionStyle";
+import { FontBlue } from "../../Styled/ComponentUI/Styles";
 import { io } from "socket.io-client";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { notif } from "../../Redux/Actions/userAction";
+import CampaignIcon from "@mui/icons-material/Campaign";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Typography from "@mui/material/Typography";
+
 const socket = io(process.env.REACT_APP_SOCKET_API);
 
 function Notifications() {
@@ -44,85 +51,70 @@ function Notifications() {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
           <Grid item xs={9}>
             <Grid>
-              <CardContainer variant="outlined">
-                <FontNotif>Notifications</FontNotif>
-              </CardContainer>
-            </Grid>
-            <Grid>
-              <CardNotif elevation={1}>
-                <Box
-                  style={{
-                    justifyContent: "center",
-                    textAlign: "left",
-                    alignItems: "center",
-                    marginTop: 25,
-                  }}
-                >
-                  {/* <Col xs={1} style={{ justifyContent: "center", textAlign: "left", marginLeft: 20 }}> */}
-                  <Avatar fontSize="small" />
-                  {/* </Col>
-                  <Col> */}
-                  <FontP>Lorem ipsum</FontP>
-                  {/* </Col> */}
-                  {/* <Col xs={2} style={{ justifyContent: "center", textAlign: "right", marginLeft: 20 }}> */}
-                  <FontBlue>Mark Read</FontBlue>
-                  {/* </Col> */}
-                </Box>
+              <CardNotif variant="outlined">
+                <Stack direction="row" justifyContent="space-between" alignItems="baseline" style={{ margin: 15 }}>
+                  <FontBlue>Notifications</FontBlue>
+                  <FontBlue style={{ margin: 10, cursor: "pointer" }}>Mark All Read</FontBlue>
+                </Stack>
               </CardNotif>
             </Grid>
-            <Grid>
-              <CardNotif elevation={1}>
-                <Row
-                  style={{
-                    justifyContent: "center",
-                    display: "flex",
-                    textAlign: "left",
-                    alignItems: "center",
-                    marginTop: 25,
-                    cursor: "pointer",
-                  }}
-                >
-                  <Col
-                    xs={1}
-                    style={{
-                      justifyContent: "center",
-                      textAlign: "left",
-                      marginLeft: 20,
-                    }}
-                  >
-                    <Avatar fontSize="small" />
-                  </Col>
-                  <Col
-                    xs={1}
-                    style={{
-                      justifyContent: "center",
-                      textAlign: "left",
-                      display: "flex",
-                    }}
-                  >
-                    <FontP>Lorem ipsum</FontP>
-                  </Col>
-                  <Col
-                    xs={2}
-                    style={{
-                      justifyContent: "center",
-                      textAlign: "right",
-                      marginLeft: 20,
-                      cursor: "pointer",
-                    }}
-                  >
-                    <FontBlue>Mark Read</FontBlue>
-                  </Col>
-                </Row>
-              </CardNotif>
-            </Grid>
+            <List sx={{ width: "100%", minWidth: 360, bgcolor: "background.paper", marginBottom: 15 }}>
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Badge color="red" variant="dot">
+                    <CampaignIcon color="gray" />
+                  </Badge>
+                </ListItemAvatar>
+                <ListItemText>
+                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
+                    Ali Connors I'll be in your neighborhood doing errands this…
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+              <Divider variant="inset" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Badge color="red" variant="dot">
+                    <CampaignIcon color="gray" />
+                  </Badge>
+                </ListItemAvatar>
+                <ListItemText>
+                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
+                    Ali Connors I'll be in your neighborhood doing errands this…
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+              <Divider variant="inset" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Badge color="red" variant="dot">
+                    <CampaignIcon color="gray" />
+                  </Badge>
+                </ListItemAvatar>
+                <ListItemText>
+                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
+                    Ali Connors I'll be in your neighborhood doing errands this…
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+              <Divider variant="inset" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Badge color="red" variant="dot">
+                    <CampaignIcon color="gray" />
+                  </Badge>
+                </ListItemAvatar>
+                <ListItemText>
+                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
+                    Ali Connors I'll be in your neighborhood doing errands this…
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </List>
           </Grid>
         </Grid>
       </Box>
