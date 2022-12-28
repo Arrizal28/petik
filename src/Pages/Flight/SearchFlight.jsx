@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
 import { FontNotif } from "../../Styled/ComponentUI/Styles";
-import FlightItem from "../../Components/FlightItem/FlightItem";
 import Panel from "../../Components/Panel/PanelSearch";
 import { CardFlight } from "../../Styled/MUI/FlightStyle";
 import ItemSearch from "../../Components/FlightItem/ItemSearch";
@@ -22,7 +21,6 @@ function SearchFlight() {
               <FontNotif>Search Your Ticket Flight</FontNotif>
             </CardFlight>
             <Panel />
-            <FlightItem />
           </Grid>
         </Grid>
         <ItemSearch />

@@ -94,7 +94,6 @@ export const QRCard = styled(Card)({
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
-  // marginTop: 5,
   margin: "auto",
   display: "flex",
 });
@@ -105,8 +104,7 @@ export const AirlinesCard = styled(Card)({
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
-  // marginTop: 5,
-  margin: "auto",
+  marginLeft: 10,
   display: "flex",
   borderRadius: 10,
 });
