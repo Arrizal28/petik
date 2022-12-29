@@ -69,7 +69,17 @@ function Notifications() {
                   style={{ margin: 15 }}
                 >
                   <FontBlue>Notifications</FontBlue>
-                  <FontBlue style={{ margin: 10, cursor: "pointer" }}>
+                  <FontBlue
+                    style={{ margin: 10, cursor: "pointer" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      socket.emit("READ_ALL", wai?.data?.id);
+                      socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
+                        dispatch(notifikasi(data));
+                        console.log("success read notif");
+                      });
+                    }}
+                  >
                     Mark All Read
                   </FontBlue>
                 </Stack>
