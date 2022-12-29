@@ -1,10 +1,12 @@
 import React from "react";
 import "./flightitem.css";
 import { Divider, Button } from "antd";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { flightid } from "../../Redux/Actions/bookingAction";
 
 function FlightItem() {
+  const dispatch = useDispatch();
   const { listflight } = useSelector((state) => state.airport);
   const navigate = useNavigate();
 
@@ -43,6 +45,7 @@ function FlightItem() {
                         type="primary"
                         onClick={(e) => {
                           e.preventDefault();
+                          dispatch(flightid(item.id));
                           navigate(`/inputdata/${item.id}`);
                         }}
                       >

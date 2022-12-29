@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Badge, Grid, Stack } from "@mui/material";
 import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
@@ -7,28 +7,40 @@ import TopPanels from "../../Components/Header/TopPanel";
 import { CardNotif } from "../../Styled/MUI/TransactionStyle";
 import { FontBlue, FontP } from "../../Styled/ComponentUI/Styles";
 import { io } from "socket.io-client";
-import { useSelector } from "react-redux";
-// import { notif } from "../../Redux/Actions/userAction";
+import { useSelector, useDispatch } from "react-redux";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
+import { notifikasi } from "../../Redux/Actions/userAction";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Typography from "@mui/material/Typography";
 
 const socket = io(process.env.REACT_APP_SOCKET_API);
 
 function Notifications() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { wai } = useSelector((state) => state.auth);
+  const { notif } = useSelector((state) => state.user);
+  // const [refetchData, setRefetchData] = useState(false);
+  // const [userId, setUserId] = useState(null);
+
   // useEffect(() => {
-  //   socket.on("connect", () => {});
-  //   socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
-  //     dispatch(notif(data));
-  //     console.log(data);
-  //   });
-  // }, [dispatch]);
+  //   setUserId(wai?.data?.id);
+  // }, [userId]);
+
+  useEffect(() => {
+    if (wai?.data?.id) {
+      socket.on("connect", () => {});
+      socket.emit("LOAD_NOTIFICATIONS", wai?.data?.id);
+      socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
+        dispatch(notifikasi(data));
+        console.log(data);
+        console.log("success");
+      });
+    }
+  }, [dispatch, wai?.data?.id]);
 
   return (
     <>
@@ -42,72 +54,112 @@ function Notifications() {
           margin: "auto",
         }}
       >
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, justifyContent: "center" }}
+        >
           <Grid item xs={9}>
             <Grid>
               <CardNotif variant="outlined">
-                <Stack direction="row" justifyContent="space-between" alignItems="baseline" style={{ margin: 15 }}>
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="baseline"
+                  style={{ margin: 15 }}
+                >
                   <FontBlue>Notifications</FontBlue>
-                  <FontBlue style={{ margin: 10, cursor: "pointer" }}>Mark All Read</FontBlue>
+                  <FontBlue
+                    style={{ margin: 10, cursor: "pointer" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      socket.emit("READ_ALL", wai?.data?.id);
+                      socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
+                        dispatch(notifikasi(data));
+                        console.log("success read notif");
+                      });
+                    }}
+                  >
+                    Mark All Read
+                  </FontBlue>
                 </Stack>
               </CardNotif>
             </Grid>
-            <List sx={{ width: "100%", minWidth: 360, bgcolor: "background.paper", marginBottom: 15 }}>
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Badge color="red" variant="dot">
-                    <CampaignIcon color="gray" />
-                  </Badge>
-                </ListItemAvatar>
-                <ListItemText>
-                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                    Ali Connors I'll be in your neighborhood doing errands this…
-                  </Typography>
-                </ListItemText>
-                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Badge color="red" variant="dot">
-                    <CampaignIcon color="gray" />
-                  </Badge>
-                </ListItemAvatar>
-                <ListItemText>
-                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                    Ali Connors I'll be in your neighborhood doing errands this…
-                  </Typography>
-                </ListItemText>
-                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Badge color="red" variant="dot">
-                    <CampaignIcon color="gray" />
-                  </Badge>
-                </ListItemAvatar>
-                <ListItemText>
-                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                    Ali Connors I'll be in your neighborhood doing errands this…
-                  </Typography>
-                </ListItemText>
-                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Badge color="red" variant="dot">
-                    <CampaignIcon color="gray" />
-                  </Badge>
-                </ListItemAvatar>
-                <ListItemText>
-                  <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                    Ali Connors I'll be in your neighborhood doing errands this…
-                  </Typography>
-                </ListItemText>
-              </ListItem>
-              <Divider variant="inset" component="li" />
+            <List
+              sx={{
+                width: "100%",
+                minWidth: 360,
+                bgcolor: "background.paper",
+                marginBottom: 15,
+              }}
+            >
+              {notif?.map((item) => {
+                return (
+                  <>
+                    {/* <ListItem alignItems="flex-start" key={item.id}>
+                      <ListItemAvatar>
+                        <Badge color="red" variant="dot">
+                          <CampaignIcon color="gray" />
+                        </Badge>
+                      </ListItemAvatar>
+                      <ListItemText>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          {item.message}
+                        </Typography>
+                      </ListItemText>
+                    </ListItem>
+                    <Divider variant="inset" component="li" /> */}
+                    <ListItem alignItems="flex-start" key={item.id}>
+                      {item.isRead === false ? (
+                        <ListItemAvatar>
+                          <Badge color="red" variant="dot">
+                            <CampaignIcon color="gray" />
+                          </Badge>
+                        </ListItemAvatar>
+                      ) : (
+                        <ListItemAvatar>
+                          <CampaignIcon color="gray" />
+                        </ListItemAvatar>
+                      )}
+                      <ListItemText>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          {item.message}
+                        </Typography>
+                      </ListItemText>
+                      <FontP
+                        style={{ margin: 10, cursor: "pointer" }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          socket.emit(
+                            "READ_NOTIFICATIONS",
+                            (item.id, wai?.data?.id)
+                          );
+                          socket.on(
+                            `NOTIFICATIONS-${wai?.data?.id}`,
+                            (data) => {
+                              dispatch(notifikasi(data));
+                              console.log("success read notif");
+                            }
+                          );
+                        }}
+                      >
+                        Mark Read
+                      </FontP>
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </>
+                );
+              })}
             </List>
           </Grid>
         </Grid>

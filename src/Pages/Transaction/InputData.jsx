@@ -13,11 +13,13 @@ import {
   FormClass,
 } from "../../Styled/MUI/TransactionStyle";
 import { FontNotif, Title } from "../../Styled/ComponentUI/Styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { createBooking, totalseat } from "../../Redux/Actions/bookingAction";
+import { showUserBio } from "../../Redux/Actions/userAction";
 
 function InputData() {
+  const { sbio } = useSelector((state) => state.user);
   const [total_passenger, settotal_passenger] = useState("");
   const [totalPassagerForm, setTotalPassagerForm] = useState(0);
   const [toggle, setToggle] = useState(false);
@@ -28,8 +30,6 @@ function InputData() {
     ticketClass: "",
     flight_id: 0,
   });
-
-  const [classTic, setClassTic] = useState("");
 
   const handleChange = (event) => {
     setRequestData({
@@ -55,6 +55,17 @@ function InputData() {
   useEffect(() => {
     console.log(requestData);
   }, [requestData]);
+
+  useEffect(() => {
+    dispatch(showUserBio());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (sbio?.data?.biodata === null) {
+      navigate("/account/profile");
+      return;
+    }
+  }, [navigate, sbio?.data?.biodata]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -146,7 +157,10 @@ function InputData() {
                   >
                     <Title>Ticket Class</Title>
                     <FormClass size="small">
-                      <Select value={classTic} onChange={handleChange}>
+                      <Select
+                        value={requestData?.ticketClass}
+                        onChange={handleChange}
+                      >
                         <MenuItem value={"economy"}>Economy</MenuItem>
                         <MenuItem value={"business"}>Business</MenuItem>
                         <MenuItem value={"vip"}>VIP</MenuItem>

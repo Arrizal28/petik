@@ -3,9 +3,12 @@ import { Divider } from "@mui/material";
 import { CardOrder } from "../../Styled/MUI/TransactionStyle";
 import { FontBlue, FontP } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import moment from "moment";
 
 function Orders({ item }) {
+  const navigate = useNavigate();
   return (
     <>
       <CardOrder variant="outlined">
@@ -19,7 +22,7 @@ function Orders({ item }) {
           <Col>
             <FontP>
               <CalendarMonthIcon style={{ margin: 2 }} />
-              {item.date}
+              {moment(item.date).format("YYYY-MM-DD HH:mm:ss")}
             </FontP>
           </Col>
           <Divider />
@@ -36,7 +39,18 @@ function Orders({ item }) {
             xs={2}
             style={{ cursor: "pointer", textAlign: "right", marginRight: 15 }}
           >
-            {item?.status === "paid" && <FontBlue>Detail</FontBlue>}
+            {item?.status === "paid" && (
+              <FontBlue
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(`/ticket/print-ticket/${item.id}`);
+                }}
+              >
+                Detail
+              </FontBlue>
+            )}
+            {item?.status === "pending" && <FontBlue>Pay</FontBlue>}
+            {item?.status === "pending" && <FontBlue>Cancel</FontBlue>}
           </Col>
         </Row>
       </CardOrder>

@@ -15,21 +15,21 @@ import {
   CardTicket,
   QRCard,
 } from "../../Styled/MUI/TransactionStyle";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getticket } from "../../Redux/Actions/bookingAction";
 
 import TableContainer from "@mui/material/TableContainer";
 
 export default function Ticket({ item }) {
-  // const dispatch = useDispatch();
-  // const params = useParams();
+  const dispatch = useDispatch();
+  const params = useParams();
 
-  // useEffect(() => {
-  //   if (params.id) {
-  //     dispatch(getticket(params.id));
-  //   }
-  // }, [params.id, dispatch]);
+  useEffect(() => {
+    if (params.id) {
+      dispatch(getticket(params.id));
+    }
+  }, [params.id, dispatch]);
 
   // const { ticket } = useSelector((state) => state.booking);
   return (
@@ -99,11 +99,7 @@ export default function Ticket({ item }) {
             <Col>
               <TextName>
                 {" "}
-                <img
-                  width="100px"
-                  alt=""
-                  src="https://hangnadim.bpbatam.go.id/wp-content/uploads/2021/05/Lion-Air-1.png"
-                />
+                <img width="100px" alt="" src={item.airlineLogo} />
               </TextName>
             </Col>
             <Col>

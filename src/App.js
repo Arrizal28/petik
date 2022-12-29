@@ -20,6 +20,7 @@ import ForgotPassword from "./Pages/Password/ForgotPassword";
 import ListFlight from "./Pages/Flight/ListFlight";
 import Adminhome from "./Pages/Admin/Home/Home";
 import ResetPassword from "./Pages/Password/ResetPassword";
+import ChangePassword from "./Pages/Password/ChangePassword";
 import InputData from "./Pages/Transaction/InputData";
 import HistoryOrders from "./Pages/Transaction/Orders";
 import FlightAdmin from "./Pages/Admin/Flight/FlightAdmin";
@@ -30,6 +31,8 @@ import Transaction from "./Pages/Transaction/Transaction";
 import SearchFlight from "./Pages/Flight/SearchFlight";
 import Fourzerofour from "./Pages/404/Fourzerofour";
 import Form from "./Pages/Admin/Form/Form";
+import Allusers from "./Pages/Admin/Users/Allusers";
+import Detailuser from "./Pages/Admin/DetailUser/Detailuser";
 
 function App() {
   return (
@@ -41,10 +44,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/auth/verify/succes" element={<Succes />} />
+              <Route path="/auth/verify/success" element={<Succes />} />
               <Route path="/auth/verify/failed" element={<Failed />} />
               <Route path="/forgotpassword" element={<ForgotPassword />} />
               <Route path="/resetpassword" element={<ResetPassword />} />
+              <Route path="/changepassword" element={<ChangePassword />} />
               <Route path="/listflight" element={<ListFlight />} />
               <Route
                 path="/adminhome"
@@ -77,6 +81,22 @@ function App() {
                 element={
                   <Protected types={["ADMIN"]}>
                     <Form />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/admin/users"
+                element={
+                  <Protected types={["ADMIN"]}>
+                    <Allusers />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/admin/user/:id"
+                element={
+                  <Protected types={["ADMIN"]}>
+                    <Detailuser />
                   </Protected>
                 }
               />

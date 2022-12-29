@@ -3,13 +3,17 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { FormPayment } from "../../Styled/MUI/PaymentStyle";
 import { Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 export default function SelectSeat({
   totalSeatNumber,
   requestData,
   setRequestData,
   seatNumber,
+  i,
 }) {
-  const [seat, setSeat] = useState("");
+  // const [seat, setSeat] = useState("");
+  const { seatr } = useSelector((state) => state.booking);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   // const handleChange = (event) => {
   //   setSeat(event.target.value);
@@ -37,6 +41,13 @@ export default function SelectSeat({
     "A19",
   ];
 
+  function filterArrays(SeatA, seatB) {
+    return SeatA.filter(function (value) {
+      return seatB.indexOf(value) === -1;
+    });
+  }
+  let uniqueValues = filterArrays(SeatA, seatr);
+
   return (
     <div>
       <Row style={{ justifyContent: "center", minWidth: 500 }}>
@@ -48,7 +59,7 @@ export default function SelectSeat({
           <Select
             // value={seat}
             // onChange={(e) => setSeat(e.target.value)}
-            value={requestData?.seatNumber}
+            value={requestData?.seatNumber[i]}
             onChange={(e) => {
               totalSeatNumber = requestData?.seatNumber;
               totalSeatNumber = [...totalSeatNumber, e.target.value];
@@ -56,14 +67,16 @@ export default function SelectSeat({
                 ...requestData,
                 seatNumber: totalSeatNumber,
               });
+              setIsDisabled(true);
             }}
+            disabled={isDisabled}
             displayEmpty
           >
             <MenuItem disabled value="">
               <em>Seat A</em>
             </MenuItem>
-            {SeatA.map((name) => (
-              <MenuItem key={name} value={name}>
+            {uniqueValues.map((name, i) => (
+              <MenuItem key={i} value={name}>
                 {name}
               </MenuItem>
             ))}

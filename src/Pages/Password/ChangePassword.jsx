@@ -11,41 +11,39 @@ import {
 import { CardContent } from "@mui/material";
 import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "antd";
-import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { resetpassword } from "../../Redux/Actions/authaction";
-function ResetPassword() {
-  const { token } = useSelector((state) => state.auth);
+import { changePassword } from "../../Redux/Actions/authaction";
+
+function ChangePassword() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
+  const [oldpass, setOldpass] = useState("");
   const [newpass, setNewpass] = useState("");
   const [cnewpass, setCnewpass] = useState("");
 
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (oldpass === "") {
+      return;
+    }
     if (newpass === "") {
       return;
     }
     if (cnewpass === "") {
       return;
     }
-    if (newpass !== "" && cnewpass !== "") {
+    if (oldpass !== "" && newpass !== "" && cnewpass !== "") {
       const data = {
-        newPass: newpass,
-        confirmNewPass: cnewpass,
+        oldPassword: oldpass,
+        newPassword: newpass,
+        confirmNewPassword: cnewpass,
       };
-      dispatch(resetpassword(data, searchParams.token));
-      navigate("/login");
+      dispatch(changePassword(data));
+      navigate("/");
     }
   };
+
   return (
     <>
       <BoxAuth>
@@ -60,12 +58,22 @@ function ResetPassword() {
             <Col style={{ justifyContent: "center" }}>
               <CardLogo elevation={2}>
                 <CardContent>
-                  <Heading>Reset Password</Heading>
+                  <Heading>Change Password</Heading>
                   <Title>Please Enter Your New Passowrd </Title>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
+                  <TextFields
+                    type="password"
+                    id="outlined"
+                    label="Old Password"
+                    variant="outlined"
+                    size="small"
+                    required
+                    value={oldpass}
+                    onChange={(e) => setOldpass(e.target.value)}
+                  />
                   <TextFields
                     type="password"
                     id="outlined"
@@ -105,4 +113,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default ChangePassword;
