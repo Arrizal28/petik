@@ -122,7 +122,7 @@ function Payment({ totals, setTotals }) {
               Array.from(Array(totalSeat).keys()).map((item, i) => {
                 return (
                   <>
-                    <Grid>
+                    <Grid key={i}>
                       <CardPay variant="outlined">
                         <Grid2 item xs={9}>
                           <Grid>
@@ -155,8 +155,9 @@ function Payment({ totals, setTotals }) {
         paymentMethod={requestData.paymentMethod}
         requestData={requestData}
         setRequestData={setRequestData}
+        cbooking={cbooking}
       />
-      <Confirmation handleSubmit={handleSubmit} />
+      <Confirmation handleSubmit={handleSubmit} cbooking={cbooking} />
       <Footer />
     </>
   );

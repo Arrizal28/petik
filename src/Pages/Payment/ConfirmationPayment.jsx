@@ -5,7 +5,7 @@ import { FontP } from "../../Styled/ComponentUI/Styles";
 import { ButtonPay, CardConf } from "../../Styled/MUI/PaymentStyle";
 import { Col, Row } from "react-bootstrap";
 
-function Confirmation({ handleSubmit }) {
+function Confirmation({ handleSubmit, cbooking }) {
   return (
     <>
       <Box
@@ -40,7 +40,7 @@ function Confirmation({ handleSubmit }) {
                       marginTop: 30,
                     }}
                   >
-                    <FontP>Rp.99.999.999,00</FontP>
+                    <FontP>{cbooking?.data?.grandTotal}</FontP>
                   </Col>
                   <Col
                     style={{

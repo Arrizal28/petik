@@ -23,16 +23,24 @@ function Notifications() {
   const dispatch = useDispatch();
   const { wai } = useSelector((state) => state.auth);
   const { notif } = useSelector((state) => state.user);
+  // const [refetchData, setRefetchData] = useState(false);
+  // const [userId, setUserId] = useState(null);
+
+  // useEffect(() => {
+  //   setUserId(wai?.data?.id);
+  // }, [userId]);
 
   useEffect(() => {
-    socket.on("connect", () => {});
-    socket.emit("LOAD_NOTIFICATIONS", 3);
-    socket.on(`NOTIFICATIONS-3`, (data) => {
-      dispatch(notifikasi(data));
-      console.log(data);
-      console.log("success");
-    });
-  }, [dispatch]);
+    if (wai?.data?.id) {
+      socket.on("connect", () => {});
+      socket.emit("LOAD_NOTIFICATIONS", wai?.data?.id);
+      socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
+        dispatch(notifikasi(data));
+        console.log(data);
+        console.log("success");
+      });
+    }
+  }, [dispatch, wai?.data?.id]);
 
   return (
     <>
@@ -78,7 +86,7 @@ function Notifications() {
               {notif?.map((item) => {
                 return (
                   <>
-                    <ListItem alignItems="flex-start" key={item.id}>
+                    {/* <ListItem alignItems="flex-start" key={item.id}>
                       <ListItemAvatar>
                         <Badge color="red" variant="dot">
                           <CampaignIcon color="gray" />
@@ -95,67 +103,53 @@ function Notifications() {
                         </Typography>
                       </ListItemText>
                     </ListItem>
+                    <Divider variant="inset" component="li" /> */}
+                    <ListItem alignItems="flex-start" key={item.id}>
+                      {item.isRead === false ? (
+                        <ListItemAvatar>
+                          <Badge color="red" variant="dot">
+                            <CampaignIcon color="gray" />
+                          </Badge>
+                        </ListItemAvatar>
+                      ) : (
+                        <ListItemAvatar>
+                          <CampaignIcon color="gray" />
+                        </ListItemAvatar>
+                      )}
+                      <ListItemText>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          {item.message}
+                        </Typography>
+                      </ListItemText>
+                      <FontP
+                        style={{ margin: 10, cursor: "pointer" }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          socket.emit(
+                            "READ_NOTIFICATIONS",
+                            (item.id, wai?.data?.id)
+                          );
+                          socket.on(
+                            `NOTIFICATIONS-${wai?.data?.id}`,
+                            (data) => {
+                              dispatch(notifikasi(data));
+                              console.log("success read notif");
+                            }
+                          );
+                        }}
+                      >
+                        Mark Read
+                      </FontP>
+                    </ListItem>
                     <Divider variant="inset" component="li" />
                   </>
                 );
               })}
-              {/* <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Badge color="red" variant="dot">
-                    <CampaignIcon color="gray" />
-                  </Badge>
-                </ListItemAvatar>
-                <ListItemText>
-                  <Typography
-                    sx={{ display: "inline" }}
-                    component="span"
-                    variant="body2"
-                    color="text.primary"
-                  >
-                    Ali Connors I'll be in your neighborhood doing errands this…
-                  </Typography>
-                </ListItemText>
-                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Badge color="red" variant="dot">
-                    <CampaignIcon color="gray" />
-                  </Badge>
-                </ListItemAvatar>
-                <ListItemText>
-                  <Typography
-                    sx={{ display: "inline" }}
-                    component="span"
-                    variant="body2"
-                    color="text.primary"
-                  >
-                    Ali Connors I'll be in your neighborhood doing errands this…
-                  </Typography>
-                </ListItemText>
-                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Badge color="red" variant="dot">
-                    <CampaignIcon color="gray" />
-                  </Badge>
-                </ListItemAvatar>
-                <ListItemText>
-                  <Typography
-                    sx={{ display: "inline" }}
-                    component="span"
-                    variant="body2"
-                    color="text.primary"
-                  >
-                    Ali Connors I'll be in your neighborhood doing errands this…
-                  </Typography>
-                </ListItemText>
-                <FontP style={{ margin: 10, cursor: "pointer" }}>Mark Read</FontP>
-              </ListItem>
-              <Divider variant="inset" component="li" /> */}
             </List>
           </Grid>
         </Grid>

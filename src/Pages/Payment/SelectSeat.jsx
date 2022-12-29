@@ -9,9 +9,11 @@ export default function SelectSeat({
   requestData,
   setRequestData,
   seatNumber,
+  i,
 }) {
-  const [seat, setSeat] = useState("");
+  // const [seat, setSeat] = useState("");
   const { seatr } = useSelector((state) => state.booking);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   // const handleChange = (event) => {
   //   setSeat(event.target.value);
@@ -39,14 +41,12 @@ export default function SelectSeat({
     "A19",
   ];
 
-  const seatB = ["A01", "A02", "A03"];
-
   function filterArrays(SeatA, seatB) {
     return SeatA.filter(function (value) {
       return seatB.indexOf(value) === -1;
     });
   }
-  let uniqueValues = filterArrays(SeatA, seatB);
+  let uniqueValues = filterArrays(SeatA, seatr);
 
   return (
     <div>
@@ -59,7 +59,7 @@ export default function SelectSeat({
           <Select
             // value={seat}
             // onChange={(e) => setSeat(e.target.value)}
-            value={requestData?.seatNumber}
+            value={requestData?.seatNumber[i]}
             onChange={(e) => {
               totalSeatNumber = requestData?.seatNumber;
               totalSeatNumber = [...totalSeatNumber, e.target.value];
@@ -67,14 +67,16 @@ export default function SelectSeat({
                 ...requestData,
                 seatNumber: totalSeatNumber,
               });
+              setIsDisabled(true);
             }}
+            disabled={isDisabled}
             displayEmpty
           >
             <MenuItem disabled value="">
               <em>Seat A</em>
             </MenuItem>
-            {uniqueValues.map((name) => (
-              <MenuItem key={name} value={name}>
+            {uniqueValues.map((name, i) => (
+              <MenuItem key={i} value={name}>
                 {name}
               </MenuItem>
             ))}

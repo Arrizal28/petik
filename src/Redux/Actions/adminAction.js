@@ -5,6 +5,8 @@ import {
   setDflight,
   setEflight,
   setDelflight,
+  setUser,
+  setUsers,
 } from "../Reducers/adminReducer";
 
 export const createflight = (data) => async (dispatch, getState) => {
@@ -117,6 +119,56 @@ export const detailflight = (id) => async (dispatch, getState) => {
         icon: "success",
         button: "OK",
       });
+    }
+  } catch (error) {
+    console.log("error", error);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
+  }
+};
+
+export const getallusers = () => async (dispatch, getState) => {
+  try {
+    const { token } = getState().auth;
+    const result = await axios.get(
+      `${process.env.REACT_APP_AUTH_API}/user/get-users`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (result.data.status) {
+      dispatch(setUsers(result.data));
+    }
+  } catch (error) {
+    console.log("error", error);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
+  }
+};
+
+export const getdetailuser = (id) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().auth;
+    const result = await axios.get(
+      `${process.env.REACT_APP_AUTH_API}/user/get-user/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (result.data.status) {
+      dispatch(setUser(result.data));
     }
   } catch (error) {
     console.log("error", error);
