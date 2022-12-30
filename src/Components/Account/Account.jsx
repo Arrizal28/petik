@@ -46,12 +46,21 @@ function Account() {
         <Link to="/account" style={{ textDecoration: "none" }}>
           <Tooltip title="Account">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              <Avatar
+                alt="Remy Sharp"
+                // src="/static/images/avatar/1.jpg"
+              />
             </Fab>
           </Tooltip>
         </Link>
         <Tooltip title="Log Out">
-          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }} onClick={handleLogout}>
+          <Fab
+            color="primary"
+            aria-label="add"
+            size="small"
+            sx={{ m: 1 }}
+            onClick={handleLogout}
+          >
             <LogoutIcon />
           </Fab>
         </Tooltip>
