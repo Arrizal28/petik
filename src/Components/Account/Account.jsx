@@ -46,7 +46,10 @@ function Account() {
         <Link to="/account" style={{ textDecoration: "none" }}>
           <Tooltip title="Account">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-              <Avatar alt="avatar" src="" />
+              <Avatar
+                alt="Remy Sharp"
+                // src="/static/images/avatar/1.jpg"
+              />
             </Fab>
           </Tooltip>
         </Link>
