@@ -4,7 +4,6 @@ import { AirlinesCard, CardOrder } from "../../Styled/MUI/TransactionStyle";
 import { FontItem, FontP } from "../../Styled/ComponentUI/Styles";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { Heading } from "../../Styled/ComponentUI/FooterStyles";
 import { IconBagasi } from "../../Styled/MUI/IconStyled";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -34,11 +33,15 @@ function ItemSearch() {
               </Stack>
               <Stack>
                 <Stack direction="row" justifyContent="space-between">
-                  <FontP>({item.origin})</FontP>
+                  <FontP>
+                    ({item.origin}) {item.originCity}
+                  </FontP>
                   <FontP>
                     <ArrowRightAltIcon />
                   </FontP>
-                  <FontP>({item.destination})</FontP>
+                  <FontP>
+                    ({item.destination}) {item.destinationCity}
+                  </FontP>
                 </Stack>
                 <Stack direction="row" justifyContent="space-between">
                   <FontItem>{item.departureTime}</FontItem>
@@ -56,12 +59,11 @@ function ItemSearch() {
                 </Tooltip>
               </Stack>
               <Divider orientation="vertical" flexItem />
-              <Stack>
-                <Heading style={{ marginRight: 20 }}>Rp.1500.00,00</Heading>
+              <Stack style={{ justifyContent: "center" }}>
                 <Button
                   size="small"
                   variant="contained"
-                  style={{ marginRight: 20, borderRadius: 15 }}
+                  style={{ marginRight: 20, borderRadius: 10 }}
                   onClick={(e) => {
                     e.preventDefault();
                     navigate(`/inputdata/${item.id}`);

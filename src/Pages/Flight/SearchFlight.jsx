@@ -8,6 +8,7 @@ import { FontNotif } from "../../Styled/ComponentUI/Styles";
 import Panel from "../../Components/Panel/PanelSearch";
 import { CardFlight } from "../../Styled/MUI/FlightStyle";
 import ItemSearch from "../../Components/FlightItem/ItemSearch";
+import ItemNotFound from "../../Components/FlightItem/ItemNotFound";
 
 function SearchFlight() {
   return (
@@ -24,6 +25,7 @@ function SearchFlight() {
           </Grid>
         </Grid>
         <ItemSearch />
+        <ItemNotFound />
       </Box>
       <Footer />
     </>

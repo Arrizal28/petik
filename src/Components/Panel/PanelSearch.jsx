@@ -12,7 +12,7 @@ import swal from "sweetalert";
 import { DatePicker } from "antd";
 import "./panel.scss";
 
-function Panel() {
+function PanelSearch() {
   // const [openOptions, setOpenOptions] = useState(false);
   // const [oneWay, setOneWay] = useState(false);
   const [origin, setOrigin] = useState("");
@@ -132,7 +132,7 @@ function Panel() {
                   showSearch
                   autoClearSearchValue
                   size="large"
-                  placeholder="Dari"
+                  placeholder="From"
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
@@ -186,7 +186,7 @@ function Panel() {
                   showSearch
                   autoClearSearchValue
                   size="large"
-                  placeholder="Dari"
+                  placeholder="To"
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
@@ -249,4 +249,4 @@ function Panel() {
   );
 }
 
-export default Panel;
+export default PanelSearch;
