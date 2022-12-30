@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
 import { CardNotif } from "../../Styled/MUI/TransactionStyle";
-import { FontBlue, FontP } from "../../Styled/ComponentUI/Styles";
+import { FontBlue } from "../../Styled/ComponentUI/Styles";
 import { io } from "socket.io-client";
 import { useSelector, useDispatch } from "react-redux";
 import CampaignIcon from "@mui/icons-material/Campaign";
@@ -54,20 +54,11 @@ function Notifications() {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
           <Grid item xs={9}>
             <Grid>
               <CardNotif variant="outlined">
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="baseline"
-                  style={{ margin: 15 }}
-                >
+                <Stack direction="row" justifyContent="space-between" alignItems="baseline" style={{ margin: 15 }}>
                   <FontBlue>Notifications</FontBlue>
                   <FontBlue
                     style={{ margin: 10, cursor: "pointer" }}
@@ -96,24 +87,6 @@ function Notifications() {
               {notif?.map((item) => {
                 return (
                   <>
-                    {/* <ListItem alignItems="flex-start" key={item.id}>
-                      <ListItemAvatar>
-                        <Badge color="red" variant="dot">
-                          <CampaignIcon color="gray" />
-                        </Badge>
-                      </ListItemAvatar>
-                      <ListItemText>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          {item.message}
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                    <Divider variant="inset" component="li" /> */}
                     <ListItem alignItems="flex-start" key={item.id}>
                       {item.isRead === false ? (
                         <ListItemAvatar>
@@ -127,34 +100,10 @@ function Notifications() {
                         </ListItemAvatar>
                       )}
                       <ListItemText>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
+                        <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
                           {item.message}
                         </Typography>
                       </ListItemText>
-                      <FontP
-                        style={{ margin: 10, cursor: "pointer" }}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          socket.emit(
-                            "READ_NOTIFICATIONS",
-                            (item.id, wai?.data?.id)
-                          );
-                          socket.on(
-                            `NOTIFICATIONS-${wai?.data?.id}`,
-                            (data) => {
-                              dispatch(notifikasi(data));
-                              console.log("success read notif");
-                            }
-                          );
-                        }}
-                      >
-                        Mark Read
-                      </FontP>
                     </ListItem>
                     <Divider variant="inset" component="li" />
                   </>

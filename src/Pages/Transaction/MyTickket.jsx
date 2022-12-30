@@ -4,12 +4,7 @@ import NavBar from "../../Components/Navbar/Navbar";
 import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import TopPanels from "../../Components/Header/TopPanel";
-import {
-  ButtonGroups,
-  CardContainer,
-  CardPanel,
-  Links,
-} from "../../Styled/MUI/TransactionStyle";
+import { ButtonGroups, CardContainer, CardPanel, Links } from "../../Styled/MUI/TransactionStyle";
 import { FontBlue, Heading, Title } from "../../Styled/ComponentUI/Styles";
 import Ticket from "./Ticket";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,27 +35,15 @@ function MyTicket() {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
           <Grid item xs={9}>
             <Grid>
               <CardContainer variant="outlined">
                 <Heading>Transaction</Heading>
-                <ButtonGroups
-                  variant="outlined"
-                  aria-label="outlined primary button group"
-                >
-                  <Links to="/ticket">
-                    <FontBlue size="small">MyTicket</FontBlue>
-                  </Links>
+                <ButtonGroups variant="outlined" aria-label="outlined primary button group">
+                  <FontBlue size="small">MyTicket</FontBlue>
                   <Links to="/transaction">
                     <Title size="small">MyOrder</Title>
-                  </Links>
-                  <Links to="/history">
-                    <Title size="small">MyHistory</Title>
                   </Links>
                 </ButtonGroups>
               </CardContainer>
