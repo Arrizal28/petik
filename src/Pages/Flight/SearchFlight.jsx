@@ -9,14 +9,29 @@ import Panel from "../../Components/Panel/PanelSearch";
 import { CardFlight } from "../../Styled/MUI/FlightStyle";
 import ItemSearch from "../../Components/FlightItem/ItemSearch";
 import ItemNotFound from "../../Components/FlightItem/ItemNotFound";
+import { useSelector } from "react-redux";
 
 function SearchFlight() {
+  const { listflight } = useSelector((state) => state.airport);
+
   return (
     <>
       <NavBar />
       <TopPanels />
-      <Box sx={{ flexGrow: 1, justifyContent: "center", maxWidth: 1024, margin: "auto", marginBottom: 10 }}>
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
+      <Box
+        sx={{
+          flexGrow: 1,
+          justifyContent: "center",
+          maxWidth: 1024,
+          margin: "auto",
+          marginBottom: 10,
+        }}
+      >
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, justifyContent: "center" }}
+        >
           <Grid item xs={12}>
             <CardFlight variant="outlined">
               <FontNotif>Search Your Ticket Flight</FontNotif>
@@ -24,8 +39,7 @@ function SearchFlight() {
             <Panel />
           </Grid>
         </Grid>
-        <ItemSearch />
-        <ItemNotFound />
+        {listflight?.data ? <ItemSearch /> : <ItemNotFound />}
       </Box>
       <Footer />
     </>

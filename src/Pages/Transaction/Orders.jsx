@@ -5,10 +5,23 @@ import { FontBlue, FontP } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { cancelBooking } from "../../Redux/Actions/bookingAction";
+import { useDispatch } from "react-redux";
 import moment from "moment";
 
 function Orders({ item }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      booking_id: item.id,
+    };
+    dispatch(cancelBooking(data));
+    navigate("/");
+  };
+
   return (
     <>
       <CardOrder variant="outlined">
@@ -49,8 +62,9 @@ function Orders({ item }) {
                 Detail
               </FontBlue>
             )}
-            {item?.status === "pending" && <FontBlue>Pay</FontBlue>}
-            {item?.status === "pending" && <FontBlue>Cancel</FontBlue>}
+            {item?.status === "pending" && (
+              <FontBlue onClick={handleSubmit}>Cancel</FontBlue>
+            )}
           </Col>
         </Row>
       </CardOrder>
