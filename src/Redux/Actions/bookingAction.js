@@ -44,11 +44,12 @@ export const createBooking = (data) => async (dispatch, getState) => {
   }
 };
 
-export const cancelBooking = (id) => async (dispatch, getState) => {
+export const cancelBooking = (data) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
     const result = await axios.put(
-      `${process.env.REACT_APP_AUTH_API}/booking/${id}`,
+      `${process.env.REACT_APP_AUTH_API}/booking/cancel`,
+      data,
       {
         headers: {
           "Content-Type": "application/json",
@@ -58,6 +59,11 @@ export const cancelBooking = (id) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setCancelbooking(result.data));
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
     }
   } catch (error) {
     swal({

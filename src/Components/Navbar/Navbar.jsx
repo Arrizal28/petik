@@ -11,7 +11,6 @@ import { AppBars, AppBox, AppPaper } from "../../Styled/MUI/NavbarStyle";
 import { useSelector } from "react-redux";
 import { IconNotif } from "../../Styled/MUI/IconStyled";
 import { Links } from "../../Styled/MUI/AuthStyles";
-import Badge from "@mui/material/Badge";
 
 function NavBar({ socket, wai }) {
   const [setAnchorElNav] = useState(null);
@@ -81,20 +80,25 @@ function NavBar({ socket, wai }) {
                 }}
               >
                 {!token ? (
-                  <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="primary">
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="primary"
+                  >
                     <MenuNav />
                   </IconButton>
                 ) : (
                   <Tooltip title="Notification">
                     <Links to="/notification">
-                      <Badge color="red" variant="dot" style={{ marginRight: 20 }}>
-                        <IconNotif
-                          color="action"
-                          onClick={(e) => {
-                            socket.emit(`LOAD_NOTIFICATIONS-${wai?.data?.id}`);
-                          }}
-                        />
-                      </Badge>
+                      <IconNotif
+                        color="action"
+                        onClick={(e) => {
+                          socket.emit(`LOAD_NOTIFICATIONS-${wai?.data?.id}`);
+                        }}
+                      />
                     </Links>
                   </Tooltip>
                 )}

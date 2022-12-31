@@ -40,7 +40,7 @@ function Confirmation({ handleSubmit, cbooking }) {
                       marginTop: 30,
                     }}
                   >
-                    <FontP>{cbooking?.data?.grandTotal}</FontP>
+                    <FontP>${cbooking?.data?.grandTotal}</FontP>
                   </Col>
                   <Col
                     style={{
