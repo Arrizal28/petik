@@ -6,7 +6,6 @@ import imgbg from "../../assets/images/bg.png";
 export const BoxAuth = styled(Box)({
   justifyContent: "center",
   margin: "auto",
-  // maxWidth: 1024,
 });
 
 export const Cardss = styled(Card)({
@@ -18,7 +17,6 @@ export const Cardss = styled(Card)({
   display: "flex",
   alignItems: "center",
   borderRadius: "none",
-  // border: "1px solid #3596e7",
 });
 
 export const CardLogo = styled(Card)({
@@ -30,8 +28,6 @@ export const CardLogo = styled(Card)({
   display: "flex",
   alignItems: "center",
   borderRadius: "none",
-  // backgroundColor: "whitesmoke",
-  // border: "1px solid #3596e7",
 });
 
 export const CardLogin = styled(Card)({
@@ -44,7 +40,6 @@ export const CardLogin = styled(Card)({
   display: "flex",
   alignItems: "center",
   borderRadius: "none",
-  // border: "1px solid #3596e7",
 });
 
 export const Cards = styled(Card)({

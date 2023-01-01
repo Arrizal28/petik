@@ -11,26 +11,15 @@ import { CardPay, CardPayment } from "../../Styled/MUI/PaymentStyle";
 import MetPayment from "./MethodePayment";
 import StepperPay from "./Stepper";
 import { useDispatch, useSelector } from "react-redux";
-import { payment, totalseat, flightclass, getseatreserved } from "../../Redux/Actions/bookingAction";
+import { payment, getseatreserved } from "../../Redux/Actions/bookingAction";
 import { useNavigate } from "react-router-dom";
-import { ButtonData } from "../../Styled/MUI/TransactionStyle";
 import Confirmation from "./ConfirmationPayment";
-import { useParams } from "react-router-dom";
 
 function Payment({ totals, setTotals }) {
   const { cbooking, tseat, flightid } = useSelector((state) => state.booking);
   const [totalSeat, setTotalSeat] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // const [requestData, setRequestData] = useState({
-  //   booking_id: cbooking?.data?.booking?.id,
-  //   paymentMethod: "business",
-  //   grandTotal: cbooking?.data?.grandTotal,
-  //   seatNumber: [],
-  //   ticketClass: flightclass,
-  // });
-  const params = useParams();
 
   useEffect(() => {
     if (flightid) {
@@ -49,16 +38,6 @@ function Payment({ totals, setTotals }) {
   let totalSeatNumber = [];
 
   useEffect(() => {
-    console.log(requestData);
-  }, [requestData]);
-
-  // useEffect(() => {
-  //   setRequestData({
-  //     ...requestData,
-  //   });
-  // }, []);
-
-  useEffect(() => {
     setRequestData({
       booking_id: cbooking?.data?.booking?.id,
       paymentMethod: "",
@@ -67,7 +46,7 @@ function Payment({ totals, setTotals }) {
       ticketClass: "business",
     });
     setTotalSeat(tseat);
-  }, [cbooking]);
+  }, [cbooking, tseat]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -101,7 +80,11 @@ function Payment({ totals, setTotals }) {
           margin: "auto",
         }}
       >
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
+        >
           <Grid item xs={9}>
             <Grid>
               <CardPayment variant="outlined">
@@ -124,7 +107,13 @@ function Payment({ totals, setTotals }) {
                               }}
                             >
                               <Title>Select Seat {item + 1}</Title>
-                              <SelectSeat totalSeatNumber={totalSeatNumber} requestData={requestData} setRequestData={setRequestData} seatNumber={requestData.seatNumber} i={i} />
+                              <SelectSeat
+                                totalSeatNumber={totalSeatNumber}
+                                requestData={requestData}
+                                setRequestData={setRequestData}
+                                seatNumber={requestData.seatNumber}
+                                i={i}
+                              />
                             </Box>
                           </Grid>
                         </Grid2>
@@ -136,7 +125,12 @@ function Payment({ totals, setTotals }) {
           </Grid>
         </Grid>
       </Box>
-      <MetPayment paymentMethod={requestData.paymentMethod} requestData={requestData} setRequestData={setRequestData} cbooking={cbooking} />
+      <MetPayment
+        paymentMethod={requestData.paymentMethod}
+        requestData={requestData}
+        setRequestData={setRequestData}
+        cbooking={cbooking}
+      />
       <Confirmation handleSubmit={handleSubmit} cbooking={cbooking} />
       <Footer />
     </>

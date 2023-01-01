@@ -50,11 +50,7 @@ function InputData() {
         flight_id: params.id,
       });
     }
-  }, [params.id]);
-
-  useEffect(() => {
-    console.log(requestData);
-  }, [requestData]);
+  }, [params.id, requestData]);
 
   useEffect(() => {
     dispatch(showUserBio());

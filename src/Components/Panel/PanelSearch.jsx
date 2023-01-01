@@ -1,8 +1,6 @@
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
-// import {  faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Select } from "antd";
-// import { Checkbox, DatePicker, Input } from "antd";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,19 +11,14 @@ import { DatePicker } from "antd";
 import "./panel.scss";
 
 function PanelSearch() {
-  // const [openOptions, setOpenOptions] = useState(false);
-  // const [oneWay, setOneWay] = useState(false);
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [newvalue, setNewvalue] = useState("");
   const sameairport = origin === destination;
   const emptysearch = origin === "" && destination === "";
-  // const [query, setQuery] = useState("");
-  // const [apiQuery, setApiQeury] = useState("");
   const [date, setDate] = React.useState(false);
 
   function onSelectDate(date, dateString) {
-    console.log(date, dateString);
     setDate(dateString);
   }
 
@@ -93,25 +86,6 @@ function PanelSearch() {
     return () => clearTimeout(timeoutId);
   }, [newvalue, dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(getairport(newvalue));
-  // }, [newvalue, dispatch]);
-
-  // const [options, setOptions] = useState({
-  //   adult: 1,
-  //   children: 0,
-  //   infant: 0,
-  // });
-
-  // const handleOption = (name, operation) => {
-  //   setOptions((prev) => {
-  //     return {
-  //       ...prev,
-  //       [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-  //     };
-  //   });
-  // };
-
   return (
     <div className="container d-flex">
       <div className="row d-flex justify-content-center align-items-center">
@@ -121,11 +95,6 @@ function PanelSearch() {
               <FontAwesomeIcon icon={faPlane} className="panelicon" />
               {newvalue} {origin} {destination} {date}
             </div>
-            {/* <div className="row panelc">
-              <div className="col-lg-12 col-sm-12">
-                <Checkbox onClick={() => setOneWay(!oneWay)}>One Way</Checkbox>
-              </div>
-            </div> */}
             <div className="row panel2 d-flex justify-content-center align-items-center">
               <div className="col-lg-6 col-sm-12">
                 <Select
@@ -136,7 +105,11 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toUpperCase()
+                      .includes(input.toUpperCase())
+                  }
                   onSearch={handleSearch}
                   onChange={onChange}
                   options={
@@ -150,7 +123,10 @@ function PanelSearch() {
                   {newvalue.length > 1 &&
                     (resairport?.data?.features || []).map((item) => {
                       return (
-                        <Select.Option key={item.properties.id} value={item.iata}>
+                        <Select.Option
+                          key={item.properties.id}
+                          value={item.iata}
+                        >
                           `${item.properties.municipality},($
                           {item.properties.iata})${item.properties.name},$
                           {item.properties.country.name}`
@@ -160,10 +136,11 @@ function PanelSearch() {
                 </Select>
               </div>
               <div className="col-lg-6 col-sm-12">
-                {/* <Select
+                <Select
                   showSearch
+                  autoClearSearchValue
                   size="large"
-                  placeholder="Ke"
+                  placeholder="To"
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
@@ -181,30 +158,14 @@ function PanelSearch() {
                       label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
                     }))
                   }
-                /> */}
-                <Select
-                  showSearch
-                  autoClearSearchValue
-                  size="large"
-                  placeholder="To"
-                  optionFilterProp="children"
-                  className="lebarm"
-                  allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
-                  onSearch={handleSearch}
-                  onChange={onChangeke}
-                  options={
-                    newvalue.length > 1 &&
-                    resairport?.data?.features.map((item) => ({
-                      value: item.properties.iata,
-                      label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
-                    }))
-                  }
                 >
                   {newvalue.length > 1 &&
                     (resairport?.data?.features || []).map((item) => {
                       return (
-                        <Select.Option key={item.properties.id} value={item.iata}>
+                        <Select.Option
+                          key={item.properties.id}
+                          value={item.iata}
+                        >
                           `${item.properties.municipality},($
                           {item.properties.iata})${item.properties.name},$
                           {item.properties.country.name}`
@@ -213,31 +174,23 @@ function PanelSearch() {
                     })}
                 </Select>
               </div>
-              {/* <div className="col-lg-4 col-sm-12"> */}
-              {/* <Button
+            </div>
+            <div className="row panel3 justify-content-center">
+              <div className="col-lg-6 col-12">
+                <DatePicker
+                  className="lebardate"
+                  size="large"
+                  format={"YYYY-MM-DD"}
+                  onChange={onSelectDate}
+                />
+              </div>
+              <div className="col-lg-6 col-12">
+                <Button
                   type="primary"
                   size="large"
                   className="lebarmsearchbtn"
                   onClick={handleSubmit}
                 >
-                  Search
-                </Button> */}
-              {/* {oneWay ? (
-                  <DatePicker className="lebarm" size="large" />
-                ) : (
-                  <>
-                    <DatePicker className="lebardate" size="large" />
-                    <DatePicker className="lebardate" size="large" />
-                  </>
-                )} */}
-              {/* </div> */}
-            </div>
-            <div className="row panel3 justify-content-center">
-              <div className="col-lg-6 col-12">
-                <DatePicker className="lebardate" size="large" format={"YYYY-MM-DD"} onChange={onSelectDate} />
-              </div>
-              <div className="col-lg-6 col-12">
-                <Button type="primary" size="large" className="lebarmsearchbtn" onClick={handleSubmit}>
                   Search
                 </Button>
               </div>

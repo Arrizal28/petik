@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Cards,
   TextFields,
@@ -11,7 +11,7 @@ import {
 import { CardContent } from "@mui/material";
 import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changePassword } from "../../Redux/Actions/authaction";
 

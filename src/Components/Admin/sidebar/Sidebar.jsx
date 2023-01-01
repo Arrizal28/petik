@@ -1,12 +1,19 @@
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FlightIcon from "@mui/icons-material/Flight";
+import { logout } from "../../../Redux/Actions/authaction";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./sidebar.scss";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    dispatch(logout());
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -25,12 +32,6 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">LISTS</p>
-          <Link to="/admin/users" style={{ textDecoration: "none" }}>
-            <li>
-              <PersonOutlineIcon className="icon" />
-              <span>Users</span>
-            </li>
-          </Link>
           <Link to="/admin/flight" style={{ textDecoration: "none" }}>
             <li>
               <FlightIcon className="icon" />
@@ -38,11 +39,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">USER</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
-          <li>
+          <li onClick={handleLogout}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
