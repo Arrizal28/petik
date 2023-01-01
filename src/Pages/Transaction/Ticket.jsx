@@ -31,7 +31,6 @@ export default function Ticket({ item }) {
     }
   }, [params.id, dispatch]);
 
-  // const { ticket } = useSelector((state) => state.booking);
   return (
     <Row
       style={{

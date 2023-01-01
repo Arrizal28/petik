@@ -1,5 +1,13 @@
 import { styled } from "@mui/material/styles";
-import { Box, Button, ButtonGroup, Card, Divider, FormControl, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  Divider,
+  FormControl,
+  TextField,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const BoxContainer = styled(Box)({
@@ -77,7 +85,6 @@ export const QRCard = styled(Card)({
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
-  // marginTop: 5,
   margin: "auto",
   display: "flex",
 });

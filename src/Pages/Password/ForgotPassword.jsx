@@ -14,7 +14,6 @@ import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { forgotPassword } from "../../Redux/Actions/authaction";
-import swal from "sweetalert";
 
 function ForgotPassword() {
   const navigate = useNavigate();
@@ -38,11 +37,6 @@ function ForgotPassword() {
         email,
       };
       dispatch(forgotPassword(data));
-      swal({
-        title: "check your email to continue",
-        icon: "success",
-        button: "OK",
-      });
       navigate("/");
     }
   };

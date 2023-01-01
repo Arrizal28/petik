@@ -4,6 +4,7 @@ import {
   setListflight,
   setFlight,
 } from "../Reducers/airportReducer";
+import swal from "sweetalert";
 
 export const getairport = (query) => async (dispatch) => {
   try {
@@ -18,10 +19,7 @@ export const getairport = (query) => async (dispatch) => {
     if (result.data.status) {
       dispatch(setResairport(result.data));
     }
-  } catch (error) {
-    console.log("error", error);
-    alert("must be name, IATA, or ICAO");
-  }
+  } catch (error) {}
 };
 
 export const clear = () => async (dispatch) => {
@@ -43,7 +41,11 @@ export const scheduleFlightSearch = (data) => async (dispatch) => {
       dispatch(setListflight(result.data));
     }
   } catch (error) {
-    console.log("error", error);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };
 
@@ -61,6 +63,10 @@ export const getscheduleFlight = (page, limit) => async (dispatch) => {
       dispatch(setFlight(result.data));
     }
   } catch (error) {
-    console.log("error", error);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };

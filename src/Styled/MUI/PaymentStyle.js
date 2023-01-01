@@ -75,7 +75,6 @@ export const QRCard = styled(Card)({
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
-  // marginTop: 5,
   margin: "auto",
   display: "flex",
 });

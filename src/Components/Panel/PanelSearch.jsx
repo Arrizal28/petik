@@ -1,8 +1,6 @@
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
-// import {  faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Select } from "antd";
-// import { Checkbox, DatePicker, Input } from "antd";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,19 +11,14 @@ import { DatePicker } from "antd";
 import "./panel.scss";
 
 function PanelSearch() {
-  // const [openOptions, setOpenOptions] = useState(false);
-  // const [oneWay, setOneWay] = useState(false);
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [newvalue, setNewvalue] = useState("");
   const sameairport = origin === destination;
   const emptysearch = origin === "" && destination === "";
-  // const [query, setQuery] = useState("");
-  // const [apiQuery, setApiQeury] = useState("");
   const [date, setDate] = React.useState(false);
 
   function onSelectDate(date, dateString) {
-    console.log(date, dateString);
     setDate(dateString);
   }
 
@@ -136,7 +129,11 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toUpperCase()
+                      .includes(input.toUpperCase())
+                  }
                   onSearch={handleSearch}
                   onChange={onChange}
                   options={
@@ -150,7 +147,10 @@ function PanelSearch() {
                   {newvalue.length > 1 &&
                     (resairport?.data?.features || []).map((item) => {
                       return (
-                        <Select.Option key={item.properties.id} value={item.iata}>
+                        <Select.Option
+                          key={item.properties.id}
+                          value={item.iata}
+                        >
                           `${item.properties.municipality},($
                           {item.properties.iata})${item.properties.name},$
                           {item.properties.country.name}`
@@ -190,7 +190,11 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toUpperCase()
+                      .includes(input.toUpperCase())
+                  }
                   onSearch={handleSearch}
                   onChange={onChangeke}
                   options={
@@ -204,7 +208,10 @@ function PanelSearch() {
                   {newvalue.length > 1 &&
                     (resairport?.data?.features || []).map((item) => {
                       return (
-                        <Select.Option key={item.properties.id} value={item.iata}>
+                        <Select.Option
+                          key={item.properties.id}
+                          value={item.iata}
+                        >
                           `${item.properties.municipality},($
                           {item.properties.iata})${item.properties.name},$
                           {item.properties.country.name}`
@@ -234,10 +241,20 @@ function PanelSearch() {
             </div>
             <div className="row panel3 justify-content-center">
               <div className="col-lg-6 col-12">
-                <DatePicker className="lebardate" size="large" format={"YYYY-MM-DD"} onChange={onSelectDate} />
+                <DatePicker
+                  className="lebardate"
+                  size="large"
+                  format={"YYYY-MM-DD"}
+                  onChange={onSelectDate}
+                />
               </div>
               <div className="col-lg-6 col-12">
-                <Button type="primary" size="large" className="lebarmsearchbtn" onClick={handleSubmit}>
+                <Button
+                  type="primary"
+                  size="large"
+                  className="lebarmsearchbtn"
+                  onClick={handleSubmit}
+                >
                   Search
                 </Button>
               </div>

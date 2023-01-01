@@ -22,7 +22,6 @@ export const createUserBio = (data) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setCreateBio(result.data));
-      console.log("success", result.data);
       swal({
         title: result.data.message,
         icon: "success",
@@ -30,7 +29,6 @@ export const createUserBio = (data) => async (dispatch, getState) => {
       });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",

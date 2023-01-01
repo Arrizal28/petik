@@ -1,8 +1,6 @@
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
-// import {  faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Select } from "antd";
-// import { Checkbox, DatePicker, Input } from "antd";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,25 +11,18 @@ import { DatePicker } from "antd";
 import "./panel.scss";
 
 function Panel() {
-  // const [openOptions, setOpenOptions] = useState(false);
-  // const [oneWay, setOneWay] = useState(false);
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [newvalue, setNewvalue] = useState("");
   const sameairport = origin === destination;
   const emptysearch = origin === "" && destination === "";
-  // const [query, setQuery] = useState("");
-  // const [apiQuery, setApiQeury] = useState("");
-  const [date, setDate] = React.useState(false);
+  const [date, setDate] = useState(false);
 
   function onSelectDate(date, dateString) {
-    console.log(date, dateString);
     setDate(dateString);
   }
 
-  useEffect(() => {
-    console.log("tglfix", date);
-  }, [date]);
+  useEffect(() => {}, [date]);
 
   const navigate = useNavigate();
 

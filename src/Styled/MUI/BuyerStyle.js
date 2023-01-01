@@ -84,7 +84,6 @@ export const CardBox = styled(Card)({
   maxWidth: 770,
   margin: "auto",
   display: "flex",
-  // marginLeft: 10,
 });
 
 export const ListPage = styled(List)({
@@ -103,7 +102,6 @@ export const CardEdit = styled(Card)({
   maxwidth: 425,
   height: 600,
   justifyContent: "center",
-  // margin: "auto",
   textAlign: "left",
   display: "flex",
   alignItems: "center",
@@ -122,7 +120,6 @@ export const Cardo = styled(Card)({
   backgroundColor: "#3596e7",
   borderRadius: 20,
   marginTop: 50,
-  // backgroundImage: `url(${imgbg})`,
 });
 
 export const TextFields = styled(TextField)({

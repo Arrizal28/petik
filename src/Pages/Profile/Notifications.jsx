@@ -23,12 +23,6 @@ function Notifications() {
   const dispatch = useDispatch();
   const { wai } = useSelector((state) => state.auth);
   const { notif } = useSelector((state) => state.user);
-  // const [refetchData, setRefetchData] = useState(false);
-  // const [userId, setUserId] = useState(null);
-
-  // useEffect(() => {
-  //   setUserId(wai?.data?.id);
-  // }, [userId]);
 
   useEffect(() => {
     if (wai?.data?.id) {
@@ -36,8 +30,6 @@ function Notifications() {
       socket.emit("LOAD_NOTIFICATIONS", wai?.data?.id);
       socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
         dispatch(notifikasi(data));
-        console.log(data);
-        console.log("success");
       });
     }
   }, [dispatch, wai?.data?.id]);
@@ -54,11 +46,20 @@ function Notifications() {
           margin: "auto",
         }}
       >
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, justifyContent: "center" }}
+        >
           <Grid item xs={9}>
             <Grid>
               <CardNotif variant="outlined">
-                <Stack direction="row" justifyContent="space-between" alignItems="baseline" style={{ margin: 15 }}>
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="baseline"
+                  style={{ margin: 15 }}
+                >
                   <FontBlue>Notifications</FontBlue>
                   <FontBlue
                     style={{ margin: 10, cursor: "pointer" }}
@@ -67,7 +68,6 @@ function Notifications() {
                       socket.emit("READ_ALL", wai?.data?.id);
                       socket.on(`NOTIFICATIONS-${wai?.data?.id}`, (data) => {
                         dispatch(notifikasi(data));
-                        console.log("success read notif");
                       });
                     }}
                   >
@@ -100,7 +100,12 @@ function Notifications() {
                         </ListItemAvatar>
                       )}
                       <ListItemText>
-                        <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
                           {item.message}
                         </Typography>
                       </ListItemText>
