@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../../Components/Header/Header";
-// import Panel from "../../Components/Panel/Panel";
 import PanelSearch from "../../Components/Panel/PanelSearch";
 
 function Content() {

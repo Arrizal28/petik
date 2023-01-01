@@ -118,3 +118,18 @@ export const FontItem = styled.p`
   font-weight: bold;
   color: gray;
 `;
+
+export const FontPromo = styled.p`
+  font-size: 14px;
+  color: #000;
+  margin-top: 10px;
+  font-weight: bold;
+  color: gray;
+`;
+
+export const HeadPromo = styled.p`
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #000;
+`;
