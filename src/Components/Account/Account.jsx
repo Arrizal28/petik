@@ -37,19 +37,14 @@ function Account() {
         <Link to="/notification" style={{ textDecoration: "none" }}>
           <Tooltip title="Notification">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-              <Badge color="red" variant="dot">
-                <NotificationsActiveIcon />
-              </Badge>
+              <NotificationsActiveIcon />
             </Fab>
           </Tooltip>
         </Link>
         <Link to="/account" style={{ textDecoration: "none" }}>
           <Tooltip title="Account">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-              <Avatar
-                alt="Remy Sharp"
-                // src="/static/images/avatar/1.jpg"
-              />
+              <Avatar alt="Remy Sharp" />
             </Fab>
           </Tooltip>
         </Link>

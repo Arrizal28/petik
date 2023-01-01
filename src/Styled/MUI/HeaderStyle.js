@@ -17,6 +17,8 @@ export const BoxPanel = styled(Box)({
   maxWidth: 1350,
   margin: "auto",
   display: "flex",
+  backgroundColor: "white",
+  borderRadius: 10,
 });
 
 export const BoxHeader = styled(Box)({
