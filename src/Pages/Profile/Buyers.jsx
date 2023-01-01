@@ -16,26 +16,11 @@ import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import TopPanels from "../../Components/Header/TopPanel";
 import { Col, Row } from "antd";
 import LogoutIcon from "@mui/icons-material/Logout";
-import {
-  Avatar,
-  ButtonGroup,
-  Menu,
-  MenuItem,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { ButtonGroup, TableHead, TableRow } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { showUserBio } from "../../Redux/Actions/userAction";
 
 function Buyers() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.user.sbio);
 
@@ -91,28 +76,6 @@ function Buyers() {
               <Row style={{ justifyContent: "center" }}>
                 <Col>
                   <CardAccount variant="outlined">
-                    <Avatar
-                      alt="avatar"
-                      src=""
-                      id="basic-button"
-                      aria-controls={open ? "basic-menu" : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open ? "true" : undefined}
-                      onClick={handleClick}
-                    />
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      cursor="pointer"
-                      MenuListProps={{
-                        "aria-labelledby": "basic-button",
-                      }}
-                    >
-                      <MenuItem onClick={handleClose}>Upload</MenuItem>
-                      <MenuItem onClick={handleClose}>Delete</MenuItem>
-                    </Menu>
                     <BoxMenu>
                       <Heading>Name</Heading>
                       <Title>

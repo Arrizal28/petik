@@ -42,6 +42,7 @@ export const IconNotif = styled(NotificationsActiveIcon)({
   fontSize: 25,
   color: " #3596e7",
   cursor: "pointer",
+  marginRight: 15,
 });
 
 export const IconBagasi = styled(LuggageIcon)({
