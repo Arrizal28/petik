@@ -7,6 +7,7 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { IconBagasi } from "../../Styled/MUI/IconStyled";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ItemNotFound from "./ItemNotFound";
 
 function ItemSearch() {
   const { listflight } = useSelector((state) => state.airport);
@@ -25,10 +26,19 @@ function ItemSearch() {
               </FontP>
             </Stack>
             <Divider />
-            <Stack direction="row" justifyContent="space-between" style={{ margin: 5 }}>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              style={{ margin: 5 }}
+            >
               <Stack>
                 <AirlinesCard variant="outlined">
-                  <img maxWidth="150px" width="100px" alt="" src={item.airlineLogo} />
+                  <img
+                    maxWidth="150px"
+                    width="100px"
+                    alt=""
+                    src={item.airlineLogo}
+                  />
                 </AirlinesCard>
               </Stack>
               <Stack>
@@ -77,6 +87,7 @@ function ItemSearch() {
           </CardOrder>
         );
       })}
+      {!listflight?.data && <ItemNotFound />}
     </>
   );
 }
