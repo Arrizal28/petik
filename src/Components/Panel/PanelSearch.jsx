@@ -1,5 +1,3 @@
-import { faPlane } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Select } from "antd";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -91,10 +89,14 @@ function PanelSearch() {
       <div className="row d-flex justify-content-center align-items-center">
         <div className="col-lg-12 panel col-sm-12">
           <div className="row">
+<<<<<<< HEAD
+            <div className="col-lg-12 panel1 col-sm-12">Tiket Pesawat</div>
+=======
             <div className="col-lg-12 panel1 col-sm-12">
               <FontAwesomeIcon icon={faPlane} className="panelicon" />
               {newvalue} {origin} {destination} {date}
             </div>
+>>>>>>> c05f738ad20af2a1931b9a9b6e11341870497d83
             <div className="row panel2 d-flex justify-content-center align-items-center">
               <div className="col-lg-6 col-sm-12">
                 <Select
