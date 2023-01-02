@@ -9,11 +9,17 @@ export const BoxAuth = styled(Box)({
   maxWidth: 1024,
 });
 
-export const Cardss = styled(Card)({
-  maxwidth: 425,
-  height: 540,
+export const BoxAut = styled(Box)({
   justifyContent: "center",
   margin: "auto",
+  maxWidth: 800,
+});
+
+export const Cardss = styled(Card)({
+  width: 800,
+  height: 540,
+  justifyContent: "center",
+  margin: 10,
   textAlign: "center",
   display: "flex",
   alignItems: "center",
@@ -36,34 +42,34 @@ export const Cards = styled(Card)({
 });
 
 export const TextFields = styled(TextField)({
-  maxwidth: 360,
+  maxWidth: 600,
   marginTop: 20,
   borderRadius: 20,
   marginBottom: 20,
   display: "flex",
-  margin: 10,
+  margin: 25,
 });
 
 export const Buttons = styled(Button)({
-  width: 300,
+  width: 360,
   marginTop: 20,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
-  margin: "auto",
+  margin: 25,
 });
 
 export const Buttonx = styled(Button)({
-  width: 200,
+  width: 360,
   marginTop: 20,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
-  margin: "auto",
+  margin: 25,
 });
 
 export const Buttonz = styled(Button)({
-  width: 150,
+  width: 360,
   marginTop: 20,
   borderRadius: 10,
   display: "flex",
