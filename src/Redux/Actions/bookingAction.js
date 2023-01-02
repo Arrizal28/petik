@@ -27,7 +27,6 @@ export const createBooking = (data) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setCbooking(result.data));
-      console.log("success", result.data);
       swal({
         title: result.data.message,
         icon: "success",
@@ -35,7 +34,6 @@ export const createBooking = (data) => async (dispatch, getState) => {
       });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -113,7 +111,6 @@ export const payment = (data) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setPayment(result.data));
-      console.log("success", result.data);
       swal({
         title: result.data.message,
         icon: "success",
@@ -121,7 +118,6 @@ export const payment = (data) => async (dispatch, getState) => {
       });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -143,15 +139,8 @@ export const getticket = (id) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setTicket(result.data));
-      console.log("success", result.data);
-      // swal({
-      //   title: result.data.message,
-      //   icon: "success",
-      //   button: "OK",
-      // });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -173,15 +162,8 @@ export const getseatreserved = (id) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setSeatR(result.data.data));
-      console.log("seat reserved: ", result.data);
-      // swal({
-      //   title: result.data.message,
-      //   icon: "success",
-      //   button: "OK",
-      // });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",

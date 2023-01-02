@@ -1,7 +1,17 @@
 import React, { useEffect } from "react";
 import NavBar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import { BoxHome, BoxMenu, BoxPage, CardAccount, CardProfile, CardUser, CardMenu, Links, ButtonProfile } from "../../Styled/MUI/BuyerStyle.js";
+import {
+  BoxHome,
+  BoxMenu,
+  BoxPage,
+  CardAccount,
+  CardProfile,
+  CardUser,
+  CardMenu,
+  Links,
+  ButtonProfile,
+} from "../../Styled/MUI/BuyerStyle.js";
 import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import TopPanels from "../../Components/Header/TopPanel";
 import { Col, Row } from "antd";
@@ -45,7 +55,17 @@ function Buyers() {
                       <ButtonProfile variant="outlined">
                         <LogoutIcon /> Log Out
                       </ButtonProfile>
-                      <Links to="/account/profile/edit">{data?.biodata === null ? <ButtonProfile variant="contained">Create</ButtonProfile> : <ButtonProfile variant="contained">Edit</ButtonProfile>}</Links>
+                      <Links to="/account/profile/edit">
+                        {data?.biodata === null ? (
+                          <ButtonProfile variant="contained">
+                            Create
+                          </ButtonProfile>
+                        ) : (
+                          <ButtonProfile variant="contained">
+                            Edit
+                          </ButtonProfile>
+                        )}
+                      </Links>
                     </ButtonGroup>
                   </CardMenu>
                 </Col>

@@ -11,13 +11,8 @@ export default function SelectSeat({
   seatNumber,
   i,
 }) {
-  // const [seat, setSeat] = useState("");
   const { seatr } = useSelector((state) => state.booking);
   const [isDisabled, setIsDisabled] = useState(false);
-
-  // const handleChange = (event) => {
-  //   setSeat(event.target.value);
-  // };
 
   const SeatA = [
     "A01",
@@ -57,8 +52,6 @@ export default function SelectSeat({
           style={{ justifyContent: "center" }}
         >
           <Select
-            // value={seat}
-            // onChange={(e) => setSeat(e.target.value)}
             value={requestData?.seatNumber[i]}
             onChange={(e) => {
               totalSeatNumber = requestData?.seatNumber;

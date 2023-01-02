@@ -1,7 +1,7 @@
 import Sidebar from "../../../Components/Admin/sidebar/Sidebar";
 import "./home.scss";
 import Widget from "../../../Components/Admin/widget/Widget";
-import Table from "../../../Components/Admin/table/Table";
+import Usertable from "../../../Components/Admin/UserTable/Usertable";
 
 const Home = () => {
   return (
@@ -15,8 +15,8 @@ const Home = () => {
           <Widget type="balance" />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
-          <Table />
+          <div className="listTitle">All Users</div>
+          <Usertable />
         </div>
       </div>
     </div>

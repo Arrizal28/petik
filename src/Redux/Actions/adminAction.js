@@ -29,7 +29,6 @@ export const createflight = (data) => async (dispatch, getState) => {
       button: "OK",
     });
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -60,7 +59,6 @@ export const editflight = (data, id) => async (dispatch, getState) => {
       });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -90,7 +88,6 @@ export const deleteflight = (id) => async (dispatch, getState) => {
       });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -113,15 +110,8 @@ export const detailflight = (id) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setDflight(result.data));
-      console.log("success", result.data);
-      swal({
-        title: result.data.message,
-        icon: "success",
-        button: "OK",
-      });
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -146,7 +136,6 @@ export const getallusers = () => async (dispatch, getState) => {
       dispatch(setUsers(result.data));
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",
@@ -171,7 +160,6 @@ export const getdetailuser = (id) => async (dispatch, getState) => {
       dispatch(setUser(result.data));
     }
   } catch (error) {
-    console.log("error", error);
     swal({
       title: error.response.data.message,
       icon: "error",

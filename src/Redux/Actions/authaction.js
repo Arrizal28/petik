@@ -16,10 +16,10 @@ export const register = (data) => async (dispatch) => {
       `${process.env.REACT_APP_AUTH_API}/auth/register`,
       data
     );
-    if (result.data.data.status) {
+    if (result.data.status) {
       dispatch(setRegister(result.data));
       swal({
-        title: result.data.message,
+        title: `${result.data.message}, please check your email for verification`,
         icon: "success",
         button: "OK",
       });
@@ -100,7 +100,11 @@ export const forgotPassword = (data) => async (dispatch) => {
       });
     }
   } catch (error) {
-    alert(error.message);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };
 
@@ -142,7 +146,11 @@ export const changePassword = (data) => async (dispatch) => {
       });
     }
   } catch (error) {
-    alert(error.message);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };
 
@@ -162,7 +170,6 @@ export const getwhoami = (callback) => async (dispatch, getState) => {
     }
   } catch (error) {
     if (error.response.status === 500) {
-      console.log("error", error);
       dispatch(setToken(null));
       callback(error.response.status);
     }
