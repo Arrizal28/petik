@@ -36,7 +36,7 @@ function Notifications() {
 
   return (
     <>
-      <NavBar socket={socket} wai={wai} />
+      <NavBar />
       <TopPanels />
       <Box
         sx={{
