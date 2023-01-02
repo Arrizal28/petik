@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/petik.png";
 import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
-import { CardContent, IconButton, InputAdornment } from "@mui/material";
+import { CardContent } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import EmailIcon from "@mui/icons-material/Email";
 import { register } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { Heading, Title } from "../../Styled/ComponentUI/Styles";
@@ -53,22 +50,6 @@ function Register() {
     }
   };
 
-  const [values, setValues] = useState({
-    password: "",
-    showPassword: false,
-  });
-
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <>
       <BoxAuth>
@@ -84,61 +65,9 @@ function Register() {
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
-                  <TextFields
-                    type="email"
-                    id="outlined-basic"
-                    label="Email"
-                    variant="outlined"
-                    size="small"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <EmailIcon style={{ marginRight: 8 }} />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                  <TextFields
-                    type="password"
-                    id="outlined"
-                    label="Password"
-                    variant="outlined"
-                    size="small"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                  <TextFields
-                    type="password"
-                    id="outlined"
-                    label="Confirm Password"
-                    variant="outlined"
-                    size="small"
-                    value={confirm_password}
-                    onChange={(e) => setConfirm_Password(e.target.value)}
-                    required
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
+                  <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                  <TextFields type="password" id="outlined" label="Password" variant="outlined" size="small" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                  <TextFields type="password" id="outlined" label="Confirm Password" variant="outlined" size="small" value={confirm_password} onChange={(e) => setConfirm_Password(e.target.value)} required />
                   <Links to="/register">
                     <Buttons variant="contained" size="medium" disabled={!email || !password} onClick={handleSubmit}>
                       Register

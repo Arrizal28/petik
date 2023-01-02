@@ -7,7 +7,7 @@ import { FontPromo, HeadPromo } from "../../Styled/ComponentUI/Styles";
 export default function MediaTag() {
   return (
     <>
-      <BoxPanel style={{ marginBottom: 15 }}>
+      <BoxPanel style={{ marginBottom: 15, marginTop: 10 }}>
         <Row style={{ justifyContent: "center", textAlign: "center", display: "flex" }}>
           <Col style={{ justifyContent: "center", textAlign: "center", display: "flex" }}>
             <img src={sample} width="300px" alt="tag" />

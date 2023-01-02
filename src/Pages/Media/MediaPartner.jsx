@@ -8,7 +8,7 @@ export default function MediaPartner() {
   return (
     <>
       <BoxPanel>
-        <HeadPromo>Airlines Partnert</HeadPromo>
+        <HeadPromo>Airlines Partner</HeadPromo>
         <Divider />
       </BoxPanel>
 

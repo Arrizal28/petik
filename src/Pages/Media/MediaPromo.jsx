@@ -14,7 +14,7 @@ import { Row } from "react-bootstrap";
 export default function MediaPromo() {
   return (
     <>
-      <BoxPanel>
+      <BoxPanel style={{ marginTop: 20 }}>
         <HeadPromo>Dapatkan Harga Tiket Pesawat dan Hotel Murah ke Destinasi Favorit Anda dengan Partner Promo Kami</HeadPromo>
       </BoxPanel>
       <BoxPanel style={{ marginBottom: 15 }}>
@@ -25,10 +25,7 @@ export default function MediaPromo() {
               <HeadPromo gutterBottom component="div">
                 Hotel Promo
               </HeadPromo>
-              <FontPromo color="text.secondary">
-                Kami menyediakan tiket pesawat murah dengan banyak pilihan maskapai dan tiket.com juga merupakan website dengan maskapai penerbangan terbanyak di Indonesia dan dunia. Dengan metode pembayaran sistem online terlengkap yang
-                aman, lengkap, dan mudah kami pun dapat memberikan konfirmasi secara real time. Tiket yang sudah Anda pesan dapat langsung dikirimkan melalui e-mail dan SMS.
-              </FontPromo>
+              <FontPromo color="text.secondary">Kami menyediakan tiket pesawat murah dengan banyak pilihan maskapai. </FontPromo>
             </CardContent>
             <CardActions>
               <Button size="small">Share</Button>
@@ -42,10 +39,7 @@ export default function MediaPromo() {
               <HeadPromo gutterBottom component="div">
                 Pesawat Promo
               </HeadPromo>
-              <FontPromo color="text.secondary">
-                Kami menyediakan tiket pesawat murah dengan banyak pilihan maskapai dan tiket.com juga merupakan website dengan maskapai penerbangan terbanyak di Indonesia dan dunia. Dengan metode pembayaran sistem online terlengkap yang
-                aman, lengkap, dan mudah kami pun dapat memberikan konfirmasi secara real time. Tiket yang sudah Anda pesan dapat langsung dikirimkan melalui e-mail dan SMS.
-              </FontPromo>
+              <FontPromo color="text.secondary">Kami menyediakan tiket pesawat murah dengan banyak pilihan maskapai. </FontPromo>
             </CardContent>
             <CardActions>
               <Button size="small">Share</Button>
@@ -59,10 +53,7 @@ export default function MediaPromo() {
               <HeadPromo gutterBottom component="div">
                 Vila Promo
               </HeadPromo>
-              <FontPromo color="text.secondary">
-                Kami menyediakan tiket pesawat murah dengan banyak pilihan maskapai dan tiket.com juga merupakan website dengan maskapai penerbangan terbanyak di Indonesia dan dunia. Dengan metode pembayaran sistem online terlengkap yang
-                aman, lengkap, dan mudah kami pun dapat memberikan konfirmasi secara real time. Tiket yang sudah Anda pesan dapat langsung dikirimkan melalui e-mail dan SMS.
-              </FontPromo>
+              <FontPromo color="text.secondary">Kami menyediakan tiket pesawat murah dengan banyak pilihan maskapai. </FontPromo>
             </CardContent>
             <CardActions>
               <Button size="small">Share</Button>
