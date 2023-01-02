@@ -16,6 +16,7 @@ function Account() {
 
     dispatch(logout());
   };
+
   return (
     <div>
       <Box sx={{ m: 1, marginLeft: "auto" }}>
@@ -26,8 +27,8 @@ function Account() {
             </Fab>
           </Tooltip>
         </Link>
-        <Link to="/orders" style={{ textDecoration: "none" }}>
-          <Tooltip title="My Orders">
+        <Link to="/transaction" style={{ textDecoration: "none" }}>
+          <Tooltip title="Transaction">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
               <AirplaneTicketIcon />
             </Fab>
@@ -43,7 +44,7 @@ function Account() {
         <Link to="/account" style={{ textDecoration: "none" }}>
           <Tooltip title="Account">
             <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              <Avatar alt="Remy Sharp" />
             </Fab>
           </Tooltip>
         </Link>

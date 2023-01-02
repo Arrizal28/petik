@@ -1,27 +1,35 @@
 import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import MediaPromo from "../Media/MediaPromo";
+import MediaTag from "../Media/MediaTag";
+import MediaPartner from "../Media/MediaPartner";
+import { useSelector } from "react-redux";
+import Header from "../../Components/Header/Header";
+import PanelSearch from "../../Components/Panel/PanelSearch";
 import Content from "./Content";
-// import TopPanels from "../../Components/Header/TopPanel";
+import Destinasi from "../Media/Destinasi";
 
 function Home() {
-  // const dispatch = useDispatch();
-  // const { wai } = useSelector((state) => state.user);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     if (wai) {
-  //       dispatch(showUserBio());
-  //     }
-  //   })();
-  // }, [dispatch, wai]);
-
+  const { token } = useSelector((state) => state.auth);
   return (
     <>
-      {/* <TopPanels /> */}
       <Navbar />
-      <Content />
-      <Footer />
+      {!token ? (
+        <>
+          <Header />
+          <PanelSearch />
+        </>
+      ) : (
+        <>
+          <Content />
+          <MediaPromo />
+          <Destinasi />
+          <MediaTag />
+          <MediaPartner />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

@@ -6,6 +6,9 @@ import WalletIcon from "@mui/icons-material/Wallet";
 import QuizIcon from "@mui/icons-material/Quiz";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import LuggageIcon from "@mui/icons-material/Luggage";
+import MessageIcon from "@mui/icons-material/Message";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 
 export const IconProfile = styled(PersonOutlineIcon)({
   fontSize: 100,
@@ -40,6 +43,24 @@ export const IconSettings = styled(SettingsSuggestIcon)({
 export const IconNotif = styled(NotificationsActiveIcon)({
   fontSize: 25,
   color: " #3596e7",
+  cursor: "pointer",
   marginRight: 15,
+});
+
+export const IconBagasi = styled(LuggageIcon)({
+  fontSize: 80,
+  color: " #3596e7",
+  cursor: "pointer",
+});
+
+export const IconMess = styled(MessageIcon)({
+  fontSize: 180,
+  color: " #3596e7",
+  cursor: "pointer",
+});
+
+export const IconOrder = styled(ConfirmationNumberIcon)({
+  fontSize: 180,
+  color: " #3596e7",
   cursor: "pointer",
 });

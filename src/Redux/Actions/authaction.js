@@ -1,10 +1,13 @@
 import axios from "axios";
+import swal from "sweetalert";
 import {
   setToken,
   setRegister,
   setLogin,
   setForgot,
   setWhoami,
+  setChange,
+  setReset,
 } from "../Reducers/authReducer";
 
 export const register = (data) => async (dispatch) => {
@@ -13,12 +16,20 @@ export const register = (data) => async (dispatch) => {
       `${process.env.REACT_APP_AUTH_API}/auth/register`,
       data
     );
-    if (result.data.data.status) {
+    if (result.data.status) {
       dispatch(setRegister(result.data));
-      alert(result.data.message);
+      swal({
+        title: `${result.data.message}, please check your email for verification`,
+        icon: "success",
+        button: "OK",
+      });
     }
   } catch (error) {
-    alert(error.response.data.message);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };
 
@@ -32,10 +43,18 @@ export const login = (data) => async (dispatch) => {
       localStorage.setItem("token", result.data.data.token);
       dispatch(setToken(result.data.data.token));
       dispatch(setLogin(result.data));
-      alert(result.data.message);
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "Enter",
+      });
     }
   } catch (error) {
-    alert(error.response.data.message);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };
 
@@ -51,10 +70,18 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
     if (result.data.data.token) {
       localStorage.setItem("token", result.data.data.token);
       dispatch(setToken(result.data.data.token));
-      alert("success!");
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "Enter",
+      });
     }
   } catch (error) {
-    alert(error.response.message);
+    swal({
+      title: error.response.data.message,
+      icon: "warning",
+      button: "OK",
+    });
   }
 };
 
@@ -66,28 +93,68 @@ export const forgotPassword = (data) => async (dispatch) => {
     );
     if (result.data.status) {
       dispatch(setForgot(result.data));
-      alert(result.data.message);
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
     }
   } catch (error) {
-    alert(error.message);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };
 
-export const resetpassword = (data) => async () => {
+export const resetpassword = (data, token) => async (dispatch) => {
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhcnJpemFsNHJyemVuQGdtYWlsLmNvbSIsImlhdCI6MTY3MDAzMTM5MSwiZXhwIjoxNjcwMDMyMjkxfQ.XMo_108aATQl0dwQRAYwEeG_lOV3oWezcqbQ7j_AgxY`,
+      `${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=${token}`,
       data
     );
     if (result.data.status) {
-      alert("success!");
+      dispatch(setReset(data));
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
     }
   } catch (error) {
-    alert(error.message);
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
   }
 };
 
-export const whoami = (callback) => async (dispatch, getState) => {
+export const changePassword = (data) => async (dispatch) => {
+  try {
+    const result = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/auth/forgot-password`,
+      data
+    );
+    if (result.data.status) {
+      dispatch(setChange(result.data));
+      swal({
+        title: result.data.message,
+        icon: "success",
+        button: "OK",
+      });
+    }
+  } catch (error) {
+    swal({
+      title: error.response.data.message,
+      icon: "error",
+      button: "OK",
+    });
+  }
+};
+
+export const getwhoami = (callback) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
     const result = await axios.get(
@@ -102,8 +169,8 @@ export const whoami = (callback) => async (dispatch, getState) => {
       dispatch(setWhoami(result.data));
     }
   } catch (error) {
-    if (error.response.status === 401) {
-      console.log(error);
+    if (error.response.status === 500) {
+      dispatch(setToken(null));
       callback(error.response.status);
     }
   }

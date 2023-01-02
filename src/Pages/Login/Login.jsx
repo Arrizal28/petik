@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
+<<<<<<< HEAD
 import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, BoxAuth, BoxAut } from "../../Styled/MUI/AuthStyles";
 import { CardContent, IconButton, InputAdornment } from "@mui/material";
+=======
+import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
+import { CardContent } from "@mui/material";
+>>>>>>> e173c3088ea59053f409edc0c686dadfaa7c649e
 import { useDispatch, useSelector } from "react-redux";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import EmailIcon from "@mui/icons-material/Email";
 import { login } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { Heading, Text } from "../../Styled/ComponentUI/Styles";
 import { Row } from "antd";
+=======
+import { Heading, Title } from "../../Styled/ComponentUI/Styles";
+import { Col, Row } from "antd";
+>>>>>>> e173c3088ea59053f409edc0c686dadfaa7c649e
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -30,11 +37,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "") {
-      alert("Email is required");
       return;
     }
     if (password === "") {
-      alert("Password is required");
       return;
     }
     if (email !== "" && password !== "") {
@@ -46,25 +51,10 @@ function Login() {
     }
   };
 
-  const [values, setValues] = useState({
-    password: "",
-    showPassword: false,
-  });
-
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <BoxAuth>
       <Cards>
+<<<<<<< HEAD
         <Row style={{ justifyContent: "center", display: "flex" }}>
           <Cardss>
             <CardContent>
@@ -123,6 +113,57 @@ function Login() {
               </Links>
             </CardContent>
           </Cardss>
+=======
+        <Row
+          style={{
+            marginTop: 100,
+            justifyContent: "center",
+            marginBottom: 100,
+          }}
+        >
+          <Col style={{ justifyContent: "center" }}>
+            <CardLogo elevation={2}>
+              <CardContent>
+                <Links to="/">
+                  <img className="App-log" src={logo} alt="logo" width="120px" />
+                </Links>
+              </CardContent>
+            </CardLogo>
+            <CardLogin elevation={2}>
+              <CardContent>
+                <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <TextFields type="Password" id="outlined" label="Password" variant="outlined" size="small" value={password} onChange={(e) => setPassword(e.target.value)} required />
+
+                <Links to="/login">
+                  <Buttons variant="contained" size="medium" onClick={handleSubmit} disabled={!email || !password}>
+                    Log In
+                  </Buttons>
+                </Links>
+                <Links to="/forgotpassword">
+                  <Title>Forgot Password?</Title>
+                </Links>
+              </CardContent>
+            </CardLogin>
+          </Col>
+          <Col style={{ justifyContent: "center" }}>
+            <CardLogo elevation={2}>
+              <CardContent>
+                <Heading>Join</Heading>
+              </CardContent>
+            </CardLogo>
+            <CardLogin elevation={2}>
+              <CardContent>
+                <Title> Create Account?</Title>
+                <Links to="/register">
+                  <Buttonz variant="outlined" size="medium">
+                    Register
+                  </Buttonz>
+                </Links>
+                <GoogleLogin label=" Google" />
+              </CardContent>
+            </CardLogin>
+          </Col>
+>>>>>>> e173c3088ea59053f409edc0c686dadfaa7c649e
         </Row>
       </Cards>
     </BoxAuth>

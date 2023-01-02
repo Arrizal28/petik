@@ -25,10 +25,10 @@ export default function Navigation() {
         }
       />
       <BottomNavigationAction
-        label="Orders"
-        value="order"
+        label="Transaction"
+        value="transaction"
         icon={
-          <Links to="/orders">
+          <Links to="/transaction">
             <AirplaneTicketIcon />
           </Links>
         }
@@ -37,7 +37,7 @@ export default function Navigation() {
         label="Search"
         value="search"
         icon={
-          <Links to="/searchflight">
+          <Links to="/listflight">
             <LocationSearchingIcon />
           </Links>
         }

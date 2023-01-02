@@ -9,8 +9,8 @@ import Account from "../Account/Account";
 import Create from "../Account/Create";
 import { AppBars, AppBox, AppPaper } from "../../Styled/MUI/NavbarStyle";
 import { useSelector } from "react-redux";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { IconNotif } from "../../Styled/MUI/IconStyled";
+import { Links } from "../../Styled/MUI/AuthStyles";
 
 function NavBar() {
   const [setAnchorElNav] = useState(null);
@@ -32,22 +32,69 @@ function NavBar() {
                 noWrap
                 component="a"
                 href="/"
-                sx={{ margin: 2, display: { xs: "flex", md: "none" }, flexGrow: 1, fontFamily: "monospace", fontWeight: 700, letterSpacing: ".2rem", color: "primary", textDecoration: "none" }}
+                sx={{
+                  margin: 2,
+                  display: { xs: "flex", md: "none" },
+                  flexGrow: 1,
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".2rem",
+                  color: "primary",
+                  textDecoration: "none",
+                }}
               >
                 <img src={logo} className="App-logo" alt="logo" />
               </Typography>
-              <Typography variant="h6" noWrap component="a" href="/" sx={{ margin: 2, display: { xs: "none", md: "flex" }, fontFamily: "monospace", fontWeight: 700, letterSpacing: ".1rem", color: "primary", textDecoration: "none" }}>
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  margin: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".1rem",
+                  color: "primary",
+                  textDecoration: "none",
+                }}
+              >
                 <img src={logo} className="Applogo" alt="logo" />
               </Typography>
-              <Box sx={{ justifyContent: "right", marginLeft: "auto", flexGrow: 0, display: { xs: "none", md: "flex" } }}>{!token ? <Create /> : <Account />}</Box>
-              <Box sx={{ textAlign: "right", flexGrow: 0, display: { xs: "flex", md: "none" } }}>
+              <Box
+                sx={{
+                  justifyContent: "right",
+                  marginLeft: "auto",
+                  flexGrow: 0,
+                  display: { xs: "none", md: "flex" },
+                }}
+              >
+                {!token ? <Create /> : <Account />}
+              </Box>
+              <Box
+                sx={{
+                  textAlign: "right",
+                  flexGrow: 0,
+                  display: { xs: "flex", md: "none" },
+                }}
+              >
                 {!token ? (
-                  <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="primary">
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="primary"
+                  >
                     <MenuNav />
                   </IconButton>
                 ) : (
                   <Tooltip title="Notification">
-                    <IconNotif />
+                    <Links to="/notification">
+                      <IconNotif color="action" />
+                    </Links>
                   </Tooltip>
                 )}
               </Box>

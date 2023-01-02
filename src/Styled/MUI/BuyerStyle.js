@@ -54,7 +54,7 @@ export const CardAccount = styled(Card)({
 });
 
 export const CardMenu = styled(Card)({
-  height: 50,
+  height: 100,
   justifyContent: "center",
   textAlign: "center",
   alignItems: "center",
@@ -84,7 +84,6 @@ export const CardBox = styled(Card)({
   maxWidth: 770,
   margin: "auto",
   display: "flex",
-  // marginLeft: 10,
 });
 
 export const ListPage = styled(List)({
@@ -103,7 +102,6 @@ export const CardEdit = styled(Card)({
   maxwidth: 425,
   height: 600,
   justifyContent: "center",
-  // margin: "auto",
   textAlign: "left",
   display: "flex",
   alignItems: "center",
@@ -122,7 +120,6 @@ export const Cardo = styled(Card)({
   backgroundColor: "#3596e7",
   borderRadius: 20,
   marginTop: 50,
-  // backgroundImage: `url(${imgbg})`,
 });
 
 export const TextFields = styled(TextField)({
@@ -152,13 +149,13 @@ export const Buttonx = styled(Button)({
   margin: "auto",
 });
 
-export const Buttonz = styled(Button)({
+export const ButtonProfile = styled(Button)({
   width: 150,
-  marginTop: 20,
+  marginTop: 25,
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
-  margin: "auto",
+  marginBottom: 10,
 });
 
 export const Links = styled(Link)({

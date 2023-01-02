@@ -1,22 +1,20 @@
 import React, { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { whoami } from "../../Redux/Actions/authaction";
-import { showUserBio } from "../../Redux/Actions/userAction";
+import { getwhoami } from "../../Redux/Actions/authaction";
 import { useDispatch, useSelector } from "react-redux";
 
-function Protected({ children }) {
+function Protected({ children, types }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { token } = useSelector((state) => state.auth);
+  const { token, wai } = useSelector((state) => state.auth);
 
   useEffect(() => {
     (async () => {
       if (token) {
-        dispatch(showUserBio());
         dispatch(
-          whoami((status) => {
-            if (status === 401) {
+          getwhoami((status) => {
+            if (status === 500) {
               navigate("/login");
             }
           })
@@ -24,6 +22,14 @@ function Protected({ children }) {
       }
     })();
   }, [token, navigate, dispatch]);
+
+  useEffect(() => {
+    if (wai?.data?.role) {
+      if (!types.some((type) => type === wai.data.role)) {
+        navigate("/");
+      }
+    }
+  }, [wai, types, navigate]);
 
   if (!token) {
     return <Navigate to={`/login`} />;
