@@ -110,11 +110,6 @@ export const detailflight = (id) => async (dispatch, getState) => {
     );
     if (result.data.status) {
       dispatch(setDflight(result.data));
-      swal({
-        title: result.data.message,
-        icon: "success",
-        button: "OK",
-      });
     }
   } catch (error) {
     swal({
