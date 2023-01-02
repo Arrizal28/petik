@@ -16,7 +16,7 @@ export const register = (data) => async (dispatch) => {
       `${process.env.REACT_APP_AUTH_API}/auth/register`,
       data
     );
-    if (result.data.data.status) {
+    if (result.data.status) {
       dispatch(setRegister(result.data));
       swal({
         title: result.data.message,
