@@ -27,11 +27,7 @@ function SearchFlight() {
           marginBottom: 10,
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
           <Grid item xs={12}>
             <CardFlight variant="outlined">
               <FontNotif>Search Your Ticket Flight</FontNotif>
