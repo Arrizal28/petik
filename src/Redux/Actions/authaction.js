@@ -19,7 +19,7 @@ export const register = (data) => async (dispatch) => {
     if (result.data.status) {
       dispatch(setRegister(result.data));
       swal({
-        title: result.data.message,
+        title: `${result.data.message}, please check your email for verification`,
         icon: "success",
         button: "OK",
       });
