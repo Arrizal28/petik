@@ -66,7 +66,7 @@ export const BoxHead = styled(Box)({
   justifyContent: "center",
   position: "relative",
   width: "100%",
-  height: 500,
+  minHeight: 500,
   margin: "auto",
   borderBottomLeftRadius: 10,
   borderBottomRightRadius: 10,
@@ -74,9 +74,6 @@ export const BoxHead = styled(Box)({
 
 export const BoxContainer = styled(Container)({
   maxWidth: 1024,
-  // margin: "20px 0px 100px 0px",
-  // display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  // boxSizing: "border-box",
 });
