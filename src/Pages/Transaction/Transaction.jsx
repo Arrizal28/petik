@@ -9,6 +9,7 @@ import { FontBlue, Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { getListBooking } from "../../Redux/Actions/bookingAction";
 import { useDispatch, useSelector } from "react-redux";
 import Orders from "./Orders";
+import PanelOrder from "../../Components/Panel/PanelOrder";
 
 function Transaction() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function Transaction() {
                 </Links>
               </ButtonGroups>
             </CardContainer>
+            <PanelOrder />
             {listbooking?.data?.map((item) => {
               return (
                 <>

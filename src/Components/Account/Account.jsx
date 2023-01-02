@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Badge, Box, Fab, Tooltip } from "@mui/material";
+import { Avatar, Box, Fab, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";

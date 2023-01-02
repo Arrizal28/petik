@@ -16,6 +16,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { notifikasi } from "../../Redux/Actions/userAction";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Typography from "@mui/material/Typography";
+import PanelNotif from "../../Components/Panel/PanelNotif";
 
 const socket = io(process.env.REACT_APP_SOCKET_API);
 
@@ -76,6 +77,7 @@ function Notifications() {
                 </Stack>
               </CardNotif>
             </Grid>
+            <PanelNotif />
             <List
               sx={{
                 width: "100%",
