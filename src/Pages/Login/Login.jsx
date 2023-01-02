@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-<<<<<<< HEAD
-import { Cards, Cardss, TextFields, Buttons, Buttonz, Links, BoxAuth, BoxAut } from "../../Styled/MUI/AuthStyles";
-import { CardContent, IconButton, InputAdornment } from "@mui/material";
-=======
 import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
 import { CardContent } from "@mui/material";
->>>>>>> e173c3088ea59053f409edc0c686dadfaa7c649e
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/Actions/authaction";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import { Heading, Text } from "../../Styled/ComponentUI/Styles";
-import { Row } from "antd";
-=======
 import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "antd";
->>>>>>> e173c3088ea59053f409edc0c686dadfaa7c649e
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -54,66 +44,6 @@ function Login() {
   return (
     <BoxAuth>
       <Cards>
-<<<<<<< HEAD
-        <Row style={{ justifyContent: "center", display: "flex" }}>
-          <Cardss>
-            <CardContent>
-              <Links to="/">
-                <img className="App-logo" src={logo} alt="logo" />
-              </Links>
-              <Heading> Log In Your Account</Heading>
-              <TextFields
-                type="email"
-                id="outlined-basic"
-                label="Email"
-                variant="outlined"
-                size="small"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <EmailIcon style={{ marginRight: 8 }} />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextFields
-                type="password"
-                id="outlined"
-                label="Password"
-                variant="outlined"
-                size="small"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-
-              <Links to="/login">
-                <Buttons variant="contained" size="large" disabled={!email || !password} onClick={handleSubmit}>
-                  Log In
-                </Buttons>
-              </Links>
-              <GoogleLogin label=" Google" />
-              <Text> No Have Account?</Text>
-              <Links to="/register">
-                <Buttonz variant="outlined" size="small">
-                  Register
-                </Buttonz>
-              </Links>
-            </CardContent>
-          </Cardss>
-=======
         <Row
           style={{
             marginTop: 100,
@@ -163,7 +93,6 @@ function Login() {
               </CardContent>
             </CardLogin>
           </Col>
->>>>>>> e173c3088ea59053f409edc0c686dadfaa7c649e
         </Row>
       </Cards>
     </BoxAuth>
