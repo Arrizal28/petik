@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { IconNotif } from "../../Styled/MUI/IconStyled";
 import { Links } from "../../Styled/MUI/AuthStyles";
 
-function NavBar({ socket, wai }) {
+function NavBar() {
   const [setAnchorElNav] = useState(null);
 
   const { token } = useSelector((state) => state.auth);
@@ -93,12 +93,7 @@ function NavBar({ socket, wai }) {
                 ) : (
                   <Tooltip title="Notification">
                     <Links to="/notification">
-                      <IconNotif
-                        color="action"
-                        onClick={(e) => {
-                          socket.emit(`LOAD_NOTIFICATIONS-${wai?.data?.id}`);
-                        }}
-                      />
+                      <IconNotif color="action" />
                     </Links>
                   </Tooltip>
                 )}
