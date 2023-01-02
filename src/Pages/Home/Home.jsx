@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import Header from "../../Components/Header/Header";
 import PanelSearch from "../../Components/Panel/PanelSearch";
 import Content from "./Content";
+import Destinasi from "../Media/Destinasi";
 
 function Home() {
   const { token } = useSelector((state) => state.auth);
@@ -23,6 +24,7 @@ function Home() {
         <>
           <Content />
           <MediaPromo />
+          <Destinasi />
           <MediaTag />
           <MediaPartner />
           <Footer />

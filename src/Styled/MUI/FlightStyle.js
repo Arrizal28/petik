@@ -1,13 +1,5 @@
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Card,
-  Divider,
-  FormControl,
-  TextField,
-} from "@mui/material";
+import { Box, Button, ButtonGroup, Card, Divider, FormControl, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const BoxContainer = styled(Box)({
@@ -24,7 +16,7 @@ export const CardFlight = styled(Card)({
   textAlign: "center",
   alignItems: "center",
   marginTop: 25,
-  marginBottom: 30,
+  marginBottom: 120,
   borderRadius: 20,
 });
 
