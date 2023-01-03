@@ -15,79 +15,84 @@ function ItemSearch() {
 
   return (
     <>
-      {listflight?.data?.map((item) => {
-        return (
-          <CardOrder variant="outlined">
-            <Stack direction="row" justifyContent="space-between">
-              <FontP>{item.airline}</FontP>
-              <FontP style={{ marginRight: 30 }}>
-                <CalendarMonthIcon fontSize="small" style={{ margin: 2 }} />
-                {item.departureDate}
-              </FontP>
-            </Stack>
-            <Divider />
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              style={{ margin: 5 }}
-            >
-              <Stack>
-                <AirlinesCard variant="outlined">
-                  <img
-                    maxWidth="150px"
-                    width="100px"
-                    alt=""
-                    src={item.airlineLogo}
-                  />
-                </AirlinesCard>
-              </Stack>
-              <Stack>
+      {!listflight?.data ? (
+        <ItemNotFound />
+      ) : (
+        <>
+          {listflight?.data?.map((item) => {
+            return (
+              <CardOrder variant="outlined">
                 <Stack direction="row" justifyContent="space-between">
-                  <FontP>
-                    ({item.origin}) {item.originCity}
-                  </FontP>
-                  <FontP>
-                    <ArrowRightAltIcon />
-                  </FontP>
-                  <FontP>
-                    ({item.destination}) {item.destinationCity}
+                  <FontP>{item.airline}</FontP>
+                  <FontP style={{ marginRight: 30 }}>
+                    <CalendarMonthIcon fontSize="small" style={{ margin: 2 }} />
+                    {item.departureDate}
                   </FontP>
                 </Stack>
-                <Stack direction="row" justifyContent="space-between">
-                  <FontItem>{item.departureTime}</FontItem>
-                  <FontItem>
-                    <ArrowRightAltIcon />
-                  </FontItem>
-                  <FontItem>{item.arrivalTime}</FontItem>
-                </Stack>
-                <Stack></Stack>
-              </Stack>
-              <Divider orientation="vertical" flexItem />
-              <Stack>
-                <Tooltip title="Max 20KG">
-                  <IconBagasi />
-                </Tooltip>
-              </Stack>
-              <Divider orientation="vertical" flexItem />
-              <Stack style={{ justifyContent: "center" }}>
-                <Button
-                  size="small"
-                  variant="contained"
-                  style={{ marginRight: 20, borderRadius: 10 }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigate(`/inputdata/${item.id}`);
-                  }}
+                <Divider />
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  style={{ margin: 5 }}
                 >
-                  Choose
-                </Button>
-              </Stack>
-            </Stack>
-            <Divider />
-          </CardOrder>
-        );
-      })}
-      {!listflight?.data && <ItemNotFound />}
+                  <Stack>
+                    <AirlinesCard variant="outlined">
+                      <img
+                        maxWidth="150px"
+                        width="100px"
+                        alt=""
+                        src={item.airlineLogo}
+                      />
+                    </AirlinesCard>
+                  </Stack>
+                  <Stack>
+                    <Stack direction="row" justifyContent="space-between">
+                      <FontP>
+                        ({item.origin}) {item.originCity}
+                      </FontP>
+                      <FontP>
+                        <ArrowRightAltIcon />
+                      </FontP>
+                      <FontP>
+                        ({item.destination}) {item.destinationCity}
+                      </FontP>
+                    </Stack>
+                    <Stack direction="row" justifyContent="space-between">
+                      <FontItem>{item.departureTime}</FontItem>
+                      <FontItem>
+                        <ArrowRightAltIcon />
+                      </FontItem>
+                      <FontItem>{item.arrivalTime}</FontItem>
+                    </Stack>
+                    <Stack></Stack>
+                  </Stack>
+                  <Divider orientation="vertical" flexItem />
+                  <Stack>
+                    <Tooltip title="Max 20KG">
+                      <IconBagasi />
+                    </Tooltip>
+                  </Stack>
+                  <Divider orientation="vertical" flexItem />
+                  <Stack style={{ justifyContent: "center" }}>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      style={{ marginRight: 20, borderRadius: 10 }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(`/inputdata/${item.id}`);
+                      }}
+                    >
+                      Choose
+                    </Button>
+                  </Stack>
+                </Stack>
+                <Divider />
+              </CardOrder>
+            );
+          })}
+        </>
+      )}
     </>
   );
 }

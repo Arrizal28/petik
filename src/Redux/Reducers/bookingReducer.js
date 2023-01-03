@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cbooking: [],
   cancelbook: [],
-  listbooking: [],
+  listbooking: null,
   payment: [],
   flightid: null,
   tseat: null,
