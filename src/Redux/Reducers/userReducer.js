@@ -4,7 +4,7 @@ const initialState = {
   cbio: [],
   sbio: [],
   ubio: [],
-  notif: [],
+  notif: null,
 };
 
 const authSlicer = createSlice({

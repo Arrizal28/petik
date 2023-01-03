@@ -109,22 +109,19 @@ function PanelSearch() {
                   onChange={onChange}
                   options={
                     newvalue.length > 1 &&
-                    resairport?.data?.features.map((item) => ({
-                      value: item.properties.iata,
-                      label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+                    resairport?.data?.content?.map((item) => ({
+                      value: item.iata,
+                      label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
                     }))
                   }
                 >
                   {newvalue.length > 1 &&
-                    (resairport?.data?.features || []).map((item) => {
+                    (resairport?.data?.content || []).map((item) => {
                       return (
-                        <Select.Option
-                          key={item.properties.id}
-                          value={item.iata}
-                        >
-                          `${item.properties.municipality},($
-                          {item.properties.iata})${item.properties.name},$
-                          {item.properties.country.name}`
+                        <Select.Option key={item.aid} value={item.iata}>
+                          `${item.servedCity},($
+                          {item.iata})${item.name},$
+                          {item.country.name}`
                         </Select.Option>
                       );
                     })}
@@ -148,22 +145,19 @@ function PanelSearch() {
                   onChange={onChangeke}
                   options={
                     newvalue.length > 1 &&
-                    resairport?.data?.features.map((item) => ({
-                      value: item.properties.iata,
-                      label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+                    resairport?.data?.content.map((item) => ({
+                      value: item.iata,
+                      label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
                     }))
                   }
                 >
                   {newvalue.length > 1 &&
-                    (resairport?.data?.features || []).map((item) => {
+                    (resairport?.data?.content || []).map((item) => {
                       return (
-                        <Select.Option
-                          key={item.properties.id}
-                          value={item.iata}
-                        >
-                          `${item.properties.municipality},($
-                          {item.properties.iata})${item.properties.name},$
-                          {item.properties.country.name}`
+                        <Select.Option key={item.aid} value={item.iata}>
+                          `${item.servedCity},($
+                          {item.iata})${item.name},$
+                          {item.country.name}`
                         </Select.Option>
                       );
                     })}

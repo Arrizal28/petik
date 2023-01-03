@@ -77,46 +77,49 @@ function Notifications() {
                 </Stack>
               </CardNotif>
             </Grid>
-            <PanelNotif />
-            <List
-              sx={{
-                width: "100%",
-                minWidth: 360,
-                bgcolor: "background.paper",
-                marginBottom: 15,
-              }}
-            >
-              {notif?.map((item) => {
-                return (
-                  <>
-                    <ListItem alignItems="flex-start" key={item.id}>
-                      {item.isRead === false ? (
-                        <ListItemAvatar>
-                          <Badge color="red" variant="dot">
+            {notif === null ? (
+              <PanelNotif />
+            ) : (
+              <List
+                sx={{
+                  width: "100%",
+                  minWidth: 360,
+                  bgcolor: "background.paper",
+                  marginBottom: 15,
+                }}
+              >
+                {notif?.map((item) => {
+                  return (
+                    <>
+                      <ListItem alignItems="flex-start" key={item.id}>
+                        {item.isRead === false ? (
+                          <ListItemAvatar>
+                            <Badge color="red" variant="dot">
+                              <CampaignIcon color="gray" />
+                            </Badge>
+                          </ListItemAvatar>
+                        ) : (
+                          <ListItemAvatar>
                             <CampaignIcon color="gray" />
-                          </Badge>
-                        </ListItemAvatar>
-                      ) : (
-                        <ListItemAvatar>
-                          <CampaignIcon color="gray" />
-                        </ListItemAvatar>
-                      )}
-                      <ListItemText>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          {item.message}
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </>
-                );
-              })}
-            </List>
+                          </ListItemAvatar>
+                        )}
+                        <ListItemText>
+                          <Typography
+                            sx={{ display: "inline" }}
+                            component="span"
+                            variant="body2"
+                            color="text.primary"
+                          >
+                            {item.message}
+                          </Typography>
+                        </ListItemText>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </>
+                  );
+                })}
+              </List>
+            )}
           </Grid>
         </Grid>
       </Box>
