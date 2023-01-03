@@ -26,6 +26,7 @@ const FlightTable = () => {
   useEffect(() => {
     dispatch(getscheduleFlight(page, 10));
   }, [page, dispatch]);
+
   return (
     <>
       <TableContainer component={Paper} className="table">
@@ -67,7 +68,11 @@ const FlightTable = () => {
                       />
                       <DeleteIcon
                         cursor="pointer"
-                        onClick={() => dispatch(deleteflight(item.id))}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(deleteflight(item.id));
+                          navigate("/admin/flight");
+                        }}
                       />
                     </TableCell>
                   </TableRow>

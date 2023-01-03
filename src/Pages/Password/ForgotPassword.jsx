@@ -37,7 +37,7 @@ function ForgotPassword() {
         email: email,
       };
       dispatch(forgotPassword(data));
-      navigate("/");
+      navigate("/login");
     }
   };
 
