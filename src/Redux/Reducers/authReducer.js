@@ -26,10 +26,10 @@ const authSlicer = createSlice({
       state.login = action.payload;
     },
     setGoogle: (state, action) => {
-      state.login = action.payload;
+      state.google = action.payload;
     },
     setForgot: (state, action) => {
-      state.login = action.payload;
+      state.forgot = action.payload;
     },
     setChange: (state, action) => {
       state.change = action.payload;

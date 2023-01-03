@@ -27,6 +27,10 @@ function ForgotPassword() {
     }
   }, [token, navigate]);
 
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "") {
@@ -56,12 +60,7 @@ function ForgotPassword() {
               <CardLogo elevation={2}>
                 <CardContent>
                   <Heading> Find Your Account</Heading>
-                  <Title
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  >
-                    Please enter your email For get new password{" "}
-                  </Title>
+                  <Title>Please enter your email For get new password </Title>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
@@ -72,6 +71,8 @@ function ForgotPassword() {
                     label="Email"
                     variant="outlined"
                     size="small"
+                    value={email}
+                    onChange={handleChange}
                     required
                   />
                   <Links to="/resetpassword">
