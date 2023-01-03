@@ -5,6 +5,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 import { ButtonSet, FieldSet } from "../../Styled/MUI/SettingsStyle";
 import { Links } from "../../Styled/MUI/AuthStyles";
 
@@ -38,10 +39,16 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function PanelSettings() {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    navigate("/changepassword");
   };
 
   return (
@@ -85,11 +92,9 @@ export default function PanelSettings() {
           <Typography>Change Password</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Links to="/changepassword">
-            <ButtonSet id="outlined-basic" label="Button" variant="contained" size="small">
-              Go to Change
-            </ButtonSet>
-          </Links>
+          <ButtonSet id="outlined-basic" label="Button" variant="contained" size="small" onClick={handleSubmit}>
+            Change Password
+          </ButtonSet>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === "panel5"} onChange={handleChange("panel5")}>
