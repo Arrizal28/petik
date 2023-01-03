@@ -6,6 +6,7 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { ButtonSet, FieldSet } from "../../Styled/MUI/SettingsStyle";
+import { Links } from "../../Styled/MUI/AuthStyles";
 
 const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
   marginBottom: 15,
@@ -84,11 +85,11 @@ export default function PanelSettings() {
           <Typography>Change Password</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <FieldSet id="outlined-basic" label="Current Password" variant="outlined" size="small" helperText="Please enter your current password" />
-          <FieldSet id="outlined-basic" label="New Password" variant="outlined" size="small" helperText="Please enter your new password" />
-          <ButtonSet id="outlined-basic" label="Button" variant="contained" size="small">
-            Save Change
-          </ButtonSet>
+          <Links to="/changepassword">
+            <ButtonSet id="outlined-basic" label="Button" variant="contained" size="small">
+              Go to Change
+            </ButtonSet>
+          </Links>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === "panel5"} onChange={handleChange("panel5")}>
