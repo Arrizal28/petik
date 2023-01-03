@@ -3,7 +3,11 @@ import "./formcomp.scss";
 import { Typography, Input, DatePicker, Button, Select } from "antd";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { detailflight, editflight, createflight } from "../../../Redux/Actions/adminAction";
+import {
+  detailflight,
+  editflight,
+  createflight,
+} from "../../../Redux/Actions/adminAction";
 import { useNavigate } from "react-router-dom";
 import { getairport, clear } from "../../../Redux/Actions/airportAction";
 import swal from "sweetalert";
@@ -41,10 +45,21 @@ function Formcomp() {
       setEAirline(dflight?.data?.airline);
       setEOrigin(dflight?.data?.origin);
       setEDestination(dflight?.data?.destination);
-      setEDeparture(moment(dflight?.data?.departure).utc().format("YYYY-MM-DDTHH:mm:ss"));
-      setEArrival(moment(dflight?.data?.arrival).utc().format("YYYY-MM-DDTHH:mm:ss"));
+      setEDeparture(
+        moment(dflight?.data?.departure).utc().format("YYYY-MM-DDTHH:mm:ss")
+      );
+      setEArrival(
+        moment(dflight?.data?.arrival).utc().format("YYYY-MM-DDTHH:mm:ss")
+      );
     }
-  }, [params.id, dflight?.data?.airline, dflight?.data?.origin, dflight?.data?.destination, dflight?.data?.departure, dflight?.data?.arrival]);
+  }, [
+    params.id,
+    dflight?.data?.airline,
+    dflight?.data?.origin,
+    dflight?.data?.destination,
+    dflight?.data?.departure,
+    dflight?.data?.arrival,
+  ]);
 
   const onChange = (value, dateString) => {
     setDeparture(dateString);
@@ -143,7 +158,13 @@ function Formcomp() {
       alert("departure is required");
       return;
     }
-    if (origin !== "" && destination !== "" && airline !== "" && arrival !== "" && departure !== "") {
+    if (
+      origin !== "" &&
+      destination !== "" &&
+      airline !== "" &&
+      arrival !== "" &&
+      departure !== ""
+    ) {
       const data = {
         airline,
         origin,
@@ -158,7 +179,13 @@ function Formcomp() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    if (eorigin !== "" && edestination !== "" && eairline !== "" && earrival !== "" && edeparture !== "") {
+    if (
+      eorigin !== "" &&
+      edestination !== "" &&
+      eairline !== "" &&
+      earrival !== "" &&
+      edeparture !== ""
+    ) {
       const editdata = {
         airline: eairline,
         origin: eorigin,
@@ -178,7 +205,12 @@ function Formcomp() {
           <Title level={5}>Edit Flight Schedule</Title>
           <br />
           <Title level={5}>Airline : </Title>
-          <Input size="large" placeholder={dflight?.data?.airline} value={eairline} onChange={(e) => setEAirline(e.target.value)} />
+          <Input
+            size="large"
+            placeholder={dflight?.data?.airline}
+            value={eairline}
+            onChange={(e) => setEAirline(e.target.value)}
+          />
           <Title level={5}>Origin : </Title>
           <Select
             showSearch
@@ -188,24 +220,26 @@ function Formcomp() {
             optionFilterProp="children"
             className="lebarm"
             allowClear
-            filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+            filterOption={(input, option) =>
+              (option?.label ?? "").toUpperCase().includes(input.toUpperCase())
+            }
             onSearch={handleSearch}
             onChange={onChangeeditO}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.servedCity},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}
@@ -219,32 +253,46 @@ function Formcomp() {
             optionFilterProp="children"
             className="lebarm"
             allowClear
-            filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+            filterOption={(input, option) =>
+              (option?.label ?? "").toUpperCase().includes(input.toUpperCase())
+            }
             onSearch={handleSearch}
             onChange={onChangeeditD}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.municipality},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}
           </Select>
           <Title level={5}>Departure : </Title>
-          <DatePicker showTime placeholder={dflight?.data?.departure} format="YYYY-MM-DDTHH:mm:ss" onChange={onChangeeditdeparture} onOk={onOk} />
+          <DatePicker
+            showTime
+            placeholder={dflight?.data?.departure}
+            format="YYYY-MM-DDTHH:mm:ss"
+            onChange={onChangeeditdeparture}
+            onOk={onOk}
+          />
           <Title level={5}>Arrival : </Title>
-          <DatePicker showTime onOk={onOkA} onChange={onChangeeditarrival} placeholder={dflight?.data?.arrival} format="YYYY-MM-DDTHH:mm:ss" />
+          <DatePicker
+            showTime
+            onOk={onOkA}
+            onChange={onChangeeditarrival}
+            placeholder={dflight?.data?.arrival}
+            format="YYYY-MM-DDTHH:mm:ss"
+          />
           <br />
           <br />
           <br />
@@ -257,7 +305,12 @@ function Formcomp() {
           <Title level={5}>Add Flight Schedule</Title>
           <br />
           <Title level={5}>Airline : </Title>
-          <Input size="large" placeholder="Airline" value={airline} onChange={(e) => setAirline(e.target.value)} />
+          <Input
+            size="large"
+            placeholder="Airline"
+            value={airline}
+            onChange={(e) => setAirline(e.target.value)}
+          />
           <Title level={5}>Origin : </Title>
           <Select
             showSearch
@@ -267,24 +320,26 @@ function Formcomp() {
             optionFilterProp="children"
             className="lebarm"
             allowClear
-            filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+            filterOption={(input, option) =>
+              (option?.label ?? "").toUpperCase().includes(input.toUpperCase())
+            }
             onSearch={handleSearch}
             onChange={onChangeO}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.servedCity},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}
@@ -298,32 +353,44 @@ function Formcomp() {
             optionFilterProp="children"
             className="lebarm"
             allowClear
-            filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+            filterOption={(input, option) =>
+              (option?.label ?? "").toUpperCase().includes(input.toUpperCase())
+            }
             onSearch={handleSearch}
             onChange={onChangeD}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.servedCity},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}
           </Select>
           <Title level={5}>Departure : </Title>
-          <DatePicker showTime format="YYYY-MM-DDTHH:mm:ss" onOk={onOk} onChange={onChange} />
+          <DatePicker
+            showTime
+            format="YYYY-MM-DDTHH:mm:ss"
+            onOk={onOk}
+            onChange={onChange}
+          />
           <Title level={5}>Arrival : </Title>
-          <DatePicker showTime format="YYYY-MM-DDTHH:mm:ss" onOk={onOkA} onChange={onChangeA} />
+          <DatePicker
+            showTime
+            format="YYYY-MM-DDTHH:mm:ss"
+            onOk={onOkA}
+            onChange={onChangeA}
+          />
           <br />
           <br />
           <br />
