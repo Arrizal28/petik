@@ -18,7 +18,7 @@ import { forgotPassword } from "../../Redux/Actions/authaction";
 function ForgotPassword() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
   const { token } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function ForgotPassword() {
     }
     if (email !== "") {
       const data = {
-        email,
+        email: email,
       };
       dispatch(forgotPassword(data));
       navigate("/");
