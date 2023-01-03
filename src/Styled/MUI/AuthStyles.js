@@ -63,7 +63,7 @@ export const TextFields = styled(TextField)({
   borderRadius: 20,
   marginBottom: 20,
   display: "flex",
-  margin: 10,
+  margin: 25,
 });
 
 export const Buttons = styled(Button)({
@@ -73,7 +73,7 @@ export const Buttons = styled(Button)({
   borderRadius: 10,
   display: "flex",
   justifyContent: "center",
-  margin: "auto",
+  margin: 25,
 });
 
 export const Buttonx = styled(Button)({

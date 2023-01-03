@@ -1,21 +1,10 @@
 import axios from "axios";
 import swal from "sweetalert";
-import {
-  setToken,
-  setRegister,
-  setLogin,
-  setForgot,
-  setWhoami,
-  setChange,
-  setReset,
-} from "../Reducers/authReducer";
+import { setToken, setRegister, setLogin, setForgot, setWhoami, setChange, setReset } from "../Reducers/authReducer";
 
 export const register = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/register`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/register`, data);
     if (result.data.status) {
       dispatch(setRegister(result.data));
       swal({
@@ -35,10 +24,7 @@ export const register = (data) => async (dispatch) => {
 
 export const login = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/login`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/login`, data);
     if (result.data.status) {
       localStorage.setItem("token", result.data.data.token);
       dispatch(setToken(result.data.data.token));
@@ -63,10 +49,7 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
     access_token: accessToken,
   };
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/login-google`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/login-google`, data);
     if (result.data.data.token) {
       localStorage.setItem("token", result.data.data.token);
       dispatch(setToken(result.data.data.token));
@@ -87,10 +70,7 @@ export const loginWithGoogle = (accessToken) => async (dispatch) => {
 
 export const forgotPassword = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/forgot-password`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/forgot-password`, data);
     if (result.data.status) {
       dispatch(setForgot(result.data));
       swal({
@@ -110,10 +90,7 @@ export const forgotPassword = (data) => async (dispatch) => {
 
 export const resetpassword = (data, token) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=${token}`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=${token}`, data);
     if (result.data.status) {
       dispatch(setReset(data));
       swal({
@@ -133,10 +110,7 @@ export const resetpassword = (data, token) => async (dispatch) => {
 
 export const changePassword = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/forgot-password`,
-      data
-    );
+    const result = await axios.post(`${process.env.REACT_APP_AUTH_API}/auth/forgot-password`, data);
     if (result.data.status) {
       dispatch(setChange(result.data));
       swal({
@@ -157,14 +131,11 @@ export const changePassword = (data) => async (dispatch) => {
 export const getwhoami = (callback) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
-    const result = await axios.get(
-      `${process.env.REACT_APP_AUTH_API}/auth/whoami`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const result = await axios.get(`${process.env.REACT_APP_AUTH_API}/auth/whoami`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     if (result.data.status) {
       dispatch(setWhoami(result.data));
     }
