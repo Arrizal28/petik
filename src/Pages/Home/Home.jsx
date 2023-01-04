@@ -50,11 +50,11 @@ function Home() {
           <Content />
           <MediaPromo />
           <Destinasi />
-          <MediaTag />
-          <MediaPartner />
-          <Footer />
         </>
       )}
+      <MediaTag />
+      <MediaPartner />
+      <Footer />
     </>
   );
 }
