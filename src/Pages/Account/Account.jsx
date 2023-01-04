@@ -6,6 +6,7 @@ import { IconHelp, IconProfile, IconRefunds, IconRewards, IconSettings, IconWall
 import NavBar from "../../Components/Navbar/Navbar";
 import TopPanels from "../../Components/Header/TopPanel";
 import Footer from "../../Components/Footer/Footer";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 export default function Account() {
   return (
@@ -65,6 +66,7 @@ export default function Account() {
           </Col>
         </Row>
       </BoxMobile>
+      <NavbarBottom />
       <Footer />
     </>
   );
