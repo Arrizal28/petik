@@ -7,6 +7,7 @@ import TopPanels from "../../Components/Header/TopPanel";
 import { CardContainer } from "../../Styled/MUI/TransactionStyle";
 import { FontNotif } from "../../Styled/ComponentUI/Styles";
 import PanelSetings from "../Settings/PanelSettings";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Settings() {
   return (
@@ -28,6 +29,7 @@ function Settings() {
         </Grid>
       </Box>
       <Footer />
+      <NavbarBottom />
     </>
   );
 }

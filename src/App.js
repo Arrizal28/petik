@@ -12,7 +12,6 @@ import Buyers from "./Pages/Profile/Buyers";
 import Settings from "./Pages/Settings/Settings";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import NavbarBottom from "./Mobile/Layout/NavbarMobile";
 import Account from "./Pages/Account/Account";
 import Protected from "./Components/Protected/Protected";
 import EditProfile from "./Pages/Profile/EditProfile";
@@ -182,7 +181,7 @@ function App() {
                 }
               />
             </Routes>
-            <NavbarBottom />
+            {/* <NavbarBottom types={["BUYER"]} /> */}
           </BrowserRouter>
         </Provider>
       </GoogleOAuthProvider>

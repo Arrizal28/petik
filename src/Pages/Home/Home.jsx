@@ -11,6 +11,7 @@ import Content from "./Content";
 import Destinasi from "../Media/Destinasi";
 import { getwhoami } from "../../Redux/Actions/authaction";
 import { useNavigate } from "react-router-dom";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Home() {
   const { token, wai } = useSelector((state) => state.auth);
@@ -55,6 +56,7 @@ function Home() {
       <MediaTag />
       <MediaPartner />
       <Footer />
+      <NavbarBottom />
     </>
   );
 }

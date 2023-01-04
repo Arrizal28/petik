@@ -7,7 +7,6 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { ButtonSet, FieldSet } from "../../Styled/MUI/SettingsStyle";
-import { Links } from "../../Styled/MUI/AuthStyles";
 
 const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
   marginBottom: 15,
