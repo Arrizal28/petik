@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { payment, getseatreserved } from "../../Redux/Actions/bookingAction";
 import { useNavigate } from "react-router-dom";
 import Confirmation from "./ConfirmationPayment";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Payment({ totals, setTotals }) {
   const { cbooking, tseat, flightid } = useSelector((state) => state.booking);
@@ -80,11 +81,7 @@ function Payment({ totals, setTotals }) {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
           <Grid item xs={9}>
             <Grid>
               <CardPayment variant="outlined">
@@ -107,13 +104,7 @@ function Payment({ totals, setTotals }) {
                               }}
                             >
                               <Title>Select Seat {item + 1}</Title>
-                              <SelectSeat
-                                totalSeatNumber={totalSeatNumber}
-                                requestData={requestData}
-                                setRequestData={setRequestData}
-                                seatNumber={requestData.seatNumber}
-                                i={i}
-                              />
+                              <SelectSeat totalSeatNumber={totalSeatNumber} requestData={requestData} setRequestData={setRequestData} seatNumber={requestData.seatNumber} i={i} />
                             </Box>
                           </Grid>
                         </Grid2>
@@ -125,13 +116,9 @@ function Payment({ totals, setTotals }) {
           </Grid>
         </Grid>
       </Box>
-      <MetPayment
-        paymentMethod={requestData.paymentMethod}
-        requestData={requestData}
-        setRequestData={setRequestData}
-        cbooking={cbooking}
-      />
+      <MetPayment paymentMethod={requestData.paymentMethod} requestData={requestData} setRequestData={setRequestData} cbooking={cbooking} />
       <Confirmation handleSubmit={handleSubmit} cbooking={cbooking} />
+      <NavbarBottom />
       <Footer />
     </>
   );

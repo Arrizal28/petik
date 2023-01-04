@@ -100,11 +100,7 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) =>
-                    (option?.label ?? "")
-                      .toUpperCase()
-                      .includes(input.toUpperCase())
-                  }
+                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
                   onSearch={handleSearch}
                   onChange={onChange}
                   options={
@@ -136,11 +132,7 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) =>
-                    (option?.label ?? "")
-                      .toUpperCase()
-                      .includes(input.toUpperCase())
-                  }
+                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
                   onSearch={handleSearch}
                   onChange={onChangeke}
                   options={
@@ -166,20 +158,10 @@ function PanelSearch() {
             </div>
             <div className="row panel3 justify-content-center">
               <div className="col-lg-6 col-12">
-                <DatePicker
-                  className="lebardate"
-                  size="large"
-                  format={"YYYY-MM-DD"}
-                  onChange={onSelectDate}
-                />
+                <DatePicker className="lebarm" size="large" format={"YYYY-MM-DD"} onChange={onSelectDate} />
               </div>
               <div className="col-lg-6 col-12">
-                <Button
-                  type="primary"
-                  size="large"
-                  className="lebarmsearchbtn"
-                  onClick={handleSubmit}
-                >
+                <Button type="primary" size="large" className="lebarmsearchbtn" onClick={handleSubmit}>
                   Search
                 </Button>
               </div>
