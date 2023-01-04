@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./formcomp.scss";
-import { Typography, Input, DatePicker, Button, Select } from "antd";
+import { Typography, DatePicker, Button, Select } from "antd";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -60,6 +60,14 @@ function Formcomp() {
     dflight?.data?.departure,
     dflight?.data?.arrival,
   ]);
+
+  const handleAirline = (value) => {
+    setAirline(value);
+  };
+
+  const handleEAirline = (value) => {
+    setEAirline(value);
+  };
 
   const onChange = (value, dateString) => {
     setDeparture(dateString);
@@ -205,11 +213,41 @@ function Formcomp() {
           <Title level={5}>Edit Flight Schedule</Title>
           <br />
           <Title level={5}>Airline : </Title>
-          <Input
+          <Select
+            className="lebarm"
             size="large"
             placeholder={dflight?.data?.airline}
-            value={eairline}
-            onChange={(e) => setEAirline(e.target.value)}
+            onChange={handleEAirline}
+            options={[
+              {
+                value: "Garuda Indonesia",
+                label: "Garuda Indonesia",
+              },
+              {
+                value: "Citilink",
+                label: "Citilink",
+              },
+              {
+                value: "AirAsia",
+                label: "AirAsia",
+              },
+              {
+                value: "Lion Air",
+                label: "Lion Air",
+              },
+              {
+                value: "Sriwijaya Air",
+                label: "Sriwijaya Air",
+              },
+              {
+                value: "Wings Air (Indonesia)",
+                label: "Wings Air (Indonesia)",
+              },
+              {
+                value: "Batik Air",
+                label: "Batik Air",
+              },
+            ]}
           />
           <Title level={5}>Origin : </Title>
           <Select
@@ -305,11 +343,41 @@ function Formcomp() {
           <Title level={5}>Add Flight Schedule</Title>
           <br />
           <Title level={5}>Airline : </Title>
-          <Input
+          <Select
+            className="lebarm"
             size="large"
             placeholder="Airline"
-            value={airline}
-            onChange={(e) => setAirline(e.target.value)}
+            onChange={handleAirline}
+            options={[
+              {
+                value: "Garuda Indonesia",
+                label: "Garuda Indonesia",
+              },
+              {
+                value: "Citilink",
+                label: "Citilink",
+              },
+              {
+                value: "AirAsia",
+                label: "AirAsia",
+              },
+              {
+                value: "Lion Air",
+                label: "Lion Air",
+              },
+              {
+                value: "Sriwijaya Air",
+                label: "Sriwijaya Air",
+              },
+              {
+                value: "Wings Air (Indonesia)",
+                label: "Wings Air (Indonesia)",
+              },
+              {
+                value: "Batik Air",
+                label: "Batik Air",
+              },
+            ]}
           />
           <Title level={5}>Origin : </Title>
           <Select

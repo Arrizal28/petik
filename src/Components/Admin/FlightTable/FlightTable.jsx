@@ -14,7 +14,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 
-import { Pagination } from "antd";
+import { Pagination, Popconfirm } from "antd";
 
 const FlightTable = () => {
   const [page, setPage] = useState(1);
@@ -26,6 +26,8 @@ const FlightTable = () => {
   useEffect(() => {
     dispatch(getscheduleFlight(page, 10));
   }, [page, dispatch]);
+
+  const cancel = (e) => {};
 
   return (
     <>
@@ -66,14 +68,27 @@ const FlightTable = () => {
                           navigate(`/admin/form/${item.id}`);
                         }}
                       />
-                      <DeleteIcon
-                        cursor="pointer"
-                        onClick={(e) => {
+                      <Popconfirm
+                        title="Delete the Flight Schedule"
+                        description="Are you sure to delete this Flight Schedule?"
+                        onConfirm={(e) => {
                           e.preventDefault();
                           dispatch(deleteflight(item.id));
                           navigate("/admin/flight");
                         }}
-                      />
+                        onCancel={cancel}
+                        okText="Yes"
+                        cancelText="No"
+                      >
+                        <DeleteIcon
+                          cursor="pointer"
+                          // onClick={(e) => {
+                          //   e.preventDefault();
+                          //   dispatch(deleteflight(item.id));
+                          //   navigate("/admin/flight");
+                          // }}
+                        />
+                      </Popconfirm>
                     </TableCell>
                   </TableRow>
                 </>
