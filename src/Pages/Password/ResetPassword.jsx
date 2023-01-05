@@ -11,7 +11,6 @@ import {
 import { CardContent } from "@mui/material";
 import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import { Col, Row } from "antd";
-import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetpassword } from "../../Redux/Actions/authaction";
@@ -19,9 +18,10 @@ function ResetPassword() {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
   const [newpass, setNewpass] = useState("");
   const [cnewpass, setCnewpass] = useState("");
+  const queryParameters = new URLSearchParams(window.location.search);
+  const type = queryParameters.get("token");
 
   useEffect(() => {
     if (token) {
@@ -42,7 +42,7 @@ function ResetPassword() {
         newPass: newpass,
         confirmNewPass: cnewpass,
       };
-      dispatch(resetpassword(data, searchParams.token));
+      dispatch(resetpassword(data, type));
       navigate("/login");
     }
   };

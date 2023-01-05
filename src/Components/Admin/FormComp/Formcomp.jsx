@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./formcomp.scss";
-import { Typography, Input, DatePicker, Button, Select } from "antd";
+import { Typography, DatePicker, Button, Select } from "antd";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -60,6 +60,14 @@ function Formcomp() {
     dflight?.data?.departure,
     dflight?.data?.arrival,
   ]);
+
+  const handleAirline = (value) => {
+    setAirline(value);
+  };
+
+  const handleEAirline = (value) => {
+    setEAirline(value);
+  };
 
   const onChange = (value, dateString) => {
     setDeparture(dateString);
@@ -205,11 +213,41 @@ function Formcomp() {
           <Title level={5}>Edit Flight Schedule</Title>
           <br />
           <Title level={5}>Airline : </Title>
-          <Input
+          <Select
+            className="lebarm"
             size="large"
             placeholder={dflight?.data?.airline}
-            value={eairline}
-            onChange={(e) => setEAirline(e.target.value)}
+            onChange={handleEAirline}
+            options={[
+              {
+                value: "Garuda Indonesia",
+                label: "Garuda Indonesia",
+              },
+              {
+                value: "Citilink",
+                label: "Citilink",
+              },
+              {
+                value: "AirAsia",
+                label: "AirAsia",
+              },
+              {
+                value: "Lion Air",
+                label: "Lion Air",
+              },
+              {
+                value: "Sriwijaya Air",
+                label: "Sriwijaya Air",
+              },
+              {
+                value: "Wings Air (Indonesia)",
+                label: "Wings Air (Indonesia)",
+              },
+              {
+                value: "Batik Air",
+                label: "Batik Air",
+              },
+            ]}
           />
           <Title level={5}>Origin : </Title>
           <Select
@@ -227,19 +265,19 @@ function Formcomp() {
             onChange={onChangeeditO}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.servedCity},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}
@@ -260,19 +298,19 @@ function Formcomp() {
             onChange={onChangeeditD}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.municipality},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}
@@ -305,11 +343,41 @@ function Formcomp() {
           <Title level={5}>Add Flight Schedule</Title>
           <br />
           <Title level={5}>Airline : </Title>
-          <Input
+          <Select
+            className="lebarm"
             size="large"
             placeholder="Airline"
-            value={airline}
-            onChange={(e) => setAirline(e.target.value)}
+            onChange={handleAirline}
+            options={[
+              {
+                value: "Garuda Indonesia",
+                label: "Garuda Indonesia",
+              },
+              {
+                value: "Citilink",
+                label: "Citilink",
+              },
+              {
+                value: "AirAsia",
+                label: "AirAsia",
+              },
+              {
+                value: "Lion Air",
+                label: "Lion Air",
+              },
+              {
+                value: "Sriwijaya Air",
+                label: "Sriwijaya Air",
+              },
+              {
+                value: "Wings Air (Indonesia)",
+                label: "Wings Air (Indonesia)",
+              },
+              {
+                value: "Batik Air",
+                label: "Batik Air",
+              },
+            ]}
           />
           <Title level={5}>Origin : </Title>
           <Select
@@ -327,19 +395,19 @@ function Formcomp() {
             onChange={onChangeO}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.servedCity},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}
@@ -360,19 +428,19 @@ function Formcomp() {
             onChange={onChangeD}
             options={
               newvalue.length > 1 &&
-              resairport?.data?.features.map((item) => ({
-                value: item.properties.iata,
-                label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+              resairport?.data?.content.map((item) => ({
+                value: item.iata,
+                label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
               }))
             }
           >
             {newvalue.length > 1 &&
-              (resairport?.data?.features || []).map((item) => {
+              (resairport?.data?.content || []).map((item) => {
                 return (
-                  <Select.Option key={item.properties.id} value={item.iata}>
-                    `${item.properties.municipality},($
-                    {item.properties.iata})${item.properties.name},$
-                    {item.properties.country.name}`
+                  <Select.Option key={item.aid} value={item.iata}>
+                    `${item.servedCity},($
+                    {item.iata})${item.name},$
+                    {item.country.name}`
                   </Select.Option>
                 );
               })}

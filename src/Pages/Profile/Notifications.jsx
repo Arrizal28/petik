@@ -17,6 +17,7 @@ import { notifikasi } from "../../Redux/Actions/userAction";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Typography from "@mui/material/Typography";
 import PanelNotif from "../../Components/Panel/PanelNotif";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 const socket = io(process.env.REACT_APP_SOCKET_API);
 
@@ -47,20 +48,11 @@ function Notifications() {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
           <Grid item xs={9}>
             <Grid>
               <CardNotif variant="outlined">
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="baseline"
-                  style={{ margin: 15 }}
-                >
+                <Stack direction="row" justifyContent="space-between" alignItems="baseline" style={{ margin: 15 }}>
                   <FontBlue>Notifications</FontBlue>
                   <FontBlue
                     style={{ margin: 10, cursor: "pointer" }}
@@ -77,49 +69,48 @@ function Notifications() {
                 </Stack>
               </CardNotif>
             </Grid>
-            <PanelNotif />
-            <List
-              sx={{
-                width: "100%",
-                minWidth: 360,
-                bgcolor: "background.paper",
-                marginBottom: 15,
-              }}
-            >
-              {notif?.map((item) => {
-                return (
-                  <>
-                    <ListItem alignItems="flex-start" key={item.id}>
-                      {item.isRead === false ? (
-                        <ListItemAvatar>
-                          <Badge color="red" variant="dot">
+            {notif === null ? (
+              <PanelNotif />
+            ) : (
+              <List
+                sx={{
+                  width: "100%",
+                  minWidth: 360,
+                  bgcolor: "background.paper",
+                  marginBottom: 15,
+                }}
+              >
+                {notif?.map((item) => {
+                  return (
+                    <>
+                      <ListItem alignItems="flex-start" key={item.id}>
+                        {item.isRead === false ? (
+                          <ListItemAvatar>
+                            <Badge color="red" variant="dot">
+                              <CampaignIcon color="gray" />
+                            </Badge>
+                          </ListItemAvatar>
+                        ) : (
+                          <ListItemAvatar>
                             <CampaignIcon color="gray" />
-                          </Badge>
-                        </ListItemAvatar>
-                      ) : (
-                        <ListItemAvatar>
-                          <CampaignIcon color="gray" />
-                        </ListItemAvatar>
-                      )}
-                      <ListItemText>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          {item.message}
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </>
-                );
-              })}
-            </List>
+                          </ListItemAvatar>
+                        )}
+                        <ListItemText>
+                          <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
+                            {item.message}
+                          </Typography>
+                        </ListItemText>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </>
+                  );
+                })}
+              </List>
+            )}
           </Grid>
         </Grid>
       </Box>
+      <NavbarBottom />
       <Footer />
     </>
   );

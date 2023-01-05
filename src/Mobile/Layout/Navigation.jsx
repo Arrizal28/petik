@@ -37,7 +37,7 @@ export default function Navigation() {
         label="Search"
         value="search"
         icon={
-          <Links to="/listflight">
+          <Links to="/searchflight">
             <LocationSearchingIcon />
           </Links>
         }

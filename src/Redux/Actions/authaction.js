@@ -110,7 +110,7 @@ export const forgotPassword = (data) => async (dispatch) => {
 
 export const resetpassword = (data, token) => async (dispatch) => {
   try {
-    const result = await axios.post(
+    const result = await axios.put(
       `${process.env.REACT_APP_AUTH_API}/auth/reset-password?token=${token}`,
       data
     );
@@ -133,8 +133,8 @@ export const resetpassword = (data, token) => async (dispatch) => {
 
 export const changePassword = (data) => async (dispatch) => {
   try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_AUTH_API}/auth/forgot-password`,
+    const result = await axios.put(
+      `${process.env.REACT_APP_AUTH_API}/auth/change-password`,
       data
     );
     if (result.data.status) {

@@ -10,6 +10,7 @@ import { getListBooking } from "../../Redux/Actions/bookingAction";
 import { useDispatch, useSelector } from "react-redux";
 import Orders from "./Orders";
 import PanelOrder from "../../Components/Panel/PanelOrder";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Transaction() {
   const dispatch = useDispatch();
@@ -44,18 +45,23 @@ function Transaction() {
                 </Links>
               </ButtonGroups>
             </CardContainer>
-            <PanelOrder />
-            {listbooking?.data?.map((item) => {
-              return (
-                <>
-                  <Orders item={item} key={item.id} />
-                </>
-              );
-            })}
+            {listbooking === null ? (
+              <PanelOrder />
+            ) : (
+              <>
+                {listbooking?.data?.map((item) => {
+                  return (
+                    <>
+                      <Orders item={item} key={item.id} />
+                    </>
+                  );
+                })}
+              </>
+            )}
           </Grid>
         </Grid>
       </Box>
-
+      <NavbarBottom />
       <Footer />
     </>
   );

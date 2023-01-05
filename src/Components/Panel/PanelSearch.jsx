@@ -100,31 +100,24 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) =>
-                    (option?.label ?? "")
-                      .toUpperCase()
-                      .includes(input.toUpperCase())
-                  }
+                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
                   onSearch={handleSearch}
                   onChange={onChange}
                   options={
                     newvalue.length > 1 &&
-                    resairport?.data?.features.map((item) => ({
-                      value: item.properties.iata,
-                      label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+                    resairport?.data?.content?.map((item) => ({
+                      value: item.iata,
+                      label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
                     }))
                   }
                 >
                   {newvalue.length > 1 &&
-                    (resairport?.data?.features || []).map((item) => {
+                    (resairport?.data?.content || []).map((item) => {
                       return (
-                        <Select.Option
-                          key={item.properties.id}
-                          value={item.iata}
-                        >
-                          `${item.properties.municipality},($
-                          {item.properties.iata})${item.properties.name},$
-                          {item.properties.country.name}`
+                        <Select.Option key={item.aid} value={item.iata}>
+                          `${item.servedCity},($
+                          {item.iata})${item.name},$
+                          {item.country.name}`
                         </Select.Option>
                       );
                     })}
@@ -139,31 +132,24 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) =>
-                    (option?.label ?? "")
-                      .toUpperCase()
-                      .includes(input.toUpperCase())
-                  }
+                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
                   onSearch={handleSearch}
                   onChange={onChangeke}
                   options={
                     newvalue.length > 1 &&
-                    resairport?.data?.features.map((item) => ({
-                      value: item.properties.iata,
-                      label: `${item.properties.municipality},(${item.properties.iata})${item.properties.name},${item.properties.country.name}`,
+                    resairport?.data?.content.map((item) => ({
+                      value: item.iata,
+                      label: `${item.servedCity},(${item.iata})${item.name},${item.country.name}`,
                     }))
                   }
                 >
                   {newvalue.length > 1 &&
-                    (resairport?.data?.features || []).map((item) => {
+                    (resairport?.data?.content || []).map((item) => {
                       return (
-                        <Select.Option
-                          key={item.properties.id}
-                          value={item.iata}
-                        >
-                          `${item.properties.municipality},($
-                          {item.properties.iata})${item.properties.name},$
-                          {item.properties.country.name}`
+                        <Select.Option key={item.aid} value={item.iata}>
+                          `${item.servedCity},($
+                          {item.iata})${item.name},$
+                          {item.country.name}`
                         </Select.Option>
                       );
                     })}
@@ -172,20 +158,10 @@ function PanelSearch() {
             </div>
             <div className="row panel3 justify-content-center">
               <div className="col-lg-6 col-12">
-                <DatePicker
-                  className="lebardate"
-                  size="large"
-                  format={"YYYY-MM-DD"}
-                  onChange={onSelectDate}
-                />
+                <DatePicker className="lebarm" size="large" format={"YYYY-MM-DD"} onChange={onSelectDate} />
               </div>
               <div className="col-lg-6 col-12">
-                <Button
-                  type="primary"
-                  size="large"
-                  className="lebarmsearchbtn"
-                  onClick={handleSubmit}
-                >
+                <Button type="primary" size="large" className="lebarmsearchbtn" onClick={handleSubmit}>
                   Search
                 </Button>
               </div>
