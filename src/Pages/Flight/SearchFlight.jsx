@@ -10,6 +10,7 @@ import ItemSearch from "../../Components/FlightItem/ItemSearch";
 import ItemNotFound from "../../Components/FlightItem/ItemNotFound";
 import { useSelector } from "react-redux";
 import PanelSearch from "../../Components/Panel/PanelSearch";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function SearchFlight() {
   const { listflight } = useSelector((state) => state.airport);
@@ -37,6 +38,7 @@ function SearchFlight() {
         </Grid>
         {listflight?.data ? <ItemSearch /> : <ItemNotFound />}
       </Box>
+      <NavbarBottom />
       <Footer />
     </>
   );
