@@ -136,7 +136,7 @@
   }
 
   .row {
-    width: 350px;
+    width: 100%;
   }
 
   .lebardate {
@@ -180,7 +180,7 @@
   }
 
   .row {
-    width: 425px;
+    width: 100%;
   }
 
   .col {
@@ -228,7 +228,7 @@
   }
 
   .row {
-    width: 350px;
+    width: 100%;
   }
 
   .lebardate {
@@ -268,6 +268,10 @@
 
 @media only screen and (min-width: 768px) and (max-width: 993px) {
   .header {
+    width: 100%;
+  }
+
+  .row {
     width: 100%;
   }
 

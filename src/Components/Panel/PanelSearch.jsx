@@ -87,9 +87,11 @@ function PanelSearch() {
   return (
     <div className="container d-flex">
       <div className="row d-flex justify-content-center align-items-center">
-        <div className="col-lg-12 panel col-sm-12">
+        <div className="col-lg-12 panel col-sm-12 d-flex justify-content-center align-items-center">
           <div className="row">
-            <div className="col-lg-12 panel1 col-sm-12">Tiket Pesawat</div>
+            <div className="col-lg-12 panel1 col-sm-12 d-flex justify-content-center align-items-center">
+              Tiket Pesawat
+            </div>
             <div className="row panel2 d-flex justify-content-center align-items-center">
               <div className="col-lg-6 col-sm-12">
                 <Select
@@ -100,7 +102,11 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toUpperCase()
+                      .includes(input.toUpperCase())
+                  }
                   onSearch={handleSearch}
                   onChange={onChange}
                   options={
@@ -132,7 +138,11 @@ function PanelSearch() {
                   optionFilterProp="children"
                   className="lebarm"
                   allowClear
-                  filterOption={(input, option) => (option?.label ?? "").toUpperCase().includes(input.toUpperCase())}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toUpperCase()
+                      .includes(input.toUpperCase())
+                  }
                   onSearch={handleSearch}
                   onChange={onChangeke}
                   options={
@@ -158,10 +168,20 @@ function PanelSearch() {
             </div>
             <div className="row panel3 justify-content-center">
               <div className="col-lg-6 col-12">
-                <DatePicker className="lebarm" size="large" format={"YYYY-MM-DD"} onChange={onSelectDate} />
+                <DatePicker
+                  className="lebarm"
+                  size="large"
+                  format={"YYYY-MM-DD"}
+                  onChange={onSelectDate}
+                />
               </div>
               <div className="col-lg-6 col-12">
-                <Button type="primary" size="large" className="lebarmsearchbtn" onClick={handleSubmit}>
+                <Button
+                  type="primary"
+                  size="large"
+                  className="lebarmsearchbtn"
+                  onClick={handleSubmit}
+                >
                   Search
                 </Button>
               </div>
