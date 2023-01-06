@@ -46,7 +46,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
             <Grid>
               <CardMet variant="outlined">
                 <Title>Payment Methode</Title>
-                <FontP>Nikmati benefit ekstra dengan metode pembayaran rekomendasi petik.com </FontP>
+                <FontP>Enjoy extra benefits with the recommended payment method at petik.com</FontP>
               </CardMet>
             </Grid>
             {ewallet ? (
@@ -79,7 +79,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                               cursor: "pointer",
                             }}
                           >
-                            <Title>digunakan</Title>
+                            <Title>used</Title>
                           </Col>
                         </Row>
                       </Box>
@@ -110,7 +110,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                             cursor: "pointer",
                           }}
                         >
-                          <Title>digunakan</Title>
+                          <Title>used</Title>
                         </Col>
                         <Divider />
                       </Row>
@@ -148,7 +148,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                               cursor: "pointer",
                             }}
                           >
-                            <Title onClick={handleEwallet}>Gunakan</Title>
+                            <Title onClick={handleEwallet}>use this</Title>
                           </Col>
                         </Row>
                       </Box>
@@ -179,7 +179,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                             cursor: "pointer",
                           }}
                         >
-                          <Title onClick={handleVa}>Gunakan</Title>
+                          <Title onClick={handleVa}>use this</Title>
                         </Col>
                         <Divider />
                       </Row>
@@ -197,7 +197,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                             cursor: "pointer",
                           }}
                         >
-                          <Title onClick={handleVa}>Gunakan</Title>
+                          <Title onClick={handleVa}>use this</Title>
                         </Col>
                         <Divider />
                       </Row>
@@ -215,7 +215,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                             cursor: "pointer",
                           }}
                         >
-                          <Title onClick={handleVa}>Gunakan</Title>
+                          <Title onClick={handleVa}>use this</Title>
                         </Col>
                         <Divider />
                       </Row>
@@ -233,7 +233,7 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                             cursor: "pointer",
                           }}
                         >
-                          <Title onClick={handleVa}>Gunakan</Title>
+                          <Title onClick={handleVa}>use this</Title>
                         </Col>
                       </Row>
                     </Box>

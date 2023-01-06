@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-import {
-  Cards,
-  TextFields,
-  Buttons,
-  Buttonz,
-  Links,
-  BoxAuth,
-  CardLogin,
-  CardLogo,
-} from "../../Styled/MUI/AuthStyles";
+import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
 import { CardContent } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/Actions/authaction";
@@ -24,6 +15,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { FormControls } from "../../Styled/MUI/AuthStyles";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -69,101 +61,78 @@ function Login() {
   };
 
   return (
-    <BoxAuth>
-      <Cards>
-        <Row
-          style={{
-            marginTop: 100,
-            justifyContent: "center",
-            marginBottom: 100,
-          }}
-        >
-          <Col style={{ justifyContent: "center" }}>
-            <CardLogo elevation={2}>
-              <CardContent>
-                <Links to="/">
-                  <img
-                    className="App-log"
-                    src={logo}
-                    alt="logo"
-                    width="120px"
-                  />
-                </Links>
-              </CardContent>
-            </CardLogo>
-            <CardLogin elevation={2}>
-              <CardContent>
-                <TextFields
-                  type="email"
-                  id="outlined-basic"
-                  label="Email"
-                  variant="outlined"
-                  size="small"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <FormControls variant="outlined" required size="small">
-                  <InputLabel htmlFor="outlined-adornment-password">
-                    Password
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    label="Password"
-                  />
-                </FormControls>
-                <Links to="/login">
-                  <Buttons
-                    variant="contained"
-                    size="medium"
-                    onClick={handleSubmit}
-                    disabled={!email || !password}
-                  >
-                    Log In
-                  </Buttons>
-                </Links>
-                <Links to="/forgotpassword">
-                  <Title>Forgot Password?</Title>
-                </Links>
-              </CardContent>
-            </CardLogin>
-          </Col>
-          <Col style={{ justifyContent: "center" }}>
-            <CardLogo elevation={2}>
-              <CardContent>
-                <Heading>Join</Heading>
-              </CardContent>
-            </CardLogo>
-            <CardLogin elevation={2}>
-              <CardContent>
-                <Title> Create Account?</Title>
-                <Links to="/register">
-                  <Buttonz variant="outlined" size="medium">
-                    Register
-                  </Buttonz>
-                </Links>
-                <GoogleLogin label=" Google" />
-              </CardContent>
-            </CardLogin>
-          </Col>
-        </Row>
-      </Cards>
-    </BoxAuth>
+    <>
+      <BoxAuth>
+        <Cards>
+          <Row
+            style={{
+              marginTop: 100,
+              justifyContent: "center",
+              marginBottom: 100,
+            }}
+          >
+            <Col style={{ justifyContent: "center" }}>
+              <CardLogo elevation={2}>
+                <CardContent>
+                  <Links to="/">
+                    <img className="App-log" src={logo} alt="logo" width="120px" />
+                  </Links>
+                </CardContent>
+              </CardLogo>
+              <CardLogin elevation={2}>
+                <CardContent>
+                  <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                  <FormControls variant="outlined" required size="small">
+                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      label="Password"
+                    />
+                  </FormControls>
+                  <Links to="/login">
+                    <Buttons variant="contained" size="medium" onClick={handleSubmit} disabled={!email || !password}>
+                      Log In
+                    </Buttons>
+                  </Links>
+                  <Links to="/forgotpassword">
+                    <Title>Forgot Password?</Title>
+                  </Links>
+                </CardContent>
+              </CardLogin>
+            </Col>
+            <Col style={{ justifyContent: "center" }}>
+              <CardLogo elevation={2}>
+                <CardContent>
+                  <Heading>Join</Heading>
+                </CardContent>
+              </CardLogo>
+              <CardLogin elevation={2}>
+                <CardContent>
+                  <Title> Create Account?</Title>
+                  <Links to="/register">
+                    <Buttonz variant="outlined" size="medium">
+                      Register
+                    </Buttonz>
+                  </Links>
+                  <GoogleLogin label=" Google" />
+                </CardContent>
+              </CardLogin>
+            </Col>
+          </Row>
+        </Cards>
+      </BoxAuth>
+      <NavbarBottom />
+    </>
   );
 }
 

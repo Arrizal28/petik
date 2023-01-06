@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/petik.png";
-import {
-  Cards,
-  TextFields,
-  Buttons,
-  Buttonz,
-  Links,
-  BoxAuth,
-  CardLogin,
-  CardLogo,
-} from "../../Styled/MUI/AuthStyles";
+import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
 import { CardContent } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../Redux/Actions/authaction";
@@ -24,6 +15,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { FormControls } from "../../Styled/MUI/AuthStyles";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -95,33 +87,17 @@ function Register() {
               <CardLogo elevation={2}>
                 <CardContent>
                   <Links to="/">
-                    <img
-                      className="App-log"
-                      src={logo}
-                      alt="logo"
-                      width="120px"
-                    />
+                    <img className="App-log" src={logo} alt="logo" width="120px" />
                   </Links>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
-                  <TextFields
-                    type="email"
-                    id="outlined-basic"
-                    label="Email"
-                    variant="outlined"
-                    size="small"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
+                  <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" value={email} onChange={(e) => setEmail(e.target.value)} required />
                   {/* <TextFields type="password" id="outlined" label="Password" variant="outlined" size="small" value={password} onChange={(e) => setPassword(e.target.value)} required />
                   <TextFields type="password" id="outlined" label="Confirm Password" variant="outlined" size="small" value={confirm_password} onChange={(e) => setConfirm_Password(e.target.value)} required /> */}
                   <FormControls variant="outlined" required size="small">
-                    <InputLabel htmlFor="outlined-adornment-password">
-                      Password
-                    </InputLabel>
+                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                     <OutlinedInput
                       id="outlined-adornment-password"
                       type={showPassword ? "text" : "password"}
@@ -129,12 +105,7 @@ function Register() {
                       onChange={(e) => setPassword(e.target.value)}
                       endAdornment={
                         <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                          >
+                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
                             {showPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
@@ -143,9 +114,7 @@ function Register() {
                     />
                   </FormControls>
                   <FormControls variant="outlined" required size="small">
-                    <InputLabel htmlFor="outlined-adornment-password">
-                      Confirm
-                    </InputLabel>
+                    <InputLabel htmlFor="outlined-adornment-password">Confirm</InputLabel>
                     <OutlinedInput
                       id="outlined-adornment-password"
                       type={showCPassword ? "text" : "password"}
@@ -153,12 +122,16 @@ function Register() {
                       onChange={(e) => setConfirm_Password(e.target.value)}
                       endAdornment={
                         <InputAdornment position="end">
+<<<<<<< HEAD
+                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowCPassword} onMouseDown={handleMouseDownCPassword} edge="end">
+=======
                           <IconButton
                             aria-label="toggle password visibility"
                             onClick={handleClickShowCPassword}
                             onMouseDown={handleMouseDownCPassword}
                             edge="end"
                           >
+>>>>>>> 94ef23c630ce8382573a0c02a567d2d79bc16703
                             {showCPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
@@ -167,12 +140,7 @@ function Register() {
                     />
                   </FormControls>
                   <Links to="/register">
-                    <Buttons
-                      variant="contained"
-                      size="medium"
-                      disabled={!email || !password || !confirm_password}
-                      onClick={handleSubmit}
-                    >
+                    <Buttons variant="contained" size="medium" disabled={!email || !password || !confirm_password} onClick={handleSubmit}>
                       Register
                     </Buttons>
                   </Links>
@@ -182,7 +150,7 @@ function Register() {
             <Col style={{ justifyContent: "center" }}>
               <CardLogo elevation={2}>
                 <CardContent>
-                  <Heading>Log In</Heading>
+                  <Heading>Alredy Join</Heading>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
@@ -200,6 +168,7 @@ function Register() {
           </Row>
         </Cards>
       </BoxAuth>
+      <NavbarBottom />
     </>
   );
 }

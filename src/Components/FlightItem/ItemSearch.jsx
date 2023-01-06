@@ -7,13 +7,15 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ItemNotFound from "./ItemNotFound";
+import { IconBagasi } from "../../Styled/MUI/IconStyled";
+import { Tooltip } from "antd";
 
 function ItemSearch({ cbooking }) {
   const { listflight } = useSelector((state) => state.airport);
   const navigate = useNavigate();
 
   return (
-    <>
+    <div style={{ maxWidth: 800, justifyContent: "center" }}>
       {!listflight?.data ? (
         <ItemNotFound />
       ) : (
@@ -29,27 +31,14 @@ function ItemSearch({ cbooking }) {
                   </FontP>
                 </Stack>
                 <Divider />
-                <Stack
-                  direction="row"
-                  justifyContent="left"
-                  style={{ margin: 5 }}
-                >
+                <Stack direction="row" justifyContent="left" style={{ margin: 5 }}>
                   <Stack>
                     <AirlinesCard variant="outlined">
-                      <img
-                        maxWidth="150px"
-                        width="100px"
-                        alt=""
-                        src={item.airlineLogo}
-                      />
+                      <img maxWidth="150px" width="100px" alt="" src={item.airlineLogo} />
                     </AirlinesCard>
                   </Stack>
-                  <Stack>
-                    <Stack
-                      direction="row"
-                      justifyContent="left"
-                      style={{ marginLeft: 50, marginRight: 20 }}
-                    >
+                  <Stack justifyContent="space-between">
+                    <Stack direction="row" justifyContent="center" style={{ margin: 10, textAlign: "center" }}>
                       <FontP>
                         ({item.origin}) {item.originCity}
                       </FontP>
@@ -60,17 +49,20 @@ function ItemSearch({ cbooking }) {
                         ({item.destination}) {item.destinationCity}
                       </FontP>
                     </Stack>
-                    <Stack
-                      direction="row"
-                      justifyContent="left"
-                      style={{ marginLeft: 50, marginRight: 10 }}
-                    >
+                    <Stack direction="row" justifyContent="center" style={{ margin: 5, textAlign: "center" }}>
                       <FontItem>{item.departureTime}</FontItem>
                       <FontItem>
                         <ArrowRightAltIcon />
                       </FontItem>
                       <FontItem>{item.arrivalTime}</FontItem>
                     </Stack>
+                  </Stack>
+                  <Stack>
+                    <FontItem>
+                      <Tooltip title="Max 20KG">
+                        <IconBagasi />
+                      </Tooltip>
+                    </FontItem>
                   </Stack>
                 </Stack>
                 <Divider />
@@ -98,7 +90,7 @@ function ItemSearch({ cbooking }) {
           })}
         </>
       )}
-    </>
+    </div>
   );
 }
 

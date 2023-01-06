@@ -16,11 +16,7 @@ function Confirmation({ handleSubmit, cbooking }) {
           margin: "auto",
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
           <Grid item xs={9}>
             <CardConf>
               <Box
@@ -50,7 +46,7 @@ function Confirmation({ handleSubmit, cbooking }) {
                     }}
                   >
                     <ButtonPay variant="contained" onClick={handleSubmit}>
-                      Bayar
+                      Pay
                     </ButtonPay>
                   </Col>
                 </Row>
