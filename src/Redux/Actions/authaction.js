@@ -185,4 +185,5 @@ export const getwhoami = (callback) => async (dispatch, getState) => {
 export const logout = () => async (dispatch) => {
   localStorage.removeItem("token");
   dispatch(setToken(null));
+  dispatch(setWhoami(null));
 };

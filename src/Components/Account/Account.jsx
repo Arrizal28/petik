@@ -13,7 +13,6 @@ function Account() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-
     dispatch(logout());
   };
 
@@ -49,7 +48,13 @@ function Account() {
           </Tooltip>
         </Link>
         <Tooltip title="Log Out">
-          <Fab color="primary" aria-label="add" size="small" sx={{ m: 1 }} onClick={handleLogout}>
+          <Fab
+            color="primary"
+            aria-label="add"
+            size="small"
+            sx={{ m: 1 }}
+            onClick={handleLogout}
+          >
             <LogoutIcon />
           </Fab>
         </Tooltip>

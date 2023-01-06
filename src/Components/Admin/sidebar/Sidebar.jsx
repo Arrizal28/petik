@@ -11,7 +11,6 @@ const Sidebar = () => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-
     dispatch(logout());
   };
   return (

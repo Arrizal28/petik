@@ -29,7 +29,7 @@ function Protected({ children, types }) {
         navigate("/");
       }
     }
-  }, [wai, types, navigate]);
+  }, [wai?.data?.role, types, navigate]);
 
   if (!token) {
     return <Navigate to={`/login`} />;
