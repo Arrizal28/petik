@@ -103,16 +103,6 @@ function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                {/* <TextFields
-                  type="Password"
-                  id="outlined"
-                  label="Password"
-                  variant="outlined"
-                  size="small"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                /> */}
                 <FormControls variant="outlined" required size="small">
                   <InputLabel htmlFor="outlined-adornment-password">
                     Password

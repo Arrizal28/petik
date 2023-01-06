@@ -45,7 +45,7 @@ export default function MediaPartner() {
                     <img width="150px" src="https://hangnadim.bpbatam.go.id/wp-content/uploads/2021/05/Nam-Air-1.png" alt="img" />
                   </TableCell>
                   <TableCell>
-                    <img width="150px" src="https://hangnadim.bpbatam.go.id/wp-content/uploads/2021/05/Sriwijaya-Air-1.png" alt="green img" />
+                    <img width="150px" src="https://hangnadim.bpbatam.go.id/wp-content/uploads/2021/05/Sriwijaya-Air-1.png" alt="img" />
                   </TableCell>
                   <TableCell>
                     <img width="150px" src="https://hangnadim.bpbatam.go.id/wp-content/uploads/2021/05/Susi-Air-1.png" alt="img" />
