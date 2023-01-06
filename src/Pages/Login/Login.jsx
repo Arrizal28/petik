@@ -24,6 +24,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { FormControls } from "../../Styled/MUI/AuthStyles";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Login() {
   const [email, setEmail] = useState("");

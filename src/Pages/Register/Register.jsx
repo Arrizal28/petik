@@ -24,6 +24,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { FormControls } from "../../Styled/MUI/AuthStyles";
+import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -187,7 +188,7 @@ function Register() {
             <Col style={{ justifyContent: "center" }}>
               <CardLogo elevation={2}>
                 <CardContent>
-                  <Heading>Log In</Heading>
+                  <Heading>Alredy Join</Heading>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
@@ -205,6 +206,7 @@ function Register() {
           </Row>
         </Cards>
       </BoxAuth>
+      <NavbarBottom />
     </>
   );
 }

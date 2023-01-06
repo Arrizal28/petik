@@ -146,7 +146,7 @@ function EditProfile() {
           <CardProfile variant="outlined">
             <BoxMenu>
               <Heading>Edit Profile</Heading>
-              <Title>Di sini anda bisa mengubah profil akunmu.</Title>
+              <Title>You can edit your profile account here.</Title>
             </BoxMenu>
           </CardProfile>
           {data.biodata === null ? (
