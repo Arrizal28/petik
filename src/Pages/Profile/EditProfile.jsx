@@ -3,7 +3,16 @@ import { CardContent } from "@mui/material";
 import NavBar from "../../Components/Navbar/Navbar";
 import MenuItem from "@mui/material/MenuItem";
 import Footer from "../../Components/Footer/Footer";
-import { BoxHome, BoxMenu, BoxPage, TextFields, Buttons, CardEdit, CardBox, CardProfile } from "../../Styled/MUI/BuyerStyle.js";
+import {
+  BoxHome,
+  BoxMenu,
+  BoxPage,
+  TextFields,
+  Buttons,
+  CardEdit,
+  CardBox,
+  CardProfile,
+} from "../../Styled/MUI/BuyerStyle.js";
 import { Heading, Title } from "../../Styled/ComponentUI/Styles";
 import TopPanels from "../../Components/Header/TopPanel";
 import { createUserBio, upadateUserBio } from "../../Redux/Actions/userAction";
@@ -40,7 +49,14 @@ function EditProfile() {
     setEAdress(data?.biodata?.address);
     setENationality(data?.biodata?.nationality);
     setEGender(data?.biodata?.gender);
-  }, [data?.biodata?.firstName, data?.biodata?.lastName, data?.biodata?.phoneNumber, data?.biodata?.address, data?.biodata?.nationality, data?.biodata?.gender]);
+  }, [
+    data?.biodata?.firstName,
+    data?.biodata?.lastName,
+    data?.biodata?.phoneNumber,
+    data?.biodata?.address,
+    data?.biodata?.nationality,
+    data?.biodata?.gender,
+  ]);
 
   const [user, setUser] = useState({
     firstName: "",
@@ -51,7 +67,8 @@ function EditProfile() {
     nationality: "",
   });
 
-  const { firstName, lastName, gender, phoneNumber, address, nationality } = user;
+  const { firstName, lastName, gender, phoneNumber, address, nationality } =
+    user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -84,7 +101,14 @@ function EditProfile() {
       alert("Nationality is required");
       return;
     }
-    if (gender !== "" && firstName !== "" && lastName !== "" && phoneNumber !== "" && address !== "" && nationality !== "") {
+    if (
+      gender !== "" &&
+      firstName !== "" &&
+      lastName !== "" &&
+      phoneNumber !== "" &&
+      address !== "" &&
+      nationality !== ""
+    ) {
       dispatch(createUserBio(user));
       navigate("/");
     }
@@ -92,7 +116,14 @@ function EditProfile() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    if (egender !== "" && efirstName !== "" && elastName !== "" && ephoneNumber !== "" && eaddress !== "" && enationality !== "") {
+    if (
+      egender !== "" &&
+      efirstName !== "" &&
+      elastName !== "" &&
+      ephoneNumber !== "" &&
+      eaddress !== "" &&
+      enationality !== ""
+    ) {
       const data = {
         firstName: efirstName,
         lastName: elastName,
@@ -123,19 +154,79 @@ function EditProfile() {
               <CardBox>
                 <CardEdit>
                   <CardContent>
-                    <TextFields id="outlined-basic" label="First Name" variant="outlined" name="firstName" size="small" helperText="Please enter your first name" value={firstName} onChange={(e) => onInputChange(e)} />
-                    <TextFields id="outlined-basic" label="Last Name" variant="outlined" name="lastName" size="small" helperText="Please enter your last name" value={lastName} onChange={(e) => onInputChange(e)} />
-                    <TextFields id="outlined-basic" variant="outlined" size="small" name="gender" select label="Select" value={gender} onChange={(e) => onInputChange(e)} helperText="Please select your gender">
+                    <TextFields
+                      id="outlined-basic"
+                      label="First Name"
+                      variant="outlined"
+                      name="firstName"
+                      size="small"
+                      helperText="Please enter your first name"
+                      value={firstName}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                    <TextFields
+                      id="outlined-basic"
+                      label="Last Name"
+                      variant="outlined"
+                      name="lastName"
+                      size="small"
+                      helperText="Please enter your last name"
+                      value={lastName}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                    <TextFields
+                      id="outlined-basic"
+                      variant="outlined"
+                      size="small"
+                      name="gender"
+                      select
+                      label="Select"
+                      value={gender}
+                      onChange={(e) => onInputChange(e)}
+                      helperText="Please select your gender"
+                    >
                       {titles.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                           {option.label}
                         </MenuItem>
                       ))}
                     </TextFields>
-                    <TextFields id="outlined-basic" label="+621389238173" variant="outlined" size="small" helperText="Please enter your Phone number" name="phoneNumber" value={phoneNumber} onChange={(e) => onInputChange(e)} />
-                    <TextFields id="outlined-basic" label="Address" variant="outlined" size="small" helperText="Please enter your address" name="address" value={address} onChange={(e) => onInputChange(e)} />
-                    <TextFields id="outlined-basic" label="Nationality" variant="outlined" size="small" name="nationality" helperText="Please enter your Nationality" value={nationality} onChange={(e) => onInputChange(e)} />
-                    <Buttons variant="contained" size="large" onClick={handleSubmit}>
+                    <TextFields
+                      id="outlined-basic"
+                      label="+621389238173"
+                      variant="outlined"
+                      size="small"
+                      type="number"
+                      helperText="Please enter your Phone number"
+                      name="phoneNumber"
+                      value={phoneNumber}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                    <TextFields
+                      id="outlined-basic"
+                      label="Address"
+                      variant="outlined"
+                      size="small"
+                      helperText="Please enter your address"
+                      name="address"
+                      value={address}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                    <TextFields
+                      id="outlined-basic"
+                      label="Nationality"
+                      variant="outlined"
+                      size="small"
+                      name="nationality"
+                      helperText="Please enter your Nationality"
+                      value={nationality}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                    <Buttons
+                      variant="contained"
+                      size="large"
+                      onClick={handleSubmit}
+                    >
                       Create
                     </Buttons>
                   </CardContent>
@@ -157,8 +248,27 @@ function EditProfile() {
                       value={efirstName}
                       onChange={(e) => setEFirstName(e.target.value)}
                     />
-                    <TextFields id="outlined-basic" label={data?.biodata?.lastName} variant="outlined" size="small" name="lastName" helperText="Please enter your last name" value={elastName} onChange={(e) => setELastName(e.target.value)} />
-                    <TextFields id="outlined-basic" variant="outlined" size="small" select name="gender" label={data?.biodata?.gender} value={egender} onChange={(e) => setEGender(e.target.value)} helperText="Please select your gender">
+                    <TextFields
+                      id="outlined-basic"
+                      label={data?.biodata?.lastName}
+                      variant="outlined"
+                      size="small"
+                      name="lastName"
+                      helperText="Please enter your last name"
+                      value={elastName}
+                      onChange={(e) => setELastName(e.target.value)}
+                    />
+                    <TextFields
+                      id="outlined-basic"
+                      variant="outlined"
+                      size="small"
+                      select
+                      name="gender"
+                      label={data?.biodata?.gender}
+                      value={egender}
+                      onChange={(e) => setEGender(e.target.value)}
+                      helperText="Please select your gender"
+                    >
                       {titles.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                           {option.label}
@@ -169,13 +279,23 @@ function EditProfile() {
                       id="outlined-basic"
                       label={data?.biodata?.phoneNumber}
                       variant="outlined"
+                      type="number"
                       size="small"
                       name="phoneNumber"
                       helperText="Please enter your Phone number"
                       value={ephoneNumber}
                       onChange={(e) => setEPhoneNumber(e.target.value)}
                     />
-                    <TextFields id="outlined-basic" label={data?.biodata?.address} variant="outlined" size="small" name="address" helperText="Please enter your address" value={eaddress} onChange={(e) => setEAdress(e.target.value)} />
+                    <TextFields
+                      id="outlined-basic"
+                      label={data?.biodata?.address}
+                      variant="outlined"
+                      size="small"
+                      name="address"
+                      helperText="Please enter your address"
+                      value={eaddress}
+                      onChange={(e) => setEAdress(e.target.value)}
+                    />
                     <TextFields
                       id="outlined-basic"
                       label={data?.biodata?.nationality}
@@ -186,7 +306,11 @@ function EditProfile() {
                       value={enationality}
                       onChange={(e) => setENationality(e.target.value)}
                     />
-                    <Buttons variant="contained" size="large" onClick={handleEdit}>
+                    <Buttons
+                      variant="contained"
+                      size="large"
+                      onClick={handleEdit}
+                    >
                       Save Change
                     </Buttons>
                   </CardContent>

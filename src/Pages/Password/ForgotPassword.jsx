@@ -20,6 +20,7 @@ function ForgotPassword() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const { token } = useSelector((state) => state.auth);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -33,15 +34,30 @@ function ForgotPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const regexString = /^[A-Za-z]+$/;
+    const regex =
+      /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (email === "") {
       return;
     }
-    if (email !== "") {
+    if (regexString.test(email)) {
+      setIsError(true);
+      return;
+    }
+    // if (email !== "") {
+    //   const data = {
+    //     email: email,
+    //   };
+    //   dispatch(forgotPassword(data));
+    //   navigate("/login");
+    // }
+    if (regex.test(email)) {
       const data = {
         email: email,
       };
       dispatch(forgotPassword(data));
       navigate("/login");
+      return;
     }
   };
 
@@ -66,6 +82,8 @@ function ForgotPassword() {
               <CardLogin elevation={2}>
                 <CardContent>
                   <TextFields
+                    error={isError}
+                    helperText={isError ? "Email not valid" : ""}
                     type="email"
                     id="outlined-basic"
                     label="Email"

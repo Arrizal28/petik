@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/petik.png";
-import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
+import {
+  Cards,
+  TextFields,
+  Buttons,
+  Buttonz,
+  Links,
+  BoxAuth,
+  CardLogin,
+  CardLogo,
+} from "../../Styled/MUI/AuthStyles";
 import { CardContent } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../Redux/Actions/authaction";
@@ -23,6 +32,7 @@ function Register() {
   const [confirm_password, setConfirm_Password] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showCPassword, setShowCPassword] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -49,19 +59,21 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "") {
-      alert("Email is required");
+    const regexString = /^[A-Za-z]+$/;
+    const regex =
+      /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regexString.test(email)) {
+      setIsError(true);
       return;
     }
     if (password === "") {
-      alert("Password is required");
       return;
     }
     if (confirm_password === "") {
       alert("confirm Password is required");
       return;
     }
-    if (email !== "" && password !== "" && confirm_password !== "") {
+    if (regex.test(email) && password !== "" && confirm_password !== "") {
       const data = {
         email,
         password,
@@ -87,17 +99,35 @@ function Register() {
               <CardLogo elevation={2}>
                 <CardContent>
                   <Links to="/">
-                    <img className="App-log" src={logo} alt="logo" width="120px" />
+                    <img
+                      className="App-log"
+                      src={logo}
+                      alt="logo"
+                      width="120px"
+                    />
                   </Links>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
-                  <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                  <TextFields
+                    type="email"
+                    error={isError}
+                    helperText={isError ? "Email not valid" : ""}
+                    id="outlined-basic"
+                    label="Email"
+                    variant="outlined"
+                    size="small"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
                   {/* <TextFields type="password" id="outlined" label="Password" variant="outlined" size="small" value={password} onChange={(e) => setPassword(e.target.value)} required />
                   <TextFields type="password" id="outlined" label="Confirm Password" variant="outlined" size="small" value={confirm_password} onChange={(e) => setConfirm_Password(e.target.value)} required /> */}
                   <FormControls variant="outlined" required size="small">
-                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      Password
+                    </InputLabel>
                     <OutlinedInput
                       id="outlined-adornment-password"
                       type={showPassword ? "text" : "password"}
@@ -105,7 +135,12 @@ function Register() {
                       onChange={(e) => setPassword(e.target.value)}
                       endAdornment={
                         <InputAdornment position="end">
-                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
                             {showPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
@@ -114,7 +149,9 @@ function Register() {
                     />
                   </FormControls>
                   <FormControls variant="outlined" required size="small">
-                    <InputLabel htmlFor="outlined-adornment-password">Confirm</InputLabel>
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      Confirm
+                    </InputLabel>
                     <OutlinedInput
                       id="outlined-adornment-password"
                       type={showCPassword ? "text" : "password"}
@@ -122,16 +159,12 @@ function Register() {
                       onChange={(e) => setConfirm_Password(e.target.value)}
                       endAdornment={
                         <InputAdornment position="end">
-<<<<<<< HEAD
-                          <IconButton aria-label="toggle password visibility" onClick={handleClickShowCPassword} onMouseDown={handleMouseDownCPassword} edge="end">
-=======
                           <IconButton
                             aria-label="toggle password visibility"
                             onClick={handleClickShowCPassword}
                             onMouseDown={handleMouseDownCPassword}
                             edge="end"
                           >
->>>>>>> 94ef23c630ce8382573a0c02a567d2d79bc16703
                             {showCPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
@@ -140,7 +173,12 @@ function Register() {
                     />
                   </FormControls>
                   <Links to="/register">
-                    <Buttons variant="contained" size="medium" disabled={!email || !password || !confirm_password} onClick={handleSubmit}>
+                    <Buttons
+                      variant="contained"
+                      size="medium"
+                      disabled={!email || !password || !confirm_password}
+                      onClick={handleSubmit}
+                    >
                       Register
                     </Buttons>
                   </Links>
