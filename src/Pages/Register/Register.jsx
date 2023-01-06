@@ -122,8 +122,6 @@ function Register() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  {/* <TextFields type="password" id="outlined" label="Password" variant="outlined" size="small" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                  <TextFields type="password" id="outlined" label="Confirm Password" variant="outlined" size="small" value={confirm_password} onChange={(e) => setConfirm_Password(e.target.value)} required /> */}
                   <FormControls variant="outlined" required size="small">
                     <InputLabel htmlFor="outlined-adornment-password">
                       Password
@@ -188,7 +186,7 @@ function Register() {
             <Col style={{ justifyContent: "center" }}>
               <CardLogo elevation={2}>
                 <CardContent>
-                  <Heading>Alredy Join</Heading>
+                  <Heading>Already Join</Heading>
                 </CardContent>
               </CardLogo>
               <CardLogin elevation={2}>

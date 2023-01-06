@@ -49,10 +49,6 @@ function Login() {
     }
   }, [token, navigate]);
 
-  useEffect(() => {
-    console.log(password);
-  }, [password]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const regexString = /^[A-Za-z]+$/;
