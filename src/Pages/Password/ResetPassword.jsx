@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   Cards,
-  TextFields,
   Buttons,
   Links,
   BoxAuth,
@@ -14,6 +13,14 @@ import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetpassword } from "../../Redux/Actions/authaction";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { FormControls } from "../../Styled/MUI/AuthStyles";
+
 function ResetPassword() {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -22,6 +29,20 @@ function ResetPassword() {
   const [cnewpass, setCnewpass] = useState("");
   const queryParameters = new URLSearchParams(window.location.search);
   const type = queryParameters.get("token");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCPassword, setShowCPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleClickShowCPassword = () => setShowCPassword((show) => !show);
+
+  const handleMouseDownCPassword = (event) => {
+    event.preventDefault();
+  };
 
   useEffect(() => {
     if (token) {
@@ -66,31 +87,60 @@ function ResetPassword() {
               </CardLogo>
               <CardLogin elevation={2}>
                 <CardContent>
-                  <TextFields
-                    type="password"
-                    id="outlined"
-                    label="New Password"
-                    variant="outlined"
-                    size="small"
-                    required
-                    value={newpass}
-                    onChange={(e) => setNewpass(e.target.value)}
-                  />
-                  <TextFields
-                    type="password"
-                    id="outlined"
-                    label="Confirm New Password"
-                    variant="outlined"
-                    size="small"
-                    required
-                    value={cnewpass}
-                    onChange={(e) => setCnewpass(e.target.value)}
-                  />
+                  <FormControls variant="outlined" required size="small">
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      New Password
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      value={newpass}
+                      onChange={(e) => setNewpass(e.target.value)}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      label="Password"
+                    />
+                  </FormControls>
+                  <FormControls variant="outlined" required size="small">
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      Confirm New Password
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={showCPassword ? "text" : "password"}
+                      value={cnewpass}
+                      onChange={(e) => setCnewpass(e.target.value)}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowCPassword}
+                            onMouseDown={handleMouseDownCPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      label="Password"
+                    />
+                  </FormControls>
                   <Links to="/login">
                     <Buttons
                       variant="contained"
                       size="medium"
                       onClick={handleSubmit}
+                      disabled={!newpass || !cnewpass}
                     >
                       Save
                     </Buttons>
