@@ -196,7 +196,6 @@ function EditProfile() {
                       label="+621389238173"
                       variant="outlined"
                       size="small"
-                      type="number"
                       helperText="Please enter your Phone number"
                       name="phoneNumber"
                       value={phoneNumber}
