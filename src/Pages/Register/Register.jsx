@@ -122,7 +122,16 @@ function Register() {
                       onChange={(e) => setConfirm_Password(e.target.value)}
                       endAdornment={
                         <InputAdornment position="end">
+<<<<<<< HEAD
                           <IconButton aria-label="toggle password visibility" onClick={handleClickShowCPassword} onMouseDown={handleMouseDownCPassword} edge="end">
+=======
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowCPassword}
+                            onMouseDown={handleMouseDownCPassword}
+                            edge="end"
+                          >
+>>>>>>> 94ef23c630ce8382573a0c02a567d2d79bc16703
                             {showCPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
