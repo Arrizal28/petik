@@ -11,7 +11,13 @@ import Mandiri from "../../assets/images/payment/mandiri.png";
 import BNI from "../../assets/images/payment/bni.png";
 import Briva from "../../assets/images/payment/briva.png";
 
-function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestData }) {
+function MetPayment({
+  totals,
+  setTotals,
+  paymentMethod,
+  requestData,
+  setRequestData,
+}) {
   const [ewallet, setEwallet] = useState(false);
   const [va, setVa] = useState(false);
 
@@ -41,12 +47,19 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
           margin: "auto",
         }}
       >
-        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ flexGrow: 1, justifyContent: "center", display: "flex" }}
+        >
           <Grid item xs={9}>
             <Grid>
               <CardMet variant="outlined">
                 <Title>Payment Methode</Title>
-                <FontP>Enjoy extra benefits with the recommended payment method at petik.com</FontP>
+                <FontP>
+                  Enjoy extra benefits with the recommended payment method at
+                  petik.com
+                </FontP>
               </CardMet>
             </Grid>
             {ewallet ? (
@@ -68,8 +81,10 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                           </Col>
                           <Col style={{ textAlign: "right", marginRight: 15 }}>
                             <FontP>
-                              <MonetizationOnIcon style={{ color: "orange", marginRight: 2 }} />
-                              Rp.99.999.999,00
+                              <MonetizationOnIcon
+                                style={{ color: "orange", marginRight: 2 }}
+                              />
+                              $99.999
                             </FontP>
                           </Col>
                           <Col
@@ -137,7 +152,9 @@ function MetPayment({ totals, setTotals, paymentMethod, requestData, setRequestD
                           </Col>
                           <Col style={{ textAlign: "right", marginRight: 15 }}>
                             <FontP>
-                              <MonetizationOnIcon style={{ color: "orange", marginRight: 2 }} />
+                              <MonetizationOnIcon
+                                style={{ color: "orange", marginRight: 2 }}
+                              />
                               Rp.99.999.999,00
                             </FontP>
                           </Col>
