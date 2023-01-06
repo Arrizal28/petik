@@ -135,28 +135,30 @@ export const ButtonOrder = styled(Button)({
 
 export const FieldData = styled(TextField)({
   maxWidth: 600,
+  width: 250,
   marginTop: 20,
   borderRadius: 20,
   display: "flex",
-  margin: 20,
+  margin: 10,
 });
 
 export const ButtonData = styled(Button)({
-  width: 300,
+  width: 250,
   marginTop: 20,
   borderRadius: 10,
   display: "flex",
-  marginLeft: 20,
+  margin: 10,
   marginBottom: 20,
   textAlign: "center",
 });
 
 export const FormClass = styled(FormControl)({
   maxWidth: 600,
+  width: 250,
   marginTop: 20,
   borderRadius: 20,
   display: "flex",
-  margin: 20,
+  margin: 10,
   justifyContent: "center",
 });
 

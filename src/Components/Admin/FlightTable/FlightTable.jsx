@@ -74,20 +74,13 @@ const FlightTable = () => {
                         onConfirm={(e) => {
                           e.preventDefault();
                           dispatch(deleteflight(item.id));
-                          navigate("/admin/flight");
+                          navigate("/adminhome");
                         }}
                         onCancel={cancel}
                         okText="Yes"
                         cancelText="No"
                       >
-                        <DeleteIcon
-                          cursor="pointer"
-                          // onClick={(e) => {
-                          //   e.preventDefault();
-                          //   dispatch(deleteflight(item.id));
-                          //   navigate("/admin/flight");
-                          // }}
-                        />
+                        <DeleteIcon cursor="pointer" />
                       </Popconfirm>
                     </TableCell>
                   </TableRow>

@@ -80,6 +80,7 @@ function ForgotPassword() {
                       variant="contained"
                       size="medium"
                       onClick={handleSubmit}
+                      disabled={!email}
                     >
                       Continue
                     </Buttons>

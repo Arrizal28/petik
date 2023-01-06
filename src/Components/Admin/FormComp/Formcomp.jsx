@@ -130,17 +130,17 @@ function Formcomp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (sameairport) {
+    if (emptysearch) {
       swal({
-        title: "airports can't be the same!",
+        title: "name airport required!",
         icon: "warning",
         button: "OK",
       });
       return;
     }
-    if (emptysearch) {
+    if (sameairport) {
       swal({
-        title: "name airport required!",
+        title: "airports can't be the same!",
         icon: "warning",
         button: "OK",
       });

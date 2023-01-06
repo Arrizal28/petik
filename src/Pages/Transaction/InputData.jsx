@@ -16,7 +16,6 @@ import { FontNotif, Title } from "../../Styled/ComponentUI/Styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { createBooking, totalseat } from "../../Redux/Actions/bookingAction";
-import { showUserBio } from "../../Redux/Actions/userAction";
 
 function InputData() {
   const { sbio } = useSelector((state) => state.user);
@@ -52,15 +51,22 @@ function InputData() {
     }
   }, [params.id, requestData]);
 
-  useEffect(() => {
-    dispatch(showUserBio());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(showUserBio());
+  //   (async () => {
+  //     dispatch(showUserBio());
+  //   })();
+  // }, [dispatch]);
 
   useEffect(() => {
     if (sbio?.data?.biodata === null) {
       navigate("/account/profile");
-      return;
     }
+    // (async () => {
+    //   if (sbio?.data?.biodata === null) {
+    //     navigate("/account/profile");
+    //   }
+    // })();
   }, [navigate, sbio?.data?.biodata]);
 
   const onSubmit = async (e) => {
@@ -122,7 +128,26 @@ function InputData() {
                 <Grid>
                   <Box
                     sx={{
-                      width: 800,
+                      width: 300,
+                      maxWidth: "100%",
+                    }}
+                  >
+                    <Title>Ticket Class</Title>
+                    <FormClass size="small">
+                      <Select
+                        value={requestData?.ticketClass}
+                        onChange={handleChange}
+                      >
+                        <MenuItem value={"economy"}>Economy</MenuItem>
+                        <MenuItem value={"business"}>Business</MenuItem>
+                        <MenuItem value={"vip"}>VIP</MenuItem>
+                      </Select>
+                    </FormClass>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      width: 300,
                       maxWidth: "100%",
                     }}
                   >
@@ -144,25 +169,6 @@ function InputData() {
                       Save Data
                     </ButtonData>{" "}
                   </Box>
-                  <Dividers />
-                  <Box
-                    sx={{
-                      width: 800,
-                      maxWidth: "100%",
-                    }}
-                  >
-                    <Title>Ticket Class</Title>
-                    <FormClass size="small">
-                      <Select
-                        value={requestData?.ticketClass}
-                        onChange={handleChange}
-                      >
-                        <MenuItem value={"economy"}>Economy</MenuItem>
-                        <MenuItem value={"business"}>Business</MenuItem>
-                        <MenuItem value={"vip"}>VIP</MenuItem>
-                      </Select>
-                    </FormClass>
-                  </Box>
                 </Grid>
                 <Dividers />
               </CardPass>
@@ -175,14 +181,14 @@ function InputData() {
                       (item, i) => {
                         return (
                           <>
-                            <Grid style={{ textAlign: "center" }}>
+                            <Grid style={{ textAlign: "left", marginLeft: 10 }}>
                               <FontNotif>Pasengger Data {item + 1}</FontNotif>
                             </Grid>
                             <Dividers />
                             <Grid>
                               <Box
                                 sx={{
-                                  width: 800,
+                                  width: 300,
                                   maxWidth: "100%",
                                 }}
                               >

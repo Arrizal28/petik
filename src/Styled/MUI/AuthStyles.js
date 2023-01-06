@@ -1,5 +1,12 @@
 import { styled } from "@mui/material/styles";
-import { Button, Card, TextField, Divider, Box } from "@mui/material";
+import {
+  Button,
+  Card,
+  TextField,
+  Divider,
+  Box,
+  FormControl,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import imgbg from "../../assets/images/bg.png";
 
@@ -77,6 +84,16 @@ export const TextFields = styled(TextField)({
   width: 350,
   maxWidth: "100%",
 >>>>>>> e173c3088ea59053f409edc0c686dadfaa7c649e
+  marginTop: 20,
+  borderRadius: 20,
+  marginBottom: 20,
+  display: "flex",
+  margin: 25,
+});
+
+export const FormControls = styled(FormControl)({
+  width: 350,
+  maxWidth: "100%",
   marginTop: 20,
   borderRadius: 20,
   marginBottom: 20,
