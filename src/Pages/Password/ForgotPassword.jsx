@@ -44,13 +44,6 @@ function ForgotPassword() {
       setIsError(true);
       return;
     }
-    // if (email !== "") {
-    //   const data = {
-    //     email: email,
-    //   };
-    //   dispatch(forgotPassword(data));
-    //   navigate("/login");
-    // }
     if (regex.test(email)) {
       const data = {
         email: email,
