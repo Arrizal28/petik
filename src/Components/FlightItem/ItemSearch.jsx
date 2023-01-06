@@ -29,14 +29,27 @@ function ItemSearch({ cbooking }) {
                   </FontP>
                 </Stack>
                 <Divider />
-                <Stack direction="row" justifyContent="left" style={{ margin: 5 }}>
+                <Stack
+                  direction="row"
+                  justifyContent="left"
+                  style={{ margin: 5 }}
+                >
                   <Stack>
                     <AirlinesCard variant="outlined">
-                      <img maxWidth="150px" width="100px" alt="" src={item.airlineLogo} />
+                      <img
+                        maxWidth="150px"
+                        width="100px"
+                        alt=""
+                        src={item.airlineLogo}
+                      />
                     </AirlinesCard>
                   </Stack>
                   <Stack>
-                    <Stack direction="row" justifyContent="left" style={{ marginLeft: 50, marginRight: 20 }}>
+                    <Stack
+                      direction="row"
+                      justifyContent="left"
+                      style={{ marginLeft: 50, marginRight: 20 }}
+                    >
                       <FontP>
                         ({item.origin}) {item.originCity}
                       </FontP>
@@ -47,7 +60,11 @@ function ItemSearch({ cbooking }) {
                         ({item.destination}) {item.destinationCity}
                       </FontP>
                     </Stack>
-                    <Stack direction="row" justifyContent="left" style={{ marginLeft: 50, marginRight: 10 }}>
+                    <Stack
+                      direction="row"
+                      justifyContent="left"
+                      style={{ marginLeft: 50, marginRight: 10 }}
+                    >
                       <FontItem>{item.departureTime}</FontItem>
                       <FontItem>
                         <ArrowRightAltIcon />
@@ -58,11 +75,16 @@ function ItemSearch({ cbooking }) {
                 </Stack>
                 <Divider />
                 <Stack direction="row" justifyContent="space-between">
-                  <FontP>${cbooking?.data?.total}</FontP>
+                  <FontP>Starts From $50{cbooking?.data?.total}</FontP>
                   <Button
                     size="small"
                     variant="contained"
-                    style={{ marginRight: 20, borderRadius: 10, height: 30, marginTop: 10 }}
+                    style={{
+                      marginRight: 20,
+                      borderRadius: 10,
+                      height: 30,
+                      marginTop: 10,
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       navigate(`/inputdata/${item.id}`);

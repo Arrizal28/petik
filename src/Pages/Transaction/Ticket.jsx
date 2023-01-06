@@ -173,10 +173,7 @@ export default function Ticket({ item }) {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell>No.</TableCell>
-                  <TableCell>Title</TableCell>
                   <TableCell>Nama Penumpang</TableCell>
-                  <TableCell>Jenis Tiket</TableCell>
                   <TableCell>Seat Number</TableCell>
                 </TableRow>
               </TableHead>
@@ -186,12 +183,7 @@ export default function Ticket({ item }) {
                     "&:last-child td, &:last-child th": { border: 0 },
                   }}
                 >
-                  <TableCell component="th" scope="row">
-                    1
-                  </TableCell>
-                  <TableCell>Tuan</TableCell>
                   <TableCell>{item.name}</TableCell>
-                  <TableCell>Dewasa</TableCell>
                   <TableCell>{item.seatNumber}</TableCell>
                 </TableRow>
               </TableBody>
