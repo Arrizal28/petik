@@ -9,7 +9,7 @@ function PanelNotif() {
     <>
       <CardOrder variant="outlined">
         <Stack direction="row" justifyContent="center">
-          <Heading>Belum Ada Notifikasi</Heading>
+          <Heading>No Notifications</Heading>
         </Stack>
         <Divider />
         <Stack direction="row" justifyContent="center">

@@ -8,10 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "../../Components/Header/Header";
 import PanelSearch from "../../Components/Panel/PanelSearch";
 import Content from "./Content";
-import Destinasi from "../Media/Destinasi";
 import { getwhoami } from "../../Redux/Actions/authaction";
 import { useNavigate } from "react-router-dom";
 import NavbarBottom from "../../Mobile/Layout/NavbarMobile";
+import Domestics from "../Media/Domestic";
+import Foreign from "../Media/Foreign";
 
 function Home() {
   const { token, wai } = useSelector((state) => state.auth);
@@ -49,10 +50,12 @@ function Home() {
       ) : (
         <>
           <Content />
-          <MediaPromo />
-          <Destinasi />
         </>
       )}
+
+      <MediaPromo />
+      <Domestics />
+      <Foreign />
       <MediaTag />
       <MediaPartner />
       <Footer />
