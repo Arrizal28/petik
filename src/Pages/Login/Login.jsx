@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/petik.png";
-import {
-  Cards,
-  TextFields,
-  Buttons,
-  Buttonz,
-  Links,
-  BoxAuth,
-  CardLogin,
-  CardLogo,
-} from "../../Styled/MUI/AuthStyles";
+import { Cards, TextFields, Buttons, Buttonz, Links, BoxAuth, CardLogin, CardLogo } from "../../Styled/MUI/AuthStyles";
 import { CardContent } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/Actions/authaction";
@@ -82,27 +73,13 @@ function Login() {
             <CardLogo elevation={2}>
               <CardContent>
                 <Links to="/">
-                  <img
-                    className="App-log"
-                    src={logo}
-                    alt="logo"
-                    width="120px"
-                  />
+                  <img className="App-log" src={logo} alt="logo" width="120px" />
                 </Links>
               </CardContent>
             </CardLogo>
             <CardLogin elevation={2}>
               <CardContent>
-                <TextFields
-                  type="email"
-                  id="outlined-basic"
-                  label="Email"
-                  variant="outlined"
-                  size="small"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+                <TextFields type="email" id="outlined-basic" label="Email" variant="outlined" size="small" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 {/* <TextFields
                   type="Password"
                   id="outlined"
@@ -114,9 +91,7 @@ function Login() {
                   required
                 /> */}
                 <FormControls variant="outlined" required size="small">
-                  <InputLabel htmlFor="outlined-adornment-password">
-                    Password
-                  </InputLabel>
+                  <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-password"
                     type={showPassword ? "text" : "password"}
@@ -124,12 +99,7 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     endAdornment={
                       <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
+                        <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
                           {showPassword ? <VisibilityOff /> : <Visibility />}
                         </IconButton>
                       </InputAdornment>
@@ -138,12 +108,7 @@ function Login() {
                   />
                 </FormControls>
                 <Links to="/login">
-                  <Buttons
-                    variant="contained"
-                    size="medium"
-                    onClick={handleSubmit}
-                    disabled={!email || !password}
-                  >
+                  <Buttons variant="contained" size="medium" onClick={handleSubmit} disabled={!email || !password}>
                     Log In
                   </Buttons>
                 </Links>

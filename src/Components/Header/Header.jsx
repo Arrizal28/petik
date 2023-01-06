@@ -6,7 +6,7 @@ function Header() {
     <PanelHead>
       <BoxHeader>
         <BoxContainer>
-          <h1 style={{ justifyContent: "center", textAlign: "center", marginTop: 150, marginBottom: 100 }}> ANDA MAU KE MANA HARI INI?</h1>
+          <h1 style={{ justifyContent: "center", textAlign: "center", marginTop: 150, marginBottom: 100 }}> Where do you want to go?</h1>
         </BoxContainer>
       </BoxHeader>
     </PanelHead>
