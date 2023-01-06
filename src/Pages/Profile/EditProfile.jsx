@@ -196,6 +196,7 @@ function EditProfile() {
                       label="+621389238173"
                       variant="outlined"
                       size="small"
+                      type="number"
                       helperText="Please enter your Phone number"
                       name="phoneNumber"
                       value={phoneNumber}
@@ -278,6 +279,7 @@ function EditProfile() {
                       id="outlined-basic"
                       label={data?.biodata?.phoneNumber}
                       variant="outlined"
+                      type="number"
                       size="small"
                       name="phoneNumber"
                       helperText="Please enter your Phone number"

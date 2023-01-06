@@ -29,6 +29,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -53,13 +54,16 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "") {
+    const regex =
+      /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regexString.test(email)) {
+      setIsError(true);
       return;
     }
     if (password === "") {
       return;
     }
-    if (email !== "" && password !== "") {
+    if (regex.test(email) && password !== "") {
       const data = {
         email,
         password,
@@ -95,6 +99,8 @@ function Login() {
               <CardContent>
                 <TextFields
                   type="email"
+                  error={isError}
+                  helperText={isError ? "Email not valid" : ""}
                   id="outlined-basic"
                   label="Email"
                   variant="outlined"

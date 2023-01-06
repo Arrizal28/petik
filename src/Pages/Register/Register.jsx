@@ -31,6 +31,7 @@ function Register() {
   const [confirm_password, setConfirm_Password] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showCPassword, setShowCPassword] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -57,19 +58,21 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "") {
-      alert("Email is required");
+    const regexString = /^[A-Za-z]+$/;
+    const regex =
+      /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regexString.test(email)) {
+      setIsError(true);
       return;
     }
     if (password === "") {
-      alert("Password is required");
       return;
     }
     if (confirm_password === "") {
       alert("confirm Password is required");
       return;
     }
-    if (email !== "" && password !== "" && confirm_password !== "") {
+    if (regex.test(email) && password !== "" && confirm_password !== "") {
       const data = {
         email,
         password,
@@ -108,6 +111,8 @@ function Register() {
                 <CardContent>
                   <TextFields
                     type="email"
+                    error={isError}
+                    helperText={isError ? "Email not valid" : ""}
                     id="outlined-basic"
                     label="Email"
                     variant="outlined"
