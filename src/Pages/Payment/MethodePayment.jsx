@@ -155,7 +155,7 @@ function MetPayment({
                               <MonetizationOnIcon
                                 style={{ color: "orange", marginRight: 2 }}
                               />
-                              Rp.99.999.999,00
+                              $99.999
                             </FontP>
                           </Col>
                           <Col
