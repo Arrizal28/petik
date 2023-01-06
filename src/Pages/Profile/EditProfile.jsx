@@ -278,7 +278,6 @@ function EditProfile() {
                       id="outlined-basic"
                       label={data?.biodata?.phoneNumber}
                       variant="outlined"
-                      type="number"
                       size="small"
                       name="phoneNumber"
                       helperText="Please enter your Phone number"
