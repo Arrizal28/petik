@@ -131,11 +131,17 @@ export const resetpassword = (data, token) => async (dispatch) => {
   }
 };
 
-export const changePassword = (data) => async (dispatch) => {
+export const changePassword = (data) => async (dispatch, getState) => {
   try {
+    const { token } = getState().auth;
     const result = await axios.put(
       `${process.env.REACT_APP_AUTH_API}/auth/change-password`,
-      data
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     if (result.data.status) {
       dispatch(setChange(result.data));

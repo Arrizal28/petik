@@ -27,8 +27,8 @@ function Buyers() {
         <BoxPage>
           <CardProfile variant="outlined">
             <BoxMenu>
-              <Heading>Detail Profile</Heading>
-              <Title>Di sini anda bisa melihat profil akunmu.</Title>
+              <Heading>Detil Profile</Heading>
+              <Title>You can see your profile account here.</Title>
             </BoxMenu>
           </CardProfile>
           {data?.biodata === null ? (

@@ -37,11 +37,7 @@ function SearchFlight() {
           marginBottom: 10,
         }}
       >
-        <Grid
-          container
-          spacing={2}
-          sx={{ flexGrow: 1, justifyContent: "center" }}
-        >
+        <Grid container spacing={2} sx={{ flexGrow: 1, justifyContent: "center" }}>
           <Grid item xs={12}>
             <CardFlight variant="outlined">
               <FontNotif>Search Your Ticket Flight</FontNotif>
@@ -49,6 +45,16 @@ function SearchFlight() {
             <PanelSearch />
           </Grid>
         </Grid>
+      </Box>
+      <Box
+        sx={{
+          flexGrow: 1,
+          justifyContent: "center",
+          maxWidth: 800,
+          margin: "auto",
+          marginBottom: 10,
+        }}
+      >
         {listflight?.data ? <ItemSearch /> : <ItemNotFound />}
       </Box>
       <NavbarBottom />

@@ -9,7 +9,7 @@ function PanelOrder() {
     <>
       <CardOrder variant="outlined">
         <Stack direction="row" justifyContent="center">
-          <Heading>Belum Ada Order</Heading>
+          <Heading>No Orders</Heading>
         </Stack>
         <Divider />
         <Stack direction="row" justifyContent="center">

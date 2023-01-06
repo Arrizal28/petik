@@ -10,7 +10,7 @@ export const FieldSet = styled(TextField)({
 });
 
 export const ButtonSet = styled(Button)({
-  width: 150,
+  width: 200,
   marginTop: 20,
   borderRadius: 10,
   display: "flex",
